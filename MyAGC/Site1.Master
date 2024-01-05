@@ -193,15 +193,16 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-user-md"></i><span>Doctor</span>
+                                <i class="fa fa-user-md"></i><span>Profile Management</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="forms_basic.html">Add Doctor</a></li>
-                                <li><a href="table.html">Doctor list</a></li>
-                                
+                                <li><a href="../student/personal-information">Personal Information</a></li>
+                                <li><a href="table.html">Academic History</a></li>
+                                 <li><a href="table.html">Activities and achievements</a></li>
+                                 <li><a href="table.html">Document Management</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

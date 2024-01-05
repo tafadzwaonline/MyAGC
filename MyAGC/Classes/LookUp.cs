@@ -180,7 +180,151 @@ namespace MyAGC.Classes
                 return null;
             }
         }
-       
+        public DataSet getCountry()
+        {
+
+            string str = "sp_getCountry";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getGender()
+        {
+
+            string str = "sp_getGender";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getRelationTypes()
+        {
+
+            string str = "sp_getRelationTypes";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getDisabilityTypes()
+        {
+
+            string str = "sp_getDisabilityTypes";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getRaces()
+        {
+
+            string str = "sp_getRace";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getTitle()
+        {
+
+            string str = "sp_getTitle";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getReligion()
+        {
+
+            string str = "sp_getReligion";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getIdentityDocumentTypes()
+        {
+
+            string str = "sp_getIdentityDocumentTypes";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getRoles()
+        {
+
+            string str = "sp_getRoles";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static class RandomGenerator
         {
             private static readonly Random random = new Random();

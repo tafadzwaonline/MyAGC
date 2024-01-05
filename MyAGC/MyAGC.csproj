@@ -366,7 +366,9 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="student\academic-history.aspx" />
     <Content Include="student\dashboard.aspx" />
+    <Content Include="student\personal-information.aspx" />
     <Content Include="verify-email.aspx" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
@@ -540,12 +542,26 @@
     <Compile Include="Site2.Master.designer.cs">
       <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
+    <Compile Include="student\academic-history.aspx.cs">
+      <DependentUpon>academic-history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\academic-history.aspx.designer.cs">
+      <DependentUpon>academic-history.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="student\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\personal-information.aspx.cs">
+      <DependentUpon>personal-information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\personal-information.aspx.designer.cs">
+      <DependentUpon>personal-information.aspx</DependentUpon>
     </Compile>
     <Compile Include="verify-email.aspx.cs">
       <DependentUpon>verify-email.aspx</DependentUpon>
