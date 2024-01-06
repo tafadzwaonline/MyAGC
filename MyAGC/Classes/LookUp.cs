@@ -89,7 +89,80 @@ namespace MyAGC.Classes
 
         #region "Save"
 
-       
+        public void SaveAcademicRecords(int UserID, string SchoolName, int SchoolLevel, string StartDateMonth, string StartDateYear, string EndDateMonth, string EndDateYear,
+            int SubjectsPassedNo,int ExaminationBody,string Activities)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("AcademicHistory_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                sql_cmnd.Parameters.AddWithValue("@SchoolName", SqlDbType.NVarChar).Value = SchoolName;
+                sql_cmnd.Parameters.AddWithValue("@SchoolLevel", SqlDbType.Int).Value = SchoolLevel;
+                sql_cmnd.Parameters.AddWithValue("@StartDateMonth", SqlDbType.NVarChar).Value = StartDateMonth;
+                sql_cmnd.Parameters.AddWithValue("@StartDateYear", SqlDbType.NVarChar).Value = StartDateYear;
+                sql_cmnd.Parameters.AddWithValue("@EndDateMonth", SqlDbType.NVarChar).Value = EndDateMonth;
+                sql_cmnd.Parameters.AddWithValue("@EndDateYear", SqlDbType.DateTime).Value = EndDateYear;
+                sql_cmnd.Parameters.AddWithValue("@SubjectsPassedNo", SqlDbType.Int).Value = SubjectsPassedNo;
+                sql_cmnd.Parameters.AddWithValue("@ExaminationBody", SqlDbType.Int).Value = ExaminationBody;
+                sql_cmnd.Parameters.AddWithValue("@Activities", SqlDbType.NVarChar).Value = Activities;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+        public bool SaveClientImage(long UserID, Byte[] bytes)
+        {
+            try
+            {
+
+                string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                SqlConnection sqlCon = null;
+                using (sqlCon = new SqlConnection(constr))
+                {
+                    sqlCon.Open();
+                    SqlCommand sql_cmnd = new SqlCommand("sp_SaveInage", sqlCon);
+                    sql_cmnd.CommandType = CommandType.StoredProcedure;
+                    sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                    sql_cmnd.Parameters.AddWithValue("@Image", SqlDbType.VarBinary).Value = bytes;
+                    sql_cmnd.ExecuteNonQuery();
+                    sqlCon.Close();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                mMsgFlg = ex.Message;
+                return false;
+            }
+        }
+        public void DeleteUploadedDocument(int ID)
+        {
+
+            string str = "sp_DeleteUploadedDocument";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, ID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+
+        }
+        public void RemoveAcademicHistory(int ID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("AcademicHistory_Del", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ID", SqlDbType.Int).Value = ID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
         public DataSet getEmailSettings()
         {
             string str = "sp_getEmailSettings";
@@ -105,6 +178,39 @@ namespace MyAGC.Classes
             {
                 return null;
             }
+        }
+        public DataSet getCertificateFileUploads(int UserID)
+        {
+
+            string str = "sp_getCertificateFileUploads";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public void UploadDocument(string Name, string ContentType, byte[] Data, DateTime DateCreated, int UploadedBy, int DocTypeID)
+        {
+
+            string str = "sp_UploadCertificateDocument";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Name", DbType.String, Name);
+            db.AddInParameter(cmd, "@ContentType", DbType.String, ContentType);
+            db.AddInParameter(cmd, "@Data", DbType.Binary, Data);
+            db.AddInParameter(cmd, "@DateCreated", DbType.DateTime, DateCreated);
+            db.AddInParameter(cmd, "@UploadedBy", DbType.Int32, UploadedBy);
+            db.AddInParameter(cmd, "@CertificateID", DbType.Int32, DocTypeID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+
         }
         public void UpdateVerificationCode(int Code, string Email)
         {
@@ -180,10 +286,108 @@ namespace MyAGC.Classes
                 return null;
             }
         }
+        public DataSet getAcademicHistory(int userid)
+        {
+            string str = "sp_getAcademicHistory";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
         public DataSet getCountry()
         {
 
             string str = "sp_getCountry";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getMonths()
+        {
+
+            string str = "sp_getMonths";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getYears()
+        {
+
+            string str = "sp_getYears";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getSchoolLevel()
+        {
+
+            string str = "sp_getSchoolLevel";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getExamBody()
+        {
+
+            string str = "sp_getExamBody";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public DataSet getCertificates()
+        {
+
+            string str = "sp_getCertificates";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

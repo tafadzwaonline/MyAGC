@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="academic-history.aspx.cs" Inherits="MyAGC.student.academic_history" %>
-
-    <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
@@ -11,10 +10,10 @@
                               
                             <h1>Academic History</h1>
                             <small></small>
-                            <ol class="breadcrumb hidden-xs">
+                            <%--<ol class="breadcrumb hidden-xs">
                                 <li><a href="index.html"><i class="pe-7s-home"></i> Profile Management</a></li>
                                 <li class="active">Academic History</li>
-                            </ol>
+                            </ol>--%>
                         </div>
                     </section>
                     <!-- Main content -->
@@ -32,91 +31,99 @@
                                     </div>--%>
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                            
+                                            <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
                                             <div class="col-sm-6 form-group">
-                                                <label>First Name</label>
-                                                <asp:TextBox ID="txtFirstName" runat="server"  class="form-control"></asp:TextBox>
+                                                <label>School Name</label>
+                                                <asp:TextBox ID="txtSchoolName" runat="server"  class="form-control"></asp:TextBox>
                                             </div>
                                             <div class="col-sm-6 form-group">
-                                                <label>Last Name</label>
-                                                <asp:TextBox ID="txtLastName" runat="server" class="form-control"></asp:TextBox>
+                                                <label>School Level</label>
+                                                <asp:DropDownList ID="drpSchoolLevel" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
                                             </div>
                                             <div class="col-sm-6 form-group">
-                                                <label>Email</label>
-                                                <asp:TextBox ID="txtEmail" runat="server"  class="form-control"></asp:TextBox>
+                                                <label>Start (Month)</label>
+                                                <asp:DropDownList ID="drpStartDateMonth" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
                                             </div>
-
-                                            <div class="col-sm-6 form-group">
-                                                <label>Address</label>
-                                                <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" class="form-control"></asp:TextBox>
+                                             <div class="col-sm-6 form-group">
+                                                <label>Start (Year)</label>
+                                                <asp:DropDownList ID="drpStartDateYear" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
                                             </div>
-                                            
+          
                                             <div class="col-sm-6 form-group">
-                                                <label>Mobile</label>
-                                                <asp:TextBox ID="txtMobile" runat="server"  class="form-control"></asp:TextBox>
+                                                <label>End (or expected Month) </label>
+                                                <asp:DropDownList ID="drpEndDateMonth" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
                                             </div>     
                                             <div class="col-sm-6 form-group">
-                                                <label>Date of Birth</label>
-                                                <asp:TextBox ID="txtDob" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
+                                                <label>End (Year) </label>
+                                                <asp:DropDownList ID="drpEndDateYear" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
                                             </div>
-                                            
-                                            <div class="col-sm-4 form-group">
-                                                <label>Country Of Residence</label>
-                                                <asp:DropDownList ID="drpCountry" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
-                                            </div> 
-                                            <div class="col-sm-2 form-group">
-                                               <label></label>
-                                                <a class="btn btn-primary" href="table.html" data-toggle="modal" data-target="#modalAddCountry"> <i class="fa fa-list"></i>  Add Country </a>  
-                                            </div> 
                                             <div class="col-sm-6 form-group">
-                                             <label>Gender</label><br>
-                                                             <div class="form-check">
-                                    
-                                    <label class="radio-inline">
-                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdStudent" runat="server" />
-
-                                        Female</label>
-                                    <label class="radio-inline">
-                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdInstitution" runat="server" />
-                                        Male</label>
-                                </div>
-                                             </div>
+                                                <label>Number Of Subjects Passed</label>
+                                                <asp:TextBox ID="txtSubjectsPassed" runat="server"  class="form-control"></asp:TextBox>
+                                            </div>     
+                                            <div class="col-sm-6 form-group">
+                                                <label>Examination Body</label>
+                                                <asp:DropDownList ID="drpExaminationBody" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Activities and societies</label>
+                                                <asp:TextBox ID="txtActivities" runat="server" TextMode="MultiLine" placeholder="Ex: Soccer, Volleyball"  class="form-control"></asp:TextBox>
+                                            </div> 
+                                            
+                                        
                                              
 
                                               <div class="col-sm-12 reset-button">
-                                                 <asp:Button ID="btnRegister" runat="server" Text="Save" class="btn btn-success" />
-                                                  <%--<asp:Button ID="Button1" runat="server" Text=">> Academic History" class="btn btn-warning" />--%>
-                                                 <a class="btn btn-warning" href="../student/academic-history">>> Academic History</a>
+                                                  <a class="btn btn-danger" href="../student/personal-information"><< Personal Information</a>
+                                                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 <a class="btn btn-warning" href="../student/manage-document">>> Document Management</a>
                                              </div>
                                             
-                                            <table style="width:100%" >
-                                                <tr>
-                                                    <td><code>Next Of Kin Details</code></td>
-                                                </tr>
-                     <tr>
-            <td colspan="2">
-                <asp:TextBox ID="txtKinFirstName" placeholder="Next Of Kin First Name" CssClass="form-control" runat="server"></asp:TextBox></td>
-            <td colspan="2">
-                <asp:TextBox ID="txtKinLastName" placeholder="Next Of Kin Last Name" CssClass="form-control" runat="server"></asp:TextBox>
-            </td>
-            <td colspan="2"><asp:TextBox ID="txtKinMobile" placeholder="Next Of Kin Mobile" CssClass="form-control" runat="server"></asp:TextBox></td>
-            <td colspan="2"></td>
-                         <td colspan="2"><asp:TextBox ID="txtKinAddress" placeholder="Next Of Kin Address" CssClass="form-control" runat="server"></asp:TextBox></td>
-            <td colspan="2"></td>
-                          <td colspan="2"><asp:DropDownList ID="drpRelationType" runat="server" CssClass="form-control dropdown"></asp:DropDownList></td>
-            <td colspan="2"></td>
-            <td colspan="2"><asp:Button ID="btnSearch" CssClass="btn btn-success" runat="server" Text="Save" />
+                                          
 
-                
-            </td>
-<td>
-    <br /><br /><br /><br />
-</td>
-        </tr>
-                                                   </table>
+                                            
+                                               <table style="width:100%" >
 
-                                             
-                                               
+                                         <tr>
+                                             <td colspan="12">
+
+                                                 <div class="row">
+                    <div class="col-sm-12">
+                        <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdAcademicHistory_RowCommand"
+                            role="grid" aria-describedby="basicExample_info" 
+                            OnPageIndexChanging="grdAcademicHistory_PageIndexChanging"
+                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                            AllowPaging="True" AllowSorting="True">
+                            <Columns>
+                                <asp:BoundField DataField="SchoolName" HeaderText="School Name"></asp:BoundField>
+                                <asp:BoundField DataField="StartDateMonth" HeaderText="Start Month"></asp:BoundField>
+                                 <asp:BoundField DataField="StartDateYear" HeaderText="Start Year"></asp:BoundField>
+                                 <asp:BoundField DataField="EndDateMonth" HeaderText="End Month"></asp:BoundField>
+                                <asp:BoundField DataField="EndDateYear" HeaderText="End Year"></asp:BoundField>
+                                <asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
+                                <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
+                                <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>
+                                 
+                                <asp:TemplateField HeaderText="Remove">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
+                                                       <i class="fa fa-trash"></i>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                
+
+                            </Columns>
+                        </asp:GridView>
+
+                    </div>
+                </div>
+
+                                             </td>
+                                         </tr>
+       
+     </table>
                                          </form>
                                      </div>
                                  </div>

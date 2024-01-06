@@ -338,6 +338,7 @@
     <Content Include="Global.asax" />
     <Content Include="institution\dashboard.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="profile\my-profile.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -368,6 +369,8 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="student\academic-history.aspx" />
     <Content Include="student\dashboard.aspx" />
+    <Content Include="student\manage-document.aspx" />
+    <Content Include="student\my-profile.aspx" />
     <Content Include="student\personal-information.aspx" />
     <Content Include="verify-email.aspx" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -405,6 +408,7 @@
     <Content Include="assets\weather-icons\font\weathericons-regular-webfont.woff" />
     <Content Include="assets\weather-icons\font\weathericons-regular-webfont.woff2" />
     <Content Include="assets\weather-icons\font\weathericons-regular-webfontd41d.eot" />
+    <Content Include="ImageHandler.ashx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -499,6 +503,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="institution\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -512,6 +519,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="profile\my-profile.aspx.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profile\my-profile.aspx.designer.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -556,12 +570,29 @@
     <Compile Include="student\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\manage-document.aspx.cs">
+      <DependentUpon>manage-document.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\manage-document.aspx.designer.cs">
+      <DependentUpon>manage-document.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\my-profile.aspx.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\my-profile.aspx.designer.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\personal-information.aspx.cs">
       <DependentUpon>personal-information.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="student\personal-information.aspx.designer.cs">
       <DependentUpon>personal-information.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\StudentImageHandler.ashx.cs">
+      <DependentUpon>StudentImageHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="verify-email.aspx.cs">
       <DependentUpon>verify-email.aspx</DependentUpon>
@@ -586,6 +617,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="student\StudentImageHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

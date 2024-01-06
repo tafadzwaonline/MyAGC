@@ -29,6 +29,23 @@ namespace MyAGC
 
         protected void BtnChangePassword_Click(object sender, EventArgs e)
         {
+
+            if (txtPassword.Text == "")
+            {
+                lblLoginError.Text = "Please enter your new password";
+                return;
+            }
+            if (txtPassword2.Text == "")
+            {
+                lblLoginError.Text = "Please Confirm your new password";
+                return;
+            }
+            ChangePassword();
+        }
+
+
+        private void ChangePassword()
+        {
             try
             {
                 EncryptDecryptClass encryptDecrypt = new EncryptDecryptClass();
@@ -38,7 +55,7 @@ namespace MyAGC
 
                 // Validate and get required parameters
                 int passwordLength = 6;
-                
+
 
                 string newPassword = txtPassword.Text;
                 string confirmPassword = txtPassword2.Text;

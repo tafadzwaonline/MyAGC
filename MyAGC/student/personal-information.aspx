@@ -10,10 +10,10 @@
                               
                             <h1>Personal Information</h1>
                             <small></small>
-                            <ol class="breadcrumb hidden-xs">
+                           <%-- <ol class="breadcrumb hidden-xs">
                                 <li><a href="index.html"><i class="pe-7s-home"></i> Profile Management</a></li>
                                 <li class="active">Personal Information</li>
-                            </ol>
+                            </ol>--%>
                         </div>
                     </section>
                     <!-- Main content -->
