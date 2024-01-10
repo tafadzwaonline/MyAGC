@@ -241,7 +241,7 @@
                             <ul class="treeview-menu">
                                  <li><a href="../institution/academic-calendar">Academic Calendar</a></li>
                                 <li><a href="../institution/add-faculty">Add Faculty</a></li>
-                                <li><a href="../institution/profile">Add Programs</a></li>
+                              <li><a href="../institution/add-program">Add Programs</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

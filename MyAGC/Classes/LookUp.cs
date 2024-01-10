@@ -155,6 +155,24 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public void SavePrograms(int UserID, int Duration, int FacultyID, string ProgramName, string Requirements)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Program_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                sql_cmnd.Parameters.AddWithValue("@Duration", SqlDbType.Int).Value = Duration;
+                sql_cmnd.Parameters.AddWithValue("@FacultyID", SqlDbType.Int).Value = FacultyID;
+                sql_cmnd.Parameters.AddWithValue("@ProgramName", SqlDbType.NVarChar).Value = ProgramName;
+                sql_cmnd.Parameters.AddWithValue("@Requirements", SqlDbType.NVarChar).Value = Requirements;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
 
         public void SaveFaculty(int UserID, string FacultyName)
         {
@@ -246,6 +264,21 @@ namespace MyAGC.Classes
                 SqlCommand sql_cmnd = new SqlCommand("Faculty_Del", sqlCon);
                 sql_cmnd.CommandType = CommandType.StoredProcedure;
                 sql_cmnd.Parameters.AddWithValue("@ID", SqlDbType.Int).Value = ID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+        public void RemoveProgram(int ID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Program_Del", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ID", SqlDbType.Int).Value = ID;
+               
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }
@@ -443,6 +476,23 @@ namespace MyAGC.Classes
                 return null;
             }
         }
+        public DataSet getPrograms(int userid)
+        {
+            string str = "sp_getPrograms";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
         public DataSet getApplicationFees(int userid, int AcademicCalendarID)
         {
             string str = "sp_getApplicationFees";
@@ -590,6 +640,7 @@ namespace MyAGC.Classes
                 return null;
             }
         }
+       
 
         public DataSet getDocumentTypes()
         {

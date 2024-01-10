@@ -338,6 +338,7 @@
     <Content Include="Global.asax" />
     <Content Include="institution\academic-calendar.aspx" />
     <Content Include="institution\add-faculty.aspx" />
+    <Content Include="institution\add-program.aspx" />
     <Content Include="institution\application-fee.aspx" />
     <Content Include="institution\dashboard.aspx" />
     <Content Include="institution\institution-information.aspx" />
@@ -541,6 +542,13 @@
     </Compile>
     <Compile Include="institution\add-faculty.aspx.designer.cs">
       <DependentUpon>add-faculty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="institution\add-program.aspx.cs">
+      <DependentUpon>add-program.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\add-program.aspx.designer.cs">
+      <DependentUpon>add-program.aspx</DependentUpon>
     </Compile>
     <Compile Include="institution\application-fee.aspx.cs">
       <DependentUpon>application-fee.aspx</DependentUpon>
