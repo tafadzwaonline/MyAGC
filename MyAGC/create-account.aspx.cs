@@ -233,6 +233,11 @@ namespace MyAGC
                     lblLoginError.Text = "Password Must Contain at Least One Special Character!";
                     return;
                 }
+                if (RoleID == 1 || RoleID == 2)
+                {
+                    txtDOB.Text = DateTime.Now.ToString();
+                }
+
                 // Encrypt the password
                 string encryptedPassword = encryptDecrypt.EncryptPassword(newPassword);
                 um.SaveAccount(Name,txtLastName.Text,txtEmail.Text,txtPhone.Text, encryptedPassword, Addresses,Convert.ToDateTime(txtDOB.Text), RoleID);

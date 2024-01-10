@@ -336,7 +336,13 @@
     <Content Include="favicon.ico" />
     <Content Include="forgot-password.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="institution\academic-calendar.aspx" />
+    <Content Include="institution\add-faculty.aspx" />
+    <Content Include="institution\application-fee.aspx" />
     <Content Include="institution\dashboard.aspx" />
+    <Content Include="institution\institution-information.aspx" />
+    <Content Include="institution\manage-document.aspx" />
+    <Content Include="institution\profile.aspx" />
     <Content Include="login.aspx" />
     <Content Include="profile\my-profile.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -409,6 +415,8 @@
     <Content Include="assets\weather-icons\font\weathericons-regular-webfont.woff2" />
     <Content Include="assets\weather-icons\font\weathericons-regular-webfontd41d.eot" />
     <Content Include="ImageHandler.ashx" />
+    <Content Include="InstistutionDashboard.Master" />
+    <Content Include="InstistutionMaster.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -506,12 +514,68 @@
     <Compile Include="ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="InstistutionDashboard.Master.cs">
+      <DependentUpon>InstistutionDashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstistutionDashboard.Master.designer.cs">
+      <DependentUpon>InstistutionDashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="InstistutionMaster.Master.cs">
+      <DependentUpon>InstistutionMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstistutionMaster.Master.designer.cs">
+      <DependentUpon>InstistutionMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="institution\academic-calendar.aspx.cs">
+      <DependentUpon>academic-calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\academic-calendar.aspx.designer.cs">
+      <DependentUpon>academic-calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="institution\add-faculty.aspx.cs">
+      <DependentUpon>add-faculty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\add-faculty.aspx.designer.cs">
+      <DependentUpon>add-faculty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="institution\application-fee.aspx.cs">
+      <DependentUpon>application-fee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\application-fee.aspx.designer.cs">
+      <DependentUpon>application-fee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="institution\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="institution\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="institution\institution-information.aspx.cs">
+      <DependentUpon>institution-information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\institution-information.aspx.designer.cs">
+      <DependentUpon>institution-information.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="institution\manage-document.aspx.cs">
+      <DependentUpon>manage-document.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\manage-document.aspx.designer.cs">
+      <DependentUpon>manage-document.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="institution\profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

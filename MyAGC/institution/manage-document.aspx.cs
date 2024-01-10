@@ -2,30 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MyAGC.student
+namespace MyAGC.institution
 {
     public partial class manage_document : System.Web.UI.Page
     {
-        //readonly UsersManagement um = new UsersManagement("con");
+        readonly UsersManagement um = new UsersManagement("con");
         readonly LookUp lp = new LookUp("con");
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
-
-                getcertificate();
-                getCertificateUploads();
-
-
+                getDocumentType();
+                getDocumentUploads();
             }
         }
 
@@ -46,26 +42,26 @@ namespace MyAGC.student
             string script = $"WarningToastr('{message}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
         }
-     
 
 
-        protected void getcertificate()
+
+        protected void getDocumentType()
         {
             try
             {
 
-                if (lp.getCertificates() != null)
+                if (lp.getDocumentTypes() != null)
                 {
-                    ListItem li = new ListItem("Select a certificate", "0");
-                    drpDocumentType.DataSource = lp.getCertificates();
+                    ListItem li = new ListItem("Select a document type", "0");
+                    drpDocumentType.DataSource = lp.getDocumentTypes();
                     drpDocumentType.DataValueField = "ID";
-                    drpDocumentType.DataTextField = "Name";
+                    drpDocumentType.DataTextField = "DocumentName";
                     drpDocumentType.DataBind();
                     drpDocumentType.Items.Insert(0, li);
                 }
                 else
                 {
-                    ListItem li = new ListItem("There are no certificates", "0");
+                    ListItem li = new ListItem("There are no document types", "0");
                     drpDocumentType.DataSource = null;
                     drpDocumentType.DataBind();
                     drpDocumentType.Items.Insert(0, li);
@@ -83,13 +79,13 @@ namespace MyAGC.student
         {
             if (!fileUpload.HasFile)
             {
-                WarningAlert("Please select a certificate to upload");
+                WarningAlert("Please select a document to upload");
                 return;
             }
 
             if (drpDocumentType.SelectedValue == "0")
             {
-                WarningAlert("Please select a valid certificate");
+                WarningAlert("Please select a valid document");
                 return;
             }
 
@@ -98,9 +94,9 @@ namespace MyAGC.student
         }
 
 
-        private void getCertificateUploads()
+        private void getDocumentUploads()
         {
-            DataSet x = lp.getCertificateFileUploads(int.Parse(Session["userid"].ToString()));
+            DataSet x = lp.getDocumentFileUploads(int.Parse(Session["userid"].ToString()));
             if (x != null)
             {
                 grdDocument.DataSource = x;
@@ -118,7 +114,7 @@ namespace MyAGC.student
         private void Clear()
         {
             drpDocumentType.SelectedValue = "0";
-         
+
         }
 
         private void UpdateDetails()
@@ -136,10 +132,9 @@ namespace MyAGC.student
                         byte[] bytes = br.ReadBytes((Int32)fs.Length);
                         string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
                         lp.UploadDocument(filename, contentType, bytes, DateTime.Today, int.Parse(Session["userid"].ToString()), DocTypeID);
-
                     }
                 }
-                getCertificateUploads();
+                getDocumentUploads();
                 SuccessAlert("Document successfully uploaded");
 
                 Clear();
@@ -211,13 +206,13 @@ namespace MyAGC.student
                 {
 
                     lp.DeleteUploadedDocument(index);
-                    getCertificateUploads();
+                    getDocumentUploads();
 
                     SuccessAlert("Record successfully removed");
                 }
                 else
                 {
-                    
+
                     download(index);
                 }
 

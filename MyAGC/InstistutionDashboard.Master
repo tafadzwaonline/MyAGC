@@ -1,4 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="MyAGC.Site2" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="InstistutionDashboard.master.cs" Inherits="MyAGC.InstistutionDashboard" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,37 +45,11 @@
         <!--<link href="../assets/dist/css/stylehealth-rtl.css" rel="stylesheet" type="text/css"/>-->
         <!-- End Theme Layout Style
         =====================================================================-->
-      <link media="screen" rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+     <link media="screen" rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-    
-    <script>
-        function SuccessToastr(message, title) {
-            setTimeout(function () {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    //positionClass: "toast-top-center",
-                    showMethod: 'slideDown',
-                    timeOut: 2000
-                };
-                toastr.success(message, title);
-            }, 1300);
-        }
 
-        function WarningToastr(message, title) {
-            setTimeout(function () {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    //positionClass: "toast-top-center",
-                    showMethod: 'slideDown',
-                    timeOut: 2000
-
-                };
-                toastr.warning(message, title);
-            }, 1300);
-        }
-    </script>
+  
 
      <script type="text/javascript">
 
@@ -144,7 +119,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <header class="main-header">
-                <a href="index.html" class="logo"> <!-- Logo -->
+                <a href="../institution/dashboard" class="logo"> <!-- Logo -->
                    <%-- <span class="logo-mini">
                         <!--<b>A</b>H-admin-->
                         <img src="../assets/dist/img/mini-logo.png" alt="">
@@ -176,7 +151,7 @@
                             <!-- user -->
                             <li class="dropdown dropdown-user admin-user">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                                <div class="user-image">
+                                         <div class="user-image">
                                 <img src="../assets/dist/img/avatar4.png" class="img-circle" height="40" width="40" alt="User Image">
                                 <%--<asp:Image ID="ClientPic" ImageUrl="../assets/dist/img/avatar4.png" CssClass="img-circle" Height="40px" Width="40px" runat="server" />--%>
 
@@ -185,8 +160,8 @@
                                 </div>
 
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="../profile/my-profile"><i class="fa fa-users"></i> User Profile</a></li>
+                                 <ul class="dropdown-menu">
+                                    <li><a href="../institution/profile"><i class="fa fa-users"></i> User Profile</a></li>
                                     <li><a href="../login"><i class="fa fa-sign-out"></i> Logout</a></li>
                                 </ul>
                             </li>
@@ -212,9 +187,9 @@
                     </div>
                    
                     <!-- sidebar menu -->
-                     <ul class="sidebar-menu">
+                    <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="../student/dashboard"><i class="fa fa-hospital-o"></i><span>Dashboard</span>
+                            <a href="../institution/dashboard"><i class="fa fa-hospital-o"></i><span>Dashboard</span>
                             </a>
                         </li>
                         <li class="treeview">
@@ -225,11 +200,9 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../student/personal-information">Personal Information</a></li>
-                                <li><a href="../student/academic-history">Academic History</a></li>
-                                 <li><a href="../student/manage-document">Document Management</a></li>
-                                <li><a href="../profile/my-profile">User Profile</a></li>
-                               
+                                <li><a href="../institution/institution-information">Personal Information</a></li>
+                                 <li><a href="../institution/manage-document">Document Management</a></li>
+                                <li><a href="../institution/profile">User Profile</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -240,8 +213,10 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="add-patient.html">Add patient</a></li>
-                                <li><a href="pt-list.html">patient list</a></li>
+                                <li><a href="../institution/academic-calendar">Academic Calendar</a></li>
+                                <li><a href="../institution/add-faculty">Add Faculty</a></li>
+                                <li><a href="../institution/profile">Add Programs</a></li>
+                                <li><a href="../institution/profile">Applicants</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -280,6 +255,134 @@
             </ul>
         </div> <!-- /.sidebar -->
     </aside>
+            <!-- =============================================== -->
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                  
+                </section>
+            <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number">15</span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Total Applications</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number">19</span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Approved Applications</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number">3</span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                    <i class="fa fa-users fa-2x"></i>
+                                    <h4>Pending Applications</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number">4</span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                    <i class="fa fa-users fa-2x"></i>
+                                    <h4>Declined Applications</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number">05</span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-user-circle fa-2x"></i>
+                                        <h4>Total Colleges</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number">9</span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>My Colleges</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number">6</span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-user-circle fa-2x"></i>
+                                        <h4> Reports</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number">7</span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                    <i class="fa fa-users fa-2x"></i>
+                                    <h4>Communication</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section> <!-- /.content -->
+
+            </div> <!-- /.content-wrapper -->
              <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
@@ -288,27 +391,6 @@
                 
                 <strong>Copyright &copy; <%: DateTime.Now.Year %> <a href="#">MyAGC</a>.</strong> All rights reserved.
             </footer>
-            <!-- =============================================== -->
-            <!-- Content Wrapper. Contains page content -->
-            
-                <!-- Content Header (Page header) -->
-                <%--<section class="content-header">
-                  
-                </section>--%>
-               
-            <!-- Main content -->
-               <%-- <section class="content">
-                    <div class="row">
-                      
-                         
-                        
-                       
-                    </div>
-                </section>--%> <!-- /.content -->
-
-             <!-- /.content-wrapper -->
-            
-            
         </div> <!-- ./wrapper -->
       
         <script src="../assets/plugins/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>

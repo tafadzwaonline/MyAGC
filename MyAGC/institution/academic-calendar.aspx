@@ -1,0 +1,133 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstistutionMaster.Master" AutoEventWireup="true" CodeBehind="academic-calendar.aspx.cs" Inherits="MyAGC.institution.academic_calendar" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <div class="header-icon">
+                            <i class="pe-7s-note2"></i>
+                        </div>
+                        <div class="header-title">
+                              
+                            <h1>Academic Calendar</h1>
+                            <small></small>
+                            <%--<ol class="breadcrumb hidden-xs">
+                                <li><a href="index.html"><i class="pe-7s-home"></i> Profile Management</a></li>
+                                <li class="active">Academic History</li>
+                            </ol>--%>
+                        </div>
+                    </section>
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="row">
+                            <!-- Form controls -->
+                            <div class="col-sm-12">
+                                <div class="panel panel-bd lobidrag">
+
+        
+                                  <%--  <div class="panel-heading">
+                                        <div class="btn-group"> 
+                                            <a class="btn btn-primary" href="table.html" data-toggle="modal" data-target="#modalSaveDocumentName"> <i class="fa fa-list"></i>  Doctor List </a>  
+                                        </div>
+                                    </div>--%>
+                                    <div class="panel-body">
+                                        <form class="col-sm-12" runat="server">
+                                            <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+                                            
+                                           
+                                            <div class="col-sm-6 form-group">
+                                                <label>Start (Month)</label>
+                                                <asp:DropDownList ID="drpStartDateMonth" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                            </div>
+                                             <div class="col-sm-6 form-group">
+                                                <label>Start (Year)</label>
+                                                <asp:DropDownList ID="drpStartDateYear" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                            </div>
+          
+                                            <div class="col-sm-6 form-group">
+                                                <label>End (or expected Month) </label>
+                                                <asp:DropDownList ID="drpEndDateMonth" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                            </div>     
+                                            <div class="col-sm-6 form-group">
+                                                <label>End (Year) </label>
+                                                <asp:DropDownList ID="drpEndDateYear" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                            </div>
+                                          <div class="col-sm-6 form-group">
+                                                <label>Intake</label>
+                                                <asp:DropDownList ID="drpIntake" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                            </div>
+                                          <div class="col-sm-6 form-group">
+                                                <label>Application DeadLine </label>
+                                                <asp:TextBox ID="txtApplicationDeadline" runat="server" TextMode="Date"  class="form-control"></asp:TextBox>
+                                            </div>
+
+                                              <div class="col-sm-12 reset-button">
+                                                 
+                                                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 
+                                             </div>
+                                            
+                                          
+
+                                            
+                                               <table style="width:100%" >
+
+                                         <tr>
+                                             <td colspan="12">
+
+                                                 <div class="row">
+                    <div class="col-sm-12">
+                        <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdAcademicHistory_RowCommand"
+                            role="grid" aria-describedby="basicExample_info" 
+                            OnPageIndexChanging="grdAcademicHistory_PageIndexChanging"
+                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                            AllowPaging="True" AllowSorting="True">
+                            <Columns>
+                                <%--<asp:BoundField DataField="SchoolName" HeaderText="School Name"></asp:BoundField>--%>
+                                <asp:BoundField DataField="StartDateMonth" HeaderText="Start Month"></asp:BoundField>
+                                 <asp:BoundField DataField="StartDateYear" HeaderText="Start Year"></asp:BoundField>
+                                 <asp:BoundField DataField="EndDateMonth" HeaderText="End Month"></asp:BoundField>
+                                <asp:BoundField DataField="EndDateYear" HeaderText="End Year"></asp:BoundField>
+                                <asp:BoundField DataField="ApplicationDeadline" HeaderText="Application DeadLine"></asp:BoundField>
+                                <asp:BoundField DataField="Name" HeaderText="Intake"></asp:BoundField>
+                                <%--<asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
+                                <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
+                                <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>--%>
+                                 
+                                <asp:TemplateField HeaderText="Remove">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
+                                                       <i class="fa fa-trash"></i>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                 <asp:TemplateField HeaderText="Add">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                                                       Application Fees
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                
+
+                            </Columns>
+                        </asp:GridView>
+
+                    </div>
+                </div>
+
+                                             </td>
+                                         </tr>
+       
+     </table>
+                                         </form>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         
+                     </section> <!-- /.content -->
+                 </div>
+    <!-- /.content-wrapper -->
+</asp:Content>
+

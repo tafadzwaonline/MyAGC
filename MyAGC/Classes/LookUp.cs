@@ -113,6 +113,65 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public void SaveAcademicCalendar(int UserID,string StartDateMonth, string StartDateYear, string EndDateMonth, string EndDateYear, int Intake, DateTime ApplicationDeadline)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("AcademicCalendar_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                //sql_cmnd.Parameters.AddWithValue("@SchoolName", SqlDbType.NVarChar).Value = SchoolName;
+                //sql_cmnd.Parameters.AddWithValue("@SchoolLevel", SqlDbType.Int).Value = SchoolLevel;
+                sql_cmnd.Parameters.AddWithValue("@StartDateMonth", SqlDbType.NVarChar).Value = StartDateMonth;
+                sql_cmnd.Parameters.AddWithValue("@StartDateYear", SqlDbType.NVarChar).Value = StartDateYear;
+                sql_cmnd.Parameters.AddWithValue("@EndDateMonth", SqlDbType.NVarChar).Value = EndDateMonth;
+                sql_cmnd.Parameters.AddWithValue("@EndDateYear", SqlDbType.NVarChar).Value = EndDateYear;
+                sql_cmnd.Parameters.AddWithValue("@Intake", SqlDbType.Int).Value = Intake;
+                sql_cmnd.Parameters.AddWithValue("@ApplicationDeadline", SqlDbType.Date).Value = ApplicationDeadline;
+                // sql_cmnd.Parameters.AddWithValue("@SubjectsPassedNo", SqlDbType.Int).Value = SubjectsPassedNo;
+                //sql_cmnd.Parameters.AddWithValue("@ExaminationBody", SqlDbType.Int).Value = ExaminationBody;
+                //sql_cmnd.Parameters.AddWithValue("@Activities", SqlDbType.NVarChar).Value = Activities;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+        public void SaveApplicationFees(int UserID, int AcademicCalendarID, double Amount, int CitizenID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("ApplicationFees_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                sql_cmnd.Parameters.AddWithValue("@AcademicCalendarID", SqlDbType.Int).Value = AcademicCalendarID;
+                sql_cmnd.Parameters.AddWithValue("@Amount", SqlDbType.Decimal).Value = Amount;
+                sql_cmnd.Parameters.AddWithValue("@CitizenID", SqlDbType.Int).Value = CitizenID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+
+        public void SaveFaculty(int UserID, string FacultyName)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Faculty_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                sql_cmnd.Parameters.AddWithValue("@FacultyName", SqlDbType.NVarChar).Value = FacultyName;
+;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
         public bool SaveClientImage(long UserID, Byte[] bytes)
         {
             try
@@ -163,6 +222,34 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public void RemoveAcademicCalendar(int ID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("AcademicCalendar_Del", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ID", SqlDbType.Int).Value = ID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+        public void RemoveFaculty(int ID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Faculty_Del", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ID", SqlDbType.Int).Value = ID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
         public DataSet getEmailSettings()
         {
             string str = "sp_getEmailSettings";
@@ -183,6 +270,42 @@ namespace MyAGC.Classes
         {
 
             string str = "sp_getCertificateFileUploads";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getFaculty(int UserID)
+        {
+
+            string str = "sp_getFaculty";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getDocumentFileUploads(int UserID)
+        {
+
+            string str = "sp_getDocumentFileUploads";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
             DataSet ds = db.ExecuteDataSet(cmd);
@@ -303,6 +426,41 @@ namespace MyAGC.Classes
                 return null;
             }
         }
+        public DataSet getAcademicCalendar(int userid)
+        {
+            string str = "sp_getAcademicCalendar";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getApplicationFees(int userid, int AcademicCalendarID)
+        {
+            string str = "sp_getApplicationFees";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, userid);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, AcademicCalendarID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
         public DataSet getCountry()
         {
 
@@ -339,6 +497,38 @@ namespace MyAGC.Classes
         {
 
             string str = "sp_getYears";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getIntakes()
+        {
+
+            string str = "sp_getIntakes";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getCitizens()
+        {
+
+            string str = "sp_getCitizens";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -388,6 +578,23 @@ namespace MyAGC.Classes
         {
 
             string str = "sp_getCertificates";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public DataSet getDocumentTypes()
+        {
+
+            string str = "sp_getDocumentType";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -500,6 +707,22 @@ namespace MyAGC.Classes
         {
 
             string str = "sp_getIdentityDocumentTypes";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getUniversityTypes()
+        {
+
+            string str = "sp_getUniversityTypes";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

@@ -1,4 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="MyAGC.Site2" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="InstistutionMaster.master.cs" Inherits="MyAGC.InstistutionMaster" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,7 +145,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <header class="main-header">
-                <a href="index.html" class="logo"> <!-- Logo -->
+                <a href="../institution/dashboard" class="logo"> <!-- Logo -->
                    <%-- <span class="logo-mini">
                         <!--<b>A</b>H-admin-->
                         <img src="../assets/dist/img/mini-logo.png" alt="">
@@ -214,7 +215,7 @@
                     <!-- sidebar menu -->
                      <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="../student/dashboard"><i class="fa fa-hospital-o"></i><span>Dashboard</span>
+                            <a href="../institution/dashboard"><i class="fa fa-hospital-o"></i><span>Dashboard</span>
                             </a>
                         </li>
                         <li class="treeview">
@@ -224,12 +225,10 @@
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="../student/personal-information">Personal Information</a></li>
-                                <li><a href="../student/academic-history">Academic History</a></li>
-                                 <li><a href="../student/manage-document">Document Management</a></li>
-                                <li><a href="../profile/my-profile">User Profile</a></li>
-                               
+                          <ul class="treeview-menu">
+                                <li><a href="../institution/institution-information">Personal Information</a></li>
+                                 <li><a href="../institution/manage-document">Document Management</a></li>
+                                <li><a href="../institution/profile">User Profile</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -240,8 +239,9 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="add-patient.html">Add patient</a></li>
-                                <li><a href="pt-list.html">patient list</a></li>
+                                 <li><a href="../institution/academic-calendar">Academic Calendar</a></li>
+                                <li><a href="../institution/add-faculty">Add Faculty</a></li>
+                                <li><a href="../institution/profile">Add Programs</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

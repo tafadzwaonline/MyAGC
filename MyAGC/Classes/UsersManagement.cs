@@ -224,6 +224,32 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public void UpdateInstituionDetails(string SchhoolName, string Email, string Phone, string Tel, string Address, int UniversityTypeID, int CountryID,
+          string MissionStatement, string WebsiteUrl, string Facebooklink, string Twitterlink)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Institution_Update", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@SchoolName", SqlDbType.NVarChar).Value = SchhoolName;
+                sql_cmnd.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = Email;
+                sql_cmnd.Parameters.AddWithValue("@Mobile", SqlDbType.NVarChar).Value = Phone;
+                sql_cmnd.Parameters.AddWithValue("@Address", SqlDbType.NVarChar).Value = Address;
+                sql_cmnd.Parameters.AddWithValue("@Tel", SqlDbType.NVarChar).Value = Tel;
+                sql_cmnd.Parameters.AddWithValue("@CountryID", SqlDbType.Int).Value = CountryID;
+                sql_cmnd.Parameters.AddWithValue("@UniversityType", SqlDbType.Int).Value = UniversityTypeID;
+                sql_cmnd.Parameters.AddWithValue("@MissionStatement", SqlDbType.NVarChar).Value = MissionStatement;
+                sql_cmnd.Parameters.AddWithValue("@WebSiteUrl", SqlDbType.NVarChar).Value = WebsiteUrl;
+                sql_cmnd.Parameters.AddWithValue("@Facebooklink", SqlDbType.NVarChar).Value = Facebooklink;
+                sql_cmnd.Parameters.AddWithValue("@Twitterlink", SqlDbType.NVarChar).Value = Twitterlink;
+
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
 
         public void UpdatePassword(int UserID, string Password)
         {
