@@ -28,8 +28,7 @@
                                     </div>--%>
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                            <asp:ScriptManager ID="ScriptManager1" runat="server">
-                </asp:ScriptManager>
+                                           
                                             
                                            
                                             <div class="col-sm-8 form-group">

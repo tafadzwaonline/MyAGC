@@ -375,10 +375,14 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="student\academic-history.aspx" />
+    <Content Include="student\applications.aspx" />
+    <Content Include="student\apply-college.aspx" />
     <Content Include="student\dashboard.aspx" />
     <Content Include="student\manage-document.aspx" />
+    <Content Include="student\my-college.aspx" />
     <Content Include="student\my-profile.aspx" />
     <Content Include="student\personal-information.aspx" />
+    <Content Include="student\search-college.aspx" />
     <Content Include="verify-email.aspx" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
@@ -635,6 +639,20 @@
     <Compile Include="student\academic-history.aspx.designer.cs">
       <DependentUpon>academic-history.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\applications.aspx.cs">
+      <DependentUpon>applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\applications.aspx.designer.cs">
+      <DependentUpon>applications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\apply-college.aspx.cs">
+      <DependentUpon>apply-college.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\apply-college.aspx.designer.cs">
+      <DependentUpon>apply-college.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -649,6 +667,13 @@
     <Compile Include="student\manage-document.aspx.designer.cs">
       <DependentUpon>manage-document.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\my-college.aspx.cs">
+      <DependentUpon>my-college.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\my-college.aspx.designer.cs">
+      <DependentUpon>my-college.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\my-profile.aspx.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -662,6 +687,13 @@
     </Compile>
     <Compile Include="student\personal-information.aspx.designer.cs">
       <DependentUpon>personal-information.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\search-college.aspx.cs">
+      <DependentUpon>search-college.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\search-college.aspx.designer.cs">
+      <DependentUpon>search-college.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\StudentImageHandler.ashx.cs">
       <DependentUpon>StudentImageHandler.ashx</DependentUpon>

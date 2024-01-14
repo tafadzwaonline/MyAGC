@@ -24,17 +24,11 @@
                                 <div class="panel panel-bd lobidrag">
 
         
-                                  <%--  <div class="panel-heading">
-                                        <div class="btn-group"> 
-                                            <a class="btn btn-primary" href="table.html" data-toggle="modal" data-target="#modalSaveDocumentName"> <i class="fa fa-list"></i>  Doctor List </a>  
-                                        </div>
-                                    </div>--%>
+                             
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                            <asp:ScriptManager ID="ScriptManager1" runat="server">
-                </asp:ScriptManager>
-                                            
                                            
+
                                             <div class="col-sm-6 form-group">
                                                 <label>Faculty</label>
                                                 <asp:DropDownList ID="drpFaculty" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
@@ -43,13 +37,18 @@
                                                 <label>DEGREE PROGRAMME & PROGRAMME CODE</label>
                                                 <asp:TextBox ID="txtProgramName" runat="server"   class="form-control"></asp:TextBox>
                                             </div>
-   <div class="col-sm-6 form-group">
-                                                <label>SPECIAL REQUIREMENTS</label>
-                                                <asp:TextBox ID="txtRequirements" runat="server" TextMode="MultiLine"  class="form-control"></asp:TextBox>
+                                              <div class="col-sm-6 form-group">
+                                                <label>Tuition</label>
+                                                <asp:TextBox ID="txtTuition" runat="server"  class="form-control"></asp:TextBox>
                                             </div>
+                                           
                                             <div class="col-sm-6 form-group">
                                                 <label>Duration (years)</label>
                                                 <asp:TextBox ID="txtDuration" runat="server"  class="form-control"></asp:TextBox>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>SPECIAL REQUIREMENTS</label>
+                                                <asp:TextBox ID="txtRequirements" runat="server" TextMode="MultiLine"  class="form-control"></asp:TextBox>
                                             </div>
       
                                               <div class="col-sm-12 reset-button">
@@ -71,9 +70,23 @@
                             AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
                             AllowPaging="True" AllowSorting="True">
                             <Columns>
-                                <asp:BoundField DataField="ID" HeaderText="ID"></asp:BoundField>
-                                <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
-                                 <asp:BoundField DataField="Duration" HeaderText="Duration"></asp:BoundField>
+                                <asp:BoundField DataField="ID" HeaderText="ID">
+                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
+                                </asp:BoundField>
+                                 <asp:BoundField DataField="Duration" HeaderText="Duration">
+                                     <ItemStyle HorizontalAlign="Left" Width="60px" />
+                                 </asp:BoundField>
+                                 <asp:BoundField DataField="Tuition" HeaderText="Tuition">
+                                    <ItemStyle HorizontalAlign="Left" Width="80px" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ProgramName" HeaderText="ProgramName">
+                                    <ItemStyle HorizontalAlign="Left" Width="100px" />
+                                </asp:BoundField>
+                                
+                               
+                                <asp:BoundField DataField="Requirements" HeaderText="Tuition">
+                                    
+                                </asp:BoundField>
                                 <asp:TemplateField HeaderText="Remove">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>

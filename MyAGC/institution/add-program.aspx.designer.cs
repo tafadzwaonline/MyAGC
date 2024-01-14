@@ -15,15 +15,6 @@ namespace MyAGC.institution
     {
 
         /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-
-        /// <summary>
         /// drpFaculty control.
         /// </summary>
         /// <remarks>
@@ -42,13 +33,13 @@ namespace MyAGC.institution
         protected global::System.Web.UI.WebControls.TextBox txtProgramName;
 
         /// <summary>
-        /// txtRequirements control.
+        /// txtTuition control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRequirements;
+        protected global::System.Web.UI.WebControls.TextBox txtTuition;
 
         /// <summary>
         /// txtDuration control.
@@ -58,6 +49,15 @@ namespace MyAGC.institution
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDuration;
+
+        /// <summary>
+        /// txtRequirements control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRequirements;
 
         /// <summary>
         /// btnSave control.

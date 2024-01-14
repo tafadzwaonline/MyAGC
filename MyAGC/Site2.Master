@@ -240,8 +240,9 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="add-patient.html">Add patient</a></li>
-                                <li><a href="pt-list.html">patient list</a></li>
+                                <li><a href="../profile/my-profile">My Colleges</a></li>
+                                  <li><a href="../profile/my-profile">Search Colleges</a></li>
+                                     <li><a href="../profile/my-profile">Applications</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

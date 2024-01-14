@@ -113,6 +113,31 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public DataSet getSearchColleges(int Criteria,string Value)
+        {
+             
+            DataSet ds = null;
+
+            string str = "sp_SearchCollege";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            ds = db.ExecuteDataSet(cmd);
+
+
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
         public void SaveAcademicCalendar(int UserID,string StartDateMonth, string StartDateYear, string EndDateMonth, string EndDateYear, int Intake, DateTime ApplicationDeadline)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -123,17 +148,14 @@ namespace MyAGC.Classes
                 SqlCommand sql_cmnd = new SqlCommand("AcademicCalendar_Ins", sqlCon);
                 sql_cmnd.CommandType = CommandType.StoredProcedure;
                 sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
-                //sql_cmnd.Parameters.AddWithValue("@SchoolName", SqlDbType.NVarChar).Value = SchoolName;
-                //sql_cmnd.Parameters.AddWithValue("@SchoolLevel", SqlDbType.Int).Value = SchoolLevel;
+
                 sql_cmnd.Parameters.AddWithValue("@StartDateMonth", SqlDbType.NVarChar).Value = StartDateMonth;
                 sql_cmnd.Parameters.AddWithValue("@StartDateYear", SqlDbType.NVarChar).Value = StartDateYear;
                 sql_cmnd.Parameters.AddWithValue("@EndDateMonth", SqlDbType.NVarChar).Value = EndDateMonth;
                 sql_cmnd.Parameters.AddWithValue("@EndDateYear", SqlDbType.NVarChar).Value = EndDateYear;
                 sql_cmnd.Parameters.AddWithValue("@Intake", SqlDbType.Int).Value = Intake;
                 sql_cmnd.Parameters.AddWithValue("@ApplicationDeadline", SqlDbType.Date).Value = ApplicationDeadline;
-                // sql_cmnd.Parameters.AddWithValue("@SubjectsPassedNo", SqlDbType.Int).Value = SubjectsPassedNo;
-                //sql_cmnd.Parameters.AddWithValue("@ExaminationBody", SqlDbType.Int).Value = ExaminationBody;
-                //sql_cmnd.Parameters.AddWithValue("@Activities", SqlDbType.NVarChar).Value = Activities;
+
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }
@@ -155,7 +177,7 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
-        public void SavePrograms(int UserID, int Duration, int FacultyID, string ProgramName, string Requirements)
+        public void SavePrograms(int UserID, int Duration, int FacultyID, string ProgramName, string Requirements,double Tuition)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             SqlConnection sqlCon = null;
@@ -169,6 +191,7 @@ namespace MyAGC.Classes
                 sql_cmnd.Parameters.AddWithValue("@FacultyID", SqlDbType.Int).Value = FacultyID;
                 sql_cmnd.Parameters.AddWithValue("@ProgramName", SqlDbType.NVarChar).Value = ProgramName;
                 sql_cmnd.Parameters.AddWithValue("@Requirements", SqlDbType.NVarChar).Value = Requirements;
+                sql_cmnd.Parameters.AddWithValue("@Tuition", SqlDbType.Float).Value = Tuition;
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }

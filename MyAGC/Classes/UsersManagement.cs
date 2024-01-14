@@ -169,6 +169,23 @@ namespace MyAGC.Classes
                 return null;
             }
         }
+        public DataSet GetSystemUserByUserRole(int RoleID)
+        {
+
+            string str = "sp_getUsersByRoleID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@RoleID", DbType.Int32, RoleID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public void SaveAccount(string FirstName,string LastName,string Email,string Phone, string Password,string Address,DateTime DOB,int RoleID)
         {

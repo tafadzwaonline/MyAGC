@@ -172,7 +172,12 @@ namespace MyAGC.institution
             }
             if (txtRequirements.Text == "")
             {
-                WarningAlert("Please program requirements");
+                WarningAlert("Please enter program requirements");
+                return;
+            }
+            if (txtTuition.Text == "")
+            {
+                WarningAlert("Please enter tuition");
                 return;
             }
             SaveProgram();
@@ -180,7 +185,7 @@ namespace MyAGC.institution
 
         private void SaveProgram()
         {
-            lp.SavePrograms(int.Parse(Session["userid"].ToString()),int.Parse(txtDuration.Text),int.Parse(drpFaculty.SelectedValue),txtProgramName.Text,txtRequirements.Text);
+            lp.SavePrograms(int.Parse(Session["userid"].ToString()),int.Parse(txtDuration.Text),int.Parse(drpFaculty.SelectedValue),txtProgramName.Text,txtRequirements.Text,double.Parse(txtTuition.Text));
             getSavedPrograms();
             SuccessAlert("Program Successfully added");
             Clear();
