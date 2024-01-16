@@ -24,18 +24,13 @@
                                 <div class="panel panel-bd lobidrag">
 
         
-                                  <%--  <div class="panel-heading">
-                                        <div class="btn-group"> 
-                                            <a class="btn btn-primary" href="table.html" data-toggle="modal" data-target="#modalSaveDocumentName"> <i class="fa fa-list"></i>  Doctor List </a>  
-                                        </div>
-                                    </div>--%>
+                                 
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
                                              <div class="row">
                     <asp:HiddenField ID="txtID" runat="server" />
                 </div>
-                                            <asp:ScriptManager ID="ScriptManager1" runat="server">
-                </asp:ScriptManager>
+                                            
                                             
                                            
                                             <div class="col-sm-6 form-group">

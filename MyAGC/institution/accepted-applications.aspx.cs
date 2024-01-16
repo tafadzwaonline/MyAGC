@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MyAGC.student
+namespace MyAGC.institution
 {
-    public partial class applications : System.Web.UI.Page
+    public partial class accepted_applications : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

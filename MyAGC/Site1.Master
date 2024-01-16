@@ -215,9 +215,9 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                  <li><a href="../profile/my-profile">My Colleges</a></li>
+                                  
                                   <li><a href="../student/search-college">Search Colleges</a></li>
-                                     <li><a href="../profile/my-profile">Applications</a></li>
+                                     <li><a href="../student/my-applications">Applications</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

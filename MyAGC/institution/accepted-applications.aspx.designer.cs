@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.student
+namespace MyAGC.institution
 {
 
 
-    public partial class applications
+    public partial class accepted_applications
     {
     }
 }

@@ -83,47 +83,47 @@
                                           
 
                                             
-                                               <table style="width:100%" >
+                                            <table style="width: 100%">
 
-                                         <tr>
-                                             <td colspan="12">
+                                                <tr>
+                                                    <td colspan="12">
 
-                                                 <div class="row">
-                    <div class="col-sm-12">
-                        <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdAcademicHistory_RowCommand"
-                            role="grid" aria-describedby="basicExample_info" 
-                            OnPageIndexChanging="grdAcademicHistory_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                            AllowPaging="True" AllowSorting="True">
-                            <Columns>
-                                <asp:BoundField DataField="SchoolName" HeaderText="School Name"></asp:BoundField>
-                                <asp:BoundField DataField="StartDateMonth" HeaderText="Start Month"></asp:BoundField>
-                                 <asp:BoundField DataField="StartDateYear" HeaderText="Start Year"></asp:BoundField>
-                                 <asp:BoundField DataField="EndDateMonth" HeaderText="End Month"></asp:BoundField>
-                                <asp:BoundField DataField="EndDateYear" HeaderText="End Year"></asp:BoundField>
-                                <asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
-                                <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
-                                <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>
-                                 
-                                <asp:TemplateField HeaderText="Remove">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdAcademicHistory_RowCommand"
+                                                                    role="grid" aria-describedby="basicExample_info"
+                                                                    OnPageIndexChanging="grdAcademicHistory_PageIndexChanging"
+                                                                    AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                                                                    AllowPaging="True" AllowSorting="True">
+                                                                    <Columns>
+                                                                        <asp:BoundField DataField="SchoolName" HeaderText="School Name"></asp:BoundField>
+                                                                        <asp:BoundField DataField="StartDateMonth" HeaderText="Start Month"></asp:BoundField>
+                                                                        <asp:BoundField DataField="StartDateYear" HeaderText="Start Year"></asp:BoundField>
+                                                                        <asp:BoundField DataField="EndDateMonth" HeaderText="End Month"></asp:BoundField>
+                                                                        <asp:BoundField DataField="EndDateYear" HeaderText="End Year"></asp:BoundField>
+                                                                        <asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
+                                                                        <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
+                                                                        <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>
+
+                                                                        <asp:TemplateField HeaderText="Remove">
+                                                                            <ItemTemplate>
+                                                                                <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
                                                        <i class="fa fa-trash"></i>
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                
+                                                                                </asp:LinkButton>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
 
-                            </Columns>
-                        </asp:GridView>
 
-                    </div>
-                </div>
+                                                                    </Columns>
+                                                                </asp:GridView>
 
-                                             </td>
-                                         </tr>
-       
-     </table>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+
+                                            </table>
                                          </form>
                                      </div>
                                  </div>

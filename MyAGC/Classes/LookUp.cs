@@ -138,6 +138,32 @@ namespace MyAGC.Classes
 
 
         }
+        public DataSet getStudentApplications(int ApplicantID, int CollegeID, int PeriodID)
+        {
+
+            DataSet ds = null;
+
+            string str = "sp_getApplications";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ApplicantID", DbType.Int32, ApplicantID);
+            db.AddInParameter(cmd, "@CollegeID", DbType.String, CollegeID);
+            db.AddInParameter(cmd, "@PeriodID", DbType.String, PeriodID);
+            ds = db.ExecuteDataSet(cmd);
+
+
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
         public void SaveAcademicCalendar(int UserID,string StartDateMonth, string StartDateYear, string EndDateMonth, string EndDateYear, int Intake, DateTime ApplicationDeadline)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -209,6 +235,24 @@ namespace MyAGC.Classes
                 sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
                 sql_cmnd.Parameters.AddWithValue("@FacultyName", SqlDbType.NVarChar).Value = FacultyName;
 ;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+        public void SaveApplication(int ApplicantID, int CollegeID, int ProgramID, int PeriodID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Applications_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ApplicantID", SqlDbType.Int).Value = ApplicantID;
+                sql_cmnd.Parameters.AddWithValue("@CollegeID", SqlDbType.Int).Value = CollegeID;
+                sql_cmnd.Parameters.AddWithValue("@ProgramID", SqlDbType.Int).Value = ProgramID;
+                sql_cmnd.Parameters.AddWithValue("@PeriodID", SqlDbType.Int).Value = PeriodID;
+                sql_cmnd.Parameters.AddWithValue("@ApplicationStatusID", SqlDbType.Int).Value = 4;
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }
@@ -499,6 +543,126 @@ namespace MyAGC.Classes
                 return null;
             }
         }
+        public DataSet getStudentApplicationByUserID(int userid)
+        {
+            string str = "sp_getApplicationByUserID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getStudentApplicationByID(int userid)
+        {
+            string str = "sp_getApplicationByID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getApplicationsAwaitingApproval(int userid)
+        {
+            string str = "sp_getApplicationAwaitingApproval";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Userid", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getApprovedApplications(int userid)
+        {
+            string str = "sp_getApprovedApplications";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Userid", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getTotalApplications(int userid)
+        {
+            string str = "sp_getTotalApplications";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Userid", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getRejectedApplications(int userid)
+        {
+            string str = "sp_getRejectedApplications";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Userid", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public DataSet getAcademicCalendarByID(int userid)
+        {
+            string str = "sp_getAcademicCalendarByID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
         public DataSet getPrograms(int userid)
         {
             string str = "sp_getPrograms";
@@ -516,11 +680,45 @@ namespace MyAGC.Classes
                 return null;
             }
         }
+        public DataSet getProgramsByID(int userid)
+        {
+            string str = "sp_getProgramsByID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
         public DataSet getApplicationFees(int userid, int AcademicCalendarID)
         {
             string str = "sp_getApplicationFees";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@UserID", DbType.Int32, userid);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, AcademicCalendarID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getApplicationFeesByID(int AcademicCalendarID)
+        {
+            string str = "sp_getApplicationFeesByID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@ID", DbType.Int32, AcademicCalendarID);
 
             DataSet ds = db.ExecuteDataSet(cmd);

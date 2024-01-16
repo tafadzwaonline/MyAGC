@@ -67,8 +67,8 @@
                                 </div>
                         <div style="text-align: center;">
                            <%-- <button class="btn btn-primary btn-block">Login</button>--%>
-                            <asp:Button ID="BtnLogin" runat="server" Text="Register" class="btn btn-primary btn-block" OnClick="BtnLogin_Click" />
-                            <%--<a class="btn btn-warning" href="./create-account">Register</a>--%>
+                            <asp:Button ID="BtnLogin" runat="server" Text="Login" class="btn btn-primary btn-block" OnClick="BtnLogin_Click" />
+           <%--                 <a class="btn btn-warning" href="./create-account">Register</a>--%>
                         </div>
                         <div class="col-xs-12 text-center">
                                     <asp:Label ID="lblLoginError" runat="server" Font-Size="Small" style="font-size:15px;" ForeColor="Red"></asp:Label>

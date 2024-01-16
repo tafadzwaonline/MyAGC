@@ -242,6 +242,7 @@
                                  <li><a href="../institution/academic-calendar">Academic Calendar</a></li>
                                 <li><a href="../institution/add-faculty">Add Faculty</a></li>
                               <li><a href="../institution/add-program">Add Programs</a></li>
+                               
                             </ul>
                         </li>
                         <li class="treeview">
@@ -264,8 +265,10 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="add-schedule.html">Add schedule</a></li>
-                                <li><a href="sch-list.html">schedule list</a></li>
+                              <li><a href="../institution/approve-applications">New Applications</a></li>
+                                 <li><a href="../institution/total-applications">Total Applications</a></li>
+                                <li><a href="../institution/accepted-applications">Accepted Applications</a></li>
+                                <li><a href="../institution/rejected-applications">Rejected Applications</a></li>
                                 
                             </ul>
                         </li>

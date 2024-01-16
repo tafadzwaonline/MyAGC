@@ -62,10 +62,10 @@
                                  <asp:BoundField DataField="FirstName" HeaderText="College Name"></asp:BoundField>
 
                                  
-                                <asp:TemplateField HeaderText="Apply">
+                                <asp:TemplateField HeaderText="View">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnAdd" runat="server" CssClass="btn btn-success" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="SelectItem" CommandArgument='<%#Eval("UserID")%>'>
-                                                       Apply
+                                        <asp:LinkButton ID="btnAdd" runat="server" CssClass="btn btn-success"  CommandName="SelectItem" CommandArgument='<%#Eval("UserID")%>'>
+                                                       View
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>

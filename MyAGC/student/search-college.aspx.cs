@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -98,6 +99,10 @@ namespace MyAGC.student
         protected void grdCollege_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
+            int index = Convert.ToInt32(e.CommandArgument);
+            QueryStringModule qn = new QueryStringModule();
+            string EcryptedID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString().Trim()));
+            Response.Redirect(string.Format("../student/academic-calander.aspx?collegeID={0}", EcryptedID), false);
         }
     }
 }
