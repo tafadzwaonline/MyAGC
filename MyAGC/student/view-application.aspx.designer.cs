@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.institution
+namespace MyAGC.student
 {
 
 

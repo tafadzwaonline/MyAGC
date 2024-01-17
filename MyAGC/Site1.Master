@@ -217,7 +217,7 @@
                             <ul class="treeview-menu">
                                   
                                   <li><a href="../student/search-college">Search Colleges</a></li>
-                                     <li><a href="../student/my-applications">Applications</a></li>
+                                     
                             </ul>
                         </li>
                         <li class="treeview">
@@ -240,8 +240,8 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="add-schedule.html">Add schedule</a></li>
-                                <li><a href="sch-list.html">schedule list</a></li>
+                               <li><a href="../student/my-applications">Total Applications</a></li>
+                                
                                 
                             </ul>
                         </li>

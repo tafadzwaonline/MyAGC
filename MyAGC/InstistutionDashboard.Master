@@ -328,12 +328,12 @@
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">05</span>
+                                        <h2><span class="count-number">9</span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
-                                        <i class="fa fa-user-circle fa-2x"></i>
-                                        <h4>Total Colleges</h4>
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Total Faculties</h4>
                                     </div>
                                 </div>
                             </div>
@@ -347,7 +347,7 @@
                                     </div>
                                     <div class="items pull-left">
                                         <i class="fa fa-users fa-2x"></i>
-                                        <h4>My Colleges</h4>
+                                        <h4>Total Programs</h4>
                                     </div>
                                 </div>
                             </div>

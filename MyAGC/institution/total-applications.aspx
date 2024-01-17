@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>College Applications</h1>
+                            <h1>Total Applications</h1>
                             <small></small>
 
                         </div>
@@ -39,17 +39,20 @@
                             AllowPaging="True" AllowSorting="True">
                             <Columns>
 
-                                <asp:BoundField DataField="ApplicationDate" HeaderText="ApplicationDate">
+                                                          <asp:BoundField DataField="ID" HeaderText="ApplicationID">
                                     <ItemStyle HorizontalAlign="Left" Width="60px" />
                                 </asp:BoundField>
-                               
+                                 <asp:BoundField DataField="ApplicantName" HeaderText="ApplicantName">
+                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
+                                </asp:BoundField>
+                                 <asp:BoundField DataField="Email" HeaderText="Email">
+                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
+                                </asp:BoundField>
                                 <asp:BoundField DataField="Status" HeaderText="Status">
                                     <ItemStyle HorizontalAlign="Left" Width="60px" />
                                 </asp:BoundField>
                                  <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
                                 <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
-                                 
-                               
                                  <asp:TemplateField HeaderText="View">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>

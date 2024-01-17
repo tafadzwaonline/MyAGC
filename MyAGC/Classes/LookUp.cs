@@ -350,6 +350,36 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public void ApproveApplication(int ApplicationID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("sp_ApproveApplication", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ApplicationID", SqlDbType.Int).Value = ApplicationID;
+
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+        public void RejectApplication(int ApplicationID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("sp_RejectApplication", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ApplicationID", SqlDbType.Int).Value = ApplicationID;
+
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
         public DataSet getEmailSettings()
         {
             string str = "sp_getEmailSettings";

@@ -2,14 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MyAGC.institution
+namespace MyAGC.student
 {
     public partial class view_application : System.Web.UI.Page
     {
@@ -19,24 +19,21 @@ namespace MyAGC.institution
         {
             if (!IsPostBack)
             {
-                txtCollegeID.Value = Session["userid"].ToString();
+                
                 txtApplicationID.Value = "0";
-                txtApplicantID.Value = "0";
-
-
                 if (Request.QueryString["ApplicationID"].ToString() != null)
                 {
                     txtApplicationID.Value = qn.Decrypt(HttpUtility.UrlDecode(Request.QueryString["ApplicationID"]));
                 }
                 getApplications();
-                
+
             }
 
 
         }
         private void getAcademicHistory()
         {
-            DataSet dataSet = lp.getAcademicHistory(int.Parse(txtApplicantID.Value));
+            DataSet dataSet = lp.getAcademicHistory(int.Parse(Session["userid"].ToString()));
 
             if (dataSet != null)
             {
@@ -51,7 +48,7 @@ namespace MyAGC.institution
         }
         private void getCertificateUploads()
         {
-            DataSet x = lp.getCertificateFileUploads(int.Parse(txtApplicantID.Value));
+            DataSet x = lp.getCertificateFileUploads(int.Parse(Session["userid"].ToString()));
             if (x != null)
             {
                 grdDocument.DataSource = x;
@@ -90,15 +87,7 @@ namespace MyAGC.institution
                 txtApplicantMobile.Text = dt["Mobile"].ToString();
                 txtApplicantID.Value = dt["ID"].ToString();
 
-                if (txtApplicationStatus.Text.ToLower() == "pending")
-                {
-                    butt.Visible = true;
-
-                }
-                else 
-                { 
-                    butt.Visible = false; 
-                }
+              
             }
 
 
@@ -181,5 +170,6 @@ namespace MyAGC.institution
                 throw;
             }
         }
-    }
+    
+     }
 }

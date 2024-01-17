@@ -78,7 +78,8 @@ namespace MyAGC.student
 
                     string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
                     string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtid.Value));
-                    Response.Redirect(string.Format("../student/programs?CollegeID={0}&PeriodID={1}", EcryptedCollegeID, EcryptedPeriodID), false);
+                    //Response.Redirect(string.Format("../student/programs?CollegeID={0}&PeriodID={1}", EcryptedCollegeID, EcryptedPeriodID), false);
+                    Response.Redirect(string.Format("../student/view-application?ApplicationID={0}", EcryptedPeriodID), false);
                 }
 
             }

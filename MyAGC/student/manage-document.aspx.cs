@@ -20,12 +20,8 @@ namespace MyAGC.student
         {
             if (!IsPostBack)
             {
-
-
                 getcertificate();
                 getCertificateUploads();
-
-
             }
         }
 
