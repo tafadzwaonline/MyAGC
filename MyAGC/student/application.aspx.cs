@@ -238,6 +238,14 @@ namespace MyAGC.student
                     }
                 }
 
+                
+                if (lp.IsProgramApplied(userId, collegeId, periodId, programId))
+                {
+                    WarningAlert("Program already applied");
+                    return;
+                }
+
+
                 lp.SaveApplication(userId, collegeId, programId, periodId);
                 //SuccessAlert("Program successfully applied, now awaiting confirmation");
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../student/my-applications';", true);

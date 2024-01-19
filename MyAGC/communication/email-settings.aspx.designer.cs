@@ -7,101 +7,83 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC
+namespace MyAGC.communication
 {
 
 
-    public partial class Site1
+    public partial class email_settings
     {
 
         /// <summary>
-        /// lblUsername control.
+        /// txtCollegeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsername;
+        protected global::System.Web.UI.WebControls.HiddenField txtCollegeID;
 
         /// <summary>
-        /// lnkTotalApplications control.
+        /// txtApplicationID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalApplications;
+        protected global::System.Web.UI.WebControls.HiddenField txtApplicationID;
 
         /// <summary>
-        /// lblTotalApplications control.
+        /// txtApplicantID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalApplications;
+        protected global::System.Web.UI.WebControls.HiddenField txtApplicantID;
 
         /// <summary>
-        /// lnkSearchCollege control.
+        /// txtEmailAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkSearchCollege;
+        protected global::System.Web.UI.WebControls.TextBox txtEmailAddress;
 
         /// <summary>
-        /// lblSearchCollege control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchCollege;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// lnkSupportQuery control.
+        /// txtHost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkSupportQuery;
+        protected global::System.Web.UI.WebControls.TextBox txtHost;
 
         /// <summary>
-        /// Label1 control.
+        /// txtPort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox txtPort;
 
         /// <summary>
-        /// lnkTotalPayments control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalPayments;
-
-        /// <summary>
-        /// lblTotalPayments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalPayments;
-
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

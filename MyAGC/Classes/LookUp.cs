@@ -164,6 +164,35 @@ namespace MyAGC.Classes
 
 
         }
+        public bool IsProgramApplied(int ApplicantID, int CollegeID, int PeriodID, int ProgramID)
+        {
+            try
+            {
+                string str = "sp_ValidateApplications";
+                System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+                
+                db.AddInParameter(cmd, "@ApplicantID", DbType.Int32, ApplicantID);
+                db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
+                db.AddInParameter(cmd, "@PeriodID", DbType.Int32, PeriodID);
+                db.AddInParameter(cmd, "@ProgramID", DbType.Int32, ProgramID);
+
+                DataSet ds = db.ExecuteDataSet(cmd);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                mMsgFlg = ex.Message;
+                return false;
+            }
+        }
         public void SaveAcademicCalendar(int UserID,string StartDateMonth, string StartDateYear, string EndDateMonth, string EndDateYear, int Intake, DateTime ApplicationDeadline)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -256,7 +285,45 @@ namespace MyAGC.Classes
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }
+        }   
+
+        public void SaveEmailSettings(int UserID,string Email,string Password,string Host, int Port)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("SaveEmail_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                sql_cmnd.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = Email;
+                sql_cmnd.Parameters.AddWithValue("@Password", SqlDbType.NVarChar).Value = Password;
+                sql_cmnd.Parameters.AddWithValue("@Host", SqlDbType.NVarChar).Value = Host;
+                sql_cmnd.Parameters.AddWithValue("@Port", SqlDbType.Int).Value = Port;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
         }
+        public void SaveSmsSettings(int UserID, string SenderName, string Password, string SenderNumber)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("SaveSms_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                sql_cmnd.Parameters.AddWithValue("@SenderName", SqlDbType.NVarChar).Value = SenderName;
+                sql_cmnd.Parameters.AddWithValue("@Password", SqlDbType.NVarChar).Value = Password;
+                sql_cmnd.Parameters.AddWithValue("@SenderNumber", SqlDbType.NVarChar).Value = SenderNumber;
+
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+
         public bool SaveClientImage(long UserID, Byte[] bytes)
         {
             try
@@ -380,10 +447,11 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
-        public DataSet getEmailSettings()
+        public DataSet getSavedEmailSettings(int UserID)
         {
             string str = "sp_getEmailSettings";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
 
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -396,6 +464,25 @@ namespace MyAGC.Classes
                 return null;
             }
         }
+
+        public DataSet getSavedSmsSettings(int UserID)
+        {
+            string str = "sp_getSmsSettings";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public DataSet getCertificateFileUploads(int UserID)
         {
 
@@ -436,6 +523,24 @@ namespace MyAGC.Classes
         {
 
             string str = "sp_getDocumentFileUploads";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getEmailSettings(int UserID)
+        {
+
+            string str = "sp_getEmailSettings";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
             DataSet ds = db.ExecuteDataSet(cmd);

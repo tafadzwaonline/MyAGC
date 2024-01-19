@@ -39,7 +39,7 @@
                                             </div>
                                               <div class="col-sm-6 form-group">
                                                 <label>Tuition</label>
-                                                <asp:TextBox ID="txtTuition" runat="server"  class="form-control"></asp:TextBox>
+                                                <asp:TextBox ID="txtTuition" runat="server" TextMode="Number"  class="form-control"></asp:TextBox>
                                             </div>
                                            
                                             <div class="col-sm-6 form-group">

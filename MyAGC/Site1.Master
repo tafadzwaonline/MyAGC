@@ -203,7 +203,7 @@
                                 <li><a href="../student/personal-information">Personal Information</a></li>
                                 <li><a href="../student/academic-history">Academic History</a></li>
                                  <li><a href="../student/manage-document">Document Management</a></li>
-                                <li><a href="../profile/my-profile">User Profile</a></li>
+                                
                                
                             </ul>
                         </li>
@@ -220,18 +220,13 @@
                                      
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-sitemap"></i><span>Communication</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="add-department.html">Add Department</a></li>
-                                <li><a href="dep-list.html">Department list</a></li>
-                            </ul>
-                        </li>
+                         <li>
+                        <a href="../profile/my-profile">
+                         <i class="fa fa-dollar"></i><span>Pay using Paynow</span>
+                           
+                     </a>
+                 </li>
+                       
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i> <span>Decision Management</span>
@@ -250,6 +245,12 @@
                          <i class="fa fa-envelope"></i><span> Reporting</span>
                      </a>
                  </li>
+                         <li>
+                        <a href="../profile/my-profile">
+                         <i class="fa fa-lock"></i><span> Change Password</span>
+                           
+                     </a>
+                 </li>
                 
               
               
@@ -265,12 +266,15 @@
                 </section>
             <!-- Main content -->
                 <section class="content">
-                    <div class="row">
+                    <form runat="server">
+                        <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkTotalApplications" OnClick="lnkTotalApplications_Click" runat="server">
                             <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
+                                 
+                                     <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">15</span>
+                                        <h2><span class="count-number"><asp:Label ID="lblTotalApplications" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
@@ -278,109 +282,66 @@
                                         <h4>Total Applications</h4>
                                     </div>
                                 </div>
+                                     
+                                
                             </div>
+                            </asp:LinkButton>
                         </div>
-                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                        
+
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkSearchCollege" OnClick="lnkSearchCollege_Click" runat="server">
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">19</span>
+                                        <h2><span class="count-number"><asp:Label ID="lblSearchCollege" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
                                         <i class="fa fa-users fa-2x"></i>
-                                        <h4>Approved Applications</h4>
+                                        <h4>Search Colleges</h4>
                                     </div>
                                 </div>
                             </div>
+                                </asp:LinkButton>
                         </div>
-                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                        
+                       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkSupportQuery" OnClick="lnkSupportQuery_Click" runat="server">
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">3</span>
-                                        </h2>
-                                    </div>
-                                    <div class="items pull-left">
-                                    <i class="fa fa-users fa-2x"></i>
-                                    <h4>Pending Applications</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                            <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
-                                    <div class="statistic-box">
-                                        <h2><span class="count-number">4</span>
-                                        </h2>
-                                    </div>
-                                    <div class="items pull-left">
-                                    <i class="fa fa-users fa-2x"></i>
-                                    <h4>Declined Applications</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                            <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
-                                    <div class="statistic-box">
-                                        <h2><span class="count-number">05</span>
-                                        </h2>
-                                    </div>
-                                    <div class="items pull-left">
-                                        <i class="fa fa-user-circle fa-2x"></i>
-                                        <h4>Total Colleges</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                            <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
-                                    <div class="statistic-box">
-                                        <h2><span class="count-number">9</span>
+                                        <h2><span class="count-number"><asp:Label ID="Label1" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
                                         <i class="fa fa-users fa-2x"></i>
-                                        <h4>My Colleges</h4>
+                                        <h4>Support Queries</h4>
                                     </div>
                                 </div>
                             </div>
+                                </asp:LinkButton>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkTotalPayments" OnClick="lnkTotalPayments_Click" runat="server">
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">6</span>
+                                        <h2><span class="count-number"><asp:Label ID="lblTotalPayments" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
-                                        <i class="fa fa-user-circle fa-2x"></i>
-                                        <h4> Reports</h4>
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Total Payments</h4>
                                     </div>
                                 </div>
                             </div>
+                                </asp:LinkButton>
                         </div>
-                       
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                            <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
-                                    <div class="statistic-box">
-                                        <h2><span class="count-number">7</span>
-                                        </h2>
-                                    </div>
-                                    <div class="items pull-left">
-                                    <i class="fa fa-users fa-2x"></i>
-                                    <h4>Communication</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
+                    </form>
+                    
                 </section> <!-- /.content -->
 
             </div> <!-- /.content-wrapper -->

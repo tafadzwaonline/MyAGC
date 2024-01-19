@@ -58,16 +58,28 @@
                             AutoGenerateColumns="False" DataKeyNames="UserID" Width="100%"
                             AllowPaging="True" AllowSorting="True">
                             <Columns>
-                                <asp:BoundField DataField="UserID" HeaderText="ID"></asp:BoundField>
-                                 <asp:BoundField DataField="FirstName" HeaderText="College Name"></asp:BoundField>
+                                <asp:BoundField DataField="UserID" HeaderText="ID">
+                                    <ItemStyle HorizontalAlign="Left" Width="50px" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Email" HeaderText="Email">
+                                    <ItemStyle HorizontalAlign="Left" Width="50px" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Mobile" HeaderText="Mobile">
+                                    <ItemStyle HorizontalAlign="Left" Width="50px" />
+                                </asp:BoundField>
+                                  <asp:BoundField DataField="Address" HeaderText="Address">
+                                    <ItemStyle HorizontalAlign="Left" Width="120px" />
+                                </asp:BoundField>
 
-                                 
+                                 <asp:BoundField DataField="FirstName" HeaderText="College Name"></asp:BoundField>
                                 <asp:TemplateField HeaderText="View">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnAdd" runat="server" CssClass="btn btn-success"  CommandName="SelectItem" CommandArgument='<%#Eval("UserID")%>'>
                                                        View
                                         </asp:LinkButton>
+                                      
                                     </ItemTemplate>
+                                      <%--<ItemStyle HorizontalAlign="Left" Width="50px" />--%>
                                 </asp:TemplateField>
                                 
 

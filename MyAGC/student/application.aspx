@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>Personal Information</h1>
+                            <h1>College Information</h1>
                             <small></small>
                          
                         </div>
@@ -75,7 +75,7 @@
                                              
 
                                               <div class="col-sm-12 reset-button">
-                                                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 <asp:Button ID="btnSave" runat="server" Text="Apply" OnClick="btnSave_Click" class="btn btn-success" />
                                                   
                                              </div>
                                             

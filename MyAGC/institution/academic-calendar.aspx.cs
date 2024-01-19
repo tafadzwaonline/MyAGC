@@ -205,7 +205,18 @@ namespace MyAGC.institution
                 WarningAlert("Please select Intake");
                 return;
             }
-              
+            if (int.Parse(drpStartDateYear.SelectedValue) > int.Parse(drpEndDateYear.SelectedValue))
+            {
+                WarningAlert("Start year cannot be greater than end year");
+                return;
+            }
+
+            //if (Convert.ToDateTime(txtApplicationDeadline.Text) > DateTime.Today)
+            //{
+
+            //    WarningAlert("Date is invalid or greater than today");
+            //    return;
+            //}
             UpdateDetails();
         }
 

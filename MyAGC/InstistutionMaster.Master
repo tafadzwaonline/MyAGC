@@ -58,8 +58,9 @@
                     showMethod: 'slideDown',
                     timeOut: 2000
                 };
-                toastr.success(message, title);
-            }, 1300);
+                //toastr.success(message, title);
+                toastr.success(`<span style="font-size: 20px">${message}</span>`, title);
+            }, 100);
         }
 
         function WarningToastr(message, title) {
@@ -70,10 +71,11 @@
                     //positionClass: "toast-top-center",
                     showMethod: 'slideDown',
                     timeOut: 2000
+                  
 
                 };
-                toastr.warning(message, title);
-            }, 1300);
+                toastr.warning(`<span style="font-size: 20px">${message}</span>`, title);
+            }, 100);
         }
     </script>
 
@@ -253,8 +255,9 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="add-department.html">Add Department</a></li>
-                                <li><a href="dep-list.html">Department list</a></li>
+                               <li><a href="../communication/send-communication">Send Communication</a></li>
+                               <li><a href="../communication/email-settings">Email Settings</a></li>
+                                <li><a href="../communication/sms-settings">Sms Settings</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

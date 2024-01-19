@@ -90,7 +90,8 @@
                                              
 
                                               <div class="col-sm-12 reset-button">
-                                                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" />
+                                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" style="width: 100px;" />
+
                                                   <%--<asp:Button ID="Button1" runat="server" Text=">> Academic History" class="btn btn-warning" />--%>
                                                  
                                              </div>

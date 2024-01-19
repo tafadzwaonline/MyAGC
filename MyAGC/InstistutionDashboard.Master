@@ -227,8 +227,9 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="add-department.html">Add Department</a></li>
-                                <li><a href="dep-list.html">Department list</a></li>
+                                <li><a href="../communication/send-communication">Send Communication</a></li>
+                               <li><a href="../communication/email-settings">Email Settings</a></li>
+                                <li><a href="../communication/sms-settings">Sms Settings</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -266,12 +267,15 @@
                 </section>
             <!-- Main content -->
                 <section class="content">
-                    <div class="row">
+                    <form runat="server">
+                        <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkTotalApplications" OnClick="lnkTotalApplications_Click" runat="server">
                             <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
+                                 
+                                     <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">15</span>
+                                        <h2><span class="count-number"><asp:Label ID="lblTotalApplications" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
@@ -279,27 +283,33 @@
                                         <h4>Total Applications</h4>
                                     </div>
                                 </div>
+                                     
+                                
                             </div>
+                            </asp:LinkButton>
                         </div>
                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                             <asp:LinkButton ID="lnkAcceptedApplications" OnClick="lnkAcceptedApplications_Click" runat="server">
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">19</span>
+                                        <h2><span class="count-number"><asp:Label ID="lblAcceptedApplications" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
                                         <i class="fa fa-users fa-2x"></i>
-                                        <h4>Approved Applications</h4>
+                                        <h4>Accepted Applications</h4>
                                     </div>
                                 </div>
                             </div>
+                                 </asp:LinkButton>
                         </div>
                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                             <asp:LinkButton ID="lnlPendingApplications" OnClick="lnlPendingApplications_Click" runat="server">
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">3</span>
+                                        <h2><span class="count-number"><asp:Label ID="lblPendingApplications" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
@@ -308,41 +318,32 @@
                                     </div>
                                 </div>
                             </div>
+                                 </asp:LinkButton>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkRejectedApplications" OnClick="lnkRejectedApplications_Click" runat="server">
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">4</span>
+                                        <h2><span class="count-number"><asp:Label ID="lblRejectedApplications" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
                                     <i class="fa fa-users fa-2x"></i>
-                                    <h4>Declined Applications</h4>
+                                    <h4>Rejected Applications</h4>
                                     </div>
                                 </div>
                             </div>
+                                </asp:LinkButton>
                         </div>
                        
+                        
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkTotalPrograms" OnClick="lnkTotalPrograms_Click" runat="server">
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number">9</span>
-                                        </h2>
-                                    </div>
-                                    <div class="items pull-left">
-                                        <i class="fa fa-users fa-2x"></i>
-                                        <h4>Total Faculties</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                            <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
-                                    <div class="statistic-box">
-                                        <h2><span class="count-number">9</span>
+                                        <h2><span class="count-number"><asp:Label ID="lblTotalPrograms" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
@@ -351,37 +352,14 @@
                                     </div>
                                 </div>
                             </div>
+                                </asp:LinkButton>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                            <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
-                                    <div class="statistic-box">
-                                        <h2><span class="count-number">6</span>
-                                        </h2>
-                                    </div>
-                                    <div class="items pull-left">
-                                        <i class="fa fa-user-circle fa-2x"></i>
-                                        <h4> Reports</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                        
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                            <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
-                                    <div class="statistic-box">
-                                        <h2><span class="count-number">7</span>
-                                        </h2>
-                                    </div>
-                                    <div class="items pull-left">
-                                    <i class="fa fa-users fa-2x"></i>
-                                    <h4>Communication</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
+                    </form>
+                    
                 </section> <!-- /.content -->
 
             </div> <!-- /.content-wrapper -->

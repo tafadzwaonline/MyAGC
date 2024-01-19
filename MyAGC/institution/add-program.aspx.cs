@@ -160,27 +160,32 @@ namespace MyAGC.institution
                 return;
             }
 
-            if (txtProgramName.Text == "")
+            if (string.IsNullOrWhiteSpace(txtProgramName.Text))
             {
-                WarningAlert("Please select a program name");
+                WarningAlert("Please enter a program name");
                 return;
             }
-            if (txtDuration.Text == "")
+
+            if (string.IsNullOrWhiteSpace(txtDuration.Text))
             {
                 WarningAlert("Please enter duration");
                 return;
             }
-            if (txtRequirements.Text == "")
+
+            if (string.IsNullOrWhiteSpace(txtRequirements.Text))
             {
                 WarningAlert("Please enter program requirements");
                 return;
             }
-            if (txtTuition.Text == "")
+
+            if (string.IsNullOrWhiteSpace(txtTuition.Text))
             {
                 WarningAlert("Please enter tuition");
                 return;
             }
+
             SaveProgram();
+
         }
 
         private void SaveProgram()
@@ -197,6 +202,7 @@ namespace MyAGC.institution
             txtRequirements.Text = string.Empty;
             txtDuration.Text = string.Empty;
             txtProgramName.Text = string.Empty;
+            txtTuition.Text = string.Empty;
         }
     }
 }

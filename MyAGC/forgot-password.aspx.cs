@@ -78,7 +78,7 @@ namespace MyAGC
                 string EmailAddress = string.Empty;
                 string EmailPassword = string.Empty;
 
-                DataSet emails = look.getEmailSettings();
+                DataSet emails = look.getEmailSettings(int.Parse(Session["userid"].ToString()));
                 if (emails != null)
                 {
                     DataRow row = emails.Tables[0].Rows[0];

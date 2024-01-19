@@ -352,6 +352,9 @@
     <Content Include="assets\weather-icons\css\weather-icons.min.css" />
     <Content Include="assets\weather-icons\font\weathericons-regular-webfont.svg" />
     <Content Include="change-password.aspx" />
+    <Content Include="communication\email-settings.aspx" />
+    <Content Include="communication\send-communication.aspx" />
+    <Content Include="communication\sms-settings.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -533,6 +536,27 @@
     <Compile Include="Classes\LookUp.cs" />
     <Compile Include="Classes\QueryStringModule.cs" />
     <Compile Include="Classes\UsersManagement.cs" />
+    <Compile Include="communication\email-settings.aspx.cs">
+      <DependentUpon>email-settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="communication\email-settings.aspx.designer.cs">
+      <DependentUpon>email-settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="communication\send-communication.aspx.cs">
+      <DependentUpon>send-communication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="communication\send-communication.aspx.designer.cs">
+      <DependentUpon>send-communication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="communication\sms-settings.aspx.cs">
+      <DependentUpon>sms-settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="communication\sms-settings.aspx.designer.cs">
+      <DependentUpon>sms-settings.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

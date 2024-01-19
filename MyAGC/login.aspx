@@ -41,7 +41,7 @@
                         </div>
                         <div class="header-title">
                             <h3>Login</h3>
-                            <small><strong>Please enter your credentials to login or</strong> <a href="./create-account" class="text-right f-w-600">create an account</a> to get started.</small>
+                            <strong>Please enter your credentials to login or</strong> <a href="./create-account" class="text-right f-w-600">create an account</a> to get started.
                         </div>
                     </div>
                 </div>

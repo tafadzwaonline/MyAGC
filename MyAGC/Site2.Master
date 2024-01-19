@@ -47,34 +47,36 @@
       <link media="screen" rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     
-    <script>
-        function SuccessToastr(message, title) {
-            setTimeout(function () {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    //positionClass: "toast-top-center",
-                    showMethod: 'slideDown',
-                    timeOut: 2000
-                };
-                toastr.success(message, title);
-            }, 1300);
-        }
+   <script>
+       function SuccessToastr(message, title) {
+           setTimeout(function () {
+               toastr.options = {
+                   closeButton: true,
+                   progressBar: true,
+                   //positionClass: "toast-top-center",
+                   showMethod: 'slideDown',
+                   timeOut: 2000
+               };
+               //toastr.success(message, title);
+               toastr.success(`<span style="font-size: 20px">${message}</span>`, title);
+           }, 100);
+       }
 
-        function WarningToastr(message, title) {
-            setTimeout(function () {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    //positionClass: "toast-top-center",
-                    showMethod: 'slideDown',
-                    timeOut: 2000
+       function WarningToastr(message, title) {
+           setTimeout(function () {
+               toastr.options = {
+                   closeButton: true,
+                   progressBar: true,
+                   //positionClass: "toast-top-center",
+                   showMethod: 'slideDown',
+                   timeOut: 2000
 
-                };
-                toastr.warning(message, title);
-            }, 1300);
-        }
-    </script>
+
+               };
+               toastr.warning(`<span style="font-size: 20px">${message}</span>`, title);
+           }, 100);
+       }
+   </script>
 
      <script type="text/javascript">
 
@@ -228,7 +230,7 @@
                                 <li><a href="../student/personal-information">Personal Information</a></li>
                                 <li><a href="../student/academic-history">Academic History</a></li>
                                  <li><a href="../student/manage-document">Document Management</a></li>
-                                <li><a href="../profile/my-profile">User Profile</a></li>
+                                <%--<li><a href="../profile/my-profile">User Profile</a></li>--%>
                                
                             </ul>
                         </li>
@@ -241,22 +243,17 @@
                             </a>
                             <ul class="treeview-menu">
                        
-                                  <li><a href="../profile/my-profile">Search Colleges</a></li>
+                                  <li><a href="../student/search-college">Search Colleges</a></li>
                                      
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-sitemap"></i><span>Communication</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="add-department.html">Add Department</a></li>
-                                <li><a href="dep-list.html">Department list</a></li>
-                            </ul>
-                        </li>
+                          <li>
+                        <a href="../profile/my-profile">
+                         <i class="fa fa-dollar"></i><span>Pay using Paynow</span>
+                           
+                     </a>
+                 </li>
+                       
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i> <span>Decision Management</span>
@@ -274,7 +271,12 @@
                          <i class="fa fa-envelope"></i><span> Reporting</span>
                      </a>
                  </li>
-                
+                <li>
+                        <a href="../profile/my-profile">
+                         <i class="fa fa-lock"></i><span> Change Password</span>
+                           
+                     </a>
+                 </li>
               
               
             </ul>
