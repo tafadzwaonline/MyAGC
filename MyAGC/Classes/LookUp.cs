@@ -113,14 +113,42 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
-        public DataSet getSearchColleges(int Criteria,string Value)
-        {
+        //public DataSet getSearchColleges(int Criteria,string Value)
+        //{
              
+        //    DataSet ds = null;
+
+        //    string str = "sp_SearchCollege";
+        //    System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+        //    db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+        //    db.AddInParameter(cmd, "@Value", DbType.String, Value);
+        //    ds = db.ExecuteDataSet(cmd);
+
+
+
+        //    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        return ds;
+
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+
+
+        //}
+
+
+        public DataSet getSearchUsers(int Criteria,int RoleID, string Value)
+        {
+
             DataSet ds = null;
 
-            string str = "sp_SearchCollege";
+            string str = "sp_SearchUsers";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            db.AddInParameter(cmd, "@RoleID", DbType.Int32, RoleID);
             db.AddInParameter(cmd, "@Value", DbType.String, Value);
             ds = db.ExecuteDataSet(cmd);
 
@@ -138,6 +166,7 @@ namespace MyAGC.Classes
 
 
         }
+       
         public DataSet getStudentApplications(int ApplicantID, int CollegeID, int PeriodID)
         {
 
@@ -215,6 +244,41 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public void SaveEmailList(DateTime DateSent, string EmailAddress, string Subject, string Target, int StatusID, string Message)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("SaveBroadCastMessage_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@DateSent", SqlDbType.Date).Value = DateSent;
+                sql_cmnd.Parameters.AddWithValue("@EmailAddress", SqlDbType.NVarChar).Value = EmailAddress;
+                sql_cmnd.Parameters.AddWithValue("@Subject", SqlDbType.NVarChar).Value = Subject;
+                sql_cmnd.Parameters.AddWithValue("@Target", SqlDbType.NVarChar).Value = Target;
+                sql_cmnd.Parameters.AddWithValue("@StatusID", SqlDbType.Int).Value = StatusID;
+                sql_cmnd.Parameters.AddWithValue("@Message", SqlDbType.Int).Value = Message;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+        public void SaveSmsList(int ID, int StatusID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("SaveBroadCastSms_Upd", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ID", SqlDbType.Int).Value = ID;
+                sql_cmnd.Parameters.AddWithValue("@StatusID", SqlDbType.Int).Value = StatusID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+
         public void SaveApplicationFees(int UserID, int AcademicCalendarID, double Amount, int CitizenID)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -577,6 +641,16 @@ namespace MyAGC.Classes
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@Code", DbType.Int32, Code);
             db.AddInParameter(cmd, "@Email", DbType.String, Email);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+        }
+        public void UpdateStatus(int Status, int UserID)
+        {
+
+            string str = "sp_UpdateUserStatus";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Status", DbType.Int32, Status);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
 
             DataSet ds = db.ExecuteDataSet(cmd);
         }

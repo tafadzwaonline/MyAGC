@@ -166,11 +166,6 @@ namespace MyAGC.institution
             }
         }
 
-
-   
-     
-
-
         protected void btnSave_Click(object sender, EventArgs e)
         {
           

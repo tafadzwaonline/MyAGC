@@ -1,13 +1,16 @@
 ﻿using MyAGC.Classes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MyAGC.communication
+namespace MyAGC.admin
 {
     public partial class send_communication : System.Web.UI.Page
     {
@@ -76,9 +79,9 @@ namespace MyAGC.communication
 
                 if (TargetType == "2")//system colleges
                 {
-                    if (b.getUnassignedSystemUsers(BroadcastList, 2) != null)
+                    if (b.getUnassignedSystemUsers(BroadcastList,2) != null)
                     {
-                        lstUnassigned.DataSource = b.getUnassignedSystemUsers(BroadcastList, 2);
+                        lstUnassigned.DataSource = b.getUnassignedSystemUsers(BroadcastList,2);
                         lstUnassigned.DataValueField = "ID";
                         lstUnassigned.DataTextField = "Name";
                         lstUnassigned.DataBind();
@@ -92,9 +95,9 @@ namespace MyAGC.communication
                 else
                 {
                     //students
-                    if (b.getUnassignedSystemUsers(BroadcastList, 3) != null)
+                    if (b.getUnassignedSystemUsers(BroadcastList,3) != null)
                     {
-                        lstUnassigned.DataSource = b.getUnassignedSystemUsers(BroadcastList, 3);
+                        lstUnassigned.DataSource = b.getUnassignedSystemUsers(BroadcastList,3);
                         lstUnassigned.DataValueField = "ID";
                         lstUnassigned.DataTextField = "Name";
                         lstUnassigned.DataBind();
@@ -121,9 +124,9 @@ namespace MyAGC.communication
 
                 if (TargetType == "2")//select colleges
                 {
-                    if (b.getassignedSystemUsers(BroadcastList, 2) != null)
+                    if (b.getassignedSystemUsers(BroadcastList,2) != null)
                     {
-                        lstMailingList.DataSource = b.getassignedSystemUsers(BroadcastList, 2);
+                        lstMailingList.DataSource = b.getassignedSystemUsers(BroadcastList,2);
                         lstMailingList.DataValueField = "ID";
                         lstMailingList.DataTextField = "Name";
                         lstMailingList.DataBind();
@@ -138,9 +141,9 @@ namespace MyAGC.communication
                 {
 
                     //select students
-                    if (b.getassignedSystemUsers(BroadcastList, 3) != null)
+                    if (b.getassignedSystemUsers(BroadcastList,3) != null)
                     {
-                        lstMailingList.DataSource = b.getassignedSystemUsers(BroadcastList, 3);
+                        lstMailingList.DataSource = b.getassignedSystemUsers(BroadcastList,3);
                         lstMailingList.DataValueField = "ID";
                         lstMailingList.DataTextField = "Name";
                         lstMailingList.DataBind();
@@ -382,9 +385,9 @@ namespace MyAGC.communication
                     {
                         foreach (DataRow rw in b.getBroadCastContactDetails(int.Parse(txtID.Value), int.Parse(drpTarget.SelectedValue)).Tables[0].Rows)
                         {
-
+                            
                             string msgbdy = string.Empty;
-
+                            
                             lp.SaveEmailList(Convert.ToDateTime(txtDate.Text), rw["Email"].ToString(), txtHeader.Text, drpTarget.SelectedItem.Text, 1, txtMsgBody.Text);
                         }
                         SuccessAlert("Message successfully sent");
@@ -392,9 +395,9 @@ namespace MyAGC.communication
 
                     }
                 }
-                else if (drpMessageType.SelectedValue == "3")
+                else if(drpMessageType.SelectedValue == "3") 
                 {
-                    lp.SaveSmsList(int.Parse(txtID.Value), 1);
+                    lp.SaveSmsList(int.Parse(txtID.Value),1);
                     SuccessAlert("Message schedule created and ready to send");
                     Clear();
                 }

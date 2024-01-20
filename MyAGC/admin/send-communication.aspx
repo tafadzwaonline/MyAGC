@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstistutionMaster.Master" AutoEventWireup="true" CodeBehind="send-communication.aspx.cs" Inherits="MyAGC.communication.send_communication" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="send-communication.aspx.cs" Inherits="MyAGC.admin.send_communication" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
@@ -49,7 +49,7 @@
                                                 <label>Select Target</label>
                                                     <asp:DropDownList ID="drpTarget" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
                                                     <asp:ListItem Value="1" Text="Select Target" Selected="True"></asp:ListItem>
-                                                    <%--<asp:ListItem Value="2" Text="Colleges"></asp:ListItem>--%>
+                                                    <asp:ListItem Value="2" Text="Colleges"></asp:ListItem>
                                                     <asp:ListItem Value="3" Text="Students"></asp:ListItem>
                                                     
                                                 </asp:DropDownList>

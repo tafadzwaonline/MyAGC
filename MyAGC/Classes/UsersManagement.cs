@@ -268,6 +268,29 @@ namespace MyAGC.Classes
             }
         }
 
+
+        public void InsertAdminDetails(int UserID, string Email, string FirstName, string LastName, string Address, string Mobile, string Password)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Admin_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                sql_cmnd.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = Email;
+                sql_cmnd.Parameters.AddWithValue("@FirstName", SqlDbType.NVarChar).Value = FirstName;
+                sql_cmnd.Parameters.AddWithValue("@LastName", SqlDbType.NVarChar).Value = LastName;
+                sql_cmnd.Parameters.AddWithValue("@Address ", SqlDbType.NVarChar).Value = Address;
+                sql_cmnd.Parameters.AddWithValue("@Mobile", SqlDbType.Int).Value = Mobile;
+                sql_cmnd.Parameters.AddWithValue("@Password", SqlDbType.Int).Value = Password;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+
+
         public void UpdatePassword(int UserID, string Password)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;

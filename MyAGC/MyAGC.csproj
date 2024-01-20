@@ -164,7 +164,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="admin\create-user.aspx" />
     <Content Include="admin\dashboard.aspx" />
+    <Content Include="admin\email-settings.aspx" />
+    <Content Include="admin\logged-queries.aspx" />
+    <Content Include="admin\my-profile.aspx" />
+    <Content Include="admin\personal-info.aspx" />
+    <Content Include="admin\send-communication.aspx" />
+    <Content Include="admin\sms-settings.aspx" />
+    <Content Include="admin\view-colleges.aspx" />
+    <Content Include="admin\view-payments.aspx" />
+    <Content Include="admin\view-students.aspx" />
+    <Content Include="admin\view-user.aspx" />
     <Content Include="assets\bootstrap\css\bootstrap.min.css" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\bootstrap\js\bootstrap.min.js" />
@@ -473,6 +484,8 @@
     <Content Include="ImageHandler.ashx" />
     <Content Include="InstistutionDashboard.Master" />
     <Content Include="InstistutionMaster.Master" />
+    <Content Include="AdminDashboard.Master" />
+    <Content Include="AdminMaster.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -509,12 +522,103 @@
     <Content Include="Site2.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDashboard.Master.cs">
+      <DependentUpon>AdminDashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.Master.designer.cs">
+      <DependentUpon>AdminDashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\create-user.aspx.cs">
+      <DependentUpon>create-user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\create-user.aspx.designer.cs">
+      <DependentUpon>create-user.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\email-settings.aspx.cs">
+      <DependentUpon>email-settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\email-settings.aspx.designer.cs">
+      <DependentUpon>email-settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\logged-queries.aspx.cs">
+      <DependentUpon>logged-queries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\logged-queries.aspx.designer.cs">
+      <DependentUpon>logged-queries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\my-profile.aspx.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\my-profile.aspx.designer.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\personal-info.aspx.cs">
+      <DependentUpon>personal-info.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\personal-info.aspx.designer.cs">
+      <DependentUpon>personal-info.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\send-communication.aspx.cs">
+      <DependentUpon>send-communication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\send-communication.aspx.designer.cs">
+      <DependentUpon>send-communication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\sms-settings.aspx.cs">
+      <DependentUpon>sms-settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\sms-settings.aspx.designer.cs">
+      <DependentUpon>sms-settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\view-colleges.aspx.cs">
+      <DependentUpon>view-colleges.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-colleges.aspx.designer.cs">
+      <DependentUpon>view-colleges.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\view-payments.aspx.cs">
+      <DependentUpon>view-payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-payments.aspx.designer.cs">
+      <DependentUpon>view-payments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\view-students.aspx.cs">
+      <DependentUpon>view-students.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-students.aspx.designer.cs">
+      <DependentUpon>view-students.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\view-user.aspx.cs">
+      <DependentUpon>view-user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-user.aspx.designer.cs">
+      <DependentUpon>view-user.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -532,7 +636,10 @@
     <Compile Include="change-password.aspx.designer.cs">
       <DependentUpon>change-password.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\BroadcastContacts.cs" />
+    <Compile Include="Classes\BroadcastMessagesList.cs" />
     <Compile Include="Classes\EncryptDecryptClass.cs" />
+    <Compile Include="Classes\ErrorLog.cs" />
     <Compile Include="Classes\LookUp.cs" />
     <Compile Include="Classes\QueryStringModule.cs" />
     <Compile Include="Classes\UsersManagement.cs" />

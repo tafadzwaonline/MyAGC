@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.communication
+namespace MyAGC.admin
 {
 
 

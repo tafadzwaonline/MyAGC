@@ -60,8 +60,19 @@ namespace MyAGC.student
 
         private void Search()
         {
-            
-            DataSet getsearchdata = lp.getSearchColleges(int.Parse(drpSearchBy.SelectedValue),txtValue.Text);
+
+            if (drpSearchBy.SelectedValue == "1")
+            {
+                WarningAlert("Please select a criteria to search");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtValue.Text))
+            {
+                WarningAlert("Please enter search value");
+                return;
+            }
+
+            DataSet getsearchdata = lp.getSearchUsers(int.Parse(drpSearchBy.SelectedValue),2,txtValue.Text);
             if (getsearchdata != null)
             {
                 grdCollege.DataSource = getsearchdata;
@@ -91,10 +102,7 @@ namespace MyAGC.student
             ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
         }
 
-        protected void grdCollege_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-
-        }
+       
 
         protected void grdCollege_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -103,6 +111,51 @@ namespace MyAGC.student
             QueryStringModule qn = new QueryStringModule();
             string EcryptedID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString().Trim()));
             Response.Redirect(string.Format("../student/academic-calander.aspx?collegeID={0}", EcryptedID), false);
+        }
+
+        protected void grdCollege_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdCollege.PageIndex = e.NewPageIndex;
+            this.BindGrid(e.NewPageIndex);
+        }
+
+        private void BindGrid(int page = 0)
+        {
+            try
+            {
+
+                DataSet user = um.GetSystemUserByUserRole(2);
+                if (user != null)
+                {
+                    int maxPageIndex = grdCollege.PageCount - 1;
+                    if (page < 0 || page > maxPageIndex)
+                    {
+                        if (maxPageIndex >= 0)
+                        {
+                            // Navigate to the last available page
+                            page = maxPageIndex;
+                        }
+                        else
+                        {
+                            // No data available, reset to the first page
+                            page = 0;
+                        }
+                    }
+                    grdCollege.DataSource = user;
+                    grdCollege.PageIndex = page;
+                    grdCollege.DataBind();
+                }
+                else
+                {
+                    grdCollege.DataSource = null;
+                    grdCollege.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                DangerAlert(ex.ToString());
+            }
         }
     }
 }
