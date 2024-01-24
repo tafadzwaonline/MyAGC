@@ -94,7 +94,7 @@ namespace MyAGC
 
                         if (int.Parse(Session["roleid"].ToString()) == 1)
                         {
-                            Response.Redirect(string.Format("Admin/dashboard"));
+                            Response.Redirect(string.Format("admin/dashboard"));
                         }
                         else if (int.Parse(Session["roleid"].ToString()) == 2)
                         {

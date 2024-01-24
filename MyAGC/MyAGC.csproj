@@ -170,8 +170,11 @@
     <Content Include="admin\logged-queries.aspx" />
     <Content Include="admin\my-profile.aspx" />
     <Content Include="admin\personal-info.aspx" />
+    <Content Include="admin\reporting.aspx" />
     <Content Include="admin\send-communication.aspx" />
     <Content Include="admin\sms-settings.aspx" />
+    <Content Include="admin\SystemUsersReport.aspx" />
+    <Content Include="admin\TotalPaymentsReport.aspx" />
     <Content Include="admin\view-colleges.aspx" />
     <Content Include="admin\view-payments.aspx" />
     <Content Include="admin\view-students.aspx" />
@@ -394,13 +397,16 @@
     <Content Include="institution\add-faculty.aspx" />
     <Content Include="institution\add-program.aspx" />
     <Content Include="institution\application-fee.aspx" />
+    <Content Include="institution\ApplicationsReport.aspx" />
     <Content Include="institution\approve-applications.aspx" />
     <Content Include="institution\dashboard.aspx" />
     <Content Include="institution\institution-information.aspx" />
     <Content Include="institution\manage-document.aspx" />
     <Content Include="institution\profile.aspx" />
     <Content Include="institution\rejected-applications.aspx" />
+    <Content Include="institution\reporting.aspx" />
     <Content Include="institution\total-applications.aspx" />
+    <Content Include="institution\TotalProgramReport.aspx" />
     <Content Include="institution\view-application.aspx" />
     <Content Include="login.aspx" />
     <Content Include="profile\my-profile.aspx" />
@@ -441,6 +447,7 @@
     <Content Include="student\my-applications.aspx" />
     <Content Include="student\my-college.aspx" />
     <Content Include="student\my-profile.aspx" />
+    <Content Include="student\pay-now.aspx" />
     <Content Include="student\personal-information.aspx" />
     <Content Include="student\programs.aspx" />
     <Content Include="student\search-college.aspx" />
@@ -578,6 +585,13 @@
     <Compile Include="admin\personal-info.aspx.designer.cs">
       <DependentUpon>personal-info.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\reporting.aspx.cs">
+      <DependentUpon>reporting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\reporting.aspx.designer.cs">
+      <DependentUpon>reporting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\send-communication.aspx.cs">
       <DependentUpon>send-communication.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -591,6 +605,20 @@
     </Compile>
     <Compile Include="admin\sms-settings.aspx.designer.cs">
       <DependentUpon>sms-settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\SystemUsersReport.aspx.cs">
+      <DependentUpon>SystemUsersReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\SystemUsersReport.aspx.designer.cs">
+      <DependentUpon>SystemUsersReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\TotalPaymentsReport.aspx.cs">
+      <DependentUpon>TotalPaymentsReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\TotalPaymentsReport.aspx.designer.cs">
+      <DependentUpon>TotalPaymentsReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\view-colleges.aspx.cs">
       <DependentUpon>view-colleges.aspx</DependentUpon>
@@ -747,6 +775,13 @@
     <Compile Include="institution\application-fee.aspx.designer.cs">
       <DependentUpon>application-fee.aspx</DependentUpon>
     </Compile>
+    <Compile Include="institution\ApplicationsReport.aspx.cs">
+      <DependentUpon>ApplicationsReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\ApplicationsReport.aspx.designer.cs">
+      <DependentUpon>ApplicationsReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="institution\approve-applications.aspx.cs">
       <DependentUpon>approve-applications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -789,12 +824,26 @@
     <Compile Include="institution\rejected-applications.aspx.designer.cs">
       <DependentUpon>rejected-applications.aspx</DependentUpon>
     </Compile>
+    <Compile Include="institution\reporting.aspx.cs">
+      <DependentUpon>reporting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\reporting.aspx.designer.cs">
+      <DependentUpon>reporting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="institution\total-applications.aspx.cs">
       <DependentUpon>total-applications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="institution\total-applications.aspx.designer.cs">
       <DependentUpon>total-applications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="institution\TotalProgramReport.aspx.cs">
+      <DependentUpon>TotalProgramReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\TotalProgramReport.aspx.designer.cs">
+      <DependentUpon>TotalProgramReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="institution\view-application.aspx.cs">
       <DependentUpon>view-application.aspx</DependentUpon>
@@ -908,6 +957,13 @@
     </Compile>
     <Compile Include="student\my-profile.aspx.designer.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\pay-now.aspx.cs">
+      <DependentUpon>pay-now.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\pay-now.aspx.designer.cs">
+      <DependentUpon>pay-now.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\personal-information.aspx.cs">
       <DependentUpon>personal-information.aspx</DependentUpon>

@@ -276,7 +276,7 @@
                             </ul>
                         </li>
                     <li>
-                        <a href="mailbox.html">
+                        <a href="../institution/reporting">
                          <i class="fa fa-envelope"></i><span> Reporting</span>
                      </a>
                  </li>

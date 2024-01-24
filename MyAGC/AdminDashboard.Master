@@ -119,7 +119,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <header class="main-header">
-                <a href="index.html" class="logo"> <!-- Logo -->
+                <a href="../admin/dashboard" class="logo"> <!-- Logo -->
                    <%-- <span class="logo-mini">
                         <!--<b>A</b>H-admin-->
                         <img src="../assets/dist/img/mini-logo.png" alt="">
@@ -229,8 +229,8 @@
                                 
                             </ul>
                         </li>
-                    <li>
-                        <a href="mailbox.html">
+                       <li>
+                        <a href="../admin/reporting">
                          <i class="fa fa-envelope"></i><span> Reporting</span>
                      </a>
                  </li>

@@ -529,6 +529,25 @@ namespace MyAGC.Classes
             }
         }
 
+        public DataSet getApplicationStatus()
+        {
+            string str = "sp_getApplicationStatus";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         public DataSet getSavedSmsSettings(int UserID)
         {
             string str = "sp_getSmsSettings";

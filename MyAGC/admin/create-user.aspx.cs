@@ -76,7 +76,7 @@ namespace MyAGC.admin
             {
                 string Password = "XC4G160UbpgbPhnnnYcKfw==";
                 um.InsertAdminDetails(0, txtEmail.Text, txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtMobile.Text, Password);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../admin/view-user';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('User successfully created');window.location ='../admin/view-user';", true);
             }
             catch (Exception)
             {

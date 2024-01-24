@@ -248,7 +248,7 @@
                             </ul>
                         </li>
                           <li>
-                        <a href="../profile/my-profile">
+                        <a href="../student/pay-now">
                          <i class="fa fa-dollar"></i><span>Pay using Paynow</span>
                            
                      </a>
@@ -266,11 +266,11 @@
                                 
                             </ul>
                         </li>
-                    <li>
+                    <%--<li>
                         <a href="mailbox.html">
                          <i class="fa fa-envelope"></i><span> Reporting</span>
                      </a>
-                 </li>
+                 </li>--%>
                 <li>
                         <a href="../profile/my-profile">
                          <i class="fa fa-lock"></i><span> Change Password</span>
