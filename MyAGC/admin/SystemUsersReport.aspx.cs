@@ -74,7 +74,7 @@ namespace MyAGC.admin
 
             }
             catch (Exception ex)
-            {
+            {//
                 WarningAlert(ex.Message);
             }
         }
