@@ -75,7 +75,7 @@ namespace MyAGC.admin
             }
             catch (Exception ex)
             {
-                //DangerAlert(ex.Message);
+                WarningAlert(ex.Message);
             }
         }
         protected void WarningAlert(string message)
