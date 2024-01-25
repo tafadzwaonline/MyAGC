@@ -31,7 +31,7 @@ namespace MyAGC
         private void getStatistics()
         {
 
-           
+            DataSet TotalPayments = lp.getAllPayments();
             DataSet getcollege = um.GetSystemUserByUserRole(2);
             DataSet getadmin = um.GetSystemUserByUserRole(1);
             DataSet getstudent = um.GetSystemUserByUserRole(3);
@@ -40,6 +40,10 @@ namespace MyAGC
             if (getcollege != null)
             {
                 lblTotalColleges.Text = getcollege.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalPayments != null)
+            {
+                lblTotalPayments.Text = TotalPayments.Tables[0].Rows.Count.ToString();
             }
 
             if (getadmin != null)
@@ -78,7 +82,7 @@ namespace MyAGC
 
         protected void lnkTotalPayments_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect(string.Format("../admin/all-payments"));
         }
 
         protected void lnkTotalAdmin_Click(object sender, EventArgs e)

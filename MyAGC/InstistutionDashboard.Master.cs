@@ -35,6 +35,7 @@ namespace MyAGC
         {
            
             DataSet TotalApplication = lp.getTotalApplications(int.Parse(Session["userid"].ToString()));
+            DataSet TotalPayments = lp.getPaymentsByCollegeID(int.Parse(Session["userid"].ToString()));
             DataSet RejectedApplication = lp.getRejectedApplications(int.Parse(Session["userid"].ToString()));
             DataSet AcceptedApplication = lp.getApprovedApplications(int.Parse(Session["userid"].ToString()));
             DataSet PendingApplication = lp.getApplicationsAwaitingApproval(int.Parse(Session["userid"].ToString()));
@@ -43,6 +44,10 @@ namespace MyAGC
             if (TotalApplication != null)
             {
                 lblTotalApplications.Text = TotalApplication.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalPayments != null)
+            {
+                lblTotalPayments.Text = TotalPayments.Tables[0].Rows.Count.ToString();
             }
             if (RejectedApplication != null)
             {
@@ -99,6 +104,11 @@ namespace MyAGC
         protected void lnkTotalPrograms_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../institution/add-program"));
+        }
+
+        protected void lnkTotalPayments_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../institution/student-payments"));
         }
     }
 }

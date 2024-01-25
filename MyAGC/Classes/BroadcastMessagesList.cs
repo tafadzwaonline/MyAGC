@@ -16,6 +16,7 @@ namespace MyAGC.Classes
         protected long mCreatedBy;
         protected long mStatusID;
         protected string mDateCreated;
+        protected string mSenderEmail;
         protected string mBroadcastMessgeTitle;
 
         protected string mMessageType;
@@ -68,6 +69,12 @@ namespace MyAGC.Classes
         {
             get { return mDateCreated; }
             set { mDateCreated = value; }
+        }
+
+        public string SenderEmail
+        {
+            get { return mSenderEmail; }
+            set { mSenderEmail = value; }
         }
 
         public string BroadcastMessgeTitle
@@ -353,19 +360,10 @@ namespace MyAGC.Classes
             db.AddInParameter(cmd, "@DateCreated", DbType.String, mDateCreated);
             db.AddInParameter(cmd, "@BroadcastMessgeTitle", DbType.String, mBroadcastMessgeTitle);
             db.AddInParameter(cmd, "@MessageType", DbType.String, mMessageType);
+            //db.AddInParameter(cmd, "@SenderEmail", DbType.String, mSenderEmail);
 
         }
-        public DataSet getMessageTypes()
-        {
-            string str = "select * from MessageTypes";
-            return ReturnDs(str);
-        }
-
-        public DataSet getMessageFormatTypes()
-        {
-            string str = "select * from MessageFormatTypes";
-            return ReturnDs(str);
-        }
+     
 
         public virtual bool Save()
         {

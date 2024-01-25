@@ -247,13 +247,13 @@
                                      
                             </ul>
                         </li>
-                          <li>
+                          <%--<li>
                         <a href="../student/pay-now">
                          <i class="fa fa-dollar"></i><span>Pay using Paynow</span>
                            
                      </a>
                  </li>
-                       
+                       --%>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i> <span>Decision Management</span>

@@ -349,7 +349,30 @@ namespace MyAGC.Classes
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }
-        }   
+        }
+        public void SavePayment(int ApplicantID, int CollegeID, int ProgramID, int PeriodID,string UserEmail,decimal Amount,string PollUrl,int Paynowrefence)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Payment_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ApplicantID", SqlDbType.Int).Value = ApplicantID;
+                sql_cmnd.Parameters.AddWithValue("@CollegeID", SqlDbType.Int).Value = CollegeID;
+                sql_cmnd.Parameters.AddWithValue("@ProgramID", SqlDbType.Int).Value = ProgramID;
+                sql_cmnd.Parameters.AddWithValue("@PeriodID", SqlDbType.Int).Value = PeriodID;
+                sql_cmnd.Parameters.AddWithValue("@UserEmail", SqlDbType.NVarChar).Value = UserEmail;
+                sql_cmnd.Parameters.AddWithValue("@Amount", SqlDbType.Float).Value = Amount;
+                sql_cmnd.Parameters.AddWithValue("@Platform", SqlDbType.NVarChar).Value = "Pay Now";
+                sql_cmnd.Parameters.AddWithValue("@Currency", SqlDbType.NVarChar).Value = "USD";
+                sql_cmnd.Parameters.AddWithValue("@PollUrl", SqlDbType.NVarChar).Value = PollUrl;
+                sql_cmnd.Parameters.AddWithValue("@PayNowReference", SqlDbType.Int).Value = Paynowrefence;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
 
         public void SaveEmailSettings(int UserID,string Email,string Password,string Host, int Port)
         {
@@ -638,6 +661,24 @@ namespace MyAGC.Classes
             }
 
         }
+        public DataSet getAllEmailSettings()
+        {
+
+            string str = "sp_getAllEmailSettings";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         public void UploadDocument(string Name, string ContentType, byte[] Data, DateTime DateCreated, int UploadedBy, int DocTypeID)
         {
 
@@ -776,6 +817,74 @@ namespace MyAGC.Classes
             string str = "sp_getApplicationByUserID";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@ID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getPaymentsByApplicantID(int userid)
+        {
+            string str = "sp_getPaymentsByApplicantID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ApplicantID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getPaymentsByCollegeID(int CollegeID)
+        {
+            string str = "sp_getPaymentsByCollegeID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getAllPayments()
+        {
+            string str = "sp_getAllPayments";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getPaymentsByPaymentID(int PaymentID)
+        {
+            string str = "sp_getPaymentsByPaymentID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@PaymentID", DbType.Int32, PaymentID);
 
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

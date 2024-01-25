@@ -251,7 +251,7 @@
                             </a>
                             <ul class="treeview-menu">
                                <li><a href="../admin/send-communication">Send Communication</a></li>
-                               <li><a href="../admin/sms-settings">Email Settings</a></li>
+                               <li><a href="../admin/email-settings">Email Settings</a></li>
                                <li><a href="../admin/sms-settings">Sms Settings</a></li>
                                 
                                 

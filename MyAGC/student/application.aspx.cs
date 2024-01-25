@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Webdev.Payments;
 
 namespace MyAGC.student
 {
@@ -39,6 +41,8 @@ namespace MyAGC.student
                 getSavedPrograms();
                 ApplicationDate();
                 getSavedAcademicPeriod();
+
+                SaveApplication();
             }
         }
         private void getSavedPrograms()
@@ -209,7 +213,65 @@ namespace MyAGC.student
                 return;
             }
         }
+        private void SaveApplication()
+        {
+            try
+            {
+                var paynow = new Paynow("15551", "ad6ee0d2-0103-4036-a920-623b5a83f7fa");
+                var pollUrl = Session["PollUrl"] as string;
+                int userId = int.Parse(Session["userid"].ToString());
+                string useremail = Session["username"].ToString();
+                int collegeId = int.Parse(txtCollegeID.Value);
+                int periodId = int.Parse(txtPeriodID.Value);
+                int programId = int.Parse(txtProgramID.Value);
+                if (!string.IsNullOrEmpty(pollUrl))
+                {
+                    // Check the transaction status
+                    //var status = paynow.CheckTransactionStatus(pollUrl);
+                    var status = paynow.PollTransaction(pollUrl);
+                    int paynowreference = 0;
+                    if (status.Paid())
+                    {
+                       
 
+                        foreach (var item in status.GetData())
+                        {
+                            if (item.Key == "paynowreference")
+                            {
+                                paynowreference = Convert.ToInt32(item.Value);
+                                break;
+                            }
+                        }
+
+                        //insert payment details
+                        lp.SavePayment(userId, collegeId, programId, periodId, useremail,status.Amount, pollUrl, paynowreference);
+
+
+                        lp.SaveApplication(userId, collegeId, programId, periodId);
+                        SuccessAlert("Program successfully applied, now awaiting confirmation");
+                        Session["PollUrl"] = null;
+                        Session["TransactionReference"] = null;
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../student/my-applications';", true);
+                        //SuccessAlert("Your transaction was successfully paid");
+                       
+                    }
+                    else
+                    {
+
+                        WarningAlert("Your transaction was not paid");
+                        Session["PollUrl"] = null;
+                        Session["TransactionReference"] = null;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["PollUrl"] = null;
+                Session["TransactionReference"] = null;
+                WarningAlert("An error occured, please try again later");
+            }
+        }
 
         private void Save()
         {
@@ -245,10 +307,55 @@ namespace MyAGC.student
                     return;
                 }
 
+                //
+                var paynow = new Paynow("15551", "ad6ee0d2-0103-4036-a920-623b5a83f7fa");
+                string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtCollegeID.Value));
+                string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(txtPeriodID.Value));
+                string EcryptedProgramID = HttpUtility.UrlEncode(qn.Encrypt(txtProgramID.Value));
+                // Response.Redirect(string.Format("../student/application?ID={0}", EcryptedProgramID), false);
+                //Response.Redirect(string.Format("../student/application?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
+                //paynow.ReturnUrl = $"https://localhost:44302/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
+                paynow.ReturnUrl = $"http://localhost/MyAGC/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
 
-                lp.SaveApplication(userId, collegeId, programId, periodId);
+                paynow.ResultUrl = "http://example.com/gateways/paynow/update";
+
+                var payment = paynow.CreatePayment("Application Fees");
+                payment.AuthEmail = Session["username"].ToString();
+                // Add items to the payment
+                payment.Add("Application Fees", Convert.ToDecimal(txtApplicationFee.Text));
+
+                // Send payment to paynow
+                var response = paynow.Send(payment);
+
+
+
+                // Check if payment was sent without error
+                if (response.Success())
+                {
+                    // Get the url to redirect the user to so they can make payment
+                    //var link = response.RedirectLink();
+                    //Response.Redirect(string.Format(link));
+
+
+                    //System.Diagnostics.Process.Start(link);
+                    // Get the poll url of the transaction
+                    //var pollUrl = response.PollUrl();
+
+                    //var status = paynow.PollTransaction(pollUrl);
+                    var redirectUrl = response.RedirectLink();
+
+                    // Store relevant transaction information for later retrieval
+                    Session["TransactionReference"] = payment.Reference;
+                    Session["PollUrl"] = response.PollUrl();
+
+                    // Redirect the user to Paynow for payment
+                    Response.Redirect(redirectUrl);
+                }
+
+
+                //lp.SaveApplication(userId, collegeId, programId, periodId);
                 //SuccessAlert("Program successfully applied, now awaiting confirmation");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../student/my-applications';", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../student/my-applications';", true);
             }
             catch (Exception)
             {

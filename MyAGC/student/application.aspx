@@ -75,7 +75,7 @@
                                              
 
                                               <div class="col-sm-12 reset-button">
-                                                 <asp:Button ID="btnSave" runat="server" Text="Apply" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 <asp:Button ID="btnSave" runat="server" Text="Submit Application" OnClientClick="return confirm('You are about to be redirected to paynow for application fee payment-?');" OnClick="btnSave_Click" class="btn btn-success" />
                                                   
                                              </div>
                                             

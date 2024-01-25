@@ -201,15 +201,15 @@
                             </a>
                             <ul class="treeview-menu">
                                   
-                                 <li><a href="../Admin/view-user">View Administrators</a></li>
-                                <li><a href="../Admin/view-colleges">View Colleges</a></li>
-                                <li><a href="../Admin/view-students">View Students</a></li>
+                                 <li><a href="../admin/view-user">View Administrators</a></li>
+                                <li><a href="../admin/view-colleges">View Colleges</a></li>
+                                <li><a href="../admin/view-students">View Students</a></li>
                                      
                             </ul>
                         </li>
                          
                        <li>
-                        <a href="../profile/my-profile">
+                        <a href="../admin/all-payments">
                          <i class="fa fa-dollar"></i><span>View Payments</span>
                            
                      </a>
@@ -223,7 +223,7 @@
                             </a>
                             <ul class="treeview-menu">
                             <li><a href="../admin/send-communication">Send Communication</a></li>
-                               <li><a href="../admin/sms-settings">Email Settings</a></li>
+                               <li><a href="../admin/email-settings">Email Settings</a></li>
                                <li><a href="../admin/sms-settings">Sms Settings</a></li>
                                 
                                 

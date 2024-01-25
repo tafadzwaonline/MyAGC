@@ -78,7 +78,7 @@ namespace MyAGC
                 string EmailAddress = string.Empty;
                 string EmailPassword = string.Empty;
 
-                DataSet emails = look.getEmailSettings(int.Parse(Session["userid"].ToString()));
+                DataSet emails = look.getAllEmailSettings();
                 if (emails != null)
                 {
                     DataRow row = emails.Tables[0].Rows[0];
@@ -124,7 +124,7 @@ namespace MyAGC
                         <p>Good Day,</p>
                         <p>Your password reset code is {code}</p>
                         <p>Regards,</p>
-                        <p><b>MyAGC Management</b></p>
+                        <p><b>Management</b></p>
                     </body>
                 </html>";
 

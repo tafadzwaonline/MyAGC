@@ -32,12 +32,18 @@ namespace MyAGC
         {
 
             DataSet TotalApplication = lp.getStudentApplicationByUserID(int.Parse(Session["userid"].ToString()));
+            DataSet TotalPayments = lp.getPaymentsByApplicantID(int.Parse(Session["userid"].ToString()));
             DataSet getsearchdata = um.GetSystemUserByUserRole(2);
             
 
             if (TotalApplication != null)
             {
                 lblTotalApplications.Text = TotalApplication.Tables[0].Rows.Count.ToString();
+            }
+
+            if (TotalPayments != null)
+            {
+                lblTotalPayments.Text = TotalPayments.Tables[0].Rows.Count.ToString();
             }
 
             if (getsearchdata != null)
@@ -77,7 +83,7 @@ namespace MyAGC
 
         protected void lnkTotalPayments_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect(string.Format("../student/my-payments"));
         }
     }
 }

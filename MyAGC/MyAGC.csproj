@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="admin\all-payments.aspx" />
     <Content Include="admin\create-user.aspx" />
     <Content Include="admin\dashboard.aspx" />
     <Content Include="admin\email-settings.aspx" />
@@ -176,7 +177,7 @@
     <Content Include="admin\SystemUsersReport.aspx" />
     <Content Include="admin\TotalPaymentsReport.aspx" />
     <Content Include="admin\view-colleges.aspx" />
-    <Content Include="admin\view-payments.aspx" />
+    <Content Include="admin\view-payment.aspx" />
     <Content Include="admin\view-students.aspx" />
     <Content Include="admin\view-user.aspx" />
     <Content Include="assets\bootstrap\css\bootstrap.min.css" />
@@ -405,9 +406,11 @@
     <Content Include="institution\profile.aspx" />
     <Content Include="institution\rejected-applications.aspx" />
     <Content Include="institution\reporting.aspx" />
+    <Content Include="institution\student-payments.aspx" />
     <Content Include="institution\total-applications.aspx" />
     <Content Include="institution\TotalProgramReport.aspx" />
     <Content Include="institution\view-application.aspx" />
+    <Content Include="institution\view-payments.aspx" />
     <Content Include="login.aspx" />
     <Content Include="profile\my-profile.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -446,12 +449,14 @@
     <Content Include="student\manage-document.aspx" />
     <Content Include="student\my-applications.aspx" />
     <Content Include="student\my-college.aspx" />
+    <Content Include="student\my-payments.aspx" />
     <Content Include="student\my-profile.aspx" />
     <Content Include="student\pay-now.aspx" />
     <Content Include="student\personal-information.aspx" />
     <Content Include="student\programs.aspx" />
     <Content Include="student\search-college.aspx" />
     <Content Include="student\view-application.aspx" />
+    <Content Include="student\view-payment.aspx" />
     <Content Include="verify-email.aspx" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
@@ -543,6 +548,13 @@
     <Compile Include="AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="admin\all-payments.aspx.cs">
+      <DependentUpon>all-payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\all-payments.aspx.designer.cs">
+      <DependentUpon>all-payments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\create-user.aspx.cs">
       <DependentUpon>create-user.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -627,12 +639,12 @@
     <Compile Include="admin\view-colleges.aspx.designer.cs">
       <DependentUpon>view-colleges.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\view-payments.aspx.cs">
-      <DependentUpon>view-payments.aspx</DependentUpon>
+    <Compile Include="admin\view-payment.aspx.cs">
+      <DependentUpon>view-payment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\view-payments.aspx.designer.cs">
-      <DependentUpon>view-payments.aspx</DependentUpon>
+    <Compile Include="admin\view-payment.aspx.designer.cs">
+      <DependentUpon>view-payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\view-students.aspx.cs">
       <DependentUpon>view-students.aspx</DependentUpon>
@@ -831,6 +843,13 @@
     <Compile Include="institution\reporting.aspx.designer.cs">
       <DependentUpon>reporting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="institution\student-payments.aspx.cs">
+      <DependentUpon>student-payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\student-payments.aspx.designer.cs">
+      <DependentUpon>student-payments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="institution\total-applications.aspx.cs">
       <DependentUpon>total-applications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -851,6 +870,13 @@
     </Compile>
     <Compile Include="institution\view-application.aspx.designer.cs">
       <DependentUpon>view-application.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="institution\view-payments.aspx.cs">
+      <DependentUpon>view-payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\view-payments.aspx.designer.cs">
+      <DependentUpon>view-payments.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -951,6 +977,13 @@
     <Compile Include="student\my-college.aspx.designer.cs">
       <DependentUpon>my-college.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\my-payments.aspx.cs">
+      <DependentUpon>my-payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\my-payments.aspx.designer.cs">
+      <DependentUpon>my-payments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\my-profile.aspx.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -995,6 +1028,13 @@
     </Compile>
     <Compile Include="student\view-application.aspx.designer.cs">
       <DependentUpon>view-application.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\view-payment.aspx.cs">
+      <DependentUpon>view-payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\view-payment.aspx.designer.cs">
+      <DependentUpon>view-payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="verify-email.aspx.cs">
       <DependentUpon>verify-email.aspx</DependentUpon>
