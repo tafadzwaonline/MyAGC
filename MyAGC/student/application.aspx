@@ -23,6 +23,7 @@
                                         <form class="col-sm-12" runat="server">
                                             <div class="row">
                     <asp:HiddenField ID="txtCollegeID" runat="server" />
+                    <asp:HiddenField ID="txtIsPaid" runat="server" />
                     <asp:HiddenField ID="txtPeriodID" runat="server" />
                     <asp:HiddenField ID="txtProgramID" runat="server" />
                 </div>
@@ -68,14 +69,27 @@
                                                 <asp:TextBox ID="txtIntake" runat="server" ReadOnly="true" class="form-control"></asp:TextBox>
                                             </div>
                                             <div class="col-sm-6 form-group">
+                                                <label>Application Fee Payment Type</label>
+                                              <asp:DropDownList ID="drpPaymentType" AutoPostBack="true"  CssClass="form-control dropdown" runat="server" OnSelectedIndexChanged="drpPaymentType_SelectedIndexChanged" >
+                    <asp:ListItem Value="0" Text="Select payment type"></asp:ListItem>
+                    <asp:ListItem Value="1" Text="PayNow"></asp:ListItem>
+                    <asp:ListItem Value="2" Text="Upload Proof of Payment (POP)"></asp:ListItem>
+                   
+                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
                                                 <label>Requirements</label>
                                                 <asp:TextBox ID="txtRequirements" runat="server" ReadOnly="true" TextMode="MultiLine"  class="form-control"></asp:TextBox>
                                             </div>
                                           
                                              
+                                             <div class="col-sm-6 form-group" id="up" runat="server" visible="false">
+                                                <label></label>
+                                                <asp:FileUpload ID="fileUpload" runat="server" />
+                                            </div>
 
                                               <div class="col-sm-12 reset-button">
-                                                 <asp:Button ID="btnSave" runat="server" Text="Submit Application" OnClientClick="return confirm('You are about to be redirected to paynow for application fee payment-?');" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 <asp:Button ID="btnSave" runat="server" Text="Submit Application" OnClientClick="return confirm('Are you suree you want to submit this application?');" OnClick="btnSave_Click" class="btn btn-success" />
                                                   
                                              </div>
                                             

@@ -24,6 +24,15 @@ namespace MyAGC.student
         protected global::System.Web.UI.WebControls.HiddenField txtCollegeID;
 
         /// <summary>
+        /// txtIsPaid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField txtIsPaid;
+
+        /// <summary>
         /// txtPeriodID control.
         /// </summary>
         /// <remarks>
@@ -132,6 +141,15 @@ namespace MyAGC.student
         protected global::System.Web.UI.WebControls.TextBox txtIntake;
 
         /// <summary>
+        /// drpPaymentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpPaymentType;
+
+        /// <summary>
         /// txtRequirements control.
         /// </summary>
         /// <remarks>
@@ -139,6 +157,24 @@ namespace MyAGC.student
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRequirements;
+
+        /// <summary>
+        /// up control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl up;
+
+        /// <summary>
+        /// fileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
 
         /// <summary>
         /// btnSave control.

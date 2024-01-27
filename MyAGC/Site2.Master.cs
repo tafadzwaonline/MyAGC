@@ -34,7 +34,7 @@ namespace MyAGC
             {
 
 
-                //ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
+                ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
             }
             catch (Exception ex)
             {

@@ -40,10 +40,15 @@ namespace MyAGC
             DataSet AcceptedApplication = lp.getApprovedApplications(int.Parse(Session["userid"].ToString()));
             DataSet PendingApplication = lp.getApplicationsAwaitingApproval(int.Parse(Session["userid"].ToString()));
             DataSet TotalPrograms = lp.getPrograms(int.Parse(Session["userid"].ToString()));
+            DataSet TotalPop = lp.getUploadedProofOfPaymentsByCollegeID(int.Parse(Session["userid"].ToString()));
 
             if (TotalApplication != null)
             {
                 lblTotalApplications.Text = TotalApplication.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalPop != null)
+            {
+                lblPop.Text = TotalPop.Tables[0].Rows.Count.ToString();
             }
             if (TotalPayments != null)
             {
@@ -73,7 +78,7 @@ namespace MyAGC
             {
 
 
-                //ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
+                ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
             }
             catch (Exception ex)
             {
@@ -109,6 +114,11 @@ namespace MyAGC
         protected void lnkTotalPayments_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../institution/student-payments"));
+        }
+
+        protected void lnkPop_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../institution/pop-uploads"));
         }
     }
 }

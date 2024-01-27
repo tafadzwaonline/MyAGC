@@ -180,8 +180,8 @@
                             <li class="dropdown dropdown-user admin-user">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
                                 <div class="user-image">
-                                <img src="../assets/dist/img/avatar4.png" class="img-circle" height="40" width="40" alt="User Image">
-                                <%--<asp:Image ID="ClientPic" ImageUrl="../assets/dist/img/avatar4.png" CssClass="img-circle" Height="40px" Width="40px" runat="server" />--%>
+                                <%--<img src="../assets/dist/img/avatar4.png" class="img-circle" height="40" width="40" alt="User Image">--%>
+                                <asp:Image ID="ClientPic" ImageUrl="../assets/dist/img/avatar4.png" CssClass="img-circle" Height="40px" Width="40px" runat="server" />
 
                                     <span>
                                             <asp:Label ID="lblUsername" runat="server" Text="Tafadzwa Kahwai"></asp:Label></span>
@@ -189,7 +189,7 @@
 
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="../profile/my-profile"><i class="fa fa-users"></i> User Profile</a></li>
+                                    <li><a href="../admin/my-profile"><i class="fa fa-users"></i> User Profile</a></li>
                                     <li><a href="../login"><i class="fa fa-sign-out"></i> Logout</a></li>
                                 </ul>
                             </li>
@@ -280,7 +280,7 @@
         </div>
             <footer class="main-footer">
                 
-                <strong>Copyright &copy; <%: DateTime.Now.Year %> <a href="#">MyAGC</a>.</strong> All rights reserved.
+                <strong>Copyright &copy; <%: DateTime.Now.Year %> <a>Achironet Global Consultancy</a>.</strong> All rights reserved.
             </footer>
             <!-- =============================================== -->
             <!-- Content Wrapper. Contains page content -->

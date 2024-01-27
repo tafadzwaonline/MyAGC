@@ -1,7 +1,9 @@
 ﻿using MyAGC.Classes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -22,6 +24,7 @@ namespace MyAGC.student
             {
                 txtCollegeID.Value = "0";
                 txtPeriodID.Value = "0";
+               
                 txtProgramID.Value = "0";
                 if (Request.QueryString["CollegeID"].ToString() != null)
                 {
@@ -127,7 +130,7 @@ namespace MyAGC.student
         }
         private void getSavedApplicationFees()
         {
-            DataSet dataSet = lp.getApplicationFeesByID(int.Parse(drpCitizenType.SelectedValue));
+            DataSet dataSet = lp.getApplicationFeesByID(int.Parse(txtPeriodID.Value),int.Parse(drpCitizenType.SelectedValue),int.Parse(txtCollegeID.Value));
 
             if (dataSet != null)
             {
@@ -201,6 +204,11 @@ namespace MyAGC.student
                     WarningAlert("Please enter application fee");
                     return;
                 }
+                if (drpPaymentType.SelectedValue == "0")
+                {
+                    WarningAlert("Please select payment type");
+                    return;
+                }
 
                 // If all checks pass, proceed to save
                 Save();
@@ -217,7 +225,8 @@ namespace MyAGC.student
         {
             try
             {
-                var paynow = new Paynow("15551", "ad6ee0d2-0103-4036-a920-623b5a83f7fa");
+                //var paynow = new Paynow("15551", "ad6ee0d2-0103-4036-a920-623b5a83f7fa");
+                var paynow = new Paynow("15816", "2e98fc93-849c-48d7-9ab1-0a742d679ed2");
                 var pollUrl = Session["PollUrl"] as string;
                 int userId = int.Parse(Session["userid"].ToString());
                 string useremail = Session["username"].ToString();
@@ -248,7 +257,7 @@ namespace MyAGC.student
 
 
                         lp.SaveApplication(userId, collegeId, programId, periodId);
-                        SuccessAlert("Program successfully applied, now awaiting confirmation");
+                       
                         Session["PollUrl"] = null;
                         Session["TransactionReference"] = null;
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../student/my-applications';", true);
@@ -307,50 +316,61 @@ namespace MyAGC.student
                     return;
                 }
 
+                if (drpPaymentType.SelectedValue == "1")
+                {
+                    PayNow();
+                }
+                else
+                {
+                    UploadPop();
+                }
+
+
                 //
-                var paynow = new Paynow("15551", "ad6ee0d2-0103-4036-a920-623b5a83f7fa");
-                string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtCollegeID.Value));
-                string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(txtPeriodID.Value));
-                string EcryptedProgramID = HttpUtility.UrlEncode(qn.Encrypt(txtProgramID.Value));
+                //var paynow = new Paynow("15551", "ad6ee0d2-0103-4036-a920-623b5a83f7fa");
+                //var paynow = new Paynow("15816", "2e98fc93-849c-48d7-9ab1-0a742d679ed2");
+                //string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtCollegeID.Value));
+                //string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(txtPeriodID.Value));
+                //string EcryptedProgramID = HttpUtility.UrlEncode(qn.Encrypt(txtProgramID.Value));
                 // Response.Redirect(string.Format("../student/application?ID={0}", EcryptedProgramID), false);
                 //Response.Redirect(string.Format("../student/application?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
                 //paynow.ReturnUrl = $"https://localhost:44302/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
-                paynow.ReturnUrl = $"http://localhost/MyAGC/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
+                //paynow.ReturnUrl = $"http://mysystem.ddns.net/MyAGC/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
 
-                paynow.ResultUrl = "http://example.com/gateways/paynow/update";
+                //paynow.ResultUrl = "http://example.com/gateways/paynow/update";
 
-                var payment = paynow.CreatePayment("Application Fees");
-                payment.AuthEmail = Session["username"].ToString();
-                // Add items to the payment
-                payment.Add("Application Fees", Convert.ToDecimal(txtApplicationFee.Text));
+                //var payment = paynow.CreatePayment("Application Fees");
+                //payment.AuthEmail = Session["username"].ToString();
+                //// Add items to the payment
+                //payment.Add("Application Fees", Convert.ToDecimal(txtApplicationFee.Text));
 
-                // Send payment to paynow
-                var response = paynow.Send(payment);
+                //// Send payment to paynow
+                //var response = paynow.Send(payment);
 
 
 
                 // Check if payment was sent without error
-                if (response.Success())
-                {
-                    // Get the url to redirect the user to so they can make payment
-                    //var link = response.RedirectLink();
-                    //Response.Redirect(string.Format(link));
+                //if (response.Success())
+                //{
+                //    // Get the url to redirect the user to so they can make payment
+                //    //var link = response.RedirectLink();
+                //    //Response.Redirect(string.Format(link));
 
 
-                    //System.Diagnostics.Process.Start(link);
-                    // Get the poll url of the transaction
-                    //var pollUrl = response.PollUrl();
+                //    //System.Diagnostics.Process.Start(link);
+                //    // Get the poll url of the transaction
+                //    //var pollUrl = response.PollUrl();
 
-                    //var status = paynow.PollTransaction(pollUrl);
-                    var redirectUrl = response.RedirectLink();
+                //    //var status = paynow.PollTransaction(pollUrl);
+                //    var redirectUrl = response.RedirectLink();
 
-                    // Store relevant transaction information for later retrieval
-                    Session["TransactionReference"] = payment.Reference;
-                    Session["PollUrl"] = response.PollUrl();
+                //    // Store relevant transaction information for later retrieval
+                //    Session["TransactionReference"] = payment.Reference;
+                //    Session["PollUrl"] = response.PollUrl();
 
-                    // Redirect the user to Paynow for payment
-                    Response.Redirect(redirectUrl);
-                }
+                //    // Redirect the user to Paynow for payment
+                //    Response.Redirect(redirectUrl);
+                //}
 
 
                 //lp.SaveApplication(userId, collegeId, programId, periodId);
@@ -363,6 +383,107 @@ namespace MyAGC.student
                 
                 WarningAlert("An error occurred. Please try again later.");
                 return;
+            }
+        }
+
+        private void UploadPop()
+        {
+            try
+            {
+                if (!fileUpload.HasFile)
+            {
+                WarningAlert("Please select a file to upload");
+                return;
+            }
+
+            
+
+                string filename = Path.GetFileName(fileUpload.PostedFile.FileName);
+                string contentType = fileUpload.PostedFile.ContentType;
+                int collegeId = int.Parse(txtCollegeID.Value);
+                int periodId = int.Parse(txtPeriodID.Value);
+                int programId = int.Parse(txtProgramID.Value);
+                using (Stream fs = fileUpload.PostedFile.InputStream)
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                        string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                        lp.UploadProofOfPayment(filename, contentType, bytes, DateTime.Today, int.Parse(Session["userid"].ToString()),collegeId,periodId,programId);
+                    }
+                }
+
+                //Save application
+
+
+                lp.SaveApplication(int.Parse(Session["userid"].ToString()), collegeId, programId, periodId);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../student/my-applications';", true);
+
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        private void PayNow()
+        {
+            var paynow = new Paynow("15816", "2e98fc93-849c-48d7-9ab1-0a742d679ed2");
+            string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtCollegeID.Value));
+            string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(txtPeriodID.Value));
+            string EcryptedProgramID = HttpUtility.UrlEncode(qn.Encrypt(txtProgramID.Value));
+            // Response.Redirect(string.Format("../student/application?ID={0}", EcryptedProgramID), false);
+            //Response.Redirect(string.Format("../student/application?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
+            //paynow.ReturnUrl = $"https://localhost:44302/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
+            paynow.ReturnUrl = $"http://mysystem.ddns.net/MyAGC/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
+
+            paynow.ResultUrl = "http://example.com/gateways/paynow/update";
+
+            var payment = paynow.CreatePayment("Application Fees");
+            payment.AuthEmail = Session["username"].ToString();
+            // Add items to the payment
+            payment.Add("Application Fees", Convert.ToDecimal(txtApplicationFee.Text));
+
+            // Send payment to paynow
+            var response = paynow.Send(payment);
+
+
+
+            // Check if payment was sent without error
+            if (response.Success())
+            {
+                // Get the url to redirect the user to so they can make payment
+                //var link = response.RedirectLink();
+                //Response.Redirect(string.Format(link));
+
+
+                //System.Diagnostics.Process.Start(link);
+                // Get the poll url of the transaction
+                //var pollUrl = response.PollUrl();
+
+                //var status = paynow.PollTransaction(pollUrl);
+                var redirectUrl = response.RedirectLink();
+
+                // Store relevant transaction information for later retrieval
+                Session["TransactionReference"] = payment.Reference;
+                Session["PollUrl"] = response.PollUrl();
+
+                // Redirect the user to Paynow for payment
+                Response.Redirect(redirectUrl);
+            }
+        }
+
+        protected void drpPaymentType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (drpPaymentType.SelectedValue == "1" || drpPaymentType.SelectedValue == "0")
+            {
+                up.Visible= false;
+            }
+            else
+            {
+                up.Visible = true;
             }
         }
     }

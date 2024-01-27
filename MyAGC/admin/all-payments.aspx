@@ -26,7 +26,22 @@
                                              <asp:HiddenField ID="txtid" runat="server" />
              
                                                <table style="width:100%" >
-
+<tr runat="server" visible="false">
+            <td colspan="4">
+                 <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
+                                                    <asp:ListItem Value="1" Text="Search By" Selected="True"></asp:ListItem>
+                                                    <asp:ListItem Value="2" Text="ApplicantName"></asp:ListItem>
+                                                    <asp:ListItem Value="3" Text="ApplicantEmail"></asp:ListItem>
+                                                    <asp:ListItem Value="4" Text="ReferenceNumber"></asp:ListItem>
+                                                    
+                                                </asp:DropDownList></td>
+        
+            <td colspan="4"><asp:TextBox ID="txtValue" placeholder="Search Value" CssClass="form-control" runat="server"></asp:TextBox></td>
+            
+            <td colspan="4">
+                <asp:Button ID="btnSearch" CssClass="btn btn-success" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
+            </td>
+        </tr>
                                          <tr>
                                              <td colspan="12">
 

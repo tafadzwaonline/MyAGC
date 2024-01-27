@@ -33,12 +33,17 @@ namespace MyAGC
 
             DataSet TotalApplication = lp.getStudentApplicationByUserID(int.Parse(Session["userid"].ToString()));
             DataSet TotalPayments = lp.getPaymentsByApplicantID(int.Parse(Session["userid"].ToString()));
+            DataSet TotalPop = lp.getUploadedProofOfPaymentsByApplicantID(int.Parse(Session["userid"].ToString()));
             DataSet getsearchdata = um.GetSystemUserByUserRole(2);
             
 
             if (TotalApplication != null)
             {
                 lblTotalApplications.Text = TotalApplication.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalPop != null)
+            {
+                lblPop.Text = TotalPop.Tables[0].Rows.Count.ToString();
             }
 
             if (TotalPayments != null)
@@ -57,7 +62,7 @@ namespace MyAGC
             {
 
 
-                //ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
+                ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
             }
             catch (Exception ex)
             {
@@ -78,7 +83,7 @@ namespace MyAGC
 
         protected void lnkSupportQuery_Click(object sender, EventArgs e)
         {
-            //Response.Redirect(string.Format("../student/rejected-applications"));
+           Response.Redirect(string.Format("../student/pop-uploads"));
         }
 
         protected void lnkTotalPayments_Click(object sender, EventArgs e)

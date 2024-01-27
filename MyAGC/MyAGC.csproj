@@ -171,6 +171,7 @@
     <Content Include="admin\logged-queries.aspx" />
     <Content Include="admin\my-profile.aspx" />
     <Content Include="admin\personal-info.aspx" />
+    <Content Include="admin\pop-uploads.aspx" />
     <Content Include="admin\reporting.aspx" />
     <Content Include="admin\send-communication.aspx" />
     <Content Include="admin\sms-settings.aspx" />
@@ -403,6 +404,7 @@
     <Content Include="institution\dashboard.aspx" />
     <Content Include="institution\institution-information.aspx" />
     <Content Include="institution\manage-document.aspx" />
+    <Content Include="institution\pop-uploads.aspx" />
     <Content Include="institution\profile.aspx" />
     <Content Include="institution\rejected-applications.aspx" />
     <Content Include="institution\reporting.aspx" />
@@ -453,6 +455,7 @@
     <Content Include="student\my-profile.aspx" />
     <Content Include="student\pay-now.aspx" />
     <Content Include="student\personal-information.aspx" />
+    <Content Include="student\pop-uploads.aspx" />
     <Content Include="student\programs.aspx" />
     <Content Include="student\search-college.aspx" />
     <Content Include="student\view-application.aspx" />
@@ -596,6 +599,13 @@
     </Compile>
     <Compile Include="admin\personal-info.aspx.designer.cs">
       <DependentUpon>personal-info.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\pop-uploads.aspx.cs">
+      <DependentUpon>pop-uploads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\pop-uploads.aspx.designer.cs">
+      <DependentUpon>pop-uploads.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\reporting.aspx.cs">
       <DependentUpon>reporting.aspx</DependentUpon>
@@ -822,6 +832,13 @@
     <Compile Include="institution\manage-document.aspx.designer.cs">
       <DependentUpon>manage-document.aspx</DependentUpon>
     </Compile>
+    <Compile Include="institution\pop-uploads.aspx.cs">
+      <DependentUpon>pop-uploads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\pop-uploads.aspx.designer.cs">
+      <DependentUpon>pop-uploads.aspx</DependentUpon>
+    </Compile>
     <Compile Include="institution\profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1004,6 +1021,13 @@
     </Compile>
     <Compile Include="student\personal-information.aspx.designer.cs">
       <DependentUpon>personal-information.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\pop-uploads.aspx.cs">
+      <DependentUpon>pop-uploads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\pop-uploads.aspx.designer.cs">
+      <DependentUpon>pop-uploads.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\programs.aspx.cs">
       <DependentUpon>programs.aspx</DependentUpon>

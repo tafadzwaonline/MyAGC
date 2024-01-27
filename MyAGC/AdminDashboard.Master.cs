@@ -35,11 +35,15 @@ namespace MyAGC
             DataSet getcollege = um.GetSystemUserByUserRole(2);
             DataSet getadmin = um.GetSystemUserByUserRole(1);
             DataSet getstudent = um.GetSystemUserByUserRole(3);
-
+            DataSet TotalPop = lp.getUploadedProofOfPayments();
 
             if (getcollege != null)
             {
                 lblTotalColleges.Text = getcollege.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalPop != null)
+            {
+                lblPop.Text = TotalPop.Tables[0].Rows.Count.ToString();
             }
             if (TotalPayments != null)
             {
@@ -62,7 +66,7 @@ namespace MyAGC
             {
 
 
-                //ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
+                ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
             }
             catch (Exception ex)
             {
@@ -98,6 +102,11 @@ namespace MyAGC
         protected void lnkTotalStudents_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../admin/view-students"));
+        }
+
+        protected void lnkPop_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../admin/pop-uploads"));
         }
     }
 }

@@ -119,7 +119,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <header class="main-header">
-                <a href="index.html" class="logo"> <!-- Logo -->
+                <a href="../student/dashboard" class="logo"> <!-- Logo -->
                    <%-- <span class="logo-mini">
                         <!--<b>A</b>H-admin-->
                         <img src="../assets/dist/img/mini-logo.png" alt="">
@@ -152,8 +152,8 @@
                             <li class="dropdown dropdown-user admin-user">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
                                          <div class="user-image">
-                                <img src="../assets/dist/img/avatar4.png" class="img-circle" height="40" width="40" alt="User Image">
-                                <%--<asp:Image ID="ClientPic" ImageUrl="../assets/dist/img/avatar4.png" CssClass="img-circle" Height="40px" Width="40px" runat="server" />--%>
+                                <%--<img src="../assets/dist/img/avatar4.png" class="img-circle" height="40" width="40" alt="User Image">--%>
+                                <asp:Image ID="ClientPic" ImageUrl="../assets/dist/img/avatar4.png" CssClass="img-circle" Height="40px" Width="40px" runat="server" />
 
                                     <span>
                                             <asp:Label ID="lblUsername" runat="server" Text="Tafadzwa Kahwai"></asp:Label></span>
@@ -311,12 +311,12 @@
                             <div class="panel panel-bd cardbox">
                                 <div class="panel-body">
                                     <div class="statistic-box">
-                                        <h2><span class="count-number"><asp:Label ID="Label1" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                                        <h2><span class="count-number"><asp:Label ID="lblPop" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
                                         </h2>
                                     </div>
                                     <div class="items pull-left">
                                         <i class="fa fa-users fa-2x"></i>
-                                        <h4>Support Queries</h4>
+                                        <h4>Proof Of Payment Uploads</h4>
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +351,7 @@
         </div>
             <footer class="main-footer">
                 
-                <strong>Copyright &copy; <%: DateTime.Now.Year %> <a href="#">MyAGC</a>.</strong> All rights reserved.
+                <strong>Copyright &copy; <%: DateTime.Now.Year %> <a>Achironet Global Consultancy</a>.</strong> All rights reserved.
             </footer>
         </div> <!-- ./wrapper -->
       

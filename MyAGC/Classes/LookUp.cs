@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using MyAGC.student;
 using System;
 using System.Configuration;
 using System.Data;
@@ -166,7 +167,33 @@ namespace MyAGC.Classes
 
 
         }
-       
+        public DataSet getSearchPayments(int Criteria, int RoleID, string Value)
+        {
+
+            DataSet ds = null;
+
+            string str = "sp_SearchUsers";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            db.AddInParameter(cmd, "@RoleID", DbType.Int32, RoleID);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            ds = db.ExecuteDataSet(cmd);
+
+
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
         public DataSet getStudentApplications(int ApplicantID, int CollegeID, int PeriodID)
         {
 
@@ -607,6 +634,60 @@ namespace MyAGC.Classes
             }
 
         }
+        public DataSet getUploadedProofOfPaymentsByApplicantID(int ApplicantID)
+        {
+
+            string str = "sp_getProofOfPaymentsByApplicantID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ApplicantID", DbType.Int32, ApplicantID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getUploadedProofOfPaymentsByCollegeID(int CollegeID)
+        {
+
+            string str = "sp_getProofOfPaymentsByCollegeID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getUploadedProofOfPayments()
+        {
+
+            string str = "sp_getAllProofOfPayments";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         public DataSet getFaculty(int UserID)
         {
 
@@ -690,6 +771,23 @@ namespace MyAGC.Classes
             db.AddInParameter(cmd, "@DateCreated", DbType.DateTime, DateCreated);
             db.AddInParameter(cmd, "@UploadedBy", DbType.Int32, UploadedBy);
             db.AddInParameter(cmd, "@CertificateID", DbType.Int32, DocTypeID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+
+        }
+        public void UploadProofOfPayment(string Name, string ContentType, byte[] Data, DateTime DateCreated, int UploadedBy, int CollegeID,int PeriodID,int ProgramID)
+        {
+
+            string str = "sp_UploadProofOfPayment";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Name", DbType.String, Name);
+            db.AddInParameter(cmd, "@ContentType", DbType.String, ContentType);
+            db.AddInParameter(cmd, "@Data", DbType.Binary, Data);
+            db.AddInParameter(cmd, "@DateCreated", DbType.DateTime, DateCreated);
+            db.AddInParameter(cmd, "@UploadedBy", DbType.Int32, UploadedBy);
+            db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
+            db.AddInParameter(cmd, "@PeriodID", DbType.Int32, PeriodID);
+            db.AddInParameter(cmd, "@ProgramID", DbType.Int32, ProgramID);
 
             DataSet ds = db.ExecuteDataSet(cmd);
 
@@ -1052,11 +1150,13 @@ namespace MyAGC.Classes
                 return null;
             }
         }
-        public DataSet getApplicationFeesByID(int AcademicCalendarID)
+        public DataSet getApplicationFeesByID(int AcademicCalendarID, int CitizenID,int CollegeID)
         {
             string str = "sp_getApplicationFeesByID";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
-            db.AddInParameter(cmd, "@ID", DbType.Int32, AcademicCalendarID);
+            db.AddInParameter(cmd, "@CitizenID", DbType.Int32, CitizenID);
+            db.AddInParameter(cmd, "@PeriodID", DbType.Int32, AcademicCalendarID);
+            db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
 
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

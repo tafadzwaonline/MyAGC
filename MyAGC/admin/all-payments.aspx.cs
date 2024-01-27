@@ -129,5 +129,31 @@ namespace MyAGC.admin
                 DangerAlert(ex.ToString());
             }
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (drpSearchBy.SelectedValue == "1")
+            {
+                WarningAlert("Please select a criteria to search");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtValue.Text))
+            {
+                WarningAlert("Please enter search value");
+                return;
+            }
+
+            DataSet getsearchdata = lp.getSearchUsers(int.Parse(drpSearchBy.SelectedValue), 1, txtValue.Text);
+            if (getsearchdata != null)
+            {
+                grdPayments.DataSource = getsearchdata;
+                grdPayments.DataBind();
+            }
+            else
+            {
+                grdPayments.DataSource = null;
+                grdPayments.DataBind();
+            }
+        }
     }
 }

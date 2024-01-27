@@ -88,7 +88,7 @@ namespace MyAGC.institution
                 txtPeriod.Text = dt["Period"].ToString();
                 txtApplicationStatus.Text = dt["Status"].ToString();
                 txtApplicantMobile.Text = dt["Mobile"].ToString();
-                txtApplicantID.Value = dt["ID"].ToString();
+                txtApplicantID.Value = dt["ApplicantID"].ToString();
 
                 if (txtApplicationStatus.Text.ToLower() == "pending")
                 {
