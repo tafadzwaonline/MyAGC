@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="MyAGC.AdminMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AgentMaster.master.cs" Inherits="MyAGC.AgentMaster" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -147,7 +147,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <header class="main-header">
-                <a href="../admin/dashboard" class="logo"> <!-- Logo -->
+                <a href="../agent/dashboard" class="logo"> <!-- Logo -->
                    <%-- <span class="logo-mini">
                         <!--<b>A</b>H-admin-->
                         <img src="../assets/dist/img/mini-logo.png" alt="">
@@ -189,7 +189,7 @@
 
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="../admin/my-profile"><i class="fa fa-users"></i> User Profile</a></li>
+                                    <li><a href="../agent/my-profile"><i class="fa fa-users"></i> User Profile</a></li>
                                     <li><a href="../login"><i class="fa fa-sign-out"></i> Logout</a></li>
                                 </ul>
                             </li>
@@ -199,76 +199,78 @@
             </header>
             <!-- =============================================== -->
             <!-- Left side column. contains the sidebar -->
-         <aside class="main-sidebar">
+          <aside class="main-sidebar">
                 <!-- sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar user panel -->
                     <div>
-
+                       <%-- <div class="image pull-left">
+                            <img src="../assets/dist/img/avatar5.png" class="img-circle" alt="User Image">
+                        </div>
+                        <div>
+                            <h5>Welcome</h5>
+                           <p><asp:Label ID="Label1" runat="server" Text="University Of Zimbabwe"></asp:Label></p>
+                            
+                        </div>--%>
                     </div>
                    
                     <!-- sidebar menu -->
-                    <ul class="sidebar-menu">
+                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="../admin/dashboard"><i class="fa fa-hospital-o"></i><span>Dashboard</span>
+                            <a href="../agent/dashboard"><i class="fa fa-hospital-o"></i><span>Dashboard</span>
                             </a>
                         </li>
-                       
-                        <li>
-                        <a href="../admin/personal-info">
-                         <i class="fa fa-user"></i><span>Personal Information</span>
+                          <li>
+                        <a href="../agent/my-profile">
+                         <i class="fa fa-user"></i><span>Profile Management</span>
                            
                      </a>
                  </li>
+                       
+                        
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-user"></i><span>System Users</span>
+                                <i class="fa fa-user"></i><span>College Information</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                  
-                                 <li><a href="../Admin/view-user">View Administrators</a></li>
-                                <li><a href="../Admin/view-colleges">View Colleges</a></li>
-                                <li><a href="../Admin/view-students">View Students</a></li>
+                       
+                                  <li><a href="../agent/search-college">Search Colleges</a></li>
                                      
                             </ul>
                         </li>
-                         
-                       <li>
-                         <a href="../admin/all-payments">
-                         <i class="fa fa-dollar"></i><span>View Payments</span>
+                          <%--<li>
+                        <a href="../student/pay-now">
+                         <i class="fa fa-dollar"></i><span>Pay using Paynow</span>
                            
                      </a>
                  </li>
+                       --%>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-list-alt"></i> <span>Communication</span>
+                                <i class="fa fa-list-alt"></i> <span>Decision Management</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                               <li><a href="../admin/send-communication">Send Communication</a></li>
-                               <li><a href="../admin/email-settings">Email Settings</a></li>
-                               <li><a href="../admin/sms-settings">Sms Settings</a></li>
-                                
+                                <li><a href="../agent/my-applications">Total Applications</a></li>
                                 
                             </ul>
                         </li>
-                    <li>
-                          <a href="../admin/reporting">
+                    <%--<li>
+                        <a href="mailbox.html">
                          <i class="fa fa-envelope"></i><span> Reporting</span>
                      </a>
-                 </li>
-                         <li>
-                        <a href="../admin/my-profile">
+                 </li>--%>
+                <li>
+                        <a href="../agent/my-profile">
                          <i class="fa fa-lock"></i><span> Change Password</span>
                            
                      </a>
                  </li>
-                
               
               
             </ul>

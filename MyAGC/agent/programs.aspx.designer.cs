@@ -7,38 +7,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.student
+namespace MyAGC.agent
 {
 
 
-    public partial class manage_document
+    public partial class programs
     {
 
         /// <summary>
-        /// drpDocumentType control.
+        /// txtCollegeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpDocumentType;
+        protected global::System.Web.UI.WebControls.HiddenField txtCollegeID;
 
         /// <summary>
-        /// fileUpload control.
+        /// txtPeriodID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
+        protected global::System.Web.UI.WebControls.HiddenField txtPeriodID;
 
         /// <summary>
-        /// grdDocument control.
+        /// grdPrograms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdDocument;
+        protected global::System.Web.UI.WebControls.GridView grdPrograms;
     }
 }

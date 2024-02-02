@@ -100,6 +100,10 @@ namespace MyAGC
                         {
                             Response.Redirect(string.Format("institution/dashboard"));
                         }
+                        else if (int.Parse(Session["roleid"].ToString()) == 4)
+                        {
+                            Response.Redirect(string.Format("agent/dashboard"));
+                        }
                         else
                         {
                             Response.Redirect(string.Format("student/dashboard"));
@@ -110,7 +114,7 @@ namespace MyAGC
                     {
                         Session["userid"] = "0";
                         Session["roleid"] = "0";
-                        Session["username"] = "";
+                        Session["username"] = null;
                     }
                 }
                 else

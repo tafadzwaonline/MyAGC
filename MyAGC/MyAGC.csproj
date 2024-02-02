@@ -181,6 +181,12 @@
     <Content Include="admin\view-payment.aspx" />
     <Content Include="admin\view-students.aspx" />
     <Content Include="admin\view-user.aspx" />
+    <Content Include="agent\academic-calander.aspx" />
+    <Content Include="agent\dashboard.aspx" />
+    <Content Include="agent\my-profile.aspx" />
+    <Content Include="agent\programs.aspx" />
+    <Content Include="agent\search-college.aspx" />
+    <Content Include="agent\student-information.aspx" />
     <Content Include="assets\bootstrap\css\bootstrap.min.css" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\bootstrap\js\bootstrap.min.js" />
@@ -501,6 +507,8 @@
     <Content Include="InstistutionMaster.Master" />
     <Content Include="AdminDashboard.Master" />
     <Content Include="AdminMaster.Master" />
+    <Content Include="AgentDashboard.Master" />
+    <Content Include="AgentMaster.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -669,6 +677,62 @@
     </Compile>
     <Compile Include="admin\view-user.aspx.designer.cs">
       <DependentUpon>view-user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentDashboard.Master.cs">
+      <DependentUpon>AgentDashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentDashboard.Master.designer.cs">
+      <DependentUpon>AgentDashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AgentMaster.Master.cs">
+      <DependentUpon>AgentMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentMaster.Master.designer.cs">
+      <DependentUpon>AgentMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="agent\academic-calander.aspx.cs">
+      <DependentUpon>academic-calander.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\academic-calander.aspx.designer.cs">
+      <DependentUpon>academic-calander.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\my-profile.aspx.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\my-profile.aspx.designer.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\programs.aspx.cs">
+      <DependentUpon>programs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\programs.aspx.designer.cs">
+      <DependentUpon>programs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\search-college.aspx.cs">
+      <DependentUpon>search-college.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\search-college.aspx.designer.cs">
+      <DependentUpon>search-college.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\student-information.aspx.cs">
+      <DependentUpon>student-information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\student-information.aspx.designer.cs">
+      <DependentUpon>student-information.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

@@ -62,6 +62,9 @@
                                     <label class="radio-inline">
                                         <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdInstitution" OnCheckedChanged="rdInstitution_CheckedChanged" runat="server" />
                                         Institution</label>
+                                     <label class="radio-inline">
+                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdAgent" OnCheckedChanged="rdAgent_CheckedChanged" runat="server" />
+                                        Agent</label>
                                 </div>
                             </div>
                             <div class="form-group col-lg-6" id="InstitutionName" runat="server" visible="false">
@@ -73,6 +76,17 @@
                                 <label>Institution Address</label><span style="color: red; position: absolute; top: -3px; left: 5px;">*</span>
                                 <asp:TextBox ID="txtInstitutionAddress" runat="server" TextMode="MultiLine" placeholder="Institution Address" class="form-control"></asp:TextBox>
                             </div>
+
+                                 <div class="form-group col-lg-6" id="AgentFirstName" runat="server" visible="false">
+                                <label>Agent FirstName</label><span style="color: red; position: absolute;">*</span>
+                                <asp:TextBox ID="txtAgentFirstName" runat="server" placeholder="Agent FirstName" class="form-control"></asp:TextBox>
+
+                            </div>
+                            <div class="form-group col-lg-6" id="AgentLastName" runat="server" visible="false">
+                                <label>Agent LastName</label><span style="color: red; position: absolute; top: -3px; left: 5px;">*</span>
+                                <asp:TextBox ID="txtAgentLastName" runat="server" placeholder="Agent LastName" class="form-control"></asp:TextBox>
+                            </div>
+
                             <div class="form-group col-lg-6" id="FirstName" runat="server" visible="false">
                                 <label>First Name <span style="color: red; position: absolute;">*</span></label>
                                 <asp:TextBox ID="txtFirstName" runat="server" placeholder="FirstName" class="form-control"></asp:TextBox>

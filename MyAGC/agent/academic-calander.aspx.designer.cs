@@ -7,38 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.student
+namespace MyAGC.agent
 {
 
 
-    public partial class manage_document
+    public partial class academic_calander
     {
 
         /// <summary>
-        /// drpDocumentType control.
+        /// txtid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpDocumentType;
+        protected global::System.Web.UI.WebControls.HiddenField txtid;
 
         /// <summary>
-        /// fileUpload control.
+        /// grdAcademicHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
-
-        /// <summary>
-        /// grdDocument control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdDocument;
+        protected global::System.Web.UI.WebControls.GridView grdAcademicHistory;
     }
 }

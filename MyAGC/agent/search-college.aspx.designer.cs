@@ -7,38 +7,47 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.student
+namespace MyAGC.agent
 {
 
 
-    public partial class manage_document
+    public partial class search_college
     {
 
         /// <summary>
-        /// drpDocumentType control.
+        /// drpSearchBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpDocumentType;
+        protected global::System.Web.UI.WebControls.DropDownList drpSearchBy;
 
         /// <summary>
-        /// fileUpload control.
+        /// txtValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
+        protected global::System.Web.UI.WebControls.TextBox txtValue;
 
         /// <summary>
-        /// grdDocument control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdDocument;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+
+        /// <summary>
+        /// grdCollege control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdCollege;
     }
 }

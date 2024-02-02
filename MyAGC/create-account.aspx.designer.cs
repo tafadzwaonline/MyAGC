@@ -60,6 +60,15 @@ namespace MyAGC
         protected global::System.Web.UI.WebControls.RadioButton rdInstitution;
 
         /// <summary>
+        /// rdAgent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdAgent;
+
+        /// <summary>
         /// InstitutionName control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,42 @@ namespace MyAGC
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtInstitutionAddress;
+
+        /// <summary>
+        /// AgentFirstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AgentFirstName;
+
+        /// <summary>
+        /// txtAgentFirstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAgentFirstName;
+
+        /// <summary>
+        /// AgentLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AgentLastName;
+
+        /// <summary>
+        /// txtAgentLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAgentLastName;
 
         /// <summary>
         /// FirstName control.

@@ -7,38 +7,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.student
+namespace MyAGC
 {
 
 
-    public partial class manage_document
+    public partial class AgentMaster
     {
 
         /// <summary>
-        /// drpDocumentType control.
+        /// ClientPic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpDocumentType;
+        protected global::System.Web.UI.WebControls.Image ClientPic;
 
         /// <summary>
-        /// fileUpload control.
+        /// lblUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
+        protected global::System.Web.UI.WebControls.Label lblUsername;
 
         /// <summary>
-        /// grdDocument control.
+        /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdDocument;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
     }
 }

@@ -42,15 +42,6 @@
                                                 <asp:FileUpload ID="fileUpload" runat="server" />
                                             </div>
           
-                                            
-                                        
-                                             
-
-                                              <div class="col-sm-12 reset-button">
-                                                  <a class="btn btn-warning" href="../student/academic-history"><< Academic History</a>
-                                                 <asp:Button ID="btnSave" runat="server" Text="Upload Document" OnClick="btnSave_Click" class="btn btn-success" />
-                                                
-                                             </div>
                                                <table style="width:100%" >
 
                                                    <tr>

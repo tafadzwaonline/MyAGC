@@ -90,7 +90,7 @@ namespace MyAGC.admin
             try
             {
                 string Password = "XC4G160UbpgbPhnnnYcKfw==";
-                um.InsertAdminDetails(int.Parse(Session["userid"].ToString()), txtEmail.Text, txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtMobile.Text, Password);
+                um.InsertAdminDetails(1,int.Parse(Session["userid"].ToString()), txtEmail.Text, txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtMobile.Text, Password);
                 getSavedDetails();
                 SuccessAlert("Details successfully updated");
             }

@@ -28,6 +28,8 @@ namespace MyAGC
             Dob.Visible = true;
             InstitutionAddress.Visible = false;
             InstitutionName.Visible = false;
+            AgentLastName.Visible = false;
+            AgentFirstName.Visible = false;
             tr1.Visible = true;
             //tr2.Visible = true;
             //tr3.Visible = true;
@@ -39,6 +41,8 @@ namespace MyAGC
         {
             InstitutionAddress.Visible = true;
             InstitutionName.Visible = true;
+            AgentLastName.Visible = false;
+            AgentFirstName.Visible = false;
             Password1.Visible = true;
             Password2.Visible = true;
             Emails.Visible = true;
@@ -53,6 +57,24 @@ namespace MyAGC
             tr4.Visible = true;
             ClearLabels();
         }
+        protected void rdAgent_CheckedChanged(object sender, EventArgs e)
+        {
+            AgentFirstName.Visible = true;
+            AgentLastName.Visible = true;
+            InstitutionAddress.Visible = false;
+            InstitutionName.Visible = false;
+            Password1.Visible = true;
+            Password2.Visible = true;
+            Emails.Visible = true;
+            FirstName.Visible = false;
+            LastName.Visible = false;
+            Phone.Visible = true;
+            Address.Visible = false;
+            Dob.Visible = false;
+            tr1.Visible = true;
+            tr4.Visible = true;
+            ClearLabels();
+        }
         private void ClearLabels()
         {
             lblLoginError.Text=string.Empty;
@@ -61,10 +83,11 @@ namespace MyAGC
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            string Name= string.Empty;
+            string FirstName= string.Empty;
+            string LastName = string.Empty;
             string Addresses= string.Empty;
             int RoleID = 0;
-            if (!rdStudent.Checked && !rdInstitution.Checked)
+            if (!rdStudent.Checked && !rdInstitution.Checked && !rdAgent.Checked)
             {
                 lblLoginError.Text = "Please select account type to register";
                 return;
@@ -114,7 +137,7 @@ namespace MyAGC
                 }
                 if (txtPhone.Text.Contains("+"))
                 {
-                    txtPhone.Text = txtEmail.Text.Replace("+", "");
+                    txtPhone.Text = txtPhone.Text.Replace("+", "");
                 }
                 if (!txtEmail.Text.Contains("@"))
                 {
@@ -125,7 +148,8 @@ namespace MyAGC
                     lblLoginError.Text = string.Join("<br>", errorMessages);
                     return;
                 }
-                Name = txtFirstName.Text;
+                FirstName = txtFirstName.Text;
+                LastName = txtLastName.Text;
                 Addresses = txtAddress.Text;
                 RoleID = 3;
             }
@@ -165,7 +189,7 @@ namespace MyAGC
                 }
                 if (txtPhone.Text.Contains("+"))
                 {
-                    txtPhone.Text = txtEmail.Text.Replace("+", "");
+                    txtPhone.Text = txtPhone.Text.Replace("+", "");
                 }
 
                 if (!txtEmail.Text.Contains("@"))
@@ -181,9 +205,65 @@ namespace MyAGC
                     lblLoginError.Text = string.Join("<br>", errorMessages);
                     return;
                 }
-                Name = txtInstitutionName.Text;
+                FirstName = txtInstitutionName.Text;
                 Addresses = txtInstitutionAddress.Text;
                 RoleID = 2;
+            }
+
+
+            if (rdAgent.Checked)
+            {
+                List<string> errorMessages = new List<string>();
+
+                if (string.IsNullOrWhiteSpace(txtAgentFirstName.Text))
+                {
+                    errorMessages.Add("Agent FirstName is required");
+                }
+                if (string.IsNullOrWhiteSpace(txtAgentLastName.Text))
+                {
+                    errorMessages.Add("Agent LastName is required");
+                }
+                if (string.IsNullOrWhiteSpace(txtPhone.Text))
+                {
+                    errorMessages.Add("Mobile No is required");
+                }
+                if (string.IsNullOrWhiteSpace(txtEmail.Text))
+                {
+                    errorMessages.Add("Email is required");
+                }
+
+                if (string.IsNullOrWhiteSpace(txtPassword.Text))
+                {
+                    errorMessages.Add("Password is required");
+                }
+                if (string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
+                {
+                    errorMessages.Add("Repeat Password is required");
+                }
+              
+                if (txtEmail.Text.Contains("'"))
+                {
+                    txtEmail.Text = txtEmail.Text.Replace("'", "");
+                }
+                if (txtPhone.Text.Contains("+"))
+                {
+                    txtPhone.Text = txtPhone.Text.Replace("+", "");
+                }
+
+                if (!txtEmail.Text.Contains("@"))
+                {
+                    errorMessages.Add("Please enter a valid email address");
+                }
+                
+                if (errorMessages.Count > 0)
+                {
+                    lblLoginError.Text = string.Join("<br>", errorMessages);
+                    return;
+                }
+                FirstName = txtAgentFirstName.Text;
+                LastName = txtAgentLastName.Text;
+                Addresses = txtInstitutionAddress.Text;
+                RoleID = 4;
             }
 
             if (!CheckBox2.Checked)
@@ -191,14 +271,18 @@ namespace MyAGC
                 lblLoginError.Text = "Please agree to the terms and conditions to proceed";
                 return;
             }
-
-            
-
-
-            RegisterUser(Name, Addresses, RoleID);
+            RegisterUser(FirstName,LastName, Addresses, RoleID);
         }
+        //static string RemoveCharacters(string input, params char[] charactersToRemove)
+        //{
+        //    foreach (char character in charactersToRemove)
+        //    {
+        //        input = input.Replace(character.ToString(), string.Empty);
+        //    }
 
-        protected void RegisterUser(string Name,string Addresses,int RoleID)
+        //    return input;
+        //}
+        protected void RegisterUser(string FirstName,string LastName,string Addresses,int RoleID)
         {
             try
             {
@@ -233,14 +317,14 @@ namespace MyAGC
                     lblLoginError.Text = "Password Must Contain at Least One Special Character!";
                     return;
                 }
-                if (RoleID == 1 || RoleID == 2)
+                if (RoleID != 3)
                 {
                     txtDOB.Text = DateTime.Now.ToString();
                 }
 
                 // Encrypt the password
                 string encryptedPassword = encryptDecrypt.EncryptPassword(newPassword);
-                um.SaveAccount(Name,txtLastName.Text,txtEmail.Text,txtPhone.Text, encryptedPassword, Addresses,Convert.ToDateTime(txtDOB.Text), RoleID);
+                um.SaveAccount(FirstName,LastName,txtEmail.Text,txtPhone.Text, encryptedPassword, Addresses,Convert.ToDateTime(txtDOB.Text), RoleID);
 
                 lblSuccess.Text = "Account successfully registered";
                 Clear();
@@ -257,6 +341,8 @@ namespace MyAGC
         {
             txtFirstName.Text=string.Empty;
             txtLastName.Text=string.Empty;
+            txtAgentLastName.Text = string.Empty;
+            txtAgentFirstName.Text = string.Empty;
             txtPassword.Text=string.Empty;
             txtConfirmPassword.Text=string.Empty;
             txtEmail.Text=string.Empty;
@@ -270,5 +356,7 @@ namespace MyAGC
             CheckBox2.Checked = false;
             lblLoginError.Text=string.Empty;
         }
+
+        
     }
 }

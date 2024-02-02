@@ -859,11 +859,29 @@ namespace MyAGC.Classes
                 return "0";
             }
         }
+
         public DataSet getSystemUserById(int userid)
         {
             string str = "sp_getSystemUserById";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@UserID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getSystemUserByEmail(string Email)
+        {
+            string str = "sp_getSystemUserEmail";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Email", DbType.String, Email);
 
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

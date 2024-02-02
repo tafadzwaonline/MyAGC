@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="MyAGC.AdminMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AgentDashboard.master.cs" Inherits="MyAGC.AgentDashboard" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,39 +45,11 @@
         <!--<link href="../assets/dist/css/stylehealth-rtl.css" rel="stylesheet" type="text/css"/>-->
         <!-- End Theme Layout Style
         =====================================================================-->
-      <link media="screen" rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+     <link media="screen" rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-    
-   <script>
-       function SuccessToastr(message, title) {
-           setTimeout(function () {
-               toastr.options = {
-                   closeButton: true,
-                   progressBar: true,
-                   //positionClass: "toast-top-center",
-                   showMethod: 'slideDown',
-                   timeOut: 2000
-               };
-               //toastr.success(message, title);
-               toastr.success(`<span style="font-size: 20px">${message}</span>`, title);
-           }, 100);
-       }
 
-       function WarningToastr(message, title) {
-           setTimeout(function () {
-               toastr.options = {
-                   closeButton: true,
-                   progressBar: true,
-                   //positionClass: "toast-top-center",
-                   showMethod: 'slideDown',
-                   timeOut: 2000
-
-
-               };
-               toastr.warning(`<span style="font-size: 20px">${message}</span>`, title);
-           }, 100);
-       }
-   </script>
+  
 
      <script type="text/javascript">
 
@@ -147,7 +119,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <header class="main-header">
-                <a href="../admin/dashboard" class="logo"> <!-- Logo -->
+                <a href="../agent/dashboard" class="logo"> <!-- Logo -->
                    <%-- <span class="logo-mini">
                         <!--<b>A</b>H-admin-->
                         <img src="../assets/dist/img/mini-logo.png" alt="">
@@ -179,7 +151,7 @@
                             <!-- user -->
                             <li class="dropdown dropdown-user admin-user">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                                <div class="user-image">
+                                         <div class="user-image">
                                 <%--<img src="../assets/dist/img/avatar4.png" class="img-circle" height="40" width="40" alt="User Image">--%>
                                 <asp:Image ID="ClientPic" ImageUrl="../assets/dist/img/avatar4.png" CssClass="img-circle" Height="40px" Width="40px" runat="server" />
 
@@ -188,8 +160,8 @@
                                 </div>
 
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="../admin/my-profile"><i class="fa fa-users"></i> User Profile</a></li>
+                                 <ul class="dropdown-menu">
+                                    <li><a href="../agent/my-profile"><i class="fa fa-users"></i> User Profile</a></li>
                                     <li><a href="../login"><i class="fa fa-sign-out"></i> Logout</a></li>
                                 </ul>
                             </li>
@@ -199,71 +171,70 @@
             </header>
             <!-- =============================================== -->
             <!-- Left side column. contains the sidebar -->
-         <aside class="main-sidebar">
+          <aside class="main-sidebar">
                 <!-- sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar user panel -->
                     <div>
-
+                       <%-- <div class="image pull-left">
+                            <img src="../assets/dist/img/avatar5.png" class="img-circle" alt="User Image">
+                        </div>
+                        <div>
+                            <h5>Welcome</h5>
+                           <p><asp:Label ID="Label1" runat="server" Text="University Of Zimbabwe"></asp:Label></p>
+                            
+                        </div>--%>
                     </div>
                    
                     <!-- sidebar menu -->
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="../admin/dashboard"><i class="fa fa-hospital-o"></i><span>Dashboard</span>
+                            <a href="../agent/dashboard"><i class="fa fa-hospital-o"></i><span>Dashboard</span>
                             </a>
                         </li>
-                       
-                        <li>
-                        <a href="../admin/personal-info">
-                         <i class="fa fa-user"></i><span>Personal Information</span>
+                         <li>
+                        <a href="../agent/my-profile">
+                         <i class="fa fa-user"></i><span>Profile Management</span>
                            
                      </a>
                  </li>
+                       
+
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-user"></i><span>System Users</span>
+                                <i class="fa fa-user"></i><span>College Information</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
                                   
-                                 <li><a href="../Admin/view-user">View Administrators</a></li>
-                                <li><a href="../Admin/view-colleges">View Colleges</a></li>
-                                <li><a href="../Admin/view-students">View Students</a></li>
+                                  <li><a href="../agent/search-college">Search Colleges</a></li>
                                      
                             </ul>
                         </li>
-                         
-                       <li>
-                         <a href="../admin/all-payments">
-                         <i class="fa fa-dollar"></i><span>View Payments</span>
+                        <%-- <li>
+                        <a href="../student/pay-now">
+                         <i class="fa fa-dollar"></i><span>Pay using Paynow</span>
                            
                      </a>
-                 </li>
+                 </li>--%>
+                       
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-list-alt"></i> <span>Communication</span>
+                                <i class="fa fa-list-alt"></i> <span>Decision Management</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                               <li><a href="../admin/send-communication">Send Communication</a></li>
-                               <li><a href="../admin/email-settings">Email Settings</a></li>
-                               <li><a href="../admin/sms-settings">Sms Settings</a></li>
+                               <li><a href="../agent/my-applications">Total Applications</a></li>
                                 
                                 
                             </ul>
                         </li>
-                    <li>
-                          <a href="../admin/reporting">
-                         <i class="fa fa-envelope"></i><span> Reporting</span>
-                     </a>
-                 </li>
                          <li>
-                        <a href="../admin/my-profile">
+                        <a href="../agent/my-profile">
                          <i class="fa fa-lock"></i><span> Change Password</span>
                            
                      </a>
@@ -274,6 +245,94 @@
             </ul>
         </div> <!-- /.sidebar -->
     </aside>
+            <!-- =============================================== -->
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                  
+                </section>
+            <!-- Main content -->
+                <section class="content">
+                    <form runat="server">
+                        <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkTotalApplications" OnClick="lnkTotalApplications_Click" runat="server">
+                            <div class="panel panel-bd cardbox">
+                                 
+                                     <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number"><asp:Label ID="lblTotalApplications" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Total Applications</h4>
+                                    </div>
+                                </div>
+                                     
+                                
+                            </div>
+                            </asp:LinkButton>
+                        </div>
+                        
+
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkSearchCollege" OnClick="lnkSearchCollege_Click" runat="server">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number"><asp:Label ID="lblSearchCollege" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Search Colleges</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                </asp:LinkButton>
+                        </div>
+                        
+                       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkSupportQuery" OnClick="lnkSupportQuery_Click" runat="server">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number"><asp:Label ID="lblPop" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Proof Of Payment Uploads</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                </asp:LinkButton>
+                        </div>
+                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkTotalPayments" OnClick="lnkTotalPayments_Click" runat="server">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number"><asp:Label ID="lblTotalPayments" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Total Payments</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                </asp:LinkButton>
+                        </div>
+                      
+                    </div>
+                    </form>
+                    
+                </section> <!-- /.content -->
+
+            </div> <!-- /.content-wrapper -->
              <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
@@ -282,27 +341,6 @@
                 
                 <strong>Copyright &copy; <%: DateTime.Now.Year %> <a>Achironet Global Consultancy</a>.</strong> All rights reserved.
             </footer>
-            <!-- =============================================== -->
-            <!-- Content Wrapper. Contains page content -->
-            
-                <!-- Content Header (Page header) -->
-                <%--<section class="content-header">
-                  
-                </section>--%>
-               
-            <!-- Main content -->
-               <%-- <section class="content">
-                    <div class="row">
-                      
-                         
-                        
-                       
-                    </div>
-                </section>--%> <!-- /.content -->
-
-             <!-- /.content-wrapper -->
-            
-            
         </div> <!-- ./wrapper -->
       
         <script src="../assets/plugins/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>
@@ -377,3 +415,4 @@
     </body>
 
 </html>
+
