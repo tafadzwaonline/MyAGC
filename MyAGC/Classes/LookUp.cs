@@ -359,7 +359,7 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
-        public void SaveApplication(int ApplicantID, int CollegeID, int ProgramID, int PeriodID)
+        public void SaveApplication(int ApplicantID, int CollegeID, int ProgramID, int PeriodID,int AgentID)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             SqlConnection sqlCon = null;
@@ -373,6 +373,24 @@ namespace MyAGC.Classes
                 sql_cmnd.Parameters.AddWithValue("@ProgramID", SqlDbType.Int).Value = ProgramID;
                 sql_cmnd.Parameters.AddWithValue("@PeriodID", SqlDbType.Int).Value = PeriodID;
                 sql_cmnd.Parameters.AddWithValue("@ApplicationStatusID", SqlDbType.Int).Value = 4;
+                sql_cmnd.Parameters.AddWithValue("@AgentID", SqlDbType.Int).Value = AgentID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+
+        public void SaveAgentPoints(int ApplicantID, int AgentID, int Points)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("AgentPoints_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ApplicantID", SqlDbType.Int).Value = ApplicantID;
+                sql_cmnd.Parameters.AddWithValue("@AgentID", SqlDbType.Int).Value = AgentID;
+                sql_cmnd.Parameters.AddWithValue("@Points", SqlDbType.Int).Value = Points;
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }
@@ -950,6 +968,23 @@ namespace MyAGC.Classes
             string str = "sp_getPaymentsByApplicantID";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@ApplicantID", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getAgentPoints(int AgentID)
+        {
+            string str = "sp_getAgentPoints";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@AgentID", DbType.Int32, AgentID);
 
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

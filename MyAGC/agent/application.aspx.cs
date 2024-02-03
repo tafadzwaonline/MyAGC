@@ -5,13 +5,12 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Webdev.Payments;
 
-namespace MyAGC.student
+namespace MyAGC.agent
 {
     public partial class application : System.Web.UI.Page
     {
@@ -24,7 +23,7 @@ namespace MyAGC.student
             {
                 txtCollegeID.Value = "0";
                 txtPeriodID.Value = "0";
-               
+
                 txtProgramID.Value = "0";
                 if (Request.QueryString["CollegeID"].ToString() != null)
                 {
@@ -37,6 +36,10 @@ namespace MyAGC.student
                 if (Request.QueryString["ProgramID"].ToString() != null)
                 {
                     txtProgramID.Value = qn.Decrypt(HttpUtility.UrlDecode(Request.QueryString["ProgramID"]));
+                }
+                if (Request.QueryString["StudentID"].ToString() != null)
+                {
+                    txtID.Value = qn.Decrypt(HttpUtility.UrlDecode(Request.QueryString["StudentID"]));
                 }
 
                 getCitizenTypes();
@@ -61,11 +64,11 @@ namespace MyAGC.student
                 txtFaculty.Text = dr["FacultyName"].ToString();
                 txtTuition.Text = dr["Tuition"].ToString();
             }
-           
+
         }
         private void getSavedAcademicPeriod()
         {
-           
+
             DataSet dataSet = lp.getAcademicCalendarByID(int.Parse(txtPeriodID.Value));
 
             if (dataSet != null)
@@ -74,7 +77,7 @@ namespace MyAGC.student
                 txtPeriod.Text = dr["Period"].ToString();
                 txtApplicationDeadline.Text = dr["ApplicationDeadline"].ToString();
                 txtIntake.Text = dr["Name"].ToString();
-                
+
             }
 
         }
@@ -130,16 +133,16 @@ namespace MyAGC.student
         }
         private void getSavedApplicationFees()
         {
-            DataSet dataSet = lp.getApplicationFeesByID(int.Parse(txtPeriodID.Value),int.Parse(drpCitizenType.SelectedValue),int.Parse(txtCollegeID.Value));
+            DataSet dataSet = lp.getApplicationFeesByID(int.Parse(txtPeriodID.Value), int.Parse(drpCitizenType.SelectedValue), int.Parse(txtCollegeID.Value));
 
             if (dataSet != null)
             {
                 DataRow dt = dataSet.Tables[0].Rows[0];
                 txtApplicationFee.Text = dt["Amount"].ToString();
             }
-            
+
         }
-        
+
         protected void drpCitizenType_SelectedIndexChanged(object sender, EventArgs e)
         {
             getSavedApplicationFees();
@@ -152,22 +155,22 @@ namespace MyAGC.student
             try
             {
                 // Check if user information is complete
-                DataSet userDataSet = um.GetSystemUserByUserEmail(Session["username"].ToString());
-                if (userDataSet != null)
-                {
-                    DataRow userRow = userDataSet.Tables[0].Rows[0];
-                    if (string.IsNullOrEmpty(userRow["GenderID"].ToString()) ||
-                        string.IsNullOrEmpty(userRow["CountryID"].ToString()) ||
-                        string.IsNullOrEmpty(userRow["IdentityNumber"].ToString()) ||
-                        string.IsNullOrEmpty(userRow["NextKinFullName"].ToString()))
-                    {
-                        WarningAlert("Please complete your personal information before proceeding");
-                        return;
-                    }
-                }
+                //DataSet userDataSet = um.GetSystemUserByUserEmail(Session["username"].ToString());
+                //if (userDataSet != null)
+                //{
+                //    DataRow userRow = userDataSet.Tables[0].Rows[0];
+                //    if (string.IsNullOrEmpty(userRow["GenderID"].ToString()) ||
+                //        string.IsNullOrEmpty(userRow["CountryID"].ToString()) ||
+                //        string.IsNullOrEmpty(userRow["IdentityNumber"].ToString()) ||
+                //        string.IsNullOrEmpty(userRow["NextKinFullName"].ToString()))
+                //    {
+                //        WarningAlert("Please complete your personal information before proceeding");
+                //        return;
+                //    }
+                //}
 
                 // Check if certificate is uploaded
-                DataSet certificateDataSet = lp.getCertificateFileUploads(int.Parse(Session["userid"].ToString()));
+                DataSet certificateDataSet = lp.getCertificateFileUploads(int.Parse(txtID.Value));
                 if (certificateDataSet == null)
                 {
                     WarningAlert("Please upload your certificate before proceeding");
@@ -175,12 +178,12 @@ namespace MyAGC.student
                 }
 
                 // Check if academic records are entered
-                DataSet academicDataSet = lp.getAcademicHistory(int.Parse(Session["userid"].ToString()));
-                if (academicDataSet == null)
-                {
-                    WarningAlert("Please enter your academic records before proceeding");
-                    return;
-                }
+                //DataSet academicDataSet = lp.getAcademicHistory(int.Parse(Session["userid"].ToString()));
+                //if (academicDataSet == null)
+                //{
+                //    WarningAlert("Please enter your academic records before proceeding");
+                //    return;
+                //}
 
                 // Check application deadline
                 DateTime applicationDate = Convert.ToDateTime(txtApplicationDate.Text);
@@ -228,7 +231,7 @@ namespace MyAGC.student
                 //var paynow = new Paynow("15551", "ad6ee0d2-0103-4036-a920-623b5a83f7fa");
                 var paynow = new Paynow("15816", "2e98fc93-849c-48d7-9ab1-0a742d679ed2");
                 var pollUrl = Session["PollUrl"] as string;
-                int userId = int.Parse(Session["userid"].ToString());
+                int userId = int.Parse(txtID.Value);
                 string useremail = Session["username"].ToString();
                 int collegeId = int.Parse(txtCollegeID.Value);
                 int periodId = int.Parse(txtPeriodID.Value);
@@ -241,7 +244,7 @@ namespace MyAGC.student
                     int paynowreference = 0;
                     if (status.Paid())
                     {
-                       
+
 
                         foreach (var item in status.GetData())
                         {
@@ -253,16 +256,19 @@ namespace MyAGC.student
                         }
 
                         //insert payment details
-                        lp.SavePayment(userId, collegeId, programId, periodId, useremail,status.Amount, pollUrl, paynowreference);
+                        lp.SavePayment(userId, collegeId, programId, periodId, useremail, status.Amount, pollUrl, paynowreference);
 
 
-                        lp.SaveApplication(userId, collegeId, programId, periodId, 0);
-                       
+                        lp.SaveApplication(userId, collegeId, programId, periodId, int.Parse(Session["userid"].ToString()));
+
+                        //insert points here
+                        lp.SaveAgentPoints(userId, int.Parse(Session["userid"].ToString()),10);
+
                         Session["PollUrl"] = null;
                         Session["TransactionReference"] = null;
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../student/my-applications';", true);
                         //SuccessAlert("Your transaction was successfully paid");
-                       
+
                     }
                     else
                     {
@@ -288,7 +294,7 @@ namespace MyAGC.student
             {
                 //validate apply for only 3 programs per period
                 //validate cannot apply same program twice
-                int userId = int.Parse(Session["userid"].ToString());
+                int userId = int.Parse(txtID.Value);
                 int collegeId = int.Parse(txtCollegeID.Value);
                 int periodId = int.Parse(txtPeriodID.Value);
                 int programId = int.Parse(txtProgramID.Value);
@@ -309,7 +315,7 @@ namespace MyAGC.student
                     }
                 }
 
-                
+
                 if (lp.IsProgramApplied(userId, collegeId, periodId, programId))
                 {
                     WarningAlert("Program already applied");
@@ -329,7 +335,7 @@ namespace MyAGC.student
             catch (Exception)
             {
 
-                
+
                 WarningAlert("An error occurred. Please try again later.");
                 return;
             }
@@ -340,12 +346,12 @@ namespace MyAGC.student
             try
             {
                 if (!fileUpload.HasFile)
-            {
-                WarningAlert("Please select a file to upload");
-                return;
-            }
+                {
+                    WarningAlert("Please select a file to upload");
+                    return;
+                }
 
-            
+
 
                 string filename = Path.GetFileName(fileUpload.PostedFile.FileName);
                 string contentType = fileUpload.PostedFile.ContentType;
@@ -358,21 +364,24 @@ namespace MyAGC.student
                     {
                         byte[] bytes = br.ReadBytes((Int32)fs.Length);
                         string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-                        lp.UploadProofOfPayment(filename, contentType, bytes, DateTime.Today, int.Parse(Session["userid"].ToString()),collegeId,periodId,programId);
+                        lp.UploadProofOfPayment(filename, contentType, bytes, DateTime.Today, int.Parse(txtID.Value), collegeId, periodId, programId);
                     }
                 }
 
                 //Save application
 
 
-                lp.SaveApplication(int.Parse(Session["userid"].ToString()), collegeId, programId, periodId,0);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../student/my-applications';", true);
+                lp.SaveApplication(int.Parse(txtID.Value), collegeId, programId, periodId, int.Parse(Session["userid"].ToString()));
+
+                lp.SaveAgentPoints(int.Parse(txtID.Value), int.Parse(Session["userid"].ToString()), 10);
+                //insert points here
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../agent/my-points';", true);
 
 
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
@@ -383,10 +392,11 @@ namespace MyAGC.student
             string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtCollegeID.Value));
             string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(txtPeriodID.Value));
             string EcryptedProgramID = HttpUtility.UrlEncode(qn.Encrypt(txtProgramID.Value));
+            string EcryptedStudentID = HttpUtility.UrlEncode(qn.Encrypt(txtID.Value));
             // Response.Redirect(string.Format("../student/application?ID={0}", EcryptedProgramID), false);
             //Response.Redirect(string.Format("../student/application?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
-            //paynow.ReturnUrl = $"https://localhost:44302/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
-            paynow.ReturnUrl = $"http://mysystem.ddns.net/MyAGC/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
+            paynow.ReturnUrl = $"https://localhost:44302/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}&StudentID={EcryptedStudentID}";
+            //paynow.ReturnUrl = $"http://mysystem.ddns.net/MyAGC/agent/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}&StudentID={EcryptedStudentID}";
 
             paynow.ResultUrl = "http://example.com/gateways/paynow/update";
 
@@ -428,7 +438,7 @@ namespace MyAGC.student
         {
             if (drpPaymentType.SelectedValue == "1" || drpPaymentType.SelectedValue == "0")
             {
-                up.Visible= false;
+                up.Visible = false;
             }
             else
             {

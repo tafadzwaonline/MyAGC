@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>Personal Information</h1>
+                            <h1>Apllicant Information</h1>
                             <small></small>
                            <%-- <ol class="breadcrumb hidden-xs">
                                 <li><a href="index.html"><i class="pe-7s-home"></i> Profile Management</a></li>
@@ -39,8 +39,19 @@
                     <asp:HiddenField ID="txtPeriodID" runat="server" />
                     <asp:HiddenField ID="txtProgramID" runat="server" />
                 </div>
-                                            <asp:ScriptManager ID="ScriptManager1" runat="server">
-                </asp:ScriptManager>
+                           <div class="form-group col-lg-12">
+                                <div class="form-check">
+                                    <label>Account Type</label><span style="color: red; position: absolute;">*</span><br>
+                                    <label class="radio-inline">
+                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdStudent"  runat="server" />
+
+                                        New Student</label>
+                                    <label class="radio-inline">
+                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdExisting" runat="server" />
+                                        Existing Student</label>
+                                     
+                                </div>
+                            </div>
                                             <div class="col-sm-6 form-group">
                                                 <label>First Name</label>
                                                 <asp:TextBox ID="txtFirstName" runat="server"  class="form-control"></asp:TextBox>
@@ -121,51 +132,7 @@
                                                   <asp:Button ID="btnSave" runat="server" Text="Save Details" OnClick="btnSave_Click" class="btn btn-success" />
                                                 
                                              </div>
-                                               <table style="width:100%" >
 
-                                                   <tr>
-                                                       <td colspan="12">
-
-                                                           <div class="row">
-                                                               <div class="col-sm-12">
-                                                                   <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
-                                                                       role="grid" aria-describedby="basicExample_info"
-                                                                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                                                                       AllowPaging="True" AllowSorting="True">
-                                                                       <Columns>
-                                                                           <asp:BoundField DataField="documentname" HeaderText="Certificate Name"></asp:BoundField>
-                                                                           <asp:BoundField DataField="Name" HeaderText="File Name"></asp:BoundField>
-                                                                           <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded" SortExpression="DateUploaded"></asp:BoundField>
-                                                                           <asp:TemplateField HeaderText="Download">
-                                                                               <ItemTemplate>
-                                                                                   <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
-                                                                               </ItemTemplate>
-                                                                           </asp:TemplateField>
-                                                                           <asp:TemplateField HeaderText="Remove">
-                                                                               <ItemTemplate>
-                                                                                   <asp:LinkButton ID="lnkRecDel" runat="server" ForeColor="red" OnClientClick="return confirm('Are you sure want you want to delete the document?');" CssClass="fa fa-trash fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="DeleteItem"></asp:LinkButton>
-                                                                               </ItemTemplate>
-                                                                           </asp:TemplateField>
-                                                                       </Columns>
-                                                                   </asp:GridView>
-
-                                                               </div>
-                                                           </div>
-
-                                                       </td>
-                                                   </tr>
-       
-     </table>
-<%--                                              <div class="col-sm-12 reset-button">
-                                                 
-                                                  <asp:Button ID="Button1" runat="server" Text=">> Academic History" class="btn btn-warning" />
-                                                 <a class="btn btn-warning" href="../student/academic-history">>> Academic History</a>
-                                             </div>--%>
-                                            
-                                          
-
-                                            
-                                               
                                          </form>
                                      </div>
                                  </div>

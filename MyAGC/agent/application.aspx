@@ -1,0 +1,109 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentMaster.Master" AutoEventWireup="true" CodeBehind="application.aspx.cs" Inherits="MyAGC.agent.application" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <div class="header-icon">
+                            <i class="pe-7s-note2"></i>
+                        </div>
+                        <div class="header-title">
+                              
+                            <h1>College Information</h1>
+                            <small></small>
+                         
+                        </div>
+                    </section>
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="row">
+                            <!-- Form controls -->
+                            <div class="col-sm-12">
+                                <div class="panel panel-bd lobidrag">
+                                    <div class="panel-body">
+                                        <form class="col-sm-12" runat="server">
+                                            <div class="row">
+                    <asp:HiddenField ID="txtCollegeID" runat="server" />
+                    <asp:HiddenField ID="txtID" runat="server" />
+                    <asp:HiddenField ID="txtPeriodID" runat="server" />
+                    <asp:HiddenField ID="txtProgramID" runat="server" />
+                </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Academic Period</label>
+                                                <asp:TextBox ID="txtPeriod" runat="server" ReadOnly="true"  class="form-control"></asp:TextBox>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Application Deadline</label>
+                                                <asp:TextBox ID="txtApplicationDeadline" ReadOnly="true" TextMode="Date" runat="server" class="form-control"></asp:TextBox>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Program</label>
+                                                <asp:TextBox ID="txtProgram" ReadOnly="true"  runat="server" class="form-control"></asp:TextBox>
+                                            </div>
+                                             <div class="col-sm-6 form-group">
+                                                <label>Faculty</label>
+                                                <asp:TextBox ID="txtFaculty" ReadOnly="true"  runat="server" class="form-control"></asp:TextBox>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Citizen</label>
+                                               <asp:DropDownList ID="drpCitizenType" CssClass="form-control dropdown" AutoPostBack="true" OnSelectedIndexChanged="drpCitizenType_SelectedIndexChanged"  runat="server"></asp:DropDownList>
+                                            </div>
+                                            
+                                            <div class="col-sm-6 form-group">
+                                                <label>Application Fee</label>
+                                                <asp:TextBox ID="txtApplicationFee" ReadOnly="true" runat="server"  class="form-control"></asp:TextBox>
+                                            </div>
+                                             <div class="col-sm-6 form-group">
+                                                <label>Application Date</label>
+                                                <asp:TextBox ID="txtApplicationDate" runat="server" TextMode="Date"  ReadOnly="true" class="form-control"></asp:TextBox>
+                                            </div> 
+                                            <div class="col-sm-6 form-group">
+                                                <label>Tuition</label>
+                                                <asp:TextBox ID="txtTuition" runat="server" ReadOnly="true" class="form-control"></asp:TextBox>
+                                            </div> 
+                                             <div class="col-sm-6 form-group">
+                                                <label>Duration (Years)</label>
+                                                <asp:TextBox ID="txtDuration" runat="server" ReadOnly="true" class="form-control"></asp:TextBox>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Intake</label>
+                                                <asp:TextBox ID="txtIntake" runat="server" ReadOnly="true" class="form-control"></asp:TextBox>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Application Fee Payment Type</label>
+                                              <asp:DropDownList ID="drpPaymentType" AutoPostBack="true"  CssClass="form-control dropdown" runat="server" OnSelectedIndexChanged="drpPaymentType_SelectedIndexChanged" >
+                    <asp:ListItem Value="0" Text="Select payment type"></asp:ListItem>
+                    <asp:ListItem Value="1" Text="PayNow"></asp:ListItem>
+                    <asp:ListItem Value="2" Text="Upload Proof of Payment (POP)"></asp:ListItem>
+                   
+                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Requirements</label>
+                                                <asp:TextBox ID="txtRequirements" runat="server" ReadOnly="true" TextMode="MultiLine"  class="form-control"></asp:TextBox>
+                                            </div>
+                                          
+                                             
+                                             <div class="col-sm-6 form-group" id="up" runat="server" visible="false">
+                                                <label></label>
+                                                <asp:FileUpload ID="fileUpload" runat="server" />
+                                            </div>
+
+                                              <div class="col-sm-12 reset-button">
+                                                 <asp:Button ID="btnSave" runat="server" Text="Submit Application" OnClientClick="return confirm('Are you suree you want to submit this application?');" OnClick="btnSave_Click" class="btn btn-success" />
+                                                  
+                                             </div>
+                                            
+                                          
+
+                                            
+                                               
+                                         </form>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         
+                     </section> <!-- /.content -->
+                 </div>
+    <!-- /.content-wrapper -->
+</asp:Content>

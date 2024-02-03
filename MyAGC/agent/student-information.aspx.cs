@@ -48,6 +48,7 @@ namespace MyAGC.agent
                 getReligion();
                 getIdentityDocumentTypes();
                 getTitle();
+                getcertificate();
                 //getUserDetails();
 
 
@@ -184,7 +185,34 @@ namespace MyAGC.agent
                 //DangerAlert(ex.Message);
             }
         }
+        protected void getcertificate()
+        {
+            try
+            {
 
+                if (lp.getCertificates() != null)
+                {
+                    ListItem li = new ListItem("Select a certificate", "0");
+                    drpDocumentType.DataSource = lp.getCertificates();
+                    drpDocumentType.DataValueField = "ID";
+                    drpDocumentType.DataTextField = "Name";
+                    drpDocumentType.DataBind();
+                    drpDocumentType.Items.Insert(0, li);
+                }
+                else
+                {
+                    ListItem li = new ListItem("There are no certificates", "0");
+                    drpDocumentType.DataSource = null;
+                    drpDocumentType.DataBind();
+                    drpDocumentType.Items.Insert(0, li);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //DangerAlert(ex.Message);
+            }
+        }
         protected void getReligion()
         {
             try
@@ -405,7 +433,8 @@ namespace MyAGC.agent
 
             UpdateDetails();
             UploadFiles();
-            Response.Redirect(string.Format("../agent/application?CollegeID=" + txtCollegeID.Value + "&ProgramID=" + txtProgramID.Value + "&PeriodID=" + txtPeriodID.Value + "&StudentID=" + txtID.Value + ""));
+            string EcryptedStudentID = HttpUtility.UrlEncode(qn.Encrypt(txtID.Value));
+            Response.Redirect(string.Format("../agent/application?CollegeID=" + txtCollegeID.Value + "&PeriodID=" + txtPeriodID.Value + "&ProgramID=" + txtProgramID.Value + "&StudentID=" + EcryptedStudentID + ""));
 
         }
         private void UploadFiles()
@@ -448,7 +477,7 @@ namespace MyAGC.agent
             try
             {
                 //EncryptDecryptClass encryptDecrypt = new EncryptDecryptClass();
-                string encryptedPassword = "";
+                string encryptedPassword = "XC4G160UbpgbPhnnnYcKfw==";
                 um.SaveAccount(txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtMobile.Text, encryptedPassword, txtAddress.Text, Convert.ToDateTime(txtDob.Text), 3);
 
                 um.UpdateUserDetails(txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtMobile.Text, txtAddress.Text, Convert.ToDateTime(txtDob.Text),
@@ -459,7 +488,7 @@ namespace MyAGC.agent
 
                
                 //getUserDetails();
-                SuccessAlert("User records successfully updated");
+                //SuccessAlert("User records successfully updated");
             }
             catch (Exception)
             {

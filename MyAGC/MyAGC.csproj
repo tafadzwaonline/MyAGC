@@ -182,7 +182,10 @@
     <Content Include="admin\view-students.aspx" />
     <Content Include="admin\view-user.aspx" />
     <Content Include="agent\academic-calander.aspx" />
+    <Content Include="agent\application.aspx" />
     <Content Include="agent\dashboard.aspx" />
+    <Content Include="agent\my-applications.aspx" />
+    <Content Include="agent\my-points.aspx" />
     <Content Include="agent\my-profile.aspx" />
     <Content Include="agent\programs.aspx" />
     <Content Include="agent\search-college.aspx" />
@@ -699,12 +702,33 @@
     <Compile Include="agent\academic-calander.aspx.designer.cs">
       <DependentUpon>academic-calander.aspx</DependentUpon>
     </Compile>
+    <Compile Include="agent\application.aspx.cs">
+      <DependentUpon>application.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\application.aspx.designer.cs">
+      <DependentUpon>application.aspx</DependentUpon>
+    </Compile>
     <Compile Include="agent\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="agent\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\my-applications.aspx.cs">
+      <DependentUpon>my-applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\my-applications.aspx.designer.cs">
+      <DependentUpon>my-applications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\my-points.aspx.cs">
+      <DependentUpon>my-points.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\my-points.aspx.designer.cs">
+      <DependentUpon>my-points.aspx</DependentUpon>
     </Compile>
     <Compile Include="agent\my-profile.aspx.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
