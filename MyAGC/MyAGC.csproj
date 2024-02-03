@@ -60,6 +60,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\AssetRegister\ICTRegister\bin\CrystalDecisions.Web.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
       <HintPath>..\..\AssetRegister\ICTRegister\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -91,6 +97,8 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
       <Private>True</Private>
@@ -816,6 +824,46 @@
     <Compile Include="create-account.aspx.designer.cs">
       <DependentUpon>create-account.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Data\AcademicCalendar.cs" />
+    <Compile Include="Data\AcademicHistory.cs" />
+    <Compile Include="Data\AgentPoint.cs" />
+    <Compile Include="Data\Application.cs" />
+    <Compile Include="Data\ApplicationFee.cs" />
+    <Compile Include="Data\ApplicationStatu.cs" />
+    <Compile Include="Data\BroadcastEmailList.cs" />
+    <Compile Include="Data\BroadcastListContact.cs" />
+    <Compile Include="Data\BroadcastMessagesList.cs" />
+    <Compile Include="Data\Certificate.cs" />
+    <Compile Include="Data\CertificateFileUpload.cs" />
+    <Compile Include="Data\Citizen.cs" />
+    <Compile Include="Data\Country.cs" />
+    <Compile Include="Data\DisabilityType.cs" />
+    <Compile Include="Data\DocumentType.cs" />
+    <Compile Include="Data\EmailSetting.cs" />
+    <Compile Include="Data\ExaminationBody.cs" />
+    <Compile Include="Data\Faculty.cs" />
+    <Compile Include="Data\Gender.cs" />
+    <Compile Include="Data\IdentityDocumentType.cs" />
+    <Compile Include="Data\IntakeType.cs" />
+    <Compile Include="Data\MaritalStatu.cs" />
+    <Compile Include="Data\Model1.cs" />
+    <Compile Include="Data\Month.cs" />
+    <Compile Include="Data\MyCollege.cs" />
+    <Compile Include="Data\Payment.cs" />
+    <Compile Include="Data\ProgramEnrolment.cs" />
+    <Compile Include="Data\ProgramType.cs" />
+    <Compile Include="Data\ProofOfPaymentUpload.cs" />
+    <Compile Include="Data\Race.cs" />
+    <Compile Include="Data\RelationType.cs" />
+    <Compile Include="Data\Religion.cs" />
+    <Compile Include="Data\Role.cs" />
+    <Compile Include="Data\SchoolLevel.cs" />
+    <Compile Include="Data\SMSMessageHeader.cs" />
+    <Compile Include="Data\SmsSetting.cs" />
+    <Compile Include="Data\Title.cs" />
+    <Compile Include="Data\UniversityType.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Data\Year.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
