@@ -39,19 +39,19 @@
                     <asp:HiddenField ID="txtPeriodID" runat="server" />
                     <asp:HiddenField ID="txtProgramID" runat="server" />
                 </div>
-                           <div class="form-group col-lg-12">
+                           <%--<div class="form-group col-lg-12">
                                 <div class="form-check">
                                     <label>Account Type</label><span style="color: red; position: absolute;">*</span><br>
                                     <label class="radio-inline">
-                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdStudent"  runat="server" />
+                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdStudent" OnCheckedChanged="rdStudent_CheckedChanged"  runat="server" />
 
                                         New Student</label>
                                     <label class="radio-inline">
-                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdExisting" runat="server" />
+                                        <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdExisting" OnCheckedChanged="rdExisting_CheckedChanged" runat="server" />
                                         Existing Student</label>
                                      
                                 </div>
-                            </div>
+                            </div>--%>
                                             <div class="col-sm-6 form-group">
                                                 <label>First Name</label>
                                                 <asp:TextBox ID="txtFirstName" runat="server"  class="form-control"></asp:TextBox>
@@ -128,7 +128,7 @@
                                               <div class="col-sm-12 reset-button">
                                                   
                                                   
-                                                 <asp:Button ID="Button1" runat="server" Text="Upload Document" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 <asp:Button ID="Button1" runat="server" Visible="false" Text="Upload Document" OnClick="btnSave_Click" class="btn btn-success" />
                                                   <asp:Button ID="btnSave" runat="server" Text="Save Details" OnClick="btnSave_Click" class="btn btn-success" />
                                                 
                                              </div>

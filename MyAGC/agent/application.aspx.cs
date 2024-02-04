@@ -262,7 +262,7 @@ namespace MyAGC.agent
                         lp.SaveApplication(userId, collegeId, programId, periodId, int.Parse(Session["userid"].ToString()));
 
                         //insert points here
-                        lp.SaveAgentPoints(userId, int.Parse(Session["userid"].ToString()),10);
+                        lp.SaveAgentPoints(userId, int.Parse(Session["userid"].ToString()),10,collegeId,periodId,programId,false,1);
 
                         Session["PollUrl"] = null;
                         Session["TransactionReference"] = null;
@@ -373,7 +373,7 @@ namespace MyAGC.agent
 
                 lp.SaveApplication(int.Parse(txtID.Value), collegeId, programId, periodId, int.Parse(Session["userid"].ToString()));
 
-                lp.SaveAgentPoints(int.Parse(txtID.Value), int.Parse(Session["userid"].ToString()), 10);
+                lp.SaveAgentPoints(int.Parse(txtID.Value), int.Parse(Session["userid"].ToString()), 10,collegeId,periodId,programId,false,1);
                 //insert points here
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Application successful, now awaiting confirmation');window.location ='../agent/my-points';", true);
 

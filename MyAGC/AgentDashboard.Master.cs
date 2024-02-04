@@ -31,26 +31,38 @@ namespace MyAGC
         private void getStatistics()
         {
 
-            DataSet TotalApplication = lp.getStudentApplicationByUserID(int.Parse(Session["userid"].ToString()));
-            DataSet TotalPayments = lp.getPaymentsByApplicantID(int.Parse(Session["userid"].ToString()));
-            DataSet TotalPop = lp.getUploadedProofOfPaymentsByApplicantID(int.Parse(Session["userid"].ToString()));
+            //DataSet TotalApplication = lp.getAgentApplications(int.Parse(Session["userid"].ToString()));
+            DataSet TotalPoints = lp.getAgentPointsByID(int.Parse(Session["userid"].ToString()));
+            DataSet TotalWithdrawals = lp.getAllAgentWithdrawals(int.Parse(Session["userid"].ToString()));
+            DataSet TotalStudents = lp.getAgentStudents(int.Parse(Session["userid"].ToString()));
             DataSet getsearchdata = um.GetSystemUserByUserRole(2);
 
 
-            if (TotalApplication != null)
+            //if (TotalApplication != null)
+            //{
+            //    lblTotalApplications.Text = TotalApplication.Tables[0].Rows.Count.ToString();
+            //}
+           
+            if (TotalPoints != null)
             {
-                lblTotalApplications.Text = TotalApplication.Tables[0].Rows.Count.ToString();
-            }
-            if (TotalPop != null)
-            {
-                lblPop.Text = TotalPop.Tables[0].Rows.Count.ToString();
-            }
+                double total = 0;
+                foreach (DataRow dt in TotalPoints.Tables[0].Rows)
+                {
+                    total += double.Parse(dt["Points"].ToString());
+                }
+                lblTotalPoints.Text = total.ToString();
 
-            if (TotalPayments != null)
-            {
-                lblTotalPayments.Text = TotalPayments.Tables[0].Rows.Count.ToString();
             }
+           
+            if (TotalWithdrawals != null)
+            {
+                lblWithdrawals.Text = TotalWithdrawals.Tables[0].Rows.Count.ToString();
 
+            }
+            if (TotalStudents != null)
+            {
+                lblTotalPayments.Text = TotalStudents.Tables[0].Rows.Count.ToString();
+            }
             if (getsearchdata != null)
             {
                 lblSearchCollege.Text = getsearchdata.Tables[0].Rows.Count.ToString();
@@ -88,7 +100,17 @@ namespace MyAGC
 
         protected void lnkTotalPayments_Click(object sender, EventArgs e)
         {
-            Response.Redirect(string.Format("../agent/my-payments"));
+            Response.Redirect(string.Format("../agent/view-students"));
+        }
+
+        protected void lnkTotalPoints_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../agent/my-points"));
+        }
+
+        protected void lnkWithdrawals_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../agent/my-withdrawals"));
         }
     }
 }

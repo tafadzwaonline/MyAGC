@@ -325,6 +325,43 @@ namespace MyAGC.agent
                 //DangerAlert(ex.Message);
             }
         }
+        private void getUserDetails()
+        {
+
+            DataSet GetUsers = um.GetSystemUserByUserEmail(txtEmail.Text);
+
+            if (GetUsers.Tables.Count > 0 && GetUsers.Tables[0].Rows.Count > 0)
+            {
+                DataRow row = GetUsers.Tables[0].Rows[0];
+
+                DateTime dt = Convert.ToDateTime(row["DOB"].ToString());
+                string dts = dt.ToString("yyyy-dd-MM");
+
+
+                txtFirstName.Text = row["FirstName"].ToString();
+                txtLastName.Text = row["LastName"].ToString();
+                txtEmail.Text = row["Email"].ToString();
+                txtAddress.Text = row["Address"].ToString();
+                txtMobile.Text = row["Mobile"].ToString();
+                txtDob.Text = dts;
+                DrpGender.SelectedValue = row["GenderID"].ToString();
+                drpCountry.SelectedValue = row["CountryID"].ToString();
+                drpRace.SelectedValue = row["RaceID"].ToString();
+                drpReligion.SelectedValue = row["ReligionID"].ToString();
+                drpTitle.SelectedValue = row["TitleID"].ToString();
+                drpDisabilitype.SelectedValue = row["DisabilityID"].ToString();
+                //drpRelationType.SelectedValue = row["NextKinRelationID"].ToString();
+                drpIdentityDocument.SelectedValue = row["IdentityDocumentTypeID"].ToString();
+
+                txtIdentityNumber.Text = row["IdentityNumber"].ToString();
+                //txtKinNames.Text = row["NextKinFullName"].ToString();
+                //txtKinMobile.Text = row["NextKinMobile"].ToString();
+                //txtKinAddress.Text = row["NextKinAddress"].ToString();
+
+
+            }
+        }
+
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -485,10 +522,6 @@ namespace MyAGC.agent
                     int.Parse(drpTitle.SelectedValue), int.Parse(drpDisabilitype.SelectedValue),0, int.Parse(drpIdentityDocument.SelectedValue),
                     "", "", "", txtIdentityNumber.Text);
 
-
-               
-                //getUserDetails();
-                //SuccessAlert("User records successfully updated");
             }
             catch (Exception)
             {
@@ -497,5 +530,30 @@ namespace MyAGC.agent
             }
 
         }
+
+        //protected void rdStudent_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    txtFirstName.Text = string.Empty;
+        //    txtLastName.Text = string.Empty;
+        //    txtEmail.Text = string.Empty;
+        //    txtAddress.Text = string.Empty;
+        //    txtMobile.Text = string.Empty;
+        //    txtDob.Text = string.Empty;;
+        //    DrpGender.SelectedValue = string.Empty;
+        //    drpCountry.SelectedValue = string.Empty;
+        //    drpRace.SelectedValue = string.Empty;
+        //    drpReligion.SelectedValue = "0";
+        //    drpTitle.SelectedValue = string.Empty;
+        //    drpDisabilitype.SelectedValue = "0";
+        //    //drpRelationType.SelectedValue = row["NextKinRelationID"].ToString();
+        //    drpIdentityDocument.SelectedValue = string.Empty;
+
+        //    txtIdentityNumber.Text = string.Empty;
+        //}
+
+        //protected void rdExisting_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    getUserDetails();
+        //}
     }
 }

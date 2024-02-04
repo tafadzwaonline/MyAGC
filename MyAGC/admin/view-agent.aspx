@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="view-students.aspx.cs" Inherits="MyAGC.admin.view_students" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="view-agent.aspx.cs" Inherits="MyAGC.admin.view_agent" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>View Students</h1>
+                            <h1>View Agents</h1>
                             <small></small>
 
                         </div>

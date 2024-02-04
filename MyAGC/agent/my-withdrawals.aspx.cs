@@ -1,0 +1,133 @@
+﻿using MyAGC.Classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace MyAGC.agent
+{
+    public partial class my_withdrawals : System.Web.UI.Page
+    {
+        readonly UsersManagement um = new UsersManagement("con");
+        readonly LookUp lp = new LookUp("con");
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+
+                getPoints();
+
+            }
+        }
+
+
+        private void getPoints()
+        {
+            DataSet dataSet = lp.getAllAgentWithdrawals(int.Parse(Session["userid"].ToString()));
+
+            if (dataSet != null)
+            {
+                grdPoints.DataSource = dataSet;
+                grdPoints.DataBind();
+            }
+            else
+            {
+                grdPoints.DataSource = null;
+                grdPoints.DataBind();
+            }
+        }
+
+        protected void grdPoints_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdPoints.PageIndex = e.NewPageIndex;
+            this.BindGrid(e.NewPageIndex);
+        }
+
+        protected void DangerAlert(string Err)
+        {
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>error('" + Err + "')</script>", false);
+        }
+        protected void SuccessAlert(string message)
+        {
+
+            string script = $"SuccessToastr('{message}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
+        }
+        protected void WarningAlert(string message)
+        {
+            string script = $"WarningToastr('{message}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
+        }
+
+        private void BindGrid(int page = 0)
+        {
+            try
+            {
+
+                DataSet user = lp.getAllAgentWithdrawals(int.Parse(Session["userid"].ToString()));
+                if (user != null)
+                {
+                    int maxPageIndex = grdPoints.PageCount - 1;
+                    if (page < 0 || page > maxPageIndex)
+                    {
+                        if (maxPageIndex >= 0)
+                        {
+                            // Navigate to the last available page
+                            page = maxPageIndex;
+                        }
+                        else
+                        {
+                            // No data available, reset to the first page
+                            page = 0;
+                        }
+                    }
+                    grdPoints.DataSource = user;
+                    grdPoints.PageIndex = page;
+                    grdPoints.DataBind();
+                }
+                else
+                {
+                    grdPoints.DataSource = null;
+                    grdPoints.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                DangerAlert(ex.ToString());
+            }
+        }
+
+        protected void grdPoints_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                //QueryStringModule qn = new QueryStringModule();
+                //int index = Convert.ToInt32(e.CommandArgument);
+
+                //if (e.CommandName == "SelectItem")
+                //{
+                //    lp.ApproveAgentCommision(index);
+                //    getPoints();
+                //    SuccessAlert("Commission successfully aprroved");
+
+                //}
+                //if (e.CommandName == "DeleteItem")
+                //{
+                //    lp.RejectAgentCommision(index);
+                //    getPoints();
+                //    SuccessAlert("Commission successfully rejected");
+                //}
+
+            }
+            catch (Exception ex)
+            {
+
+                DangerAlert(ex.ToString());
+            }
+        }
+    }
+}

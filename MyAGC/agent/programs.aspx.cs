@@ -120,7 +120,8 @@ namespace MyAGC.agent
                 string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(txtPeriodID.Value));
                 string EcryptedProgramID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
                 // Response.Redirect(string.Format("../student/application?ID={0}", EcryptedProgramID), false);
-                Response.Redirect(string.Format("../agent/student-information?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
+                //Response.Redirect(string.Format("../agent/student-information?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
+                Response.Redirect(string.Format("../agent/application-type?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
             }
             catch (Exception ex)
             {

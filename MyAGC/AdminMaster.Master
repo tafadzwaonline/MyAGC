@@ -232,6 +232,7 @@
                                  <li><a href="../Admin/view-user">View Administrators</a></li>
                                 <li><a href="../Admin/view-colleges">View Colleges</a></li>
                                 <li><a href="../Admin/view-students">View Students</a></li>
+                                <li><a href="../admin/view-agent">View Agents</a></li>
                                      
                             </ul>
                         </li>

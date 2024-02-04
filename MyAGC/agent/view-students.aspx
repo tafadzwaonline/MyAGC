@@ -1,0 +1,80 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentMaster.Master" AutoEventWireup="true" CodeBehind="view-students.aspx.cs" Inherits="MyAGC.agent.view_students" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <div class="header-icon">
+                            <i class="pe-7s-note2"></i>
+                        </div>
+                        <div class="header-title">
+                              
+                            <h1>My Students</h1>
+                            <small></small>
+
+                        </div>
+                    </section>
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="row">
+                            <!-- Form controls -->
+                            <div class="col-sm-12">
+                                <div class="panel panel-bd lobidrag">
+
+        
+                                    <div class="panel-body">
+                                        <form class="col-sm-12" runat="server">
+                                             <div class="row">
+                   
+                    <asp:HiddenField ID="txtID" runat="server" />
+                                                <asp:HiddenField ID="txtCollegeID" runat="server" />
+                  
+                    <asp:HiddenField ID="txtPeriodID" runat="server" />
+                    <asp:HiddenField ID="txtProgramID" runat="server" />
+                </div>
+                                               <table style="width:100%" >
+
+                                         <tr>
+                                             <td colspan="12">
+
+                                                 <div class="row">
+
+                    <div class="col-sm-12">
+                        <asp:GridView ID="grdPayments" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPayments_RowCommand"
+                            role="grid" aria-describedby="basicExample_info" 
+                            OnPageIndexChanging="grdPayments_PageIndexChanging"
+                            AutoGenerateColumns="False" DataKeyNames="UserID" Width="100%"
+                            AllowPaging="True" AllowSorting="True">
+                            <Columns>
+
+                              
+                                 <asp:BoundField DataField="UserID" HeaderText="UserID">
+                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
+                                </asp:BoundField>
+                                 <asp:BoundField DataField="FullName" HeaderText="FullName">
+                                    <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Email" HeaderText="Email">
+                                   <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
+                                </asp:BoundField>
+                                 <asp:BoundField DataField="IdentityNumber" HeaderText="IdentityNumber"></asp:BoundField>
+
+                            </Columns>
+                        </asp:GridView>
+
+                    </div>
+                </div>
+
+                                             </td>
+                                         </tr>
+       
+     </table>
+                                         </form>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         
+                     </section> <!-- /.content -->
+                 </div>
+    <!-- /.content-wrapper -->
+</asp:Content>

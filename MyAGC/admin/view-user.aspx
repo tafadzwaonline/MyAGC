@@ -82,7 +82,7 @@
                                  <asp:BoundField DataField="Email" HeaderText="Email">
                                    
                                 </asp:BoundField>
-                                <asp:BoundField DataField="Active" HeaderText="Status">
+                                <asp:BoundField DataField="Active" HeaderText="Active">
                                     
                                 </asp:BoundField>
                                    <asp:BoundField DataField="Mobile" HeaderText="Mobile">

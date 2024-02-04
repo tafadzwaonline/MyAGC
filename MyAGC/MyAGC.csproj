@@ -177,6 +177,7 @@
     <Content Include="admin\dashboard.aspx" />
     <Content Include="admin\email-settings.aspx" />
     <Content Include="admin\logged-queries.aspx" />
+    <Content Include="admin\manage-withdrawal.aspx" />
     <Content Include="admin\my-profile.aspx" />
     <Content Include="admin\personal-info.aspx" />
     <Content Include="admin\pop-uploads.aspx" />
@@ -185,19 +186,25 @@
     <Content Include="admin\sms-settings.aspx" />
     <Content Include="admin\SystemUsersReport.aspx" />
     <Content Include="admin\TotalPaymentsReport.aspx" />
+    <Content Include="admin\view-agent.aspx" />
     <Content Include="admin\view-colleges.aspx" />
     <Content Include="admin\view-payment.aspx" />
     <Content Include="admin\view-students.aspx" />
     <Content Include="admin\view-user.aspx" />
     <Content Include="agent\academic-calander.aspx" />
+    <Content Include="agent\application-type.aspx" />
     <Content Include="agent\application.aspx" />
     <Content Include="agent\dashboard.aspx" />
     <Content Include="agent\my-applications.aspx" />
     <Content Include="agent\my-points.aspx" />
     <Content Include="agent\my-profile.aspx" />
+    <Content Include="agent\my-withdrawals.aspx" />
     <Content Include="agent\programs.aspx" />
     <Content Include="agent\search-college.aspx" />
+    <Content Include="agent\select-student.aspx" />
     <Content Include="agent\student-information.aspx" />
+    <Content Include="agent\view-students.aspx" />
+    <Content Include="agent\withdraw-points.aspx" />
     <Content Include="assets\bootstrap\css\bootstrap.min.css" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\bootstrap\js\bootstrap.min.js" />
@@ -605,6 +612,13 @@
     <Compile Include="admin\logged-queries.aspx.designer.cs">
       <DependentUpon>logged-queries.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\manage-withdrawal.aspx.cs">
+      <DependentUpon>manage-withdrawal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage-withdrawal.aspx.designer.cs">
+      <DependentUpon>manage-withdrawal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\my-profile.aspx.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -661,6 +675,13 @@
     <Compile Include="admin\TotalPaymentsReport.aspx.designer.cs">
       <DependentUpon>TotalPaymentsReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\view-agent.aspx.cs">
+      <DependentUpon>view-agent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-agent.aspx.designer.cs">
+      <DependentUpon>view-agent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\view-colleges.aspx.cs">
       <DependentUpon>view-colleges.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -710,6 +731,13 @@
     <Compile Include="agent\academic-calander.aspx.designer.cs">
       <DependentUpon>academic-calander.aspx</DependentUpon>
     </Compile>
+    <Compile Include="agent\application-type.aspx.cs">
+      <DependentUpon>application-type.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\application-type.aspx.designer.cs">
+      <DependentUpon>application-type.aspx</DependentUpon>
+    </Compile>
     <Compile Include="agent\application.aspx.cs">
       <DependentUpon>application.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -745,6 +773,13 @@
     <Compile Include="agent\my-profile.aspx.designer.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="agent\my-withdrawals.aspx.cs">
+      <DependentUpon>my-withdrawals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\my-withdrawals.aspx.designer.cs">
+      <DependentUpon>my-withdrawals.aspx</DependentUpon>
+    </Compile>
     <Compile Include="agent\programs.aspx.cs">
       <DependentUpon>programs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -759,12 +794,33 @@
     <Compile Include="agent\search-college.aspx.designer.cs">
       <DependentUpon>search-college.aspx</DependentUpon>
     </Compile>
+    <Compile Include="agent\select-student.aspx.cs">
+      <DependentUpon>select-student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\select-student.aspx.designer.cs">
+      <DependentUpon>select-student.aspx</DependentUpon>
+    </Compile>
     <Compile Include="agent\student-information.aspx.cs">
       <DependentUpon>student-information.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="agent\student-information.aspx.designer.cs">
       <DependentUpon>student-information.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\view-students.aspx.cs">
+      <DependentUpon>view-students.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\view-students.aspx.designer.cs">
+      <DependentUpon>view-students.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\withdraw-points.aspx.cs">
+      <DependentUpon>withdraw-points.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\withdraw-points.aspx.designer.cs">
+      <DependentUpon>withdraw-points.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

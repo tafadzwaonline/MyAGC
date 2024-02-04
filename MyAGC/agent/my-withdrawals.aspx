@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentMaster.Master" AutoEventWireup="true" CodeBehind="my-points.aspx.cs" Inherits="MyAGC.agent.my_points" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentMaster.Master" AutoEventWireup="true" CodeBehind="my-withdrawals.aspx.cs" Inherits="MyAGC.agent.my_withdrawals" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>My Application Points</h1>
+                            <h1>My Withdrawals</h1>
                             <small></small>
 
                         </div>
@@ -20,18 +20,11 @@
                             <div class="col-sm-12">
                                 <div class="panel panel-bd lobidrag">
 
-          <%--<div class="panel-heading">
-                                        <div class="btn-group"> 
-                                            <a class="btn btn-primary" href="table.html" data-toggle="modal" data-target="#modalSaveDocumentName"> <i class="fa fa-list"></i>  Doctor List </a>  
-                                        </div>
-                                    </div>--%>
+         
                          
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                                        <div class="col-sm-1 reset-button">
-            
-                                                 <a class="btn btn-warning" href="../agent/withdraw-points">Withdraw Points</a>
-                                             </div>
+                                                   
                                              <asp:HiddenField ID="txtid" runat="server" />
              
                                                <table style="width:100%" >
@@ -45,36 +38,42 @@
                         <asp:GridView ID="grdPoints" runat="server" class="table table-bordered dataTable no-footer"
                             role="grid" aria-describedby="basicExample_info" 
                             OnPageIndexChanging="grdPoints_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="AgentID" Width="100%"
-                            AllowPaging="True" AllowSorting="True">
+                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                            AllowPaging="True" AllowSorting="True" OnRowCommand="grdPoints_RowCommand">
                             <Columns>
 
                                <asp:BoundField DataField="FullName" HeaderText="FullName">
-                                    <ItemStyle HorizontalAlign="Left" Width="100px" />
+                                    <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
+                                </asp:BoundField>
+                                 <asp:BoundField DataField="CommissionStatus" HeaderText="Withdrawal Status">
+                                    <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
                                 </asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email">
-                                    <ItemStyle HorizontalAlign="Left" Width="100px" />
+                                    <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
                                 </asp:BoundField>
                                  <asp:BoundField DataField="Points" HeaderText="Points">
-                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
+                                   <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
                                 </asp:BoundField>
                                  <asp:BoundField DataField="DateAdded" HeaderText="DateApplied">
-                                    <ItemStyle HorizontalAlign="Left" Width="70px" />
+                                    <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
                                 </asp:BoundField>
-                               
-                                 <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
-                                <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
                                  
                                
-                               <%--  <asp:TemplateField HeaderText="View">
+                                <%-- <asp:TemplateField HeaderText="View">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       View Payment
+                                                       Approve
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                
+                                 <asp:TemplateField HeaderText="View">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnReject" runat="server" CssClass="btn btn-danger" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
+                                                       Reject
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>--%>
-                                
-
                             </Columns>
                         </asp:GridView>
 

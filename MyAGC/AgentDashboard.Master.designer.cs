@@ -33,24 +33,6 @@ namespace MyAGC
         protected global::System.Web.UI.WebControls.Label lblUsername;
 
         /// <summary>
-        /// lnkTotalApplications control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalApplications;
-
-        /// <summary>
-        /// lblTotalApplications control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalApplications;
-
-        /// <summary>
         /// lnkSearchCollege control.
         /// </summary>
         /// <remarks>
@@ -69,22 +51,22 @@ namespace MyAGC
         protected global::System.Web.UI.WebControls.Label lblSearchCollege;
 
         /// <summary>
-        /// lnkSupportQuery control.
+        /// lnkTotalPoints control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkSupportQuery;
+        protected global::System.Web.UI.WebControls.LinkButton lnkTotalPoints;
 
         /// <summary>
-        /// lblPop control.
+        /// lblTotalPoints control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPop;
+        protected global::System.Web.UI.WebControls.Label lblTotalPoints;
 
         /// <summary>
         /// lnkTotalPayments control.
@@ -103,6 +85,24 @@ namespace MyAGC
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotalPayments;
+
+        /// <summary>
+        /// lnkWithdrawals control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkWithdrawals;
+
+        /// <summary>
+        /// lblWithdrawals control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWithdrawals;
 
         /// <summary>
         /// ContentPlaceHolder1 control.

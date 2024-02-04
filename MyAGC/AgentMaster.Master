@@ -226,6 +226,12 @@
                            
                      </a>
                  </li>
+                       <li>
+                        <a href="../agent/my-points">
+                         <i class="fa fa-dollar"></i><span>View Points</span>
+                           
+                     </a>
+                 </li>
                        
                         
                         <li class="treeview">
@@ -248,7 +254,7 @@
                      </a>
                  </li>
                        --%>
-                        <li class="treeview">
+                        <%--<li class="treeview">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i> <span>Decision Management</span>
                                 <span class="pull-right-container">
@@ -259,7 +265,7 @@
                                 <li><a href="../agent/my-applications">Total Applications</a></li>
                                 
                             </ul>
-                        </li>
+                        </li>--%>
                     <%--<li>
                         <a href="mailbox.html">
                          <i class="fa fa-envelope"></i><span> Reporting</span>
