@@ -35,12 +35,17 @@ namespace MyAGC
             DataSet TotalWithdrawals = lp.getAllAgentPoints();
             DataSet getcollege = um.GetSystemUserByUserRole(2);
             DataSet getadmin = um.GetSystemUserByUserRole(1);
+            DataSet TotalLetters = lp.getAllAcceptanceLetters();
             DataSet getstudent = um.GetSystemUserByUserRole(3);
             DataSet TotalPop = lp.getUploadedProofOfPayments();
 
             if (TotalWithdrawals != null)
             {
                 lblAgentCommission.Text = TotalWithdrawals.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalLetters != null)
+            {
+                lblAcceptanceLetter.Text = TotalLetters.Tables[0].Rows.Count.ToString();
             }
             if (getcollege != null)
             {
@@ -117,6 +122,10 @@ namespace MyAGC
         protected void lnkAgentCommission_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../admin/manage-withdrawal"));
+        }
+        protected void lnkAcceptanceLetter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../admin/acceptance-letters"));
         }
     }
 }

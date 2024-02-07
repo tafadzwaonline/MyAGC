@@ -33,7 +33,7 @@ namespace MyAGC
 
         private void getStatistics() 
         {
-           
+            DataSet TotalLetters = lp.getAcceptanceLettersByCollegeID(int.Parse(Session["userid"].ToString()));
             DataSet TotalApplication = lp.getTotalApplications(int.Parse(Session["userid"].ToString()));
             DataSet TotalPayments = lp.getPaymentsByCollegeID(int.Parse(Session["userid"].ToString()));
             DataSet RejectedApplication = lp.getRejectedApplications(int.Parse(Session["userid"].ToString()));
@@ -45,6 +45,10 @@ namespace MyAGC
             if (TotalApplication != null)
             {
                 lblTotalApplications.Text = TotalApplication.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalLetters != null)
+            {
+                lblAcceptanceLetter.Text = TotalLetters.Tables[0].Rows.Count.ToString();
             }
             if (TotalPop != null)
             {
@@ -119,6 +123,10 @@ namespace MyAGC
         protected void lnkPop_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../institution/pop-uploads"));
+        }
+        protected void lnkAcceptanceLetter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../institution/acceptance-letters"));
         }
     }
 }

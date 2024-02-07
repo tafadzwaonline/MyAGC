@@ -11,35 +11,35 @@ namespace MyAGC.student
 {
 
 
-    public partial class manage_document
+    public partial class acceptance_letters
     {
 
         /// <summary>
-        /// drpDocumentType control.
+        /// txtCollegeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpDocumentType;
+        protected global::System.Web.UI.WebControls.HiddenField txtCollegeID;
 
         /// <summary>
-        /// fileUpload control.
+        /// txtApplicationID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
+        protected global::System.Web.UI.WebControls.HiddenField txtApplicationID;
 
         /// <summary>
-        /// btnSave control.
+        /// txtApplicantID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.HiddenField txtApplicantID;
 
         /// <summary>
         /// grdDocument control.

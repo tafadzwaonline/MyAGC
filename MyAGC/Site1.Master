@@ -49,7 +49,27 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-  
+  <script type="text/javascript">
+      var inactivityTimeout;
+
+      function resetInactivityTimeout() {
+          clearTimeout(inactivityTimeout);
+          // Set the timeout to 5 minutes (300,000 milliseconds)
+          inactivityTimeout = setTimeout(logout, 900000);
+      }
+
+      function logout() {
+          // Redirect to the logout or login page
+          window.location.href = '../login';
+      }
+
+      // Add event listeners for user activity (e.g., mousemove, keydown, etc.)
+      document.addEventListener('mousemove', resetInactivityTimeout);
+      document.addEventListener('keydown', resetInactivityTimeout);
+
+      // Initialize the timeout on page load
+      resetInactivityTimeout();
+  </script>
 
      <script type="text/javascript">
 
@@ -333,6 +353,22 @@
                                     <div class="items pull-left">
                                         <i class="fa fa-users fa-2x"></i>
                                         <h4>Total Payments</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                </asp:LinkButton>
+                        </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                            <asp:LinkButton ID="lnkAcceptanceLetter" OnClick="lnkAcceptanceLetter_Click" runat="server">
+                            <div class="panel panel-bd cardbox">
+                                <div class="panel-body">
+                                    <div class="statistic-box">
+                                        <h2><span class="count-number"><asp:Label ID="lblAcceptanceLetter" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                                        </h2>
+                                    </div>
+                                    <div class="items pull-left">
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <h4>Acceptance Letters</h4>
                                     </div>
                                 </div>
                             </div>

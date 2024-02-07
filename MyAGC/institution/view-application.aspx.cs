@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -22,6 +23,8 @@ namespace MyAGC.institution
                 txtCollegeID.Value = Session["userid"].ToString();
                 txtApplicationID.Value = "0";
                 txtApplicantID.Value = "0";
+                txtPeriodID.Value = "0";
+                txtProgramID.Value = "0";
 
 
                 if (Request.QueryString["ApplicationID"].ToString() != null)
@@ -89,14 +92,23 @@ namespace MyAGC.institution
                 txtApplicationStatus.Text = dt["Status"].ToString();
                 txtApplicantMobile.Text = dt["Mobile"].ToString();
                 txtApplicantID.Value = dt["ApplicantID"].ToString();
+                txtPeriodID.Value = dt["PeriodID"].ToString();
+                txtProgramID.Value = dt["ProgramID"].ToString();
 
                 if (txtApplicationStatus.Text.ToLower() == "pending")
                 {
                     butt.Visible = true;
 
                 }
+                else if (txtApplicationStatus.Text.ToLower() == "Accepted")
+                {
+                    upp.Visible = true;
+                    ub.Visible = true;
+                    butt.Visible = false;
+                }
                 else 
-                { 
+                {
+                   
                     butt.Visible = false; 
                 }
             }
@@ -181,5 +193,63 @@ namespace MyAGC.institution
                 throw;
             }
         }
+        protected void DangerAlert(string Err)
+        {
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>error('" + Err + "')</script>", false);
+        }
+        protected void SuccessAlert(string message)
+        {
+
+            string script = $"SuccessToastr('{message}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
+        }
+        protected void WarningAlert(string message)
+        {
+            string script = $"WarningToastr('{message}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
+        }
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!fileUpload.HasFile)
+            {
+                WarningAlert("Please select a certificate to upload");
+                return;
+            }
+
+
+
+            UpdateDetails();
+        }
+
+        private void UpdateDetails()
+        {
+            try
+            {
+
+                string filename = Path.GetFileName(fileUpload.PostedFile.FileName);
+                string contentType = fileUpload.PostedFile.ContentType;
+                //int DocTypeID = int.Parse(drpDocumentType.SelectedValue);
+                using (Stream fs = fileUpload.PostedFile.InputStream)
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                        string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                        lp.UploadAcceptanceLetter(int.Parse(txtApplicationID.Value),filename, contentType, bytes,int.Parse(Session["userid"].ToString()), int.Parse(txtApplicantID.Value), int.Parse(txtPeriodID.Value), int.Parse(txtProgramID.Value));
+                    }
+                }
+                //getDocumentUploads();
+                SuccessAlert("Letter successfully uploaded");
+
+                //Clear();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }

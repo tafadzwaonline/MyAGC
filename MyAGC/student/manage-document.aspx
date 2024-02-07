@@ -41,6 +41,11 @@
                                                 <label></label>
                                                 <asp:FileUpload ID="fileUpload" runat="server" />
                                             </div>
+                                            <div class="col-sm-12 reset-button">
+                                                  
+                                                 <asp:Button ID="btnSave" runat="server" Text="Upload Document" OnClick="btnSave_Click" class="btn btn-success" />
+                                                
+                                             </div>
           
                                                <table style="width:100%" >
 

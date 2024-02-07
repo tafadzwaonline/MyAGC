@@ -33,6 +33,7 @@ namespace MyAGC
 
             DataSet TotalApplication = lp.getStudentApplicationByUserID(int.Parse(Session["userid"].ToString()));
             DataSet TotalPayments = lp.getPaymentsByApplicantID(int.Parse(Session["userid"].ToString()));
+            DataSet TotalLetters = lp.getAcceptanceLetters(int.Parse(Session["userid"].ToString()));
             DataSet TotalPop = lp.getUploadedProofOfPaymentsByApplicantID(int.Parse(Session["userid"].ToString()));
             DataSet getsearchdata = um.GetSystemUserByUserRole(2);
             
@@ -40,6 +41,10 @@ namespace MyAGC
             if (TotalApplication != null)
             {
                 lblTotalApplications.Text = TotalApplication.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalLetters != null)
+            {
+                lblAcceptanceLetter.Text = TotalLetters.Tables[0].Rows.Count.ToString();
             }
             if (TotalPop != null)
             {
@@ -89,6 +94,11 @@ namespace MyAGC
         protected void lnkTotalPayments_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../student/my-payments"));
+        }
+
+        protected void lnkAcceptanceLetter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../student/acceptance-letters"));
         }
     }
 }

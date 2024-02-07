@@ -689,6 +689,60 @@ namespace MyAGC.Classes
             }
 
         }
+        public DataSet getAcceptanceLetters(int UserID)
+        {
+
+            string str = "sp_getAcceptanceLetters";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getAcceptanceLettersByCollegeID(int CollegeID)
+        {
+
+            string str = "sp_getAcceptanceLettersByCollege";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, CollegeID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getAllAcceptanceLetters()
+        {
+
+            string str = "sp_getAllAcceptanceLetters";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@UserID", DbType.Int32, CollegeID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         public DataSet getUploadedProofOfPaymentsByApplicantID(int ApplicantID)
         {
 
@@ -826,6 +880,23 @@ namespace MyAGC.Classes
             db.AddInParameter(cmd, "@DateCreated", DbType.DateTime, DateCreated);
             db.AddInParameter(cmd, "@UploadedBy", DbType.Int32, UploadedBy);
             db.AddInParameter(cmd, "@CertificateID", DbType.Int32, DocTypeID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+
+        }
+        public void UploadAcceptanceLetter(int ApplicationID,string Name, string ContentType, byte[] Data, int CollegeID,int ApplicantID,int PeriodID,int ProgramID)
+        {
+
+            string str = "sp_UploadAcceptanceLetter";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ApplicantionID", DbType.Int32, ApplicationID);
+            db.AddInParameter(cmd, "@ApplicantID", DbType.Int32, ApplicantID);
+            db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
+            db.AddInParameter(cmd, "@ProgramID", DbType.Int32, ProgramID);
+            db.AddInParameter(cmd, "@PeriodID", DbType.Int32, PeriodID);
+            db.AddInParameter(cmd, "@Name", DbType.String, Name);
+            db.AddInParameter(cmd, "@ContentType", DbType.String, ContentType);
+            db.AddInParameter(cmd, "@Data", DbType.Binary, Data);
 
             DataSet ds = db.ExecuteDataSet(cmd);
 

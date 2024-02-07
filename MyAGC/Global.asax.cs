@@ -21,6 +21,7 @@ namespace MyAGC
         void Session_Start(object sender, EventArgs e)
         {
             //Code that runs when a new session is started
+            Session.Timeout = 30;
             if (Session["username"] == null)
             {
                 //Redirect to Welcome Page if Session is not null    

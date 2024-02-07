@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="admin\acceptance-letters.aspx" />
     <Content Include="admin\all-payments.aspx" />
     <Content Include="admin\create-user.aspx" />
     <Content Include="admin\dashboard.aspx" />
@@ -419,6 +420,7 @@
     <Content Include="forgot-password.aspx" />
     <Content Include="Global.asax" />
     <Content Include="institution\academic-calendar.aspx" />
+    <Content Include="institution\acceptance-letters.aspx" />
     <Content Include="institution\accepted-applications.aspx" />
     <Content Include="institution\add-faculty.aspx" />
     <Content Include="institution\add-program.aspx" />
@@ -469,6 +471,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="student\academic-calander.aspx" />
     <Content Include="student\academic-history.aspx" />
+    <Content Include="student\acceptance-letters.aspx" />
     <Content Include="student\application.aspx" />
     <Content Include="student\apply-college.aspx" />
     <Content Include="student\dashboard.aspx" />
@@ -576,6 +579,13 @@
     </Compile>
     <Compile Include="AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\acceptance-letters.aspx.cs">
+      <DependentUpon>acceptance-letters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\acceptance-letters.aspx.designer.cs">
+      <DependentUpon>acceptance-letters.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\all-payments.aspx.cs">
       <DependentUpon>all-payments.aspx</DependentUpon>
@@ -961,6 +971,13 @@
     <Compile Include="institution\academic-calendar.aspx.designer.cs">
       <DependentUpon>academic-calendar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="institution\acceptance-letters.aspx.cs">
+      <DependentUpon>acceptance-letters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="institution\acceptance-letters.aspx.designer.cs">
+      <DependentUpon>acceptance-letters.aspx</DependentUpon>
+    </Compile>
     <Compile Include="institution\accepted-applications.aspx.cs">
       <DependentUpon>accepted-applications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1143,6 +1160,13 @@
     </Compile>
     <Compile Include="student\academic-history.aspx.designer.cs">
       <DependentUpon>academic-history.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\acceptance-letters.aspx.cs">
+      <DependentUpon>acceptance-letters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\acceptance-letters.aspx.designer.cs">
+      <DependentUpon>acceptance-letters.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\application.aspx.cs">
       <DependentUpon>application.aspx</DependentUpon>

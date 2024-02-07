@@ -23,6 +23,8 @@
                                         <form class="col-sm-12" runat="server">
                                             <div class="row">
                     <asp:HiddenField ID="txtCollegeID" runat="server" />
+                   <asp:HiddenField ID="txtPeriodID" runat="server" />
+                                                <asp:HiddenField ID="txtProgramID" runat="server" />
                  
                     <asp:HiddenField ID="txtApplicationID" runat="server" />
                                                  <asp:HiddenField ID="txtApplicantID" runat="server" />
@@ -80,8 +82,16 @@
                                                 <label>Requirements</label>
                                                 <asp:TextBox ID="txtRequirements" runat="server" ReadOnly="true" TextMode="MultiLine"  class="form-control"></asp:TextBox>
                                             </div>
+                                            <div class="col-sm-6 form-group" id="upp" runat="server" visible="false">
+                                                <label>Upload Acceptance Letter</label>
+                                                <asp:FileUpload ID="fileUpload" runat="server" />
+                                            </div>
                                           
-                                             
+                                             <div class="col-sm-12 reset-button" id="ub" runat="server" visible="false">
+                                                  
+                                                 <asp:Button ID="btnSave" runat="server" Text="Upload Document" OnClick="btnSave_Click" class="btn btn-success" />
+                                                
+                                             </div>
 
                                               <div class="col-sm-12 reset-button" id="butt" runat="server" visible="false">
                                                  <asp:Button ID="btnApprove" runat="server" Text="Approve" OnClick="btnApprove_Click" OnClientClick="return confirm('Are you sure want you want to approve this application?');" class="btn btn-success" />

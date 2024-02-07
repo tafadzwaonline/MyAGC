@@ -78,7 +78,27 @@
            }, 100);
        }
    </script>
+    <script type="text/javascript">
+        var inactivityTimeout;
 
+        function resetInactivityTimeout() {
+            clearTimeout(inactivityTimeout);
+            // Set the timeout to 5 minutes (300,000 milliseconds)
+            inactivityTimeout = setTimeout(logout, 900000);
+        }
+
+        function logout() {
+            // Redirect to the logout or login page
+            window.location.href = '../login';
+        }
+
+        // Add event listeners for user activity (e.g., mousemove, keydown, etc.)
+        document.addEventListener('mousemove', resetInactivityTimeout);
+        document.addEventListener('keydown', resetInactivityTimeout);
+
+        // Initialize the timeout on page load
+        resetInactivityTimeout();
+    </script>
      <script type="text/javascript">
 
          function success(msg, redirectUrl) {
