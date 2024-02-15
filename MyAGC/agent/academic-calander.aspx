@@ -24,45 +24,47 @@
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
                                              <asp:HiddenField ID="txtid" runat="server" />
-             
-                                               <table style="width:100%" >
+             <div class="table-responsive">
+                                                           <table class="table table-bordered table-hover"  style="width:100%" >
 
-                                         <tr>
-                                             <td colspan="12">
+                                    <tr>
+                                        <td colspan="12">
 
-                                                 <div class="row">
-                    <div class="col-sm-12">
-                        <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdAcademicHistory_RowCommand"
-                            role="grid" aria-describedby="basicExample_info" 
-                            OnPageIndexChanging="grdAcademicHistory_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                            AllowPaging="True" AllowSorting="True">
-                            <Columns>
+                                            <div class="row">
+               <div class="col-sm-12">
+                   <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdAcademicHistory_RowCommand"
+                       role="grid" aria-describedby="basicExample_info" 
+                       OnPageIndexChanging="grdAcademicHistory_PageIndexChanging"
+                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                       AllowPaging="True" AllowSorting="True">
+                       <Columns>
 
-                                <asp:BoundField DataField="ApplicationDeadline" HeaderText="Application Deadline"></asp:BoundField>
-                                <asp:BoundField DataField="Name" HeaderText="Intake"></asp:BoundField>
-                                <asp:BoundField DataField="Period" HeaderText="Period"></asp:BoundField>
-                                 
-                               
-                                 <asp:TemplateField HeaderText="Add">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       Apply
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                
+                           <asp:BoundField DataField="ApplicationDeadline" HeaderText="Application Deadline"></asp:BoundField>
+                           <asp:BoundField DataField="Name" HeaderText="Intake"></asp:BoundField>
+                           <asp:BoundField DataField="Period" HeaderText="Period"></asp:BoundField>
+                            
+                          
+                            <asp:TemplateField HeaderText="Add">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                                                  Apply
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>
+                           
 
-                            </Columns>
-                        </asp:GridView>
+                       </Columns>
+                   </asp:GridView>
 
-                    </div>
-                </div>
+               </div>
+           </div>
 
-                                             </td>
-                                         </tr>
-       
-     </table>
+                                        </td>
+                                    </tr>
+  
+</table>
+</div>
+                                               
                                          </form>
                                      </div>
                                  </div>

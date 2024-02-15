@@ -33,47 +33,49 @@
                                         <form class="col-sm-12" runat="server">
                             
                                             
-                                         
-                                               <table style="width:100%" >
+                                         <div class="table-responsive">
+                                                                                       <table class="table table-bordered table-hover"  style="width:100%" >
 
-                                                   <tr>
-                                                       <td colspan="12">
+                                              <tr>
+                                                  <td colspan="12">
 
-                                                           <div class="row">
-                                                               <div class="col-sm-12">
-                                                                   <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
-                                                                       role="grid" aria-describedby="basicExample_info"
-                                                                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                                                                       AllowPaging="True" AllowSorting="True">
-                                                                       <Columns>
-                                                                           <asp:BoundField DataField="Name" HeaderText="File Name">
-                                                                               <ItemStyle HorizontalAlign="Left" Width="150px" />
-                                                                           </asp:BoundField>
-                                                                           <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded">
-                                                                               <ItemStyle HorizontalAlign="Left" Width="100px" />
-                                                                           </asp:BoundField>
-                                                                            <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
-                                                                           <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
-                                                                           <asp:TemplateField HeaderText="Download">
-                                                                               <ItemTemplate>
-                                                                                   <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
-                                                                               </ItemTemplate>
-                                                                           </asp:TemplateField>
-                                                                        <%--   <asp:TemplateField HeaderText="Remove">
-                                                                               <ItemTemplate>
-                                                                                   <asp:LinkButton ID="lnkRecDel" runat="server" ForeColor="red" OnClientClick="return confirm('Are you sure want you want to delete the document?');" CssClass="fa fa-trash fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="DeleteItem"></asp:LinkButton>
-                                                                               </ItemTemplate>
-                                                                           </asp:TemplateField>--%>
-                                                                       </Columns>
-                                                                   </asp:GridView>
+                                                      <div class="row">
+                                                          <div class="col-sm-12">
+                                                              <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
+                                                                  role="grid" aria-describedby="basicExample_info"
+                                                                  AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                                                                  AllowPaging="True" AllowSorting="True">
+                                                                  <Columns>
+                                                                      <asp:BoundField DataField="Name" HeaderText="File Name">
+                                                                          <ItemStyle HorizontalAlign="Left" Width="150px" />
+                                                                      </asp:BoundField>
+                                                                      <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded">
+                                                                          <ItemStyle HorizontalAlign="Left" Width="100px" />
+                                                                      </asp:BoundField>
+                                                                       <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
+                                                                      <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
+                                                                      <asp:TemplateField HeaderText="Download">
+                                                                          <ItemTemplate>
+                                                                              <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
+                                                                          </ItemTemplate>
+                                                                      </asp:TemplateField>
+                                                                   <%--   <asp:TemplateField HeaderText="Remove">
+                                                                          <ItemTemplate>
+                                                                              <asp:LinkButton ID="lnkRecDel" runat="server" ForeColor="red" OnClientClick="return confirm('Are you sure want you want to delete the document?');" CssClass="fa fa-trash fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="DeleteItem"></asp:LinkButton>
+                                                                          </ItemTemplate>
+                                                                      </asp:TemplateField>--%>
+                                                                  </Columns>
+                                                              </asp:GridView>
 
-                                                               </div>
-                                                           </div>
+                                                          </div>
+                                                      </div>
 
-                                                       </td>
-                                                   </tr>
-       
-     </table>
+                                                  </td>
+                                              </tr>
+  
+</table>
+</div>
+                                               
                                          </form>
                                      </div>
                                  </div>

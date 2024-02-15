@@ -57,54 +57,58 @@
                                                  
                                              </div>
                                             
-                                               <table style="width:100%" >
 
-                                         <tr>
-                                             <td colspan="12">
+                                            <div class="table-responsive">
+                                                                                          <table class="table table-bordered table-hover"  style="width:100%" >
 
-                                                 <div class="row">
-                    <div class="col-sm-12">
-                        <asp:GridView ID="grdPrograms" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPrograms_RowCommand"
-                            role="grid" aria-describedby="basicExample_info" 
-                            OnPageIndexChanging="grdPrograms_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                            AllowPaging="True" AllowSorting="True">
-                            <Columns>
-                                <asp:BoundField DataField="ID" HeaderText="ID">
-                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="Duration" HeaderText="Duration">
-                                     <ItemStyle HorizontalAlign="Left" Width="60px" />
-                                 </asp:BoundField>
-                                 <asp:BoundField DataField="Tuition" HeaderText="Tuition">
-                                    <ItemStyle HorizontalAlign="Left" Width="80px" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="ProgramName" HeaderText="ProgramName">
-                                    <ItemStyle HorizontalAlign="Left" Width="100px" />
-                                </asp:BoundField>
-                                
+                                    <tr>
+                                        <td colspan="12">
+
+                                            <div class="row">
+               <div class="col-sm-12">
+                   <asp:GridView ID="grdPrograms" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPrograms_RowCommand"
+                       role="grid" aria-describedby="basicExample_info" 
+                       OnPageIndexChanging="grdPrograms_PageIndexChanging"
+                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                       AllowPaging="True" AllowSorting="True">
+                       <Columns>
+                           <asp:BoundField DataField="ID" HeaderText="ID">
+                               <ItemStyle HorizontalAlign="Left" Width="60px" />
+                           </asp:BoundField>
+                            <asp:BoundField DataField="Duration" HeaderText="Duration">
+                                <ItemStyle HorizontalAlign="Left" Width="60px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Tuition" HeaderText="Tuition">
+                               <ItemStyle HorizontalAlign="Left" Width="80px" />
+                           </asp:BoundField>
+                           <asp:BoundField DataField="ProgramName" HeaderText="ProgramName">
+                               <ItemStyle HorizontalAlign="Left" Width="100px" />
+                           </asp:BoundField>
+                           
+                          
+                           <asp:BoundField DataField="Requirements" HeaderText="Tuition">
                                
-                                <asp:BoundField DataField="Requirements" HeaderText="Tuition">
-                                    
-                                </asp:BoundField>
-                                <asp:TemplateField HeaderText="Remove">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       <i class="fa fa-trash"></i>
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                           </asp:BoundField>
+                           <asp:TemplateField HeaderText="Remove">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
+                                                  <i class="fa fa-trash"></i>
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>
 
-                            </Columns>
-                        </asp:GridView>
+                       </Columns>
+                   </asp:GridView>
 
-                    </div>
-                </div>
+               </div>
+           </div>
 
-                                             </td>
-                                         </tr>
-       
-     </table>
+                                        </td>
+                                    </tr>
+  
+</table>
+</div>
+                                               
                                          </form>
                                      </div>
                                  </div>

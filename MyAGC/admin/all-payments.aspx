@@ -25,7 +25,8 @@
                                         <form class="col-sm-12" runat="server">
                                              <asp:HiddenField ID="txtid" runat="server" />
              
-                                               <table style="width:100%" >
+                                            <div class="table-responsive">
+                                                                                               <table class="table table-bordered table-hover"  style="width:100%" >
 <tr runat="server" visible="false">
             <td colspan="4">
                  <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
@@ -88,6 +89,8 @@
                                          </tr>
        
      </table>
+</div>
+                                               
                                          </form>
                                      </div>
                                  </div>

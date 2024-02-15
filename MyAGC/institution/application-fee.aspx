@@ -50,59 +50,61 @@
                                              </div>
                                             
                                           
+                                            <div class="table-responsive">
+                                                                                          <table class="table table-bordered table-hover"  style="width:100%" >
 
+                                    <tr>
+                                        <td colspan="12">
+
+                                            <div class="row">
+               <div class="col-sm-12">
+                   <asp:GridView ID="grdApplicationFees" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdApplicationFees_RowCommand"
+                       role="grid" aria-describedby="basicExample_info" 
+                       OnPageIndexChanging="grdApplicationFees_PageIndexChanging"
+                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                       AllowPaging="True" AllowSorting="True">
+                       <Columns>
+                           <%--<asp:BoundField DataField="SchoolName" HeaderText="School Name"></asp:BoundField>--%>
+                         <%--  <asp:BoundField DataField="StartDateMonth" HeaderText="Start Month"></asp:BoundField>
+                            <asp:BoundField DataField="StartDateYear" HeaderText="Start Year"></asp:BoundField>
+                            <asp:BoundField DataField="EndDateMonth" HeaderText="End Month"></asp:BoundField>
+                           <asp:BoundField DataField="EndDateYear" HeaderText="End Year"></asp:BoundField>
+                           --%>
+                           <asp:BoundField DataField="Name" HeaderText="Citizen Type"></asp:BoundField>
+                           <asp:BoundField DataField="Amount" HeaderText="Amount"></asp:BoundField>
+                           <%--<asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
+                           <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
+                           <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>--%>
+                            
+                         <%--  <asp:TemplateField HeaderText="Remove">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
+                                                  <i class="fa fa-trash"></i>
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Add">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                                                  Application Fees
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>--%>
+                           
+
+                       </Columns>
+                   </asp:GridView>
+
+               </div>
+           </div>
+
+                                        </td>
+                                    </tr>
+  
+</table>
+</div>
                                             
-                                               <table style="width:100%" >
-
-                                         <tr>
-                                             <td colspan="12">
-
-                                                 <div class="row">
-                    <div class="col-sm-12">
-                        <asp:GridView ID="grdApplicationFees" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdApplicationFees_RowCommand"
-                            role="grid" aria-describedby="basicExample_info" 
-                            OnPageIndexChanging="grdApplicationFees_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                            AllowPaging="True" AllowSorting="True">
-                            <Columns>
-                                <%--<asp:BoundField DataField="SchoolName" HeaderText="School Name"></asp:BoundField>--%>
-                              <%--  <asp:BoundField DataField="StartDateMonth" HeaderText="Start Month"></asp:BoundField>
-                                 <asp:BoundField DataField="StartDateYear" HeaderText="Start Year"></asp:BoundField>
-                                 <asp:BoundField DataField="EndDateMonth" HeaderText="End Month"></asp:BoundField>
-                                <asp:BoundField DataField="EndDateYear" HeaderText="End Year"></asp:BoundField>
-                                --%>
-                                <asp:BoundField DataField="Name" HeaderText="Citizen Type"></asp:BoundField>
-                                <asp:BoundField DataField="Amount" HeaderText="Amount"></asp:BoundField>
-                                <%--<asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
-                                <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
-                                <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>--%>
-                                 
-                              <%--  <asp:TemplateField HeaderText="Remove">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       <i class="fa fa-trash"></i>
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                 <asp:TemplateField HeaderText="Add">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       Application Fees
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>--%>
-                                
-
-                            </Columns>
-                        </asp:GridView>
-
-                    </div>
-                </div>
-
-                                             </td>
-                                         </tr>
-       
-     </table>
+                                               
                                          </form>
                                      </div>
                                  </div>

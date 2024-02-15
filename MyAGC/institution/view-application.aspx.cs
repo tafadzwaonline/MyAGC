@@ -100,7 +100,7 @@ namespace MyAGC.institution
                     butt.Visible = true;
 
                 }
-                else if (txtApplicationStatus.Text.ToLower() == "Accepted")
+                else if (txtApplicationStatus.Text.ToLower() == "accepted")
                 {
                     upp.Visible = true;
                     ub.Visible = true;

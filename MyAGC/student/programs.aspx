@@ -31,47 +31,49 @@
                                               <asp:HiddenField ID="txtCollegeID" runat="server" />
                                             <asp:HiddenField ID="txtPeriodID" runat="server" />
 
-                                        
+                                        <div class="table-responsive">
+                                                                                      <table class="table table-bordered table-hover"  style="width:100%" >
+
+                                    <tr>
+                                        <td colspan="12">
+
+                                            <div class="row">
+               <div class="col-sm-12">
+                   <asp:GridView ID="grdPrograms" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPrograms_RowCommand"
+                       role="grid" aria-describedby="basicExample_info" 
+                       OnPageIndexChanging="grdPrograms_PageIndexChanging"
+                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                       AllowPaging="True" AllowSorting="True">
+                       <Columns>
+                           <asp:BoundField DataField="ID" HeaderText="ID">
+                               <ItemStyle HorizontalAlign="Left" Width="60px" />
+                           </asp:BoundField>
+                           
+                           <asp:BoundField DataField="ProgramName" HeaderText="Program Name">
+                              
+                           </asp:BoundField>
+                           
+                           <asp:TemplateField HeaderText="Apply">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                                                  Apply Program
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>
+
+                       </Columns>
+                   </asp:GridView>
+
+               </div>
+           </div>
+
+                                        </td>
+                                    </tr>
+  
+</table>
+</div>
                                             
-                                               <table style="width:100%" >
-
-                                         <tr>
-                                             <td colspan="12">
-
-                                                 <div class="row">
-                    <div class="col-sm-12">
-                        <asp:GridView ID="grdPrograms" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPrograms_RowCommand"
-                            role="grid" aria-describedby="basicExample_info" 
-                            OnPageIndexChanging="grdPrograms_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                            AllowPaging="True" AllowSorting="True">
-                            <Columns>
-                                <asp:BoundField DataField="ID" HeaderText="ID">
-                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
-                                </asp:BoundField>
-                                
-                                <asp:BoundField DataField="ProgramName" HeaderText="Program Name">
-                                   
-                                </asp:BoundField>
-                                
-                                <asp:TemplateField HeaderText="Apply">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       Apply Program
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-
-                            </Columns>
-                        </asp:GridView>
-
-                    </div>
-                </div>
-
-                                             </td>
-                                         </tr>
-       
-     </table>
+                                               
                                          </form>
                                      </div>
                                  </div>

@@ -24,7 +24,9 @@
                                 
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                               <table style="width:100%" >
+
+                                            <div class="table-responsive">
+                                                                                               <table class="table table-bordered table-hover"  style="width:100%" >
                 <tr>
             <td colspan="4">
                  <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
@@ -41,7 +43,7 @@
             </td>
         </tr></table>
                                             
-                                               <table style="width:100%" >
+                                               <table class="table table-bordered table-hover"  style="width:100%" >
 <tr>
     <td>
         <br />
@@ -93,6 +95,9 @@
                                          </tr>
        
      </table>
+
+</div>
+                                               
                                          </form>
                                      </div>
                                  </div>

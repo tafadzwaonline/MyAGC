@@ -96,17 +96,17 @@ namespace MyAGC
                         {
                             Response.Redirect(string.Format("admin/dashboard"));
                         }
-                        else if (int.Parse(Session["roleid"].ToString()) == 2)
+                        if (int.Parse(Session["roleid"].ToString()) == 2)
                         {
                             Response.Redirect(string.Format("institution/dashboard"));
                         }
-                        else if (int.Parse(Session["roleid"].ToString()) == 4)
-                        {
-                            Response.Redirect(string.Format("agent/dashboard"));
-                        }
-                        else
+                        if (int.Parse(Session["roleid"].ToString()) == 3)
                         {
                             Response.Redirect(string.Format("student/dashboard"));
+                        }
+                        if (int.Parse(Session["roleid"].ToString()) == 4)
+                        {
+                            Response.Redirect(string.Format("agent/dashboard"));
                         }
 
                     }

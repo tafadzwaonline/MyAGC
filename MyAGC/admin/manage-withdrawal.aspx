@@ -27,75 +27,78 @@
                                                    
                                              <asp:HiddenField ID="txtid" runat="server" />
              
-                                               <table style="width:100%" >
-                                                   <tr>
-            <td colspan="4">
-             
+                                            <div class="table-responsive">
+                                                                                          <table class="table table-bordered table-hover"  style="width:100%" >
+                                              <tr>
+       <td colspan="4">
         
-            <td colspan="4"><asp:TextBox ID="txtFullName" placeholder="Agent Name" CssClass="form-control" runat="server"></asp:TextBox></td>
-              <td colspan="4"><asp:TextBox ID="txtCommissionStatus" placeholder="Payment Status" CssClass="form-control" runat="server"></asp:TextBox></td>
-            
-           <%-- <td colspan="4">
-                <asp:Button ID="btnSearch" CssClass="btn btn-success" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
-            </td>--%>
-        </tr>
-                                         <tr>
-                                             <td colspan="12">
-                                                  <div style="overflow-y: scroll;height: 600px; width: 1400px;">
-                                                 <div class="row">
-
-                    <div class="col-sm-12">
-                        <asp:GridView ID="grdPoints" runat="server" ClientIDMode="Static" class="table table-bordered dataTable no-footer"
-                            role="grid" aria-describedby="basicExample_info" 
-                            OnPageIndexChanging="grdPoints_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                            AllowPaging="false" AllowSorting="True" OnSorting="grdPoints_Sorting" OnRowCommand="grdPoints_RowCommand">
-                            <Columns>
-
-                               <asp:BoundField DataField="FullName" HeaderText="Agent FullName" SortExpression="FullName">
-                                    <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email">
-                                    <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="CommissionStatus" HeaderText="Withdrawal Status" SortExpression="CommissionStatus">
-                                    <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
-                                </asp:BoundField>
-                               
-                                 <asp:BoundField DataField="Points" HeaderText="Points" SortExpression="Points">
-                                   <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="DateAdded" HeaderText="DateApplied" SortExpression="DateAdded">
-                                    <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
-                                </asp:BoundField>
-                                 
-                               
-                                 <asp:TemplateField HeaderText="View">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       Approve
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                
-                                 <asp:TemplateField HeaderText="View">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnReject" runat="server" CssClass="btn btn-danger" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       Reject
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
-
-                    </div>
-                </div>
-                                                      </div>
-
-                                             </td>
-                                         </tr>
+   
+       <td colspan="4"><asp:TextBox ID="txtFullName" placeholder="Agent Name" CssClass="form-control" runat="server"></asp:TextBox></td>
+         <td colspan="4"><asp:TextBox ID="txtCommissionStatus" placeholder="Payment Status" CssClass="form-control" runat="server"></asp:TextBox></td>
        
-     </table>
+      <%-- <td colspan="4">
+           <asp:Button ID="btnSearch" CssClass="btn btn-success" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
+       </td>--%>
+   </tr>
+                                    <tr>
+                                        <td colspan="12">
+                                             <div style="overflow-y: scroll;height: 600px; width: 1400px;">
+                                            <div class="row">
+
+               <div class="col-sm-12">
+                   <asp:GridView ID="grdPoints" runat="server" ClientIDMode="Static" class="table table-bordered dataTable no-footer"
+                       role="grid" aria-describedby="basicExample_info" 
+                       OnPageIndexChanging="grdPoints_PageIndexChanging"
+                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                       AllowPaging="false" AllowSorting="True" OnSorting="grdPoints_Sorting" OnRowCommand="grdPoints_RowCommand">
+                       <Columns>
+
+                          <asp:BoundField DataField="FullName" HeaderText="Agent FullName" SortExpression="FullName">
+                               <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
+                           </asp:BoundField>
+                            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email">
+                               <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
+                           </asp:BoundField>
+                            <asp:BoundField DataField="CommissionStatus" HeaderText="Withdrawal Status" SortExpression="CommissionStatus">
+                               <%--<ItemStyle HorizontalAlign="Left" Width="100px" />--%>
+                           </asp:BoundField>
+                          
+                            <asp:BoundField DataField="Points" HeaderText="Points" SortExpression="Points">
+                              <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
+                           </asp:BoundField>
+                            <asp:BoundField DataField="DateAdded" HeaderText="DateApplied" SortExpression="DateAdded">
+                               <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
+                           </asp:BoundField>
+                            
+                          
+                            <asp:TemplateField HeaderText="View">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                                                  Approve
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>
+                           
+                            <asp:TemplateField HeaderText="View">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnReject" runat="server" CssClass="btn btn-danger" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>
+                                                  Reject
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>
+                       </Columns>
+                   </asp:GridView>
+
+               </div>
+           </div>
+                                                 </div>
+
+                                        </td>
+                                    </tr>
+  
+</table>
+</div>
+                                              
                                          </form>
                                      </div>
                                  </div>

@@ -25,54 +25,58 @@
                                         <form class="col-sm-12" runat="server">
                                              <asp:HiddenField ID="txtid" runat="server" />
              
-                                               <table style="width:100%" >
 
-                                         <tr>
-                                             <td colspan="12">
+                                            <div class="table-responsive">
+                                                                                          <table class="table table-bordered table-hover"  style="width:100%" >
 
-                                                 <div class="row">
-                    <div class="col-sm-12">
-                        <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdAcademicHistory_RowCommand"
-                            role="grid" aria-describedby="basicExample_info" 
-                            OnPageIndexChanging="grdAcademicHistory_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                            AllowPaging="True" AllowSorting="True">
-                            <Columns>
+                                    <tr>
+                                        <td colspan="12">
 
-                                                           <asp:BoundField DataField="ID" HeaderText="ApplicationID">
-                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="ApplicantName" HeaderText="ApplicantName">
-                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="Email" HeaderText="Email">
-                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Status" HeaderText="Status">
-                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
-                                <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
-                               
-                                 <asp:TemplateField HeaderText="Add">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                       View Application
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                
+                                            <div class="row">
+               <div class="col-sm-12">
+                   <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdAcademicHistory_RowCommand"
+                       role="grid" aria-describedby="basicExample_info" 
+                       OnPageIndexChanging="grdAcademicHistory_PageIndexChanging"
+                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                       AllowPaging="True" AllowSorting="True">
+                       <Columns>
 
-                            </Columns>
-                        </asp:GridView>
+                                                      <asp:BoundField DataField="ID" HeaderText="ApplicationID">
+                               <ItemStyle HorizontalAlign="Left" Width="60px" />
+                           </asp:BoundField>
+                            <asp:BoundField DataField="ApplicantName" HeaderText="ApplicantName">
+                               <ItemStyle HorizontalAlign="Left" Width="60px" />
+                           </asp:BoundField>
+                            <asp:BoundField DataField="Email" HeaderText="Email">
+                               <ItemStyle HorizontalAlign="Left" Width="60px" />
+                           </asp:BoundField>
+                           <asp:BoundField DataField="Status" HeaderText="Status">
+                               <ItemStyle HorizontalAlign="Left" Width="60px" />
+                           </asp:BoundField>
+                            <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
+                           <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
+                          
+                            <asp:TemplateField HeaderText="Add">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                                                  View Application
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>
+                           
 
-                    </div>
-                </div>
+                       </Columns>
+                   </asp:GridView>
 
-                                             </td>
-                                         </tr>
-       
-     </table>
+               </div>
+           </div>
+
+                                        </td>
+                                    </tr>
+  
+</table>
+</div>
+                                               
                                          </form>
                                      </div>
                                  </div>

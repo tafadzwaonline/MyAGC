@@ -99,72 +99,74 @@
                                                   
                                              </div>
                                             
-                                          
+                                          <div class="table-responsive">
+                                                         <table style="width: 100%">
 
-                                                       <table style="width: 100%">
+    <tr>
+        
+        <td colspan="12" >
+             <h4> <strong>Academic History</strong> </h4>
+            <div class="row">
+                <div class="col-sm-12">
+                    <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer"
+                        role="grid" aria-describedby="basicExample_info"
+                      
+                        AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                        AllowPaging="True" AllowSorting="True">
+                        <Columns>
+                            <asp:BoundField DataField="SchoolName" HeaderText="School Name"></asp:BoundField>
+                            <asp:BoundField DataField="StartDateMonth" HeaderText="Start Month"></asp:BoundField>
+                            <asp:BoundField DataField="StartDateYear" HeaderText="Start Year"></asp:BoundField>
+                            <asp:BoundField DataField="EndDateMonth" HeaderText="End Month"></asp:BoundField>
+                            <asp:BoundField DataField="EndDateYear" HeaderText="End Year"></asp:BoundField>
+                            <asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
+                            <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
+                            <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>
 
-                                                <tr>
-                                                    
-                                                    <td colspan="12" >
-                                                         <h4> <strong>Academic History</strong> </h4>
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <asp:GridView ID="grdAcademicHistory" runat="server" class="table table-bordered dataTable no-footer"
-                                                                    role="grid" aria-describedby="basicExample_info"
-                                                                  
-                                                                    AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                                                                    AllowPaging="True" AllowSorting="True">
-                                                                    <Columns>
-                                                                        <asp:BoundField DataField="SchoolName" HeaderText="School Name"></asp:BoundField>
-                                                                        <asp:BoundField DataField="StartDateMonth" HeaderText="Start Month"></asp:BoundField>
-                                                                        <asp:BoundField DataField="StartDateYear" HeaderText="Start Year"></asp:BoundField>
-                                                                        <asp:BoundField DataField="EndDateMonth" HeaderText="End Month"></asp:BoundField>
-                                                                        <asp:BoundField DataField="EndDateYear" HeaderText="End Year"></asp:BoundField>
-                                                                        <asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
-                                                                        <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
-                                                                        <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>
-
-                                                                      
+                          
 
 
-                                                                    </Columns>
-                                                                </asp:GridView>
+                        </Columns>
+                    </asp:GridView>
 
-                                                            </div>
-                                                        </div>
+                </div>
+            </div>
 
-                                                    </td>
-                                                </tr>
+        </td>
+    </tr>
 
-                                                             <tr>
-                                                       <td colspan="12">
-                                                           <h4> <strong>Uploaded Certificates</strong> </h4>
-                                                           <div class="row">
-                                                               <div class="col-sm-12">
-                                                                   <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
-                                                                       role="grid" aria-describedby="basicExample_info"
-                                                                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                                                                       AllowPaging="True" AllowSorting="True">
-                                                                       <Columns>
-                                                                           <asp:BoundField DataField="documentname" HeaderText="Certificate Name"></asp:BoundField>
-                                                                           <asp:BoundField DataField="Name" HeaderText="File Name"></asp:BoundField>
-                                                                           <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded" SortExpression="DateUploaded"></asp:BoundField>
-                                                                           <asp:TemplateField HeaderText="Download">
-                                                                               <ItemTemplate>
-                                                                                   <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
-                                                                               </ItemTemplate>
-                                                                           </asp:TemplateField>
-                                                                           
-                                                                       </Columns>
-                                                                   </asp:GridView>
+                 <tr>
+           <td colspan="12">
+               <h4> <strong>Uploaded Certificates</strong> </h4>
+               <div class="row">
+                   <div class="col-sm-12">
+                       <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
+                           role="grid" aria-describedby="basicExample_info"
+                           AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                           AllowPaging="True" AllowSorting="True">
+                           <Columns>
+                               <asp:BoundField DataField="documentname" HeaderText="Certificate Name"></asp:BoundField>
+                               <asp:BoundField DataField="Name" HeaderText="File Name"></asp:BoundField>
+                               <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded" SortExpression="DateUploaded"></asp:BoundField>
+                               <asp:TemplateField HeaderText="Download">
+                                   <ItemTemplate>
+                                       <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
+                                   </ItemTemplate>
+                               </asp:TemplateField>
+                               
+                           </Columns>
+                       </asp:GridView>
 
-                                                               </div>
-                                                           </div>
+                   </div>
+               </div>
 
-                                                       </td>
-                                                   </tr>
+           </td>
+       </tr>
 
-                                            </table>
+</table>
+</div>
+
+                                                       
                                                
                                          </form>
                                      </div>

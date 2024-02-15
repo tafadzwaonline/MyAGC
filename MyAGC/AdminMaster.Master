@@ -182,10 +182,10 @@
                
                 <!-- Header Navbar -->
                 <nav class="navbar navbar-static-top">
-                    <%--<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"> <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"> <!-- Sidebar toggle button-->
                         <span class="sr-only">Toggle navigation</span>
                         <span class="fa fa-tasks"></span>
-                    </a>--%>
+                    </a>
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                           

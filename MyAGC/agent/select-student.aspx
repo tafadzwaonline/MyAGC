@@ -31,54 +31,57 @@
                     <asp:HiddenField ID="txtPeriodID" runat="server" />
                     <asp:HiddenField ID="txtProgramID" runat="server" />
                 </div>
-                                               <table style="width:100%" >
+                                            <div class="table-responsive">
+                                                                                          <table class="table table-bordered table-hover"  style="width:100%" >
 
-                                         <tr>
-                                             <td colspan="12">
+                                    <tr>
+                                        <td colspan="12">
 
-                                                 <div class="row">
+                                            <div class="row">
 
-                    <div class="col-sm-12">
-                        <asp:GridView ID="grdPayments" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPayments_RowCommand"
-                            role="grid" aria-describedby="basicExample_info" 
-                            OnPageIndexChanging="grdPayments_PageIndexChanging"
-                            AutoGenerateColumns="False" DataKeyNames="UserID" Width="100%"
-                            AllowPaging="True" AllowSorting="True">
-                            <Columns>
+               <div class="col-sm-12">
+                   <asp:GridView ID="grdPayments" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPayments_RowCommand"
+                       role="grid" aria-describedby="basicExample_info" 
+                       OnPageIndexChanging="grdPayments_PageIndexChanging"
+                       AutoGenerateColumns="False" DataKeyNames="UserID" Width="100%"
+                       AllowPaging="True" AllowSorting="True">
+                       <Columns>
 
-                              
-                                 <asp:BoundField DataField="UserID" HeaderText="UserID">
-                                    <ItemStyle HorizontalAlign="Left" Width="60px" />
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="FullName" HeaderText="FullName">
-                                    <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Email" HeaderText="Email">
-                                   <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="IdentityNumber" HeaderText="IdentityNumber"></asp:BoundField>
-                                
-                                 
-                               
-                                 <asp:TemplateField HeaderText="View">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("UserID")%>'>
-                                                       View Student
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                
+                         
+                            <asp:BoundField DataField="UserID" HeaderText="UserID">
+                               <ItemStyle HorizontalAlign="Left" Width="60px" />
+                           </asp:BoundField>
+                            <asp:BoundField DataField="FullName" HeaderText="FullName">
+                               <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
+                           </asp:BoundField>
+                           <asp:BoundField DataField="Email" HeaderText="Email">
+                              <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
+                           </asp:BoundField>
+                            <asp:BoundField DataField="IdentityNumber" HeaderText="IdentityNumber"></asp:BoundField>
+                           
+                            
+                          
+                            <asp:TemplateField HeaderText="View">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("UserID")%>'>
+                                                  View Student
+                                   </asp:LinkButton>
+                               </ItemTemplate>
+                           </asp:TemplateField>
+                           
 
-                            </Columns>
-                        </asp:GridView>
+                       </Columns>
+                   </asp:GridView>
 
-                    </div>
-                </div>
+               </div>
+           </div>
 
-                                             </td>
-                                         </tr>
-       
-     </table>
+                                        </td>
+                                    </tr>
+  
+</table>
+</div>
+                                              
                                          </form>
                                      </div>
                                  </div>
