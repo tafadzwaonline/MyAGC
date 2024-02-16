@@ -200,6 +200,7 @@
     <Content Include="agent\my-points.aspx" />
     <Content Include="agent\my-profile.aspx" />
     <Content Include="agent\my-withdrawals.aspx" />
+    <Content Include="agent\personal-information.aspx" />
     <Content Include="agent\programs.aspx" />
     <Content Include="agent\search-college.aspx" />
     <Content Include="agent\select-student.aspx" />
@@ -789,6 +790,13 @@
     </Compile>
     <Compile Include="agent\my-withdrawals.aspx.designer.cs">
       <DependentUpon>my-withdrawals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\personal-information.aspx.cs">
+      <DependentUpon>personal-information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\personal-information.aspx.designer.cs">
+      <DependentUpon>personal-information.aspx</DependentUpon>
     </Compile>
     <Compile Include="agent\programs.aspx.cs">
       <DependentUpon>programs.aspx</DependentUpon>

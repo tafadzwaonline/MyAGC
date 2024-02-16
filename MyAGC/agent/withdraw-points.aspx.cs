@@ -49,6 +49,12 @@ namespace MyAGC.agent
                     total += double.Parse(dt["Points"].ToString());
                 }
                 txtCurrentBalance.Text = total.ToString();
+
+                
+            }
+            if (string.IsNullOrEmpty(txtCurrentBalance.Text))
+            {
+                txtCurrentBalance.Text = "0";
             }
         }
         protected void DangerAlert(string Err)

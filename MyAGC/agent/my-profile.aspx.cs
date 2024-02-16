@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,41 +18,21 @@ namespace MyAGC.agent
         {
             if (!IsPostBack)
             {
-
-
-                getCountry();
-
-                //getUniversityTypes();
-
-                getAgentDetails();
-
-
+                LoadClientImage();
+                Clear();
             }
         }
-        private void getAgentDetails()
+        protected void LoadClientImage()
         {
-
-            DataSet GetUsers = um.GetSystemUserByUserEmail(Session["username"].ToString());
-
-            if (GetUsers.Tables.Count > 0 && GetUsers.Tables[0].Rows.Count > 0)
+            try
             {
-                DataRow row = GetUsers.Tables[0].Rows[0];
-
-                txtFirstName.Text = row["FirstName"].ToString();
-                txtLastName.Text = row["LastName"].ToString();
-                txtEmail.Text = row["Email"].ToString();
-                txtAddress.Text = row["Address"].ToString();
-                //txtMissionStatement.Text = row["MissionStatement"].ToString();
-                txtMobile1.Text = row["Mobile"].ToString();
-                drpCountry.SelectedValue = row["CountryID"].ToString();
-                //drpUniversityType.SelectedValue = row["UniversityType"].ToString();
-
-
-
+                ClientPic.ImageUrl = string.Format("~/ImageHandler.ashx?UserID={0}", int.Parse(Session["userid"].ToString()));
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
-
-
         protected void DangerAlert(string Err)
         {
             ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>error('" + Err + "')</script>", false);
@@ -67,86 +48,126 @@ namespace MyAGC.agent
             string script = $"WarningToastr('{message}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
         }
-        protected void getCountry()
+        protected void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            if (!fileUpload.HasFile)
+            {
+                WarningAlert("Please select an image to upload");
+                return;
+            }
+            string fileExtension = System.IO.Path.GetExtension(fileUpload.FileName).ToLower();
+            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+
+            if (!allowedExtensions.Contains(fileExtension))
+            {
+                // Invalid file type, show error message or handle accordingly
+                // Clear the FileUpload control
+                WarningAlert("Please upload only image files");
+
+                fileUpload.FileContent.Dispose(); // Dispose to prevent memory leaks
+
+                // Display an error message to the user
+                // e.g., ErrorMessageLabel.Text = "Please select an image file (JPG, PNG, GIF).";
+                return;
+            }
+
+            SaveImage();
+        }
+        private void SaveImage()
         {
             try
             {
-
-                if (lp.getCountry() != null)
+                Byte[] bytes = null;
+                if (fileUpload.HasFile)
                 {
-                    ListItem li = new ListItem("Select a country", "0");
-                    drpCountry.DataSource = lp.getCountry();
-                    drpCountry.DataValueField = "ID";
-                    drpCountry.DataTextField = "CountryName";
-                    drpCountry.DataBind();
-                    drpCountry.Items.Insert(0, li);
-                }
-                else
-                {
-                    ListItem li = new ListItem("There are no countries", "0");
-                    drpCountry.DataSource = null;
-                    drpCountry.DataBind();
-                    drpCountry.Items.Insert(0, li);
+                    string filename = fileUpload.PostedFile.FileName;
+                    string filePath = Path.GetFileName(filename);
+                    Stream fs = fileUpload.PostedFile.InputStream;
+                    BinaryReader br = new BinaryReader(fs);
+                    bytes = br.ReadBytes((Int32)fs.Length);
                 }
 
+                if (lp.SaveClientImage(long.Parse(Session["userid"].ToString()), bytes))
+                {
+
+                    LoadClientImage();
+                }
             }
-            catch (Exception ex)
+            catch (Exception generatedExceptionName)
             {
-                //DangerAlert(ex.Message);
+                DangerAlert(generatedExceptionName.Message);
             }
         }
-
-    
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtFirstName.Text))
+            if (txtPassword.Text == "")
             {
-                WarningAlert("Please enter First Name");
+                WarningAlert("Please enter new password");
                 return;
             }
-            if (string.IsNullOrEmpty(txtLastName.Text))
+            if (txtRepeatPassword.Text == "")
             {
-                WarningAlert("Please enter Last Name");
+                WarningAlert("Please repeat new password");
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtAddress.Text))
-            {
-                WarningAlert("Please enter Residental Address");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtMobile1.Text))
-            {
-                WarningAlert("Please enter Mobile");
-                return;
-            }
-            if (drpCountry.SelectedValue == "0")
-            {
-                WarningAlert("Please select country");
-                return;
-            }
-           
-
-
-            UpdateDetails();
+            ChangePassword();
         }
 
-        private void UpdateDetails()
+        private void ChangePassword()
         {
             try
             {
-                um.InsertAgentDetails(1, int.Parse(Session["userid"].ToString()), txtEmail.Text, txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtMobile1.Text,int.Parse(drpCountry.SelectedValue));
+                EncryptDecryptClass encryptDecrypt = new EncryptDecryptClass();
+                int userId = int.Parse(Session["userid"].ToString());
 
-                getAgentDetails();
-                SuccessAlert("Agent records successfully updated");
+
+                // Validate and get required parameters
+                int passwordLength = 6;
+
+
+                string newPassword = txtPassword.Text;
+                string confirmPassword = txtRepeatPassword.Text;
+
+                // Password validation checks
+                if (newPassword.Length < passwordLength)
+                {
+                    WarningAlert($"Minimum Password Length is {passwordLength}");
+                    return;
+                }
+
+                if (newPassword != confirmPassword)
+                {
+                    WarningAlert("Passwords do not match!");
+                    return;
+                }
+
+                bool containsSpecialChar = newPassword.Any(ch => !Char.IsLetterOrDigit(ch));
+                if (!containsSpecialChar)
+                {
+                    WarningAlert("Password Must Contain at Least One Special Character!");
+                    return;
+                }
+
+                // Encrypt and update the password
+                string encryptedPassword = encryptDecrypt.EncryptPassword(newPassword);
+                um.UpdatePassword(userId, encryptedPassword);
+
+                SuccessAlert("Password successfully changed.");
+                Clear();
             }
-            catch (Exception)
+            catch (FormatException ex)
             {
-
                 throw;
             }
 
+        }
+
+        private void Clear()
+        {
+            txtPassword.Text = string.Empty;
+            txtRepeatPassword.Text = string.Empty;
         }
     }
 }

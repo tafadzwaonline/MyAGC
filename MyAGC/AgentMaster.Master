@@ -204,7 +204,7 @@
                                 <asp:Image ID="ClientPic" ImageUrl="../assets/dist/img/avatar4.png" CssClass="img-circle" Height="40px" Width="40px" runat="server" />
 
                                     <span>
-                                            <asp:Label ID="lblUsername" runat="server" Text="Tafadzwa Kahwai"></asp:Label></span>
+                                            <asp:Label ID="lblUsername" runat="server" Text="Tafadzwa Kahwai" ForeColor="White"></asp:Label></span>
                                 </div>
 
                                 </a>
@@ -241,7 +241,7 @@
                             </a>
                         </li>
                           <li>
-                        <a href="../agent/my-profile">
+                        <a href="../agent/personal-information">
                          <i class="fa fa-user"></i><span>Profile Management</span>
                            
                      </a>

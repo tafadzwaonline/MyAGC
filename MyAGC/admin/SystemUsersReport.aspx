@@ -25,35 +25,39 @@
                              
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                           
-                                            <div class="col-sm-6 form-group">
-                                                <label>Start Date</label>
-                                                <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date"  class="form-control"></asp:TextBox>
-                                            </div>
-                                           
-                                            <div class="col-sm-6 form-group">
-                                                <label>End Date</label>
-                                                <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date"  class="form-control"></asp:TextBox>
-                                            </div>
-                                            <div class="col-sm-6 form-group">
-                                                <label>Role</label>
-                                                <asp:DropDownList ID="drpUserRoles" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
-                                            </div>
-                                          
+
+                                            <div class="table-responsive">
+                                                                            <div class="col-sm-6 form-group">
+                                <label>Start Date</label>
+                                <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date"  class="form-control"></asp:TextBox>
+                            </div>
+                           
+                            <div class="col-sm-6 form-group">
+                                <label>End Date</label>
+                                <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date"  class="form-control"></asp:TextBox>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Role</label>
+                                <asp:DropDownList ID="drpUserRoles" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                            </div>
+                          
       
-                                              <div class="col-sm-12 reset-button">
-                                                 
-                                                 <asp:Button ID="btnView" runat="server" Text="View Report" OnClick="btnView_Click" class="btn btn-success" />
-                                                 
-                                             </div>
+                              <div class="col-sm-12 reset-button">
+                                 
+                                 <asp:Button ID="btnView" runat="server" Text="View Report" OnClick="btnView_Click" class="btn btn-success" />
+                                 
+                             </div>
+                            
+                                <div class="col-md-12">
+
+
+    <div>
+        <CR:CrystalReportViewer ID="ApplicationsReportViewer" runat="server" AutoDataBind="true" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" ReuseParameterValuesOnRefresh="True" HasToggleGroupTreeButton="false" />
+    </div>
+</div>
+</div>
+                                           
                                             
-                                                <div class="col-md-12">
-
-
-                    <div>
-                        <CR:CrystalReportViewer ID="ApplicationsReportViewer" runat="server" AutoDataBind="true" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" ReuseParameterValuesOnRefresh="True" HasToggleGroupTreeButton="false" />
-                    </div>
-                </div>
                                          </form>
                                      </div>
                                  </div>

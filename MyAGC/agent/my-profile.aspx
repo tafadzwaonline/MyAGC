@@ -8,11 +8,11 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>Agent Information</h1>
+                            <h1>My Profile</h1>
                             <small></small>
-                           <%-- <ol class="breadcrumb hidden-xs">
-                                <li><a href="index.html"><i class="pe-7s-home"></i> Profile Management</a></li>
-                                <li class="active">Personal Information</li>
+                         <%--   <ol class="breadcrumb hidden-xs">
+                                <li><a href="index.html"><i class="pe-7s-home"></i>Student</a></li>
+                                <li class="active">My Profile</li>
                             </ol>--%>
                         </div>
                     </section>
@@ -33,38 +33,35 @@
                                         <form class="col-sm-12" runat="server">
                                             <asp:ScriptManager ID="ScriptManager1" runat="server">
                 </asp:ScriptManager>
-                                            <div class="col-sm-6 form-group">
-                                                <label>First Name</label>
-                                                <asp:TextBox ID="txtFirstName" runat="server"  class="form-control"></asp:TextBox>
-                                            </div>
-                                             <div class="col-sm-6 form-group">
-                                                <label>Last Name</label>
-                                                <asp:TextBox ID="txtLastName" runat="server"  class="form-control"></asp:TextBox>
+                                            <div class="col-sm-12 form-group">
+                                                <label>Profile Picture</label>
+                                                <asp:Image ID="ClientPic" Height="140px" ImageUrl="~/ImageHandler.ashx"  Width="160px" runat="server" />
                                             </div>
                                             <div class="col-sm-6 form-group">
-                                                <label>Email</label>
-                                                <asp:TextBox ID="txtEmail" runat="server" ReadOnly="true"  class="form-control"></asp:TextBox>
-                                            </div>
+    <label></label>
+    <asp:FileUpload ID="fileUpload" runat="server" CssClass="image-upload" />
+    <span id="fileTypeError" style="color: red; display: none;">Please select an image file (JPG, PNG, GIF).</span>
+</div>
+                                            
+                                             <div class="col-sm-12 reset-button">
+                                                 <asp:Button ID="btnUploadImage" runat="server" Text="Upload Image" class="btn btn-warning m-b-0" OnClick="btnUploadImage_Click" />
+                                             </div>
 
                                             <div class="col-sm-6 form-group">
-                                                <label>Residental Address</label>
-                                                <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" class="form-control"></asp:TextBox>
+                                                <label>Password</label>
+                                                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"  class="form-control"></asp:TextBox>
                                             </div>
                                             
                                             <div class="col-sm-6 form-group">
-                                                <label>Phone 1</label>
-                                                <asp:TextBox ID="txtMobile1" runat="server"  class="form-control"></asp:TextBox>
-                                            </div>
-                                            <div class="col-sm-6 form-group">
-                                                <label>Country</label>
-                                                <asp:DropDownList ID="drpCountry" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
-                                            </div> 
+                                                <label>Repeat Password</label>
+                                                <asp:TextBox ID="txtRepeatPassword" runat="server" TextMode="Password"  class="form-control"></asp:TextBox>
+                                            </div>     
+                                       
+                                             
 
                                               <div class="col-sm-12 reset-button">
-                                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" style="width: 100px;" />
-
-                                                  <%--<asp:Button ID="Button1" runat="server" Text=">> Academic History" class="btn btn-warning" />--%>
-                                                 
+                                                 <asp:Button ID="btnSave" runat="server" Text="Update Password" OnClick="btnSave_Click"  class="btn btn-success" />
+                                               
                                              </div>
                                             
                                           
@@ -76,7 +73,23 @@
                                  </div>
                              </div>
                          </div>
-                         
+                         <script type="text/javascript">
+                             $(document).ready(function () {
+                                 $(".image-upload").change(function () {
+                                     var fileInput = $(this);
+                                     var filePath = fileInput.val();
+                                     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+                                     if (!allowedExtensions.exec(filePath)) {
+                                         $('#fileTypeError').css('display', 'block');
+                                         fileInput.val('');
+                                         return false;
+                                     } else {
+                                         $('#fileTypeError').css('display', 'none');
+                                     }
+                                 });
+                             });
+                         </script>
                      </section> <!-- /.content -->
                  </div>
     <!-- /.content-wrapper -->
