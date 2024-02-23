@@ -61,7 +61,7 @@ namespace MyAGC.admin
                         {
                             bytes = (byte[])sdr["Data"];
                             contentType = sdr["ContentType"].ToString();
-                            fileName = sdr["Name"].ToString();
+                            fileName = sdr["FileName"].ToString();
                         }
                         else
                         {

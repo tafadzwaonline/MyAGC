@@ -66,9 +66,9 @@ namespace MyAGC.institution
 
                 if (e.CommandName == "SelectItem")
                 {
-                    string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
-                    string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtid.Value));
-                    Response.Redirect(string.Format("../institution/view-application?ApplicationID={0}", EcryptedPeriodID), false);
+                    string EcryptedApplicationID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
+                    //string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtid.Value));
+                    Response.Redirect(string.Format("../institution/view-application?ApplicationID={0}", EcryptedApplicationID), false);
                 }
 
             }

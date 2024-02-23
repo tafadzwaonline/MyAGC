@@ -10,10 +10,7 @@
                               
                             <h1>Programs</h1>
                             <small></small>
-                            <%--<ol class="breadcrumb hidden-xs">
-                                <li><a href="index.html"><i class="pe-7s-home"></i> Profile Management</a></li>
-                                <li class="active">Academic History</li>
-                            </ol>--%>
+               
                         </div>
                     </section>
                     <!-- Main content -->

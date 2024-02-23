@@ -46,7 +46,7 @@ namespace MyAGC.agent
 
         private void getStudents()
         {
-            DataSet dataSet = lp.getAgentStudents(int.Parse(Session["userid"].ToString()));
+            DataSet dataSet = lp.getAgentStudentsApplications(int.Parse(Session["userid"].ToString()));
 
             if (dataSet != null)
             {
@@ -67,9 +67,14 @@ namespace MyAGC.agent
             try
             {
                 QueryStringModule qn = new QueryStringModule();
+                int index = Convert.ToInt32(e.CommandArgument);
 
+                if (e.CommandName == "SelectItem")
+                {
+                    string EcryptedApplicationID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
 
-                
+                    Response.Redirect(string.Format("../agent/view-application?ApplicationID={0}", EcryptedApplicationID), false);
+                }
 
             }
             catch (Exception ex)
@@ -90,7 +95,7 @@ namespace MyAGC.agent
             try
             {
 
-                DataSet user = lp.getAgentStudents(int.Parse(Session["userid"].ToString()));
+                DataSet user = lp.getAgentStudentsApplications(int.Parse(Session["userid"].ToString()));
                 if (user != null)
                 {
                     int maxPageIndex = grdPayments.PageCount - 1;

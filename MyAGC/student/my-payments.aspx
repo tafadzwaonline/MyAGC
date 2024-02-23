@@ -24,7 +24,7 @@
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
                                              <asp:HiddenField ID="txtid" runat="server" />
-                                                                                      <table class="table table-bordered table-hover"  style="width:100%" >
+                                             <div class="table-responsive">                                         <table class="table table-bordered table-hover"  style="width:100%" >
 
                                     <tr>
                                         <td colspan="12">
@@ -72,7 +72,7 @@
                                     </tr>
   
 </table>
-             <div class="table-responsive">
+             
 </div>
 
                                                

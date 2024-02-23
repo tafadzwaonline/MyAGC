@@ -21,6 +21,7 @@
                                 <div class="panel panel-bd lobidrag">
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
+                                            <div class="table-responsive">
                                             <div class="row">
                     <asp:HiddenField ID="txtCollegeID" runat="server" />
                  
@@ -89,7 +90,7 @@
                                                   
                                              </div>
                                             
-                                          <div class="table-responsive">
+                                          
                                                          <table style="width: 100%">
 
     <tr>

@@ -29,7 +29,7 @@
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
                                            
-                                            
+                                            <div class="table-responsive">
                                            
                                             <div class="col-sm-8 form-group">
                                                 <label>Faculty Name</label>
@@ -43,7 +43,7 @@
                                              </div>
                                             
                                           
-                                            <div class="table-responsive">
+                                            
                                                                                           <table class="table table-bordered table-hover"  style="width:100%" >
 
                                     <tr>

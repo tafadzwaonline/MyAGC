@@ -27,6 +27,7 @@
                     
                                                  <asp:HiddenField ID="txtApplicantID" runat="server" />
                 </div>
+
                                             <div class="col-sm-6 form-group">
                                                 <label>Applicant Name</label>
                                                 <asp:TextBox ID="txtApplicantName" runat="server" ReadOnly="true"  class="form-control"></asp:TextBox>

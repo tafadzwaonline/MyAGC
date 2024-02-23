@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>My Payments</h1>
+                            <h1>Select Applicants </h1>
                             <small></small>
 
                         </div>

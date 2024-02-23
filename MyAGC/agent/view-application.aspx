@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstistutionMaster.Master" AutoEventWireup="true" CodeBehind="view-application.aspx.cs" Inherits="MyAGC.institution.view_application" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentMaster.Master" AutoEventWireup="true" CodeBehind="view-application.aspx.cs" Inherits="MyAGC.agent.view_application" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->

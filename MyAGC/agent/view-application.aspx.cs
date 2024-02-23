@@ -2,15 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MyAGC.institution
+namespace MyAGC.agent
 {
     public partial class view_application : System.Web.UI.Page
     {
@@ -110,10 +110,10 @@ namespace MyAGC.institution
                     butt.Visible = false;
                     letter.Visible = true;
                 }
-                else 
+                else
                 {
-                   
-                    butt.Visible = false; 
+
+                    butt.Visible = false;
                     upp.Visible = false;
                     ub.Visible = false;
                     letter.Visible = false;
@@ -287,7 +287,7 @@ namespace MyAGC.institution
                     {
                         byte[] bytes = br.ReadBytes((Int32)fs.Length);
                         string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-                        lp.UploadAcceptanceLetter(int.Parse(txtApplicationID.Value),filename, contentType, bytes,int.Parse(Session["userid"].ToString()), int.Parse(txtApplicantID.Value), int.Parse(txtPeriodID.Value), int.Parse(txtProgramID.Value));
+                        lp.UploadAcceptanceLetter(int.Parse(txtApplicationID.Value), filename, contentType, bytes, int.Parse(Session["userid"].ToString()), int.Parse(txtApplicantID.Value), int.Parse(txtPeriodID.Value), int.Parse(txtProgramID.Value));
                     }
                 }
                 //getDocumentUploads();

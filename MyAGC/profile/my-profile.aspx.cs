@@ -91,6 +91,7 @@ namespace MyAGC.profile
                 {
 
                     LoadClientImage();
+                    SuccessAlert("Image successfully uploaded");
                 }
             }
             catch (Exception generatedExceptionName)

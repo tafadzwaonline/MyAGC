@@ -32,66 +32,58 @@
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
                             
-                                            
-                                            <div class="col-sm-6 form-group">
-                                                <label>Document Type</label>
-                                                <asp:DropDownList ID="drpDocumentType" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
-                                            </div>
-                                             <div class="col-sm-6 form-group">
-                                                <label></label>
-                                                <asp:FileUpload ID="fileUpload" runat="server" />
-                                            </div>
-          
-                                            
-                                        
-                                             
-
-                                              <div class="col-sm-12 reset-button">
-                                                  
-                                                 <asp:Button ID="btnSave" runat="server" Text="Upload Document" OnClick="btnSave_Click" class="btn btn-success" />
-                                                
-                                             </div>
-
                                             <div class="table-responsive">
-                                                                                          <table class="table table-bordered table-hover"  style="width:100%" >
+                                                                                       <div class="col-sm-6 form-group">
+                                           <label>Certificate Type</label>
+                                           <asp:DropDownList ID="drpDocumentType" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                       </div>
+                                        <div class="col-sm-6 form-group">
+                                           <label></label>
+                                           <asp:FileUpload ID="fileUpload" runat="server" />
+                                       </div>
+                                       <div class="col-sm-12 reset-button">
+                                             
+                                            <asp:Button ID="btnSave" runat="server" Text="Upload Document" OnClick="btnSave_Click" class="btn btn-success" />
+                                           
+                                        </div>
+     
+                                          <table class="table table-bordered table-hover"  style="width:100%" >
 
-                                    <tr>
-                                        <td colspan="12">
+                                              <tr>
+                                                  <td colspan="12">
 
-                                            <div class="row">
-               <div class="col-sm-12">
-                   <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand" 
-                       role="grid" aria-describedby="basicExample_info" 
-                     
-                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                       AllowPaging="True" AllowSorting="True">
-                      <Columns>
-                                       <asp:BoundField DataField="documentname" HeaderText="Certificate Name"></asp:BoundField>
-                                       <asp:BoundField DataField="Name" HeaderText="File Name"></asp:BoundField>
-                                       <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded" SortExpression="DateUploaded"></asp:BoundField>
-                                       <asp:TemplateField HeaderText="Download">
-                                           <ItemTemplate>
-                                               <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
-                                           </ItemTemplate>
-                                       </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Remove">
-                                           <ItemTemplate>
-                                               <asp:LinkButton ID="lnkRecDel" runat="server" ForeColor="red" OnClientClick="return confirm('Are you sure want you want to delete the document?');" CssClass="fa fa-trash fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="DeleteItem"></asp:LinkButton>
-                                           </ItemTemplate>
-                                       </asp:TemplateField>
-                                   </Columns>
-                   </asp:GridView>
+                                                      <div class="row">
+                                                          <div class="col-sm-12">
+                                                              <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
+                                                                  role="grid" aria-describedby="basicExample_info"
+                                                                  AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                                                                  AllowPaging="True" AllowSorting="True">
+                                                                  <Columns>
+                                                                      <asp:BoundField DataField="documentname" HeaderText="Certificate Name"></asp:BoundField>
+                                                                      <asp:BoundField DataField="Name" HeaderText="File Name"></asp:BoundField>
+                                                                      <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded" SortExpression="DateUploaded"></asp:BoundField>
+                                                                      <asp:TemplateField HeaderText="Download">
+                                                                          <ItemTemplate>
+                                                                              <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
+                                                                          </ItemTemplate>
+                                                                      </asp:TemplateField>
+                                                                      <asp:TemplateField HeaderText="Remove">
+                                                                          <ItemTemplate>
+                                                                              <asp:LinkButton ID="lnkRecDel" runat="server" ForeColor="red" OnClientClick="return confirm('Are you sure want you want to delete the document?');" CssClass="fa fa-trash fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="DeleteItem"></asp:LinkButton>
+                                                                          </ItemTemplate>
+                                                                      </asp:TemplateField>
+                                                                  </Columns>
+                                                              </asp:GridView>
 
-               </div>
-           </div>
+                                                          </div>
+                                                      </div>
 
-                                        </td>
-                                    </tr>
+                                                  </td>
+                                              </tr>
   
 </table>
 </div>
-
-                                               
+                                            
                                          </form>
                                      </div>
                                  </div>
@@ -102,3 +94,4 @@
                  </div>
     <!-- /.content-wrapper -->
 </asp:Content>
+

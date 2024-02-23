@@ -91,6 +91,7 @@ namespace MyAGC.agent
                 {
 
                     LoadClientImage();
+                    SuccessAlert("Image successfully uploaded");
                 }
             }
             catch (Exception generatedExceptionName)
@@ -101,12 +102,12 @@ namespace MyAGC.agent
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "")
+            if (string.IsNullOrEmpty(txtPassword.Text))
             {
                 WarningAlert("Please enter new password");
                 return;
             }
-            if (txtRepeatPassword.Text == "")
+            if (string.IsNullOrEmpty(txtRepeatPassword.Text))
             {
                 WarningAlert("Please repeat new password");
                 return;

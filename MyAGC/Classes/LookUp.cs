@@ -725,6 +725,24 @@ namespace MyAGC.Classes
             }
 
         }
+        public DataSet getAcceptanceLettersByApplicationID(int ApplicationID)
+        {
+
+            string str = "sp_getAcceptanceLettersByApplicationID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ApplicationID", DbType.Int32, ApplicationID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         public DataSet getAllAcceptanceLetters()
         {
 
@@ -1091,6 +1109,23 @@ namespace MyAGC.Classes
         public DataSet getAgentStudents(int AgentID)
         {
             string str = "sp_getAgentStudents";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@AgentID", DbType.Int32, AgentID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getAgentStudentsApplications(int AgentID)
+        {
+            string str = "sp_getAgentStudentsApplications";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@AgentID", DbType.Int32, AgentID);
 

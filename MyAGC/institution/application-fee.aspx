@@ -30,7 +30,7 @@
                                              <div class="row">
                     <asp:HiddenField ID="txtID" runat="server" />
                 </div>
-                                            
+                                            <div class="table-responsive">
                                             
                                            
                                             <div class="col-sm-6 form-group">
@@ -50,7 +50,7 @@
                                              </div>
                                             
                                           
-                                            <div class="table-responsive">
+                                            
                                                                                           <table class="table table-bordered table-hover"  style="width:100%" >
 
                                     <tr>

@@ -28,12 +28,13 @@
                          
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                                        <div class="col-sm-1 reset-button">
-            
-                                                 <a class="btn btn-warning" href="../agent/withdraw-points">Withdraw Points</a>
-                                             </div>
+                                                   
                                              <asp:HiddenField ID="txtid" runat="server" />
              <div class="table-responsive">
+                            <div class="col-sm-1 reset-button">
+            
+    <a class="btn btn-warning" href="../agent/withdraw-points">Withdraw Points</a>
+</div>
                                                            <table class="table table-bordered table-hover"  style="width:100%" >
 
                                     <tr>

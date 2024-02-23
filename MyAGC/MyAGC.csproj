@@ -205,6 +205,7 @@
     <Content Include="agent\search-college.aspx" />
     <Content Include="agent\select-student.aspx" />
     <Content Include="agent\student-information.aspx" />
+    <Content Include="agent\view-application.aspx" />
     <Content Include="agent\view-students.aspx" />
     <Content Include="agent\withdraw-points.aspx" />
     <Content Include="assets\bootstrap\css\bootstrap.min.css" />
@@ -825,6 +826,13 @@
     </Compile>
     <Compile Include="agent\student-information.aspx.designer.cs">
       <DependentUpon>student-information.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\view-application.aspx.cs">
+      <DependentUpon>view-application.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\view-application.aspx.designer.cs">
+      <DependentUpon>view-application.aspx</DependentUpon>
     </Compile>
     <Compile Include="agent\view-students.aspx.cs">
       <DependentUpon>view-students.aspx</DependentUpon>

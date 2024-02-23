@@ -39,8 +39,9 @@
                            AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
                            AllowPaging="True" AllowSorting="True">
                            <Columns>
-                               <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID"></asp:BoundField>
-                               <asp:BoundField DataField="FileName" HeaderText="FileName"></asp:BoundField>
+                                <asp:BoundField DataField="ApplicantID" HeaderText="ApplicantID"></asp:BoundField>
+                               <asp:BoundField DataField="ApplicantEmail" HeaderText="ApplicantEmail"></asp:BoundField>
+                               <asp:BoundField DataField="FileName" HeaderText="Acceptance Letter"></asp:BoundField>
                                <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
                                 <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
                                <asp:TemplateField HeaderText="Download">

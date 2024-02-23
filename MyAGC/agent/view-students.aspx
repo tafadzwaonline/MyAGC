@@ -44,22 +44,30 @@
                    <asp:GridView ID="grdPayments" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPayments_RowCommand"
                        role="grid" aria-describedby="basicExample_info" 
                        OnPageIndexChanging="grdPayments_PageIndexChanging"
-                       AutoGenerateColumns="False" DataKeyNames="UserID" Width="100%"
+                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
                        AllowPaging="True" AllowSorting="True">
                        <Columns>
 
                          
-                            <asp:BoundField DataField="UserID" HeaderText="UserID">
+                            <asp:BoundField DataField="ApplicantID" HeaderText="ApplicantID">
                                <ItemStyle HorizontalAlign="Left" Width="60px" />
                            </asp:BoundField>
-                            <asp:BoundField DataField="FullName" HeaderText="FullName">
+                            <asp:BoundField DataField="ApplicantName" HeaderText="ApplicantName">
                                <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
                            </asp:BoundField>
                            <asp:BoundField DataField="Email" HeaderText="Email">
                               <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
                            </asp:BoundField>
-                            <asp:BoundField DataField="IdentityNumber" HeaderText="IdentityNumber"></asp:BoundField>
-
+                            <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
+                           <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
+                           <asp:BoundField DataField="Status" HeaderText="Status"></asp:BoundField>
+                            <asp:TemplateField HeaderText="View">
+    <ItemTemplate>
+        <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                       View Application
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
                        </Columns>
                    </asp:GridView>
 

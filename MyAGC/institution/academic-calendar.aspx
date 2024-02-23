@@ -33,7 +33,7 @@
                                         <form class="col-sm-12" runat="server">
                                             <asp:ScriptManager ID="ScriptManager1" runat="server">
                 </asp:ScriptManager>
-                                            
+                                            <div class="table-responsive">
                                            
                                             <div class="col-sm-6 form-group">
                                                 <label>Start (Month)</label>
@@ -67,7 +67,7 @@
                                                  
                                              </div>
                                             
-                                          <div class="table-responsive">
+                                          
                                                                                         <table class="table table-bordered table-hover"  style="width:100%" >
 
                                     <tr>
