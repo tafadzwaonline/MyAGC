@@ -1,4 +1,5 @@
 ﻿using MyAGC.Classes;
+using MyAGC.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -75,6 +76,22 @@ namespace MyAGC.institution
                     drpFaculty.DataBind();
                     drpFaculty.Items.Insert(0, li);
                 }
+                if (lp.getProgramTypes() != null)
+                {
+                    ListItem li = new ListItem("Select a program type", "0");
+                    drpProgramType.DataSource = lp.getProgramTypes();
+                    drpProgramType.DataValueField = "ID";
+                    drpProgramType.DataTextField = "Name";
+                    drpProgramType.DataBind();
+                    drpProgramType.Items.Insert(0, li);
+                }
+                else
+                {
+                    ListItem li = new ListItem("There are no program types", "0");
+                    drpProgramType.DataSource = null;
+                    drpProgramType.DataBind();
+                    drpProgramType.Items.Insert(0, li);
+                }
 
             }
             catch (Exception ex)
@@ -131,11 +148,18 @@ namespace MyAGC.institution
             try
             {
 
-                int index = Convert.ToInt32(e.CommandArgument);
+                int index;
 
 
                 if (e.CommandName == "DeleteItem")
                 {
+                    index = Convert.ToInt32(e.CommandArgument);
+                    //check if program is not assigned
+                    if (lp.IsProgramAssigned(index))
+                    {
+                        WarningAlert("Program cannot be deleted because it is applied to a student");
+                        return;
+                    }
 
                     lp.RemoveProgram(index);
                     getSavedPrograms();
@@ -183,6 +207,11 @@ namespace MyAGC.institution
                 WarningAlert("Please enter tuition");
                 return;
             }
+            if (drpProgramType.SelectedValue == "0")
+            {
+                WarningAlert("Please select a program type");
+                return;
+            }
 
             SaveProgram();
 
@@ -190,19 +219,50 @@ namespace MyAGC.institution
 
         private void SaveProgram()
         {
-            lp.SavePrograms(int.Parse(Session["userid"].ToString()),int.Parse(txtDuration.Text),int.Parse(drpFaculty.SelectedValue),txtProgramName.Text,txtRequirements.Text,double.Parse(txtTuition.Text));
-            getSavedPrograms();
-            SuccessAlert("Program Successfully added");
-            Clear();
+            try
+            {
+                lp.SavePrograms(int.Parse(Session["userid"].ToString()), int.Parse(txtDuration.Text), int.Parse(drpFaculty.SelectedValue), txtProgramName.Text, txtRequirements.Text, double.Parse(txtTuition.Text), int.Parse(drpProgramType.SelectedValue));
+                getSavedPrograms();
+                SuccessAlert("Program Successfully added");
+                Clear();
+            }
+            catch (Exception)
+            {
+
+                WarningAlert("An error occured while saving data");
+            }
         }
 
         private void Clear()
         {
             drpFaculty.SelectedValue = "0";
+            drpProgramType.SelectedValue = "0";
             txtRequirements.Text = string.Empty;
             txtDuration.Text = string.Empty;
             txtProgramName.Text = string.Empty;
             txtTuition.Text = string.Empty;
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtProgram.Text))
+            {
+                WarningAlert("Please enter program name to search");
+                return;
+            }
+
+
+            DataSet getsearchdata = lp.SearchProgramByCollege(int.Parse(Session["userid"].ToString()), txtProgram.Text);
+            if (getsearchdata != null)
+            {
+                grdPrograms.DataSource = getsearchdata;
+                grdPrograms.DataBind();
+            }
+            else
+            {
+                grdPrograms.DataSource = null;
+                grdPrograms.DataBind();
+            }
         }
     }
 }

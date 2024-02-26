@@ -143,18 +143,49 @@ namespace MyAGC.Classes
 
         public DataSet getSearchUsers(int Criteria,int RoleID, string Value)
         {
-
-            DataSet ds = null;
-
             string str = "sp_SearchUsers";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
             db.AddInParameter(cmd, "@RoleID", DbType.Int32, RoleID);
             db.AddInParameter(cmd, "@Value", DbType.String, Value);
-            ds = db.ExecuteDataSet(cmd);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
 
 
+        }
+        public DataSet SearchProgramByCollege(int CollegeID,string Value)
+        {
+            string str = "sp_SearchProgramByCollege";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ProgramName", DbType.String, Value);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, CollegeID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
 
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+        public DataSet SearchProgram(string Value)
+        {
+            string str = "sp_SearchProgram";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ProgramName", DbType.String, Value);
+            DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 return ds;
@@ -251,6 +282,31 @@ namespace MyAGC.Classes
                 return false;
             }
         }
+        public bool IsProgramAssigned(int ProgramID)
+        {
+            try
+            {
+                string str = "sp_ValidateProgram";
+                System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+                db.AddInParameter(cmd, "@ProgramID", DbType.Int32, ProgramID);
+
+                DataSet ds = db.ExecuteDataSet(cmd);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                mMsgFlg = ex.Message;
+                return false;
+            }
+        }
         public void SaveAcademicCalendar(int UserID,string StartDateMonth, string StartDateYear, string EndDateMonth, string EndDateYear, int Intake, DateTime ApplicationDeadline)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -325,7 +381,7 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
-        public void SavePrograms(int UserID, int Duration, int FacultyID, string ProgramName, string Requirements,double Tuition)
+        public void SavePrograms(int UserID, int Duration, int FacultyID, string ProgramName, string Requirements,double Tuition,int ProgramTypeID)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             SqlConnection sqlCon = null;
@@ -340,6 +396,7 @@ namespace MyAGC.Classes
                 sql_cmnd.Parameters.AddWithValue("@ProgramName", SqlDbType.NVarChar).Value = ProgramName;
                 sql_cmnd.Parameters.AddWithValue("@Requirements", SqlDbType.NVarChar).Value = Requirements;
                 sql_cmnd.Parameters.AddWithValue("@Tuition", SqlDbType.Float).Value = Tuition;
+                sql_cmnd.Parameters.AddWithValue("@ProgramTypeID", SqlDbType.Int).Value = ProgramTypeID;
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }
@@ -821,6 +878,24 @@ namespace MyAGC.Classes
             string str = "sp_getFaculty";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getProgramTypes()
+        {
+
+            string str = "sp_getProgramTypes";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {

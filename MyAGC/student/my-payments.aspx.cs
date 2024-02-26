@@ -66,11 +66,11 @@ namespace MyAGC.student
             try
             {
                 QueryStringModule qn = new QueryStringModule();
-                int index = Convert.ToInt32(e.CommandArgument);
+                int index;
 
                 if (e.CommandName == "SelectItem")
                 {
-
+                    index = Convert.ToInt32(e.CommandArgument);
                     string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
 
                     //Response.Redirect(string.Format("../student/programs?CollegeID={0}&PeriodID={1}", EcryptedCollegeID, EcryptedPeriodID), false);

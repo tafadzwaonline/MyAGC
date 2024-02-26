@@ -41,7 +41,7 @@
                                                       <div class="row">
                                                           <div class="col-sm-12">
                                                               <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
-                                                                  role="grid" aria-describedby="basicExample_info"
+                                                                  role="grid" aria-describedby="basicExample_info" OnPageIndexChanging="grdDocument_PageIndexChanging"
                                                                   AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
                                                                   AllowPaging="True" AllowSorting="True">
                                                                   <Columns>

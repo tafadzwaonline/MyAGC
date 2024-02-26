@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -71,11 +72,11 @@ namespace MyAGC.student
             try
             {
                 QueryStringModule qn = new QueryStringModule();
-                int index = Convert.ToInt32(e.CommandArgument);
+                int index;
 
                 if (e.CommandName == "SelectItem")
                 {
-
+                    index = Convert.ToInt32(e.CommandArgument);
                     string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
                     string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtid.Value));
                     //Response.Redirect(string.Format("../student/programs?CollegeID={0}&PeriodID={1}", EcryptedCollegeID, EcryptedPeriodID), false);

@@ -11,7 +11,7 @@ namespace MyAGC.institution
 {
     public partial class academic_calendar : System.Web.UI.Page
     {
-        readonly UsersManagement um = new UsersManagement("con");
+        //private readonly UsersManagement um = new UsersManagement("con");
         readonly LookUp lp = new LookUp("con");
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -206,12 +206,7 @@ namespace MyAGC.institution
                 return;
             }
 
-            //if (Convert.ToDateTime(txtApplicationDeadline.Text) > DateTime.Today)
-            //{
-
-            //    WarningAlert("Date is invalid or greater than today");
-            //    return;
-            //}
+           
             UpdateDetails();
         }
 

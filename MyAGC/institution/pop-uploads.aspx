@@ -40,10 +40,10 @@
 
                                                       <div class="row">
                                                           <div class="col-sm-12">
-                                                              <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
-                                                                  role="grid" aria-describedby="basicExample_info"
-                                                                  AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
-                                                                  AllowPaging="True" AllowSorting="True">
+                                                              <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" 
+                                                                  role="grid" aria-describedby="basicExample_info" 
+                                                                  AutoGenerateColumns="False" DataKeyNames="ID" OnPageIndexChanging="grdDocument_PageIndexChanging" Width="100%"
+                                                                  AllowPaging="True" AllowSorting="True" OnRowCommand="grdDocument_RowCommand">
                                                                   <Columns>
                                                                       <asp:BoundField DataField="Name" HeaderText="File Name">
                                                                           <ItemStyle HorizontalAlign="Left" Width="150px" />

@@ -199,20 +199,18 @@ namespace MyAGC.institution
             try
             {
 
-                int index = Convert.ToInt32(e.CommandArgument);
-
-
+                int index;
                 if (e.CommandName == "DeleteItem")
                 {
-
+                    index = Convert.ToInt32(e.CommandArgument);
                     lp.DeleteUploadedDocument(index);
                     getDocumentUploads();
 
                     SuccessAlert("Record successfully removed");
                 }
-                else
+                if (e.CommandName == "selectrecord")
                 {
-
+                    index = Convert.ToInt32(e.CommandArgument);
                     download(index);
                 }
 
@@ -221,6 +219,49 @@ namespace MyAGC.institution
             {
 
                 DangerAlert(ex.ToString());
+            }
+        }
+
+        protected void grdDocument_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdDocument.PageIndex = e.NewPageIndex;
+            this.BindGrid(e.NewPageIndex);
+        }
+        private void BindGrid(int page = 0)
+        {
+            try
+            {
+                DataSet program = lp.getDocumentFileUploads(int.Parse(Session["userid"].ToString()));
+                if (program != null)
+                {
+                    int maxPageIndex = grdDocument.PageCount - 1;
+                    if (page < 0 || page > maxPageIndex)
+                    {
+                        if (maxPageIndex >= 0)
+                        {
+                            // Navigate to the last available page
+                            page = maxPageIndex;
+                        }
+                        else
+                        {
+                            // No data available, reset to the first page
+                            page = 0;
+                        }
+                    }
+                    grdDocument.DataSource = program;
+                    grdDocument.PageIndex = page;
+                    grdDocument.DataBind();
+                }
+                else
+                {
+                    grdDocument.DataSource = null;
+                    grdDocument.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
     }

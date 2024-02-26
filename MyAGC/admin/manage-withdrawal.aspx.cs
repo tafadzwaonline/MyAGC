@@ -134,9 +134,8 @@ namespace MyAGC.admin
         }
         private void Sort(string sortExpression, string v)
         {
-            DataView dv = null;
             DataSet asset = lp.getAllAgentPoints();
-            dv = new DataView(asset.Tables[0]);
+            DataView dv = new DataView(asset.Tables[0]);
             dv.Sort = sortExpression + " " + v;
             grdPoints.DataSource = dv;
             grdPoints.DataBind();

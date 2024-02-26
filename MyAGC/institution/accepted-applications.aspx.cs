@@ -62,10 +62,11 @@ namespace MyAGC.institution
             try
             {
                 QueryStringModule qn = new QueryStringModule();
-                int index = Convert.ToInt32(e.CommandArgument);
+                int index;
 
                 if (e.CommandName == "SelectItem")
                 {
+                    index = Convert.ToInt32(e.CommandArgument);
                     string EcryptedApplicationID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
                     //string EcryptedCollegeID = HttpUtility.UrlEncode(qn.Encrypt(txtid.Value));
                     Response.Redirect(string.Format("../institution/view-application?ApplicationID={0}", EcryptedApplicationID), false);

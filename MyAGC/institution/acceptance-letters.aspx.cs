@@ -38,6 +38,49 @@ namespace MyAGC.institution
                 //ltEmbed.Text = null;
             }
         }
+        protected void grdDocument_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdDocument.PageIndex = e.NewPageIndex;
+            this.BindGrid(e.NewPageIndex);
+        }
+
+        private void BindGrid(int page = 0)
+        {
+            try
+            {
+                DataSet program = lp.getAcceptanceLettersByCollegeID(int.Parse(Session["userid"].ToString()));
+                if (program != null)
+                {
+                    int maxPageIndex = grdDocument.PageCount - 1;
+                    if (page < 0 || page > maxPageIndex)
+                    {
+                        if (maxPageIndex >= 0)
+                        {
+                            // Navigate to the last available page
+                            page = maxPageIndex;
+                        }
+                        else
+                        {
+                            // No data available, reset to the first page
+                            page = 0;
+                        }
+                    }
+                    grdDocument.DataSource = program;
+                    grdDocument.PageIndex = page;
+                    grdDocument.DataBind();
+                }
+                else
+                {
+                    grdDocument.DataSource = null;
+                    grdDocument.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         protected void download(int AppID)
         {
 
@@ -86,11 +129,12 @@ namespace MyAGC.institution
         {
             try
             {
-
-                int index = Convert.ToInt32(e.CommandArgument);
-
-                download(index);
-
+                int index;
+                if (e.CommandName == "SelectItem")
+                {
+                    index = Convert.ToInt32(e.CommandArgument);
+                    download(index);
+                }
             }
             catch (Exception ex)
             {
@@ -98,5 +142,6 @@ namespace MyAGC.institution
                 throw;
             }
         }
+
     }
 }

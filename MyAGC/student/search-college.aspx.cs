@@ -106,11 +106,15 @@ namespace MyAGC.student
 
         protected void grdCollege_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int index;
+            if (e.CommandName == "SelectItem")
+            {
+                index = Convert.ToInt32(e.CommandArgument);
+                QueryStringModule qn = new QueryStringModule();
+                string EcryptedID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString().Trim()));
+                Response.Redirect(string.Format("../student/academic-calander.aspx?collegeID={0}", EcryptedID), false);
+            }
 
-            int index = Convert.ToInt32(e.CommandArgument);
-            QueryStringModule qn = new QueryStringModule();
-            string EcryptedID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString().Trim()));
-            Response.Redirect(string.Format("../student/academic-calander.aspx?collegeID={0}", EcryptedID), false);
         }
 
         protected void grdCollege_PageIndexChanging(object sender, GridViewPageEventArgs e)

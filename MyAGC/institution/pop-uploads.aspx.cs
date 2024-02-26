@@ -111,27 +111,63 @@ namespace MyAGC.institution
             try
             {
 
-                int index = Convert.ToInt32(e.CommandArgument);
-
-
-                if (e.CommandName == "DeleteItem")
+                int index;
+                if (e.CommandName == "selectrecord")
                 {
-
-                    //lp.DeleteUploadedDocument(index);
-                    //getCertificateUploads();
-
-                    //SuccessAlert("Record successfully removed");
-                }
-                else
-                {
-
+                    index = Convert.ToInt32(e.CommandArgument);
                     download(index);
                 }
+                
 
             }
             catch (Exception ex)
             {
 
+                DangerAlert(ex.ToString());
+            }
+        }
+
+        protected void grdDocument_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdDocument.PageIndex = e.NewPageIndex;
+            this.BindGrid(e.NewPageIndex);
+        }
+
+        private void BindGrid(int page = 0)
+        {
+            try
+            {
+
+                DataSet user = lp.getUploadedProofOfPaymentsByCollegeID(int.Parse(Session["userid"].ToString()));
+                if (user != null)
+                {
+                    int maxPageIndex = grdDocument.PageCount - 1;
+                    if (page < 0 || page > maxPageIndex)
+                    {
+                        if (maxPageIndex >= 0)
+                        {
+                            // Navigate to the last available page
+                            page = maxPageIndex;
+                        }
+                        else
+                        {
+                            // No data available, reset to the first page
+                            page = 0;
+                        }
+                    }
+                    grdDocument.DataSource = user;
+                    grdDocument.PageIndex = page;
+                    grdDocument.DataBind();
+                }
+                else
+                {
+                    grdDocument.DataSource = null;
+                    grdDocument.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
                 DangerAlert(ex.ToString());
             }
         }

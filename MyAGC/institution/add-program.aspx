@@ -34,7 +34,7 @@
                                                 <asp:DropDownList ID="drpFaculty" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
                                             </div>
                                                <div class="col-sm-6 form-group">
-                                                <label>DEGREE PROGRAMME & PROGRAMME CODE</label>
+                                                <label> PROGRAMME & PROGRAMME CODE <code>(DEGREE/DIPLOMA/MASTERS/CERTIFICATE/DOCTORAL)</code> </label>
                                                 <asp:TextBox ID="txtProgramName" runat="server"   class="form-control"></asp:TextBox>
                                             </div>
                                               <div class="col-sm-6 form-group">
@@ -44,8 +44,12 @@
                                            
                                             <div class="col-sm-6 form-group">
                                                 <label>Duration (years)</label>
-                                                <asp:TextBox ID="txtDuration" runat="server"  class="form-control"></asp:TextBox>
+                                                <asp:TextBox ID="txtDuration" runat="server" TextMode="Number"  class="form-control"></asp:TextBox>
                                             </div>
+                                                <div class="col-sm-6 form-group">
+    <label>Program Type</label>
+    <asp:DropDownList ID="drpProgramType" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+</div>
                                             <div class="col-sm-6 form-group">
                                                 <label>SPECIAL REQUIREMENTS</label>
                                                 <asp:TextBox ID="txtRequirements" runat="server" TextMode="MultiLine"  class="form-control"></asp:TextBox>
@@ -53,13 +57,22 @@
       
                                               <div class="col-sm-12 reset-button">
                                                  
-                                                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 <asp:Button ID="btnSave" runat="server" Text="Save Program" OnClick="btnSave_Click" class="btn btn-success" />
                                                  
                                              </div>
                                             
 
                                            
                                                                                           <table class="table table-bordered table-hover"  style="width:100%" >
+                                                                                                      <tr>
+
+<td colspan="4"><asp:TextBox ID="txtProgram" placeholder="Program name" CssClass="form-control" runat="server"></asp:TextBox></td>
+    <%--<td colspan="4"><asp:TextBox ID="txtValue" placeholder="Search Value" CssClass="form-control" runat="server"></asp:TextBox></td>--%>
+    
+    <td colspan="4">
+        <asp:Button ID="btnSearch" CssClass="btn btn-warning" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
+    </td>
+</tr>
 
                                     <tr>
                                         <td colspan="12">
@@ -72,21 +85,16 @@
                        AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
                        AllowPaging="True" AllowSorting="True">
                        <Columns>
-                           <asp:BoundField DataField="ID" HeaderText="ID">
-                               <ItemStyle HorizontalAlign="Left" Width="60px" />
-                           </asp:BoundField>
+                          <asp:BoundField DataField="ProgramName" HeaderText="Program Name">
+<%--     <ItemStyle HorizontalAlign="Left" Width="100px" />--%>
+ </asp:BoundField>
                             <asp:BoundField DataField="Duration" HeaderText="Duration">
                                 <ItemStyle HorizontalAlign="Left" Width="60px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="Tuition" HeaderText="Tuition">
                                <ItemStyle HorizontalAlign="Left" Width="80px" />
                            </asp:BoundField>
-                           <asp:BoundField DataField="ProgramName" HeaderText="ProgramName">
-                               <ItemStyle HorizontalAlign="Left" Width="100px" />
-                           </asp:BoundField>
-                           
-                          
-                           <asp:BoundField DataField="Requirements" HeaderText="Tuition">
+                           <asp:BoundField DataField="Requirements" HeaderText="Requirements">
                                
                            </asp:BoundField>
                            <asp:TemplateField HeaderText="Remove">

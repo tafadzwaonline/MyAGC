@@ -63,7 +63,7 @@
 
                                               <div class="col-sm-12 reset-button">
                                                  
-                                                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 <asp:Button ID="btnSave" runat="server" Text="Save Details" OnClick="btnSave_Click" class="btn btn-success" />
                                                  
                                              </div>
                                             
@@ -101,7 +101,7 @@
                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Add">
                                <ItemTemplate>
-                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-warning" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
                                                   Application Fees
                                    </asp:LinkButton>
                                </ItemTemplate>

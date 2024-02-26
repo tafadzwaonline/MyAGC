@@ -36,7 +36,7 @@
                    <div class="col-sm-12">
                        <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"
                            role="grid" aria-describedby="basicExample_info"
-                           AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                           AutoGenerateColumns="False" DataKeyNames="ID" OnPageIndexChanging="grdDocument_PageIndexChanging" Width="100%"
                            AllowPaging="True" AllowSorting="True">
                            <Columns>
                                <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID"></asp:BoundField>
@@ -45,7 +45,7 @@
                                 <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
                                <asp:TemplateField HeaderText="Download">
                                    <ItemTemplate>
-                                       <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
+                                       <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="SelectItem"></asp:LinkButton>
                                    </ItemTemplate>
                                </asp:TemplateField>
                                
