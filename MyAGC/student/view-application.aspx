@@ -92,6 +92,9 @@
                                             
                                           
                                                          <table style="width: 100%">
+                                                                                                                <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
 
     <tr>
         

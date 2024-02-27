@@ -52,6 +52,9 @@
                 <br />
             </td>
         </tr>
+                                                                                                 <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
                                          
 
                                     <tr>

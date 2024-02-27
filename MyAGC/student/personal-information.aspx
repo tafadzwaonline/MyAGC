@@ -115,9 +115,10 @@
                                              
 
                                               <div class="col-sm-12 reset-button">
-                                                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" />
+                                                 <asp:Button ID="btnSave" runat="server" Text="Save Details" OnClick="btnSave_Click" class="btn btn-success" />
                                                   <%--<asp:Button ID="Button1" runat="server" Text=">> Academic History" class="btn btn-warning" />--%>
                                                  <a class="btn btn-warning" href="../student/academic-history">>> Academic History</a>
+                                                  <a class="btn btn-danger" href="../student/search-college"> Apply Program</a>
                                              </div>
                                             
                                           

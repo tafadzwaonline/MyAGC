@@ -29,6 +29,9 @@
                 </div>
                                             <div class="table-responsive">
                                                            <table style="width: 100%">
+                                                                                                                  <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
            <tr>
            <td colspan="12">
                <h4> <strong>Acceptance Letters</strong> </h4>

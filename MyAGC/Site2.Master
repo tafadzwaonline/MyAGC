@@ -189,12 +189,12 @@
                         <ul class="nav navbar-nav">
                           
                             <!-- Messages -->
-                            <li class="dropdown messages-menu">
+                          <%--  <li class="dropdown messages-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="pe-7s-mail"></i>
                                     <span class="label label-success">4</span>
                                 </a>
-                            </li>
+                            </li>--%>
                             <!-- user -->
                             <li class="dropdown dropdown-user admin-user">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 

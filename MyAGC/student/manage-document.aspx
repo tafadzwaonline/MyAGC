@@ -42,13 +42,16 @@
                                            <asp:FileUpload ID="fileUpload" runat="server" />
                                        </div>
                                        <div class="col-sm-12 reset-button">
-                                             
+                                             <a class="btn btn-warning" href="../student/academic-history"><< Academic History</a>
                                             <asp:Button ID="btnSave" runat="server" Text="Upload Document" OnClick="btnSave_Click" class="btn btn-success" />
+                                           <a class="btn btn-danger" href="../student/search-college"> Apply Program</a>
                                            
                                         </div>
      
                                           <table class="table table-bordered table-hover"  style="width:100%" >
-
+                                                                                                 <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
                                               <tr>
                                                   <td colspan="12">
 

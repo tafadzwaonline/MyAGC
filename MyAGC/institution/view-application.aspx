@@ -102,6 +102,9 @@
                                             
                                           
                                                          <table style="width: 100%">
+                                                              <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
     <tr id="letter" runat="server" visible="false">
     <td colspan="12">
         <h4> <strong>Acceptance Letters</strong> </h4>

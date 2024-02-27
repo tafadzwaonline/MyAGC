@@ -34,7 +34,10 @@
                             
                                             
                                          <div class="table-responsive">
-                                                                                       <table class="table table-bordered table-hover"  style="width:100%" >
+                                                                                       <table class="table table-bordered table-hover"  style="width:100%; border-collapse: collapse;" >
+                                                                                                                                              <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
 
                                               <tr>
                                                   <td colspan="12">

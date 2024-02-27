@@ -31,8 +31,12 @@
                                     </div>--%>
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                            <asp:ScriptManager ID="ScriptManager1" runat="server">
-                </asp:ScriptManager>
+                                                                        <div class="row">
+    
+    <asp:HiddenField ID="txtID" runat="server" />
+  
+</div>
+                                            
                                             <div class="table-responsive">
                                            
                                             <div class="col-sm-6 form-group">
@@ -69,6 +73,9 @@
                                             
                                           
                                                                                         <table class="table table-bordered table-hover"  style="width:100%" >
+                                                                                                                                               <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
 
                                     <tr>
                                         <td colspan="12">
@@ -91,7 +98,13 @@
                            <%--<asp:BoundField DataField="SchoolLevelName" HeaderText="School Level"></asp:BoundField>
                            <asp:BoundField DataField="ExaminationName" HeaderText="Exam Body"></asp:BoundField>
                            <asp:BoundField DataField="SubjectsPassedNo" HeaderText="Subjects Passed"></asp:BoundField>--%>
-                            
+                            <asp:TemplateField HeaderText="Edit">
+    <ItemTemplate>
+        <asp:LinkButton ID="btnEdit" runat="server" CssClass="btn btn-primary" CommandName="EditItem" CommandArgument='<%#Eval("ID")%>'>
+                       <i class="fa fa-eye"></i>
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
                            <asp:TemplateField HeaderText="Remove">
                                <ItemTemplate>
                                    <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" OnClientClick="return confirm('Are you sure want you want to delete the record?');" CommandName="DeleteItem" CommandArgument='<%#Eval("ID")%>'>

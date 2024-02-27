@@ -17,15 +17,11 @@ namespace MyAGC.institution
         {
             if (!IsPostBack)
             {
-
-
-               
+                txtID.Value = "0";
                 getYears();
                 getMonths();
                 getIntake();
                 getAcademicCalendar();
-
-
             }
         }
 
@@ -52,7 +48,7 @@ namespace MyAGC.institution
             {
                 if (lp.getMonths() != null)
                 {
-                    ListItem li = new ListItem("Select a month", "0");
+                    ListItem li = new ListItem("Select start month", "0");
                     drpStartDateMonth.DataSource = lp.getMonths();
                     drpStartDateMonth.DataValueField = "ID";
                     drpStartDateMonth.DataTextField = "Name";
@@ -69,7 +65,7 @@ namespace MyAGC.institution
 
                 if (lp.getMonths() != null)
                 {
-                    ListItem li = new ListItem("Select a month", "0");
+                    ListItem li = new ListItem("Select end month", "0");
                     drpEndDateMonth.DataSource = lp.getMonths();
                     drpEndDateMonth.DataValueField = "ID";
                     drpEndDateMonth.DataTextField = "Name";
@@ -127,7 +123,7 @@ namespace MyAGC.institution
 
                 if (lp.getYears() != null)
                 {
-                    ListItem li = new ListItem("Select a year", "0");
+                    ListItem li = new ListItem("Select start year", "0");
                     drpStartDateYear.DataSource = lp.getYears();
                     drpStartDateYear.DataValueField = "ID";
                     drpStartDateYear.DataTextField = "Name";
@@ -136,7 +132,7 @@ namespace MyAGC.institution
                 }
                 else
                 {
-                    ListItem li = new ListItem("There are no year", "0");
+                    ListItem li = new ListItem("There are no years", "0");
                     drpStartDateYear.DataSource = null;
                     drpStartDateYear.DataBind();
                     drpStartDateYear.Items.Insert(0, li);
@@ -144,7 +140,7 @@ namespace MyAGC.institution
 
                 if (lp.getYears() != null)
                 {
-                    ListItem li = new ListItem("Select a year", "0");
+                    ListItem li = new ListItem("Select end year", "0");
                     drpEndDateYear.DataSource = lp.getYears();
                     drpEndDateYear.DataValueField = "ID";
                     drpEndDateYear.DataTextField = "Name";
@@ -153,7 +149,7 @@ namespace MyAGC.institution
                 }
                 else
                 {
-                    ListItem li = new ListItem("There are no year", "0");
+                    ListItem li = new ListItem("There are no years", "0");
                     drpEndDateYear.DataSource = null;
                     drpEndDateYear.DataBind();
                     drpEndDateYear.Items.Insert(0, li);
@@ -165,27 +161,45 @@ namespace MyAGC.institution
                 //DangerAlert(ex.Message);
             }
         }
+        private void getDetails(int ID)
+        {
+            DataSet dataSet = lp.getAcademicCalendarByID(ID);
 
+            if (dataSet != null)
+            {
+                DataRow dr = dataSet.Tables[0].Rows[0];
+                txtID.Value = dr["ID"].ToString();
+                drpStartDateMonth.SelectedItem.Text = dr["StartDateMonth"].ToString();
+                drpStartDateYear.SelectedItem.Text = dr["StartDateYear"].ToString();
+                drpEndDateMonth.SelectedItem.Text = dr["EndDateMonth"].ToString();
+                drpEndDateYear.SelectedItem.Text = dr["EndDateYear"].ToString();
+                txtApplicationDeadline.Text = dr["ApplicationDeadline"].ToString();
+                drpIntake.SelectedValue = dr["IntakeTypeID"].ToString();
+                btnSave.Text = "Update Details";
+            }
+
+
+        }
         protected void btnSave_Click(object sender, EventArgs e)
         {
           
 
-            if (drpStartDateMonth.SelectedValue == "0")
+            if (drpStartDateMonth.SelectedItem.Text == "Select start month")
             {
                 WarningAlert("Please select start month");
                 return;
             }
-            if (drpStartDateYear.SelectedValue == "0")
+            if (drpStartDateYear.SelectedItem.Text == "Select start year")
             {
                 WarningAlert("Please select start year");
                 return;
             }
-            if (drpEndDateMonth.SelectedValue == "0")
+            if (drpEndDateMonth.SelectedItem.Text == "Select end month")
             {
                 WarningAlert("Please select end month");
                 return;
             }
-            if (drpEndDateYear.SelectedValue == "0")
+            if (drpEndDateYear.SelectedItem.Text == "Select end year")
             {
                 WarningAlert("Please select end year");
                 return;
@@ -206,8 +220,8 @@ namespace MyAGC.institution
                 return;
             }
 
-           
-            UpdateDetails();
+
+            SaveDetails();
         }
 
 
@@ -231,21 +245,22 @@ namespace MyAGC.institution
         private void Clear()
         {
          
-            drpStartDateMonth.SelectedValue = "0";
-            drpEndDateMonth.SelectedValue = "0";
-            drpStartDateMonth.SelectedValue = "0";
+            drpStartDateMonth.SelectedItem.Text = "Select start month";
+            drpEndDateMonth.SelectedItem.Text = "Select end month";        
             drpIntake.SelectedValue = "0";
-            drpStartDateYear.SelectedValue = "0";
-            drpEndDateYear.SelectedValue = "0";
+            drpStartDateYear.SelectedItem.Text = "Select start year";
+            drpEndDateYear.SelectedItem.Text = "Select end year";
             txtApplicationDeadline.Text = string.Empty;
+            btnSave.Text = "Save Details";
+            txtID.Value = "0";
         }
 
-        private void UpdateDetails()
+        private void SaveDetails()
         {
             try
             {
-
-                lp.SaveAcademicCalendar(int.Parse(Session["userid"].ToString()), drpStartDateMonth.SelectedItem.Text, drpStartDateYear.SelectedItem.Text
+               
+                lp.SaveAcademicCalendar(int.Parse(txtID.Value),int.Parse(Session["userid"].ToString()), drpStartDateMonth.SelectedItem.Text, drpStartDateYear.SelectedItem.Text
                     , drpEndDateMonth.SelectedItem.Text, drpEndDateYear.SelectedItem.Text,int.Parse(drpIntake.SelectedValue),Convert.ToDateTime(txtApplicationDeadline.Text));
 
                 getAcademicCalendar();
@@ -266,12 +281,17 @@ namespace MyAGC.institution
             try
             {
                 QueryStringModule qn = new QueryStringModule();
-                int index = Convert.ToInt32(e.CommandArgument);
+                int index;
 
 
                 if (e.CommandName == "DeleteItem")
                 {
-
+                    index = Convert.ToInt32(e.CommandArgument);
+                    if (lp.IsPeriodAssigned(index))
+                    {
+                        WarningAlert("Period cannot be deleted because it is already in program application");
+                        return;
+                    }
                     lp.RemoveAcademicCalendar(index);
                     getAcademicCalendar();
 
@@ -279,11 +299,15 @@ namespace MyAGC.institution
                 }
                 if (e.CommandName == "SelectItem")
                 {
-
+                    index = Convert.ToInt32(e.CommandArgument);
                     string EcryptedID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
                     Response.Redirect(string.Format("../institution/application-fee?ID={0}", EcryptedID), false);
                 }
-
+                if (e.CommandName == "EditItem")
+                {
+                    index = Convert.ToInt32(e.CommandArgument);
+                    getDetails(index);
+                }
             }
             catch (Exception ex)
             {

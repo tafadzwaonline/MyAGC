@@ -32,7 +32,7 @@
                  <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
                                                     <asp:ListItem Value="1" Text="Search By" Selected="True"></asp:ListItem>
                                                     <asp:ListItem Value="2" Text="College Name"></asp:ListItem>
-                                                    <asp:ListItem Value="3" Text="City/Location"></asp:ListItem>
+                                                    <%--<asp:ListItem Value="3" Text="City/Location"></asp:ListItem>--%>
                                                     
                                                 </asp:DropDownList></td>
         
@@ -44,6 +44,9 @@
         </tr></table>
                                             
                                                <table class="table table-bordered table-hover"  style="width:100%" >
+                                                    <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
 <tr>
     <td>
         <br />

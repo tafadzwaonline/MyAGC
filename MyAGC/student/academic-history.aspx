@@ -76,8 +76,10 @@
 
   <div class="col-sm-12 reset-button">
       <a class="btn btn-danger" href="../student/personal-information"><< Personal Information</a>
-     <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" class="btn btn-success" />
+     <asp:Button ID="btnSave" runat="server" Text="Save Details" OnClick="btnSave_Click" class="btn btn-success" />
+      <a class="btn btn-danger" href="../student/search-college"> Apply Program</a>
      <a class="btn btn-warning" href="../student/manage-document">>> Document Management</a>
+      
  </div>
 
                    <table class="table table-bordered table-hover"  style="width:100%" >

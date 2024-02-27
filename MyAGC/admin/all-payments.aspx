@@ -43,6 +43,9 @@
                 <asp:Button ID="btnSearch" CssClass="btn btn-success" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
             </td>
         </tr>
+                                                                                                    <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
                                          <tr>
                                              <td colspan="12">
 

@@ -307,7 +307,32 @@ namespace MyAGC.Classes
                 return false;
             }
         }
-        public void SaveAcademicCalendar(int UserID,string StartDateMonth, string StartDateYear, string EndDateMonth, string EndDateYear, int Intake, DateTime ApplicationDeadline)
+        public bool IsPeriodAssigned(int PeriodID)
+        {
+            try
+            {
+                string str = "sp_ValidatePeriod";
+                System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+                db.AddInParameter(cmd, "@PeriodID", DbType.Int32, PeriodID);
+
+                DataSet ds = db.ExecuteDataSet(cmd);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                mMsgFlg = ex.Message;
+                return false;
+            }
+        }
+        public void SaveAcademicCalendar(int ID,int UserID,string StartDateMonth, string StartDateYear, string EndDateMonth, string EndDateYear, int Intake, DateTime ApplicationDeadline)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             SqlConnection sqlCon = null;
@@ -316,8 +341,8 @@ namespace MyAGC.Classes
                 sqlCon.Open();
                 SqlCommand sql_cmnd = new SqlCommand("AcademicCalendar_Ins", sqlCon);
                 sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ID", SqlDbType.Int).Value = ID;
                 sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
-
                 sql_cmnd.Parameters.AddWithValue("@StartDateMonth", SqlDbType.NVarChar).Value = StartDateMonth;
                 sql_cmnd.Parameters.AddWithValue("@StartDateYear", SqlDbType.NVarChar).Value = StartDateYear;
                 sql_cmnd.Parameters.AddWithValue("@EndDateMonth", SqlDbType.NVarChar).Value = EndDateMonth;
