@@ -358,7 +358,7 @@ namespace MyAGC.student
                     {
                         byte[] bytes = br.ReadBytes((Int32)fs.Length);
                         string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-                        lp.UploadProofOfPayment(filename, contentType, bytes, DateTime.Today, int.Parse(Session["userid"].ToString()),collegeId,periodId,programId);
+                        lp.UploadProofOfPayment(filename, contentType, bytes, DateTime.Today, int.Parse(Session["userid"].ToString()),collegeId,periodId,programId,double.Parse(txtApplicationFee.Text));
                     }
                 }
 

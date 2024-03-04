@@ -36,15 +36,24 @@
                                                                                                <tr>
     <td><code>On mobile,swipe right/left for more info </code></td>
 </tr>
+                                                                                                                                                                                                                                                                                                               <tr>
+
+
+    <td colspan="4"><asp:TextBox ID="txtSearch" placeholder="FirstName or LastName" CssClass="form-control" runat="server"></asp:TextBox></td>
+    
+    <td colspan="4">
+        <asp:Button ID="btnSearch" CssClass="btn btn-success" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
+    </td>
+</tr>
                                     <tr>
                                         <td colspan="12">
 
                                             <div class="row">
 
                <div class="col-sm-12">
-                   <asp:GridView ID="grdPayments" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPayments_RowCommand"
+                   <asp:GridView ID="grdStudent" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdStudent_RowCommand"
                        role="grid" aria-describedby="basicExample_info" 
-                       OnPageIndexChanging="grdPayments_PageIndexChanging"
+                       OnPageIndexChanging="grdStudent_PageIndexChanging"
                        AutoGenerateColumns="False" DataKeyNames="UserID" Width="100%"
                        AllowPaging="True" AllowSorting="True">
                        <Columns>

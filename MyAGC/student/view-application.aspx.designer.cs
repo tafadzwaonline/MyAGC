@@ -24,6 +24,15 @@ namespace MyAGC.student
         protected global::System.Web.UI.WebControls.HiddenField txtCollegeID;
 
         /// <summary>
+        /// txtProgramID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField txtProgramID;
+
+        /// <summary>
         /// txtApplicationID control.
         /// </summary>
         /// <remarks>
@@ -184,6 +193,24 @@ namespace MyAGC.student
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnReject;
+
+        /// <summary>
+        /// pop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow pop;
+
+        /// <summary>
+        /// grdPop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdPop;
 
         /// <summary>
         /// grdAcademicHistory control.

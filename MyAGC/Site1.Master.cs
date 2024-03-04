@@ -30,7 +30,7 @@ namespace MyAGC
         }
         private void getStatistics()
         {
-
+            double POP = 0;
             DataSet TotalApplication = lp.getStudentApplicationByUserID(int.Parse(Session["userid"].ToString()));
             DataSet TotalPayments = lp.getPaymentsByApplicantID(int.Parse(Session["userid"].ToString()));
             DataSet TotalLetters = lp.getAcceptanceLetters(int.Parse(Session["userid"].ToString()));
@@ -48,7 +48,13 @@ namespace MyAGC
             }
             if (TotalPop != null)
             {
-                lblPop.Text = TotalPop.Tables[0].Rows.Count.ToString();
+                foreach (DataRow dt in TotalPop.Tables[0].Rows)
+                {
+                    POP += double.Parse(dt["Fee"].ToString());
+                }
+
+                lblPop.Text = $"${POP}";
+                //lblPop.Text = TotalPop.Tables[0].Rows.Count.ToString();
             }
 
             if (TotalPayments != null)

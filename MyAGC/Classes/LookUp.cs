@@ -161,6 +161,44 @@ namespace MyAGC.Classes
 
 
         }
+        public DataSet getSearchProgram(int CollegeID, string Value)
+        {
+            string str = "sp_SearchPrograms";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+        public DataSet SearchAgentStudent(int AgentID, string Value)
+        {
+            string str = "sp_SearchAgentStudent";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@AgentID", DbType.Int32, AgentID);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
         public DataSet SearchProgramByCollege(int CollegeID,string Value)
         {
             string str = "sp_SearchProgramByCollege";
@@ -581,6 +619,16 @@ namespace MyAGC.Classes
             DataSet ds = db.ExecuteDataSet(cmd);
 
         }
+        public void DeletePOP(int ID)
+        {
+
+            string str = "sp_DeletePOP";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, ID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+
+        }
         public void RemoveAcademicHistory(int ID)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -861,6 +909,26 @@ namespace MyAGC.Classes
             }
 
         }
+        public DataSet getStudentPopByProgram(int ApplicantID, int CollgeID, int ProgramID)
+        {
+
+            string str = "sp_getStudentPopByProgram";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ApplicantID", DbType.Int32, ApplicantID);
+            db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollgeID);
+            db.AddInParameter(cmd, "@ProgramID", DbType.Int32, ProgramID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         public DataSet getUploadedProofOfPaymentsByCollegeID(int CollegeID)
         {
 
@@ -1019,7 +1087,7 @@ namespace MyAGC.Classes
             DataSet ds = db.ExecuteDataSet(cmd);
 
         }
-        public void UploadProofOfPayment(string Name, string ContentType, byte[] Data, DateTime DateCreated, int UploadedBy, int CollegeID,int PeriodID,int ProgramID)
+        public void UploadProofOfPayment(string Name, string ContentType, byte[] Data, DateTime DateCreated, int UploadedBy, int CollegeID,int PeriodID,int ProgramID,double Fee)
         {
 
             string str = "sp_UploadProofOfPayment";
@@ -1032,6 +1100,7 @@ namespace MyAGC.Classes
             db.AddInParameter(cmd, "@CollegeID", DbType.Int32, CollegeID);
             db.AddInParameter(cmd, "@PeriodID", DbType.Int32, PeriodID);
             db.AddInParameter(cmd, "@ProgramID", DbType.Int32, ProgramID);
+            db.AddInParameter(cmd, "@Fee", DbType.Decimal, Fee);
 
             DataSet ds = db.ExecuteDataSet(cmd);
 

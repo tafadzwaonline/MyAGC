@@ -66,19 +66,19 @@ namespace MyAGC.agent
 
             if (dataSet != null)
             {
-                grdPayments.DataSource = dataSet;
-                grdPayments.DataBind();
+                grdStudent.DataSource = dataSet;
+                grdStudent.DataBind();
             }
             else
             {
-                grdPayments.DataSource = null;
-                grdPayments.DataBind();
+                grdStudent.DataSource = null;
+                grdStudent.DataBind();
             }
         }
 
 
 
-        protected void grdPayments_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void grdStudent_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
@@ -101,10 +101,37 @@ namespace MyAGC.agent
                 DangerAlert(ex.ToString());
             }
         }
-
-        protected void grdPayments_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-            grdPayments.PageIndex = e.NewPageIndex;
+            if (string.IsNullOrEmpty(txtSearch.Text))
+            {
+                WarningAlert("Please enter search value");
+                return;
+            }
+
+
+
+            Search();
+        }
+        private void Search()
+        {
+
+
+            DataSet getsearchdata = lp.SearchAgentStudent(int.Parse(Session["userid"].ToString()), txtSearch.Text);
+            if (getsearchdata != null)
+            {
+                grdStudent.DataSource = getsearchdata;
+                grdStudent.DataBind();
+            }
+            else
+            {
+                grdStudent.DataSource = null;
+                grdStudent.DataBind();
+            }
+        }
+        protected void grdStudent_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdStudent.PageIndex = e.NewPageIndex;
             this.BindGrid(e.NewPageIndex);
         }
 
@@ -116,7 +143,7 @@ namespace MyAGC.agent
                 DataSet user = lp.getAgentStudents(int.Parse(Session["userid"].ToString()));
                 if (user != null)
                 {
-                    int maxPageIndex = grdPayments.PageCount - 1;
+                    int maxPageIndex = grdStudent.PageCount - 1;
                     if (page < 0 || page > maxPageIndex)
                     {
                         if (maxPageIndex >= 0)
@@ -130,14 +157,14 @@ namespace MyAGC.agent
                             page = 0;
                         }
                     }
-                    grdPayments.DataSource = user;
-                    grdPayments.PageIndex = page;
-                    grdPayments.DataBind();
+                    grdStudent.DataSource = user;
+                    grdStudent.PageIndex = page;
+                    grdStudent.DataBind();
                 }
                 else
                 {
-                    grdPayments.DataSource = null;
-                    grdPayments.DataBind();
+                    grdStudent.DataSource = null;
+                    grdStudent.DataBind();
                 }
 
             }

@@ -52,6 +52,9 @@
                                                                       <asp:BoundField DataField="Name" HeaderText="File Name">
                                                                           <ItemStyle HorizontalAlign="Left" Width="150px" />
                                                                       </asp:BoundField>
+                                                                      <asp:BoundField DataField="Fee" HeaderText="Fee">
+    <ItemStyle HorizontalAlign="Left" Width="100px" />
+</asp:BoundField>
                                                                       <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded">
                                                                           <ItemStyle HorizontalAlign="Left" Width="100px" />
                                                                       </asp:BoundField>
@@ -62,11 +65,7 @@
                                                                               <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
                                                                           </ItemTemplate>
                                                                       </asp:TemplateField>
-                                                                   <%--   <asp:TemplateField HeaderText="Remove">
-                                                                          <ItemTemplate>
-                                                                              <asp:LinkButton ID="lnkRecDel" runat="server" ForeColor="red" OnClientClick="return confirm('Are you sure want you want to delete the document?');" CssClass="fa fa-trash fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="DeleteItem"></asp:LinkButton>
-                                                                          </ItemTemplate>
-                                                                      </asp:TemplateField>--%>
+                                                              
                                                                   </Columns>
                                                               </asp:GridView>
 

@@ -204,9 +204,9 @@ namespace MyAGC.institution
 
             if (string.IsNullOrWhiteSpace(txtTuition.Text))
             {
-                WarningAlert("Please enter tuition");
-                return;
+                txtTuition.Text = "0";
             }
+
             if (drpProgramType.SelectedValue == "0")
             {
                 WarningAlert("Please select a program type");

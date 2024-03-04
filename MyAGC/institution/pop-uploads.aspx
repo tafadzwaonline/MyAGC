@@ -50,6 +50,9 @@
                                                                       <asp:BoundField DataField="Name" HeaderText="File Name">
                                                                           <ItemStyle HorizontalAlign="Left" Width="150px" />
                                                                       </asp:BoundField>
+                                                                        <asp:BoundField DataField="Fee" HeaderText="Fee">
+      <ItemStyle HorizontalAlign="Left" Width="100px" />
+  </asp:BoundField>
                                                                       <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded">
                                                                           <ItemStyle HorizontalAlign="Left" Width="100px" />
                                                                       </asp:BoundField>

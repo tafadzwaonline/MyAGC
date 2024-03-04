@@ -30,7 +30,7 @@ namespace MyAGC
         }
         private void getStatistics()
         {
-
+            double POP = 0;
             DataSet TotalPayments = lp.getAllPayments();
             DataSet TotalWithdrawals = lp.getAllAgentPoints();
             DataSet getcollege = um.GetSystemUserByUserRole(2);
@@ -53,7 +53,13 @@ namespace MyAGC
             }
             if (TotalPop != null)
             {
-                lblPop.Text = TotalPop.Tables[0].Rows.Count.ToString();
+                foreach (DataRow dt in TotalPop.Tables[0].Rows)
+                {
+                    POP += double.Parse(dt["Fee"].ToString());
+                }
+
+                lblPop.Text = $"${POP}";
+                //lblPop.Text = TotalPop.Tables[0].Rows.Count.ToString();
             }
             if (TotalPayments != null)
             {

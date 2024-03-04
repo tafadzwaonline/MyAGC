@@ -105,6 +105,11 @@
                                                               <tr>
     <td><code>On mobile,swipe right/left for more info </code></td>
 </tr>
+                                                             <tr>
+                                                                 <td>
+                                                                     <br />
+                                                                 </td>
+                                                             </tr>
     <tr id="letter" runat="server" visible="false">
     <td colspan="12">
         <h4> <strong>Acceptance Letters</strong> </h4>
@@ -134,6 +139,42 @@
 
     </td>
 </tr>
+   <tr id="pop" runat="server" visible="false"> 
+         <td colspan="12">
+              <h4> <strong>Proof of Payment</strong> </h4>
+             <div class="row">
+                 <div class="col-sm-12">
+                     <asp:GridView ID="grdPop" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPop_RowCommand"
+                         role="grid" aria-describedby="basicExample_info" OnPageIndexChanging="grdPop_PageIndexChanging"
+                         AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                         AllowPaging="True" AllowSorting="True">
+                         <Columns>
+                             <asp:BoundField DataField="Name" HeaderText="File Name">
+                                 <ItemStyle HorizontalAlign="Left" Width="150px" />
+                             </asp:BoundField>
+                             <asp:BoundField DataField="DateUploaded" HeaderText="DateUploaded">
+                                 <ItemStyle HorizontalAlign="Left" Width="100px" />
+                             </asp:BoundField>
+                              <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
+                             <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
+                             <asp:TemplateField HeaderText="Download">
+                                 <ItemTemplate>
+                                     <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
+                                 </ItemTemplate>
+                             </asp:TemplateField>
+                      <asp:TemplateField HeaderText="Reject">
+     <ItemTemplate>
+         <asp:LinkButton ID="lnkDel" runat="server" ForeColor="red" CssClass="fa fa-trash fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="deleterecord"></asp:LinkButton>
+     </ItemTemplate>
+ </asp:TemplateField>
+                         </Columns>
+                     </asp:GridView>
+
+                 </div>
+             </div>
+
+         </td>
+     </tr>
     <tr>
         
         <td colspan="12" >
@@ -169,7 +210,7 @@
 
                  <tr>
            <td colspan="12">
-               <h4> <strong>Uploaded Certificates</strong> </h4>
+               <h4> <strong>Academic Certificates</strong> </h4>
                <div class="row">
                    <div class="col-sm-12">
                        <asp:GridView ID="grdDocument" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdDocument_RowCommand"

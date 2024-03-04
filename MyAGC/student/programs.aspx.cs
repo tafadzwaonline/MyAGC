@@ -109,7 +109,34 @@ namespace MyAGC.student
                 DangerAlert("An error occured");
             }
         }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtProgramName.Text))
+            {
+                WarningAlert("Please enter search value");
+                return;
+            }
 
+
+
+            Search();
+        }
+        private void Search()
+        {
+
+          
+            DataSet getsearchdata = lp.getSearchProgram(int.Parse(txtCollegeID.Value), txtProgramName.Text);
+            if (getsearchdata != null)
+            {
+                grdPrograms.DataSource = getsearchdata;
+                grdPrograms.DataBind();
+            }
+            else
+            {
+                grdPrograms.DataSource = null;
+                grdPrograms.DataBind();
+            }
+        }
         protected void grdPrograms_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
