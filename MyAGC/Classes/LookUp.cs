@@ -161,6 +161,44 @@ namespace MyAGC.Classes
 
 
         }
+        public DataSet SearchLetter(int Criteria, string Value)
+        {
+            string str = "sp_SearchLetter";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+        public DataSet SearchApplication(int Criteria, string Value)
+        {
+            string str = "sp_SearchApplication";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
         public DataSet getSearchProgram(int CollegeID, string Value)
         {
             string str = "sp_SearchPrograms";
@@ -623,6 +661,16 @@ namespace MyAGC.Classes
         {
 
             string str = "sp_DeletePOP";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, ID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+
+        }
+        public void DeleteAcceptanceLetter(int ID)
+        {
+
+            string str = "sp_DeleteAcceptanceLetter";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@ID", DbType.Int32, ID);
 
@@ -1125,6 +1173,25 @@ namespace MyAGC.Classes
 
             DataSet ds = db.ExecuteDataSet(cmd);
         }
+        public void DeleteUsers(int UserID)
+        {
+
+            string str = "sp_DeleteUser";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+        }
+        public void DeleteApplication(int ApplicationID)
+        {
+
+            string str = "sp_DeleteApplication";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ApplicationID", DbType.Int32, ApplicationID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+        }
+        
         public bool IsVerificationCodeExists(int Code)
         {
             try
@@ -1501,6 +1568,23 @@ namespace MyAGC.Classes
             string str = "sp_getTotalApplications";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@Userid", DbType.Int32, userid);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getAllApplications()
+        {
+            string str = "sp_getAllApplications";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@Userid", DbType.Int32, userid);
 
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

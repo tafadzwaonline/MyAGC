@@ -97,12 +97,18 @@
                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Supsend">
                                <ItemTemplate>
-                                   <asp:LinkButton ID="btnSuspend" runat="server" CssClass="btn btn-danger" CommandName="SuspendItem" OnClientClick="return confirm('Are you sure want you want to reset to suspend user?');" CommandArgument='<%#Eval("UserID")%>'>
+                                   <asp:LinkButton ID="btnSuspend" runat="server" CssClass="btn btn-warning" CommandName="SuspendItem" OnClientClick="return confirm('Are you sure want you want to reset to suspend user?');" CommandArgument='<%#Eval("UserID")%>'>
                                                   Suspend
                                    </asp:LinkButton>
                                </ItemTemplate>
                            </asp:TemplateField>
-                           
+                                                       <asp:TemplateField HeaderText="Delete">
+    <ItemTemplate>
+        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" CommandName="DeleteItem" OnClientClick="return confirm('Are you sure want you want to delete this student?');" CommandArgument='<%#Eval("UserID")%>'>
+                       Delete
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
 
                        </Columns>
                    </asp:GridView>

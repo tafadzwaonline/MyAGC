@@ -102,22 +102,30 @@ namespace MyAGC.admin
             try
             {
                 QueryStringModule qn = new QueryStringModule();
-                int index = Convert.ToInt32(e.CommandArgument);
-
+                int index;
                 if (e.CommandName == "SuspendItem")
                 {
-
+                    index = Convert.ToInt32(e.CommandArgument);
                     lp.UpdateStatus(0, index);
                     getSavedUsers();
 
-                    SuccessAlert("User successfully suspended");
+                    SuccessAlert("College successfully suspended");
                 }
                 if (e.CommandName == "ApproveItem")
                 {
+                    index = Convert.ToInt32(e.CommandArgument);
                     lp.UpdateStatus(1, index);
 
                     getSavedUsers();
-                    SuccessAlert("User successfully activated");
+                    SuccessAlert("College successfully activated");
+                }
+                if (e.CommandName == "DeleteItem")
+                {
+                    index = Convert.ToInt32(e.CommandArgument);
+                    lp.DeleteUsers(index);
+
+                    getSavedUsers();
+                    SuccessAlert("College successfully Deleted");
                 }
             }
             catch (Exception ex)

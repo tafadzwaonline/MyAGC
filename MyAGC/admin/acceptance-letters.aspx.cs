@@ -92,14 +92,58 @@ namespace MyAGC.admin
                     index = Convert.ToInt32(e.CommandArgument);
                     download(index);
                 }
+                if (e.CommandName == "DeleteItem")
+                {
+                    index = Convert.ToInt32(e.CommandArgument);
+                    lp.DeleteAcceptanceLetter(index);
+
+                    getLetters();
+                    SuccessAlert("Letter successfully deleted");
+                }
             }
             catch (Exception ex)
             {
 
-                throw;
+                WarningAlert("An error occurred,Try again later");
             }
         }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
 
+            if (drpSearchBy.SelectedValue == "1")
+            {
+                WarningAlert("Please select a criteria to search");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtValue.Text))
+            {
+                WarningAlert("Please enter search value");
+                return;
+            }
+
+            DataSet getsearchdata = lp.SearchLetter(int.Parse(drpSearchBy.SelectedValue), txtValue.Text);
+            if (getsearchdata != null)
+            {
+                grdDocument.DataSource = getsearchdata;
+                grdDocument.DataBind();
+            }
+            else
+            {
+                grdDocument.DataSource = null;
+                grdDocument.DataBind();
+            }
+        }
+        protected void SuccessAlert(string message)
+        {
+
+            string script = $"SuccessToastr('{message}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
+        }
+        protected void WarningAlert(string message)
+        {
+            string script = $"WarningToastr('{message}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
+        }
         protected void grdDocument_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdDocument.PageIndex = e.NewPageIndex;

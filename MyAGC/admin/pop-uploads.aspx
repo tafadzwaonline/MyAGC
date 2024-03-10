@@ -63,11 +63,13 @@
                                                                               <asp:LinkButton ID="lnkRecSel" runat="server" ForeColor="green" CssClass="fa fa-download fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="selectrecord"></asp:LinkButton>
                                                                           </ItemTemplate>
                                                                       </asp:TemplateField>
-                                                                   <%--   <asp:TemplateField HeaderText="Remove">
-                                                                          <ItemTemplate>
-                                                                              <asp:LinkButton ID="lnkRecDel" runat="server" ForeColor="red" OnClientClick="return confirm('Are you sure want you want to delete the document?');" CssClass="fa fa-trash fa-2x" CommandArgument='<%#Eval("ID")%>' CommandName="DeleteItem"></asp:LinkButton>
-                                                                          </ItemTemplate>
-                                                                      </asp:TemplateField>--%>
+                                                                                                                                                   <asp:TemplateField HeaderText="Delete">
+    <ItemTemplate>
+        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" CommandName="DeleteItem" OnClientClick="return confirm('Are you sure want you want to delete this POP?');" CommandArgument='<%#Eval("ID")%>'>
+                       Delete
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
                                                                   </Columns>
                                                               </asp:GridView>
 

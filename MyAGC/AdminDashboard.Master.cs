@@ -38,10 +38,15 @@ namespace MyAGC
             DataSet TotalLetters = lp.getAllAcceptanceLetters();
             DataSet getstudent = um.GetSystemUserByUserRole(3);
             DataSet TotalPop = lp.getUploadedProofOfPayments();
+            DataSet TotalApplications = lp.getAllApplications();
 
             if (TotalWithdrawals != null)
             {
                 lblAgentCommission.Text = TotalWithdrawals.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalApplications != null)
+            {
+                lblTotalApplications.Text = TotalApplications.Tables[0].Rows.Count.ToString();
             }
             if (TotalLetters != null)
             {
@@ -132,6 +137,11 @@ namespace MyAGC
         protected void lnkAcceptanceLetter_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../admin/acceptance-letters"));
+        }
+
+        protected void lnkTotalApplications_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../admin/total-applications"));
         }
     }
 }

@@ -117,6 +117,14 @@ namespace MyAGC.admin
                     index = Convert.ToInt32(e.CommandArgument);
                     download(index);
                 }
+                if (e.CommandName == "DeleteItem")
+                {
+                    index = Convert.ToInt32(e.CommandArgument);
+                    lp.DeletePOP(index);
+
+                    getUploads();
+                    SuccessAlert("POP successfully deleted");
+                }
 
             }
             catch (Exception ex)

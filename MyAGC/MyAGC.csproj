@@ -186,8 +186,10 @@
     <Content Include="admin\send-communication.aspx" />
     <Content Include="admin\sms-settings.aspx" />
     <Content Include="admin\SystemUsersReport.aspx" />
+    <Content Include="admin\total-applications.aspx" />
     <Content Include="admin\TotalPaymentsReport.aspx" />
     <Content Include="admin\view-agent.aspx" />
+    <Content Include="admin\view-application.aspx" />
     <Content Include="admin\view-colleges.aspx" />
     <Content Include="admin\view-payment.aspx" />
     <Content Include="admin\view-students.aspx" />
@@ -680,6 +682,13 @@
     <Compile Include="admin\SystemUsersReport.aspx.designer.cs">
       <DependentUpon>SystemUsersReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\total-applications.aspx.cs">
+      <DependentUpon>total-applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\total-applications.aspx.designer.cs">
+      <DependentUpon>total-applications.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\TotalPaymentsReport.aspx.cs">
       <DependentUpon>TotalPaymentsReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -693,6 +702,13 @@
     </Compile>
     <Compile Include="admin\view-agent.aspx.designer.cs">
       <DependentUpon>view-agent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\view-application.aspx.cs">
+      <DependentUpon>view-application.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-application.aspx.designer.cs">
+      <DependentUpon>view-application.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\view-colleges.aspx.cs">
       <DependentUpon>view-colleges.aspx</DependentUpon>

@@ -11,35 +11,17 @@ namespace MyAGC.admin
 {
 
 
-    public partial class acceptance_letters
+    public partial class total_applications
     {
 
         /// <summary>
-        /// txtCollegeID control.
+        /// txtid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField txtCollegeID;
-
-        /// <summary>
-        /// txtApplicationID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField txtApplicationID;
-
-        /// <summary>
-        /// txtApplicantID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField txtApplicantID;
+        protected global::System.Web.UI.WebControls.HiddenField txtid;
 
         /// <summary>
         /// drpSearchBy control.
@@ -69,12 +51,12 @@ namespace MyAGC.admin
         protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// grdDocument control.
+        /// grdApplications control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdDocument;
+        protected global::System.Web.UI.WebControls.GridView grdApplications;
     }
 }
