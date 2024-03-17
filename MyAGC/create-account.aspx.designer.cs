@@ -69,6 +69,15 @@ namespace MyAGC
         protected global::System.Web.UI.WebControls.RadioButton rdAgent;
 
         /// <summary>
+        /// rdConsultancy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdConsultancy;
+
+        /// <summary>
         /// InstitutionName control.
         /// </summary>
         /// <remarks>
@@ -139,6 +148,42 @@ namespace MyAGC
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAgentLastName;
+
+        /// <summary>
+        /// ConsultancyName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ConsultancyName;
+
+        /// <summary>
+        /// txtConsultancyName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConsultancyName;
+
+        /// <summary>
+        /// ConsultancyAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ConsultancyAdd;
+
+        /// <summary>
+        /// txtConsultancyAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConsultancyAdd;
 
         /// <summary>
         /// FirstName control.

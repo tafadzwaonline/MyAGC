@@ -161,6 +161,27 @@ namespace MyAGC.Classes
 
 
         }
+        public string getFees(double Amount)
+        {
+            try
+            {
+                string str = "DECLARE @Number INT = " + Amount + "; SELECT TOP 1 Amount FROM FeesType WHERE @Number >= [From] AND @Number <= [To]ORDER BY[From] ASC";
+                DataSet ds = db.ExecuteDataSet(CommandType.Text, str);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    return ds.Tables[0].Rows[0][0].ToString();
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                mMsgFlg = ex.Message;
+                return "0";
+            }
+        }
         public DataSet SearchLetter(int Criteria, string Value)
         {
             string str = "sp_SearchLetter";
@@ -657,6 +678,17 @@ namespace MyAGC.Classes
             DataSet ds = db.ExecuteDataSet(cmd);
 
         }
+
+        public void DeleteLegalDocument(int ID)
+        {
+
+            string str = "sp_DeleteLegalDocument";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, ID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+
+        }
         public void DeletePOP(int ID)
         {
 
@@ -853,6 +885,25 @@ namespace MyAGC.Classes
         {
 
             string str = "sp_getCertificateFileUploads";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public DataSet getLegaDocumentFileUploads(int UserID)
+        {
+
+            string str = "sp_getLegaDocumentFileUploads";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
             DataSet ds = db.ExecuteDataSet(cmd);
@@ -1114,6 +1165,22 @@ namespace MyAGC.Classes
             db.AddInParameter(cmd, "@DateCreated", DbType.DateTime, DateCreated);
             db.AddInParameter(cmd, "@UploadedBy", DbType.Int32, UploadedBy);
             db.AddInParameter(cmd, "@CertificateID", DbType.Int32, DocTypeID);
+
+            DataSet ds = db.ExecuteDataSet(cmd);
+
+        }
+
+        public void UploadLegalDocument(string Name, string ContentType, byte[] Data, DateTime DateCreated, int UploadedBy, int DocTypeID)
+        {
+
+            string str = "sp_UploadLegalDocument";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Name", DbType.String, Name);
+            db.AddInParameter(cmd, "@ContentType", DbType.String, ContentType);
+            db.AddInParameter(cmd, "@Data", DbType.Binary, Data);
+            db.AddInParameter(cmd, "@DateCreated", DbType.DateTime, DateCreated);
+            db.AddInParameter(cmd, "@UploadedBy", DbType.Int32, UploadedBy);
+            db.AddInParameter(cmd, "@DocumentTypeID", DbType.Int32, DocTypeID);
 
             DataSet ds = db.ExecuteDataSet(cmd);
 
@@ -1707,6 +1774,22 @@ namespace MyAGC.Classes
         {
 
             string str = "sp_getCountry";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getParcelStatus()
+        {
+
+            string str = "sp_getParcelStatus";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

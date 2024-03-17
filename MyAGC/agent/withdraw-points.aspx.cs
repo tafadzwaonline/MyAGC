@@ -21,7 +21,17 @@ namespace MyAGC.agent
             {
 
 
-             
+                if (int.Parse(Session["roleid"].ToString()) == 4)
+                {
+                    lblUsername.Text = "Agent Name";
+                    lblID.Text = "Agent ID";
+                }
+                else
+                {
+                   
+                    lblUsername.Text = "Consultant Company Name";
+                    lblID.Text = "Consultant Company ID";
+                }
 
                 getAgentDetails();
 

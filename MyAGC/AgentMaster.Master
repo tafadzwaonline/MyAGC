@@ -246,6 +246,12 @@
                            
                      </a>
                  </li>
+                                                        <li>
+       <a href="../agent/manage-document">
+        <i class="fa fa-file"></i><span>Manage Documents</span>
+          
+    </a>
+</li>
                        <li>
                         <a href="../agent/my-points">
                          <i class="fa fa-dollar"></i><span>View Points</span>

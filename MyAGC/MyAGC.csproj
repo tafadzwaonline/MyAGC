@@ -179,6 +179,7 @@
     <Content Include="admin\email-settings.aspx" />
     <Content Include="admin\logged-queries.aspx" />
     <Content Include="admin\manage-withdrawal.aspx" />
+    <Content Include="admin\my-courier.aspx" />
     <Content Include="admin\my-profile.aspx" />
     <Content Include="admin\personal-info.aspx" />
     <Content Include="admin\pop-uploads.aspx" />
@@ -191,6 +192,7 @@
     <Content Include="admin\view-agent.aspx" />
     <Content Include="admin\view-application.aspx" />
     <Content Include="admin\view-colleges.aspx" />
+    <Content Include="admin\view-consultant.aspx" />
     <Content Include="admin\view-payment.aspx" />
     <Content Include="admin\view-students.aspx" />
     <Content Include="admin\view-user.aspx" />
@@ -198,6 +200,7 @@
     <Content Include="agent\application-type.aspx" />
     <Content Include="agent\application.aspx" />
     <Content Include="agent\dashboard.aspx" />
+    <Content Include="agent\manage-document.aspx" />
     <Content Include="agent\my-applications.aspx" />
     <Content Include="agent\my-points.aspx" />
     <Content Include="agent\my-profile.aspx" />
@@ -482,6 +485,7 @@
     <Content Include="student\manage-document.aspx" />
     <Content Include="student\my-applications.aspx" />
     <Content Include="student\my-college.aspx" />
+    <Content Include="student\my-courier.aspx" />
     <Content Include="student\my-payments.aspx" />
     <Content Include="student\my-profile.aspx" />
     <Content Include="student\pay-now.aspx" />
@@ -633,6 +637,13 @@
     <Compile Include="admin\manage-withdrawal.aspx.designer.cs">
       <DependentUpon>manage-withdrawal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\my-courier.aspx.cs">
+      <DependentUpon>my-courier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\my-courier.aspx.designer.cs">
+      <DependentUpon>my-courier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\my-profile.aspx.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -717,6 +728,13 @@
     <Compile Include="admin\view-colleges.aspx.designer.cs">
       <DependentUpon>view-colleges.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\view-consultant.aspx.cs">
+      <DependentUpon>view-consultant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-consultant.aspx.designer.cs">
+      <DependentUpon>view-consultant.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\view-payment.aspx.cs">
       <DependentUpon>view-payment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -779,6 +797,13 @@
     </Compile>
     <Compile Include="agent\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agent\manage-document.aspx.cs">
+      <DependentUpon>manage-document.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agent\manage-document.aspx.designer.cs">
+      <DependentUpon>manage-document.aspx</DependentUpon>
     </Compile>
     <Compile Include="agent\my-applications.aspx.cs">
       <DependentUpon>my-applications.aspx</DependentUpon>
@@ -1241,6 +1266,13 @@
     </Compile>
     <Compile Include="student\my-college.aspx.designer.cs">
       <DependentUpon>my-college.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\my-courier.aspx.cs">
+      <DependentUpon>my-courier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\my-courier.aspx.designer.cs">
+      <DependentUpon>my-courier.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\my-payments.aspx.cs">
       <DependentUpon>my-payments.aspx</DependentUpon>

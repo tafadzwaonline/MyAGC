@@ -65,6 +65,9 @@
                                      <label class="radio-inline">
                                         <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdAgent" OnCheckedChanged="rdAgent_CheckedChanged" runat="server" />
                                         Agent</label>
+                                     <label class="radio-inline">
+    <asp:RadioButton GroupName="ReverseMode" AutoPostBack="true" ID="rdConsultancy" OnCheckedChanged="rdConsultancy_CheckedChanged" runat="server" />
+    Consultancy Company</label>
                                 </div>
                             </div>
                             <div class="form-group col-lg-6" id="InstitutionName" runat="server" visible="false">
@@ -86,6 +89,16 @@
                                 <label>Agent LastName</label><span style="color: red; position: absolute; top: -3px; left: 5px;">*</span>
                                 <asp:TextBox ID="txtAgentLastName" runat="server" placeholder="Agent LastName" class="form-control"></asp:TextBox>
                             </div>
+                                 <div class="form-group col-lg-6" id="ConsultancyName" runat="server" visible="false">
+    <label>Consultancy Name</label><span style="color: red; position: absolute;">*</span>
+    <asp:TextBox ID="txtConsultancyName" runat="server" placeholder="Consultancy Name" class="form-control"></asp:TextBox>
+
+</div>
+                                                             <div class="form-group col-lg-6" id="ConsultancyAdd" runat="server" visible="false">
+    <label>Consultancy Address</label><span style="color: red; position: absolute;">*</span>
+    <asp:TextBox ID="txtConsultancyAdd" runat="server" placeholder="Consultancy Address" class="form-control"></asp:TextBox>
+
+</div>
 
                             <div class="form-group col-lg-6" id="FirstName" runat="server" visible="false">
                                 <label>First Name <span style="color: red; position: absolute;">*</span></label>
@@ -108,7 +121,7 @@
                                 <asp:TextBox ID="txtDOB" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                             </div>
                             <div class="form-group col-lg-6" id="Phone" runat="server" visible="false">
-                                <label>Phone (<code>start with country code eg 263786345112</code>)</label><span style="color: red; position: absolute; top: -3px; left: 5px;">*</span>
+                                <label>Phone (<code>start with country code eg 260786345112</code>)</label><span style="color: red; position: absolute; top: -3px; left: 5px;">*</span>
                                 <asp:TextBox ID="txtPhone" runat="server" placeholder="263786345112" class="form-control"></asp:TextBox>
                             </div>
                             <div class="form-group col-lg-6" id="Password1" runat="server" visible="false">

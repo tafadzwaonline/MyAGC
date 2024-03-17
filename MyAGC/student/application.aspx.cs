@@ -386,7 +386,7 @@ namespace MyAGC.student
             // Response.Redirect(string.Format("../student/application?ID={0}", EcryptedProgramID), false);
             //Response.Redirect(string.Format("../student/application?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
             //paynow.ReturnUrl = $"https://localhost:44302/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
-            paynow.ReturnUrl = $"http://mysystem.ddns.net/MyAGC/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
+            paynow.ReturnUrl = $"https://mysystem.ddns.net/MyAGC/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}";
 
             paynow.ResultUrl = "http://example.com/gateways/paynow/update";
 

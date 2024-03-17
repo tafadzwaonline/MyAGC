@@ -51,6 +51,8 @@
                                                     <asp:ListItem Value="1" Text="Select Target" Selected="True"></asp:ListItem>
                                                     <asp:ListItem Value="2" Text="Colleges"></asp:ListItem>
                                                     <asp:ListItem Value="3" Text="Students"></asp:ListItem>
+                                                    <asp:ListItem Value="4" Text="Agents"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="Consultants"></asp:ListItem>
                                                     
                                                 </asp:DropDownList>
                                             </div>

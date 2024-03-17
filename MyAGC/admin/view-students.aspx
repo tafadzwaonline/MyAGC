@@ -27,11 +27,7 @@
                                             <div class="table-responsive">
                                                                                             <table class="table table-bordered table-hover"  style="width:100%" >
                                               
-                                                <tr>
-                                                    <td>
-                                                        <br />
-                                                    </td>
-                                                </tr>
+                                              
            <tr>
        <td colspan="4">
             <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">

@@ -29,9 +29,7 @@
 <body>
     <!-- Content Wrapper -->
     <div class="login-wrapper">
-       <%-- <div class="back-link">
-            <a href="index.html" class="btn btn-success">Back to Dashboard</a>
-        </div>--%>
+
         <div class="container-center">
             <div class="panel panel-bd">
                 <div class="panel-heading">
@@ -78,8 +76,7 @@
             </div>
         </div>
     </div>
-    <!-- /.content-wrapper -->
-    <!-- jQuery -->
+    
     <script src="./assets/plugins/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>
     <!-- bootstrap js -->
     <script src="./assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

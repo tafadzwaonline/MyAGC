@@ -23,11 +23,13 @@
                                         <form class="col-sm-12" runat="server">
                                             
                                             <div class="col-sm-6 form-group">
-                                                <label>Agent Name</label>
+                                                <label><span>
+                <asp:Label ID="lblUsername" runat="server" Text="Agent Name"></asp:Label></span></label>
                                                 <asp:TextBox ID="txtAgentName" runat="server" ReadOnly="true"  class="form-control"></asp:TextBox>
                                             </div>
                                             <div class="col-sm-6 form-group">
-                                                <label>Agent ID</label>
+                                                <label>                                <label><span>
+<asp:Label ID="lblID" runat="server" Text="Agent ID"></asp:Label></span></label></label>
                                                 <asp:TextBox ID="txtAgentID" ReadOnly="true"  runat="server" class="form-control"></asp:TextBox>
                                             </div>
                                             <div class="col-sm-6 form-group">

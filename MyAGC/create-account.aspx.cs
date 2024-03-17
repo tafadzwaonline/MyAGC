@@ -30,6 +30,8 @@ namespace MyAGC
             InstitutionName.Visible = false;
             AgentLastName.Visible = false;
             AgentFirstName.Visible = false;
+            ConsultancyAdd.Visible = false;
+            ConsultancyName.Visible = false;
             tr1.Visible = true;
             //tr2.Visible = true;
             //tr3.Visible = true;
@@ -43,6 +45,8 @@ namespace MyAGC
             InstitutionName.Visible = true;
             AgentLastName.Visible = false;
             AgentFirstName.Visible = false;
+            ConsultancyAdd.Visible = false;
+            ConsultancyName.Visible = false;
             Password1.Visible = true;
             Password2.Visible = true;
             Emails.Visible = true;
@@ -61,6 +65,8 @@ namespace MyAGC
         {
             AgentFirstName.Visible = true;
             AgentLastName.Visible = true;
+            ConsultancyAdd.Visible = false;
+            ConsultancyName.Visible = false;
             InstitutionAddress.Visible = false;
             InstitutionName.Visible = false;
             Password1.Visible = true;
@@ -87,7 +93,7 @@ namespace MyAGC
             string LastName = string.Empty;
             string Addresses= string.Empty;
             int RoleID = 0;
-            if (!rdStudent.Checked && !rdInstitution.Checked && !rdAgent.Checked)
+            if (!rdStudent.Checked && !rdInstitution.Checked && !rdAgent.Checked && !rdConsultancy.Checked)
             {
                 lblLoginError.Text = "Please select account type to register";
                 return;
@@ -211,18 +217,41 @@ namespace MyAGC
             }
 
 
-            if (rdAgent.Checked)
+            if (rdAgent.Checked || rdConsultancy.Checked)
             {
                 List<string> errorMessages = new List<string>();
 
-                if (string.IsNullOrWhiteSpace(txtAgentFirstName.Text))
+                if (rdAgent.Checked)
                 {
-                    errorMessages.Add("Agent FirstName is required");
+                    if (string.IsNullOrWhiteSpace(txtAgentFirstName.Text))
+                    {
+                        errorMessages.Add("Agent FirstName is required");
+                    }
+                    if (string.IsNullOrWhiteSpace(txtAgentLastName.Text))
+                    {
+                        errorMessages.Add("Agent LastName is required");
+                    }
+                    FirstName = txtAgentFirstName.Text;
+                    LastName = txtAgentLastName.Text;
+                    Addresses = txtInstitutionAddress.Text;
+                    RoleID = 4;
                 }
-                if (string.IsNullOrWhiteSpace(txtAgentLastName.Text))
+                else
                 {
-                    errorMessages.Add("Agent LastName is required");
+                    if (string.IsNullOrWhiteSpace(txtConsultancyName.Text))
+                    {
+                        errorMessages.Add("Consultancy Name is required");
+                    }
+                    if (string.IsNullOrWhiteSpace(txtConsultancyAdd.Text))
+                    {
+                        errorMessages.Add("Consultancy Address is required");
+                    }
+                    FirstName = txtConsultancyName.Text;
+                    LastName = string.Empty;
+                    Addresses = txtConsultancyAdd.Text;
+                    RoleID = 5;
                 }
+                
                 if (string.IsNullOrWhiteSpace(txtPhone.Text))
                 {
                     errorMessages.Add("Mobile No is required");
@@ -260,10 +289,7 @@ namespace MyAGC
                     lblLoginError.Text = string.Join("<br>", errorMessages);
                     return;
                 }
-                FirstName = txtAgentFirstName.Text;
-                LastName = txtAgentLastName.Text;
-                Addresses = txtInstitutionAddress.Text;
-                RoleID = 4;
+                
             }
 
             if (!CheckBox2.Checked)
@@ -343,6 +369,8 @@ namespace MyAGC
             txtLastName.Text=string.Empty;
             txtAgentLastName.Text = string.Empty;
             txtAgentFirstName.Text = string.Empty;
+            txtConsultancyName.Text = string.Empty;
+            txtConsultancyAdd.Text = string.Empty;
             txtPassword.Text=string.Empty;
             txtConfirmPassword.Text=string.Empty;
             txtEmail.Text=string.Empty;
@@ -357,6 +385,25 @@ namespace MyAGC
             lblLoginError.Text=string.Empty;
         }
 
-        
+        protected void rdConsultancy_CheckedChanged(object sender, EventArgs e)
+        {
+            ConsultancyAdd.Visible = true;
+            ConsultancyName.Visible = true;
+            AgentFirstName.Visible = false;
+            AgentLastName.Visible = false;
+            InstitutionAddress.Visible = false;
+            InstitutionName.Visible = false;
+            Password1.Visible = true;
+            Password2.Visible = true;
+            Emails.Visible = true;
+            FirstName.Visible = false;
+            LastName.Visible = false;
+            Phone.Visible = true;
+            Address.Visible = false;
+            Dob.Visible = false;
+            tr1.Visible = true;
+            tr4.Visible = true;
+            ClearLabels();
+        }
     }
 }

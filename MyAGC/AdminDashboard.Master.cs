@@ -34,6 +34,8 @@ namespace MyAGC
             DataSet TotalPayments = lp.getAllPayments();
             DataSet TotalWithdrawals = lp.getAllAgentPoints();
             DataSet getcollege = um.GetSystemUserByUserRole(2);
+            DataSet getagent = um.GetSystemUserByUserRole(4);
+            DataSet getconsultant = um.GetSystemUserByUserRole(5);
             DataSet getadmin = um.GetSystemUserByUserRole(1);
             DataSet TotalLetters = lp.getAllAcceptanceLetters();
             DataSet getstudent = um.GetSystemUserByUserRole(3);
@@ -43,6 +45,14 @@ namespace MyAGC
             if (TotalWithdrawals != null)
             {
                 lblAgentCommission.Text = TotalWithdrawals.Tables[0].Rows.Count.ToString();
+            }
+            if (getagent != null)
+            {
+                lblTotalAgents.Text = getagent.Tables[0].Rows.Count.ToString();
+            }
+            if (getconsultant != null)
+            {
+                lblConsultant.Text = getconsultant.Tables[0].Rows.Count.ToString();
             }
             if (TotalApplications != null)
             {
@@ -95,16 +105,6 @@ namespace MyAGC
             }
         }
       
-
-
-
-      
-
-        protected void lnkSupportQuery_Click(object sender, EventArgs e)
-        {
-            //Response.Redirect(string.Format("../student/rejected-applications"));
-        }
-
         protected void lnkTotalPayments_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../admin/all-payments"));
@@ -142,6 +142,16 @@ namespace MyAGC
         protected void lnkTotalApplications_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../admin/total-applications"));
+        }
+
+        protected void lnkTotalAgents_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../admin/view-agent"));
+        }
+
+        protected void lnkConsultant_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../admin/view-consultant"));
         }
     }
 }

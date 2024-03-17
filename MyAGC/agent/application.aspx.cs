@@ -395,8 +395,8 @@ namespace MyAGC.agent
             string EcryptedStudentID = HttpUtility.UrlEncode(qn.Encrypt(txtID.Value));
             // Response.Redirect(string.Format("../student/application?ID={0}", EcryptedProgramID), false);
             //Response.Redirect(string.Format("../student/application?CollegeID={0}&PeriodID={1}&ProgramID={2}", EcryptedCollegeID, EcryptedPeriodID, EcryptedProgramID), false);
-            paynow.ReturnUrl = $"https://localhost:44302/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}&StudentID={EcryptedStudentID}";
-            //paynow.ReturnUrl = $"http://mysystem.ddns.net/MyAGC/agent/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}&StudentID={EcryptedStudentID}";
+            //paynow.ReturnUrl = $"https://localhost:44302/student/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}&StudentID={EcryptedStudentID}";
+            paynow.ReturnUrl = $"https://mysystem.ddns.net/MyAGC/agent/application?CollegeID={EcryptedCollegeID}&PeriodID={EcryptedPeriodID}&ProgramID={EcryptedProgramID}&StudentID={EcryptedStudentID}";
 
             paynow.ResultUrl = "http://example.com/gateways/paynow/update";
 

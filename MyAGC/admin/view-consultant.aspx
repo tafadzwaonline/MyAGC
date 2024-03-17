@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="view-user.aspx.cs" Inherits="MyAGC.admin.view_user" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="view-consultant.aspx.cs" Inherits="MyAGC.admin.view_consultant" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>View Super Admins</h1>
+                            <h1>View Consultants Companies</h1>
                             <small></small>
 
                         </div>
@@ -26,18 +26,14 @@
                                              <asp:HiddenField ID="txtid" runat="server" />
                                             <div class="table-responsive">
                                                                                             <table class="table table-bordered table-hover"  style="width:100%" >
-                                                <tr>
-                                                     <td colspan="4">
-           <asp:Button ID="btnCreate" CssClass="btn btn-success" OnClick="btnCreate_Click"  runat="server" Text="Create New" />
-       </td>
-                                                </tr>
-                                               
+                                              
+                                              
            <tr>
        <td colspan="4">
             <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
                                                <asp:ListItem Value="1" Text="Search By" Selected="True"></asp:ListItem>
-                                               <asp:ListItem Value="2" Text="FirstName"></asp:ListItem>
-                                               <asp:ListItem Value="3" Text="LastName"></asp:ListItem>
+                                               <asp:ListItem Value="2" Text="Consultant Name"></asp:ListItem>
+                                               <%--<asp:ListItem Value="3" Text="LastName"></asp:ListItem>--%>
                                                
                                            </asp:DropDownList></td>
    
@@ -47,15 +43,16 @@
            <asp:Button ID="btnSearch" CssClass="btn btn-success" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
        </td>
    </tr>
+                                                                                                 <tr>
+    <td><code>On mobile,swipe right/left for more info </code></td>
+</tr>
         <tr>
             <td>
                 <br />
             </td>
         </tr>
                                          
- <tr>
-    <td><code>On mobile,swipe right/left for more info </code></td>
-</tr>
+
                                     <tr>
                                         <td colspan="12">
 
@@ -74,9 +71,9 @@
                             <asp:BoundField DataField="FirstName" HeaderText="FirstName">
                                
                            </asp:BoundField>
-                           <asp:BoundField DataField="LastName" HeaderText="FirstName">
+                         <%--  <asp:BoundField DataField="LastName" HeaderText="LastName">
                              
-                           </asp:BoundField>
+                           </asp:BoundField>--%>
                             <asp:BoundField DataField="Email" HeaderText="Email">
                               
                            </asp:BoundField>
@@ -102,7 +99,13 @@
                                </ItemTemplate>
                            </asp:TemplateField>
                            
-
+                                                                                  <asp:TemplateField HeaderText="Delete">
+    <ItemTemplate>
+        <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" CommandName="DeleteItem" OnClientClick="return confirm('Are you sure want you want to delete this Agent?');" CommandArgument='<%#Eval("UserID")%>'>
+                       Delete
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
                        </Columns>
                    </asp:GridView>
 
@@ -114,7 +117,7 @@
   
 </table>
 </div>
-                                                
+                                                 
                                          </form>
                                      </div>
                                  </div>
@@ -125,3 +128,4 @@
                  </div>
     <!-- /.content-wrapper -->
 </asp:Content>
+

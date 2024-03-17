@@ -468,10 +468,50 @@ namespace MyAGC.agent
                 return;
             }
 
-            UpdateDetails();
-            UploadFiles();
-            string EcryptedStudentID = HttpUtility.UrlEncode(qn.Encrypt(txtID.Value));
-            Response.Redirect(string.Format("../agent/application?CollegeID=" + txtCollegeID.Value + "&PeriodID=" + txtPeriodID.Value + "&ProgramID=" + txtProgramID.Value + "&StudentID=" + EcryptedStudentID + ""));
+            if (int.Parse(Session["roleid"].ToString()) == 5)
+            {
+                bool TaxClearance = false;
+                bool Registration =false;
+
+                DataSet docs = lp.getLegaDocumentFileUploads(int.Parse(Session["userid"].ToString()));
+                if (docs != null)
+                {
+                    foreach (DataRow dr in docs.Tables[0].Rows)
+                    {
+                        if (dr["DocTypeID"].ToString() == "1")
+                        {
+                            TaxClearance = true;
+                        }
+                        if (dr["DocTypeID"].ToString() == "4")
+                        {
+                            Registration = true;
+                        }
+                    }
+                }
+
+                if (TaxClearance && Registration)
+                {
+                    UpdateDetails();
+                    UploadFiles();
+                    string EcryptedStudentID = HttpUtility.UrlEncode(qn.Encrypt(txtID.Value));
+                    Response.Redirect(string.Format("../agent/application?CollegeID=" + txtCollegeID.Value + "&PeriodID=" + txtPeriodID.Value + "&ProgramID=" + txtProgramID.Value + "&StudentID=" + EcryptedStudentID + ""));
+                }
+                else
+                {
+                    WarningAlert("Please upload tax clearance and company registration certificates");
+                    return;
+                }
+
+            }
+            else
+            {
+                UpdateDetails();
+                UploadFiles();
+                string EcryptedStudentID = HttpUtility.UrlEncode(qn.Encrypt(txtID.Value));
+                Response.Redirect(string.Format("../agent/application?CollegeID=" + txtCollegeID.Value + "&PeriodID=" + txtPeriodID.Value + "&ProgramID=" + txtProgramID.Value + "&StudentID=" + EcryptedStudentID + ""));
+            }
+
+            
 
         }
         private void UploadFiles()
@@ -504,7 +544,7 @@ namespace MyAGC.agent
             catch (Exception)
             {
 
-                throw;
+                WarningAlert("An error occurred while saving data");
             }
 
         }

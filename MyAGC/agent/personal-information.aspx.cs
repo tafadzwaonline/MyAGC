@@ -17,12 +17,16 @@ namespace MyAGC.agent
         {
             if (!IsPostBack)
             {
-
+                if (int.Parse(Session["roleid"].ToString()) == 4)
+                {
+                    lblUsername.Text = "Agent Information";
+                }
+                else
+                {
+                    lblUsername.Text = "Consultant Company Information";
+                }
 
                 getCountry();
-
-                //getUniversityTypes();
-
                 getAgentDetails();
 
 

@@ -1,0 +1,273 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MyAGC.Classes;
+
+namespace MyAGC.agent
+{
+    public partial class manage_document : System.Web.UI.Page
+    {
+        //readonly UsersManagement um = new UsersManagement("con");
+        readonly LookUp lp = new LookUp("con");
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                getDocumentTypes();
+                getLegalDocumentsUploads();
+            }
+        }
+
+
+
+        protected void DangerAlert(string Err)
+        {
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>error('" + Err + "')</script>", false);
+        }
+        protected void SuccessAlert(string message)
+        {
+
+            string script = $"SuccessToastr('{message}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
+        }
+        protected void WarningAlert(string message)
+        {
+            string script = $"WarningToastr('{message}');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
+        }
+
+
+
+        protected void getDocumentTypes()
+        {
+            try
+            {
+
+                if (lp.getDocumentTypes() != null)
+                {
+                    ListItem li = new ListItem("Select a document type", "0");
+                    drpDocumentType.DataSource = lp.getDocumentTypes();
+                    drpDocumentType.DataValueField = "ID";
+                    drpDocumentType.DataTextField = "DocumentName";
+                    drpDocumentType.DataBind();
+                    drpDocumentType.Items.Insert(0, li);
+                }
+                else
+                {
+                    ListItem li = new ListItem("There are no document types", "0");
+                    drpDocumentType.DataSource = null;
+                    drpDocumentType.DataBind();
+                    drpDocumentType.Items.Insert(0, li);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //DangerAlert(ex.Message);
+            }
+        }
+
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!fileUpload.HasFile)
+            {
+                WarningAlert("Please select a certificate to upload");
+                return;
+            }
+
+            if (drpDocumentType.SelectedValue == "0")
+            {
+                WarningAlert("Please select a valid certificate");
+                return;
+            }
+
+
+            UploadDocument();
+        }
+
+
+        private void getLegalDocumentsUploads()
+        {
+            DataSet x = lp.getLegaDocumentFileUploads(int.Parse(Session["userid"].ToString()));
+            if (x != null)
+            {
+                grdDocument.DataSource = x;
+                grdDocument.DataBind();
+            }
+            else
+            {
+                grdDocument.DataSource = null;
+                grdDocument.DataBind();
+                //ltEmbed.Text = null;
+            }
+        }
+
+
+        private void Clear()
+        {
+            drpDocumentType.SelectedValue = "0";
+
+        }
+
+        private void UploadDocument()
+        {
+            try
+            {
+
+                string filename = Path.GetFileName(fileUpload.PostedFile.FileName);
+                string contentType = fileUpload.PostedFile.ContentType;
+                int DocTypeID = int.Parse(drpDocumentType.SelectedValue);
+                using (Stream fs = fileUpload.PostedFile.InputStream)
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                        string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                        lp.UploadLegalDocument(filename, contentType, bytes, DateTime.Today, int.Parse(Session["userid"].ToString()), DocTypeID);
+
+                    }
+                }
+                getLegalDocumentsUploads();
+                SuccessAlert("Document successfully uploaded");
+
+                Clear();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
+        protected void download(int AppID)
+        {
+
+            byte[] bytes = null;
+            string fileName = null;
+            string contentType = null;
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_GetLegalDocuments", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@AppID", AppID);
+
+                    con.Open();
+
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        sdr.Read();
+                        if (sdr.HasRows)
+                        {
+                            bytes = (byte[])sdr["Data"];
+                            contentType = sdr["ContentType"].ToString();
+                            fileName = sdr["Name"].ToString();
+                        }
+                        else
+                        {
+                            bytes = null;
+                            contentType = null;
+                            fileName = string.Empty;
+                        }
+                    }
+                }
+
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.ContentType = contentType;
+                Response.AddHeader("content-disposition", "attachment;filename=\"" + fileName + "");
+                Response.BinaryWrite(bytes);
+                Response.Flush();
+                Response.End();
+            }
+        }
+
+
+        protected void grdDocument_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+
+                int index;
+
+
+                if (e.CommandName == "DeleteItem")
+                {
+                    index = Convert.ToInt32(e.CommandArgument);
+
+                    lp.DeleteLegalDocument(index);
+                    getLegalDocumentsUploads();
+
+                    SuccessAlert("Record successfully removed");
+                }
+                if (e.CommandName == "selectrecord")
+                {
+                    index = Convert.ToInt32(e.CommandArgument);
+
+                    download(index);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                DangerAlert(ex.ToString());
+            }
+        }
+
+        protected void grdDocument_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdDocument.PageIndex = e.NewPageIndex;
+            this.BindGrid(e.NewPageIndex);
+        }
+        private void BindGrid(int page = 0)
+        {
+            try
+            {
+                DataSet program = lp.getCertificateFileUploads(int.Parse(Session["userid"].ToString()));
+                if (program != null)
+                {
+                    int maxPageIndex = grdDocument.PageCount - 1;
+                    if (page < 0 || page > maxPageIndex)
+                    {
+                        if (maxPageIndex >= 0)
+                        {
+                            // Navigate to the last available page
+                            page = maxPageIndex;
+                        }
+                        else
+                        {
+                            // No data available, reset to the first page
+                            page = 0;
+                        }
+                    }
+                    grdDocument.DataSource = program;
+                    grdDocument.PageIndex = page;
+                    grdDocument.DataBind();
+                }
+                else
+                {
+                    grdDocument.DataSource = null;
+                    grdDocument.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+    }
+}

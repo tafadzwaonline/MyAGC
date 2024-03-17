@@ -104,7 +104,7 @@ namespace MyAGC
                         {
                             Response.Redirect(string.Format("student/dashboard"));
                         }
-                        if (int.Parse(Session["roleid"].ToString()) == 4)
+                        if (int.Parse(Session["roleid"].ToString()) == 4 || int.Parse(Session["roleid"].ToString()) == 5)
                         {
                             Response.Redirect(string.Format("agent/dashboard"));
                         }

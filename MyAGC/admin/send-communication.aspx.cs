@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
 
 namespace MyAGC.admin
 {
@@ -92,12 +93,12 @@ namespace MyAGC.admin
                         lstUnassigned.Items.Clear();
                     }
                 }
-                else
+                if (TargetType == "3") //students
                 {
-                    //students
-                    if (b.getUnassignedSystemUsers(BroadcastList,3) != null)
+                   
+                    if (b.getUnassignedSystemUsers(BroadcastList, 3) != null)
                     {
-                        lstUnassigned.DataSource = b.getUnassignedSystemUsers(BroadcastList,3);
+                        lstUnassigned.DataSource = b.getUnassignedSystemUsers(BroadcastList, 3);
                         lstUnassigned.DataValueField = "ID";
                         lstUnassigned.DataTextField = "Name";
                         lstUnassigned.DataBind();
@@ -108,6 +109,37 @@ namespace MyAGC.admin
                         lstUnassigned.Items.Clear();
                     }
                 }
+                if (TargetType == "4")//system agents
+                {
+                    if (b.getUnassignedSystemUsers(BroadcastList, 4) != null)
+                    {
+                        lstUnassigned.DataSource = b.getUnassignedSystemUsers(BroadcastList, 4);
+                        lstUnassigned.DataValueField = "ID";
+                        lstUnassigned.DataTextField = "Name";
+                        lstUnassigned.DataBind();
+
+                    }
+                    else
+                    {
+                        lstUnassigned.Items.Clear();
+                    }
+                }
+                if (TargetType == "5")//system consultants
+                {
+                    if (b.getUnassignedSystemUsers(BroadcastList, 5) != null)
+                    {
+                        lstUnassigned.DataSource = b.getUnassignedSystemUsers(BroadcastList, 5);
+                        lstUnassigned.DataValueField = "ID";
+                        lstUnassigned.DataTextField = "Name";
+                        lstUnassigned.DataBind();
+
+                    }
+                    else
+                    {
+                        lstUnassigned.Items.Clear();
+                    }
+                }
+                
 
             }
             catch (Exception ex)
@@ -137,13 +169,47 @@ namespace MyAGC.admin
                         lstMailingList.Items.Clear();
                     }
                 }
-                else
+                if (TargetType == "3")//select students
                 {
 
-                    //select students
+                    
                     if (b.getassignedSystemUsers(BroadcastList,3) != null)
                     {
                         lstMailingList.DataSource = b.getassignedSystemUsers(BroadcastList,3);
+                        lstMailingList.DataValueField = "ID";
+                        lstMailingList.DataTextField = "Name";
+                        lstMailingList.DataBind();
+
+                    }
+                    else
+                    {
+                        lstMailingList.Items.Clear();
+                    }
+                }
+                if (TargetType == "4")//select agents
+                {
+
+                    
+                    if (b.getassignedSystemUsers(BroadcastList, 4) != null)
+                    {
+                        lstMailingList.DataSource = b.getassignedSystemUsers(BroadcastList, 4);
+                        lstMailingList.DataValueField = "ID";
+                        lstMailingList.DataTextField = "Name";
+                        lstMailingList.DataBind();
+
+                    }
+                    else
+                    {
+                        lstMailingList.Items.Clear();
+                    }
+                }
+                if (TargetType == "5")//select consultants
+                {
+
+                    
+                    if (b.getassignedSystemUsers(BroadcastList, 5) != null)
+                    {
+                        lstMailingList.DataSource = b.getassignedSystemUsers(BroadcastList, 5);
                         lstMailingList.DataValueField = "ID";
                         lstMailingList.DataTextField = "Name";
                         lstMailingList.DataBind();
@@ -378,22 +444,37 @@ namespace MyAGC.admin
         {
             try
             {
+
+                //check if email settings saved
+                LookUp look = new LookUp("con");
+                DataSet emails = look.getAllEmailSettings();
+               
+
                 if (drpMessageType.SelectedValue == "2")//email
                 {
-                    BroadcastContacts b = new BroadcastContacts("con");
-                    if (b.getBroadCastContactDetails(int.Parse(txtID.Value), int.Parse(drpTarget.SelectedValue)) != null)
+                    if (emails != null)
                     {
-                        foreach (DataRow rw in b.getBroadCastContactDetails(int.Parse(txtID.Value), int.Parse(drpTarget.SelectedValue)).Tables[0].Rows)
+                        BroadcastContacts b = new BroadcastContacts("con");
+                        if (b.getBroadCastContactDetails(int.Parse(txtID.Value), int.Parse(drpTarget.SelectedValue)) != null)
                         {
-                            
-                            string msgbdy = string.Empty;
-                            
-                            lp.SaveEmailList(Convert.ToDateTime(txtDate.Text), rw["Email"].ToString(), txtHeader.Text, drpTarget.SelectedItem.Text, 1, txtMsgBody.Text);
-                        }
-                        SuccessAlert("Message successfully sent");
-                        Clear();
+                            foreach (DataRow rw in b.getBroadCastContactDetails(int.Parse(txtID.Value), int.Parse(drpTarget.SelectedValue)).Tables[0].Rows)
+                            {
 
+                                string msgbdy = string.Empty;
+
+                                lp.SaveEmailList(Convert.ToDateTime(txtDate.Text), rw["Email"].ToString(), txtHeader.Text, drpTarget.SelectedItem.Text, 1, txtMsgBody.Text);
+                            }
+                            SuccessAlert("Message successfully sent");
+                            Clear();
+
+                        }
                     }
+                    else
+                    {
+                        WarningAlert("No email settings found");
+                        return;
+                    }
+                 
                 }
                 else if(drpMessageType.SelectedValue == "3") 
                 {
@@ -406,13 +487,10 @@ namespace MyAGC.admin
                     WarningAlert("Please fill in the details above to proceed");
                     return;
                 }
-
-
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                WarningAlert(ex.Message);
+                WarningAlert("An error occurred while saving data");
             }
         }
     }

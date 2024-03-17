@@ -225,16 +225,23 @@
                                 <li><a href="../admin/view-colleges">View Colleges</a></li>
                                 <li><a href="../admin/view-students">View Students</a></li>
                                  <li><a href="../admin/view-agent">View Agents</a></li>
+                                <li><a href="../admin/view-consultant">View Consultants</a></li>
                                      
                             </ul>
                         </li>
                          
                        <li>
                         <a href="../admin/all-payments">
-                         <i class="fa fa-dollar"></i><span>View Payments</span>
+                         <i class="fa fa-dollar"></i><span>PayNow Payments</span>
                            
                      </a>
                  </li>
+                                                      <li>
+       <a href="../admin/my-courier">
+        <i class="fa fa-car"></i><span>Courier Services</span>
+          
+    </a>
+</li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i> <span>Communication</span>
@@ -329,23 +336,42 @@
                             </div>
                                 </asp:LinkButton>
                         </div>
+
+                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+    <asp:LinkButton ID="lnkTotalAgents" OnClick="lnkTotalAgents_Click" runat="server">
+    <div class="panel panel-bd cardbox">
+        <div class="panel-body">
+            <div class="statistic-box">
+                <h2><span class="count-number"><asp:Label ID="lblTotalAgents" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                </h2>
+            </div>
+            <div class="items pull-left">
+                <i class="fa fa-users fa-2x"></i>
+                <h4>Total Agents</h4>
+            </div>
+        </div>
+    </div>
+        </asp:LinkButton>
+</div>
+
+                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+    <asp:LinkButton ID="lnkConsultant" OnClick="lnkConsultant_Click" runat="server">
+    <div class="panel panel-bd cardbox">
+        <div class="panel-body">
+            <div class="statistic-box">
+                <h2><span class="count-number"><asp:Label ID="lblConsultant" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                </h2>
+            </div>
+            <div class="items pull-left">
+                <i class="fa fa-users fa-2x"></i>
+                <h4>Total Consultants</h4>
+            </div>
+        </div>
+    </div>
+        </asp:LinkButton>
+</div>
                         
-                       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3" runat="server" visible="false">
-                            <asp:LinkButton ID="lnkSupportQuery" OnClick="lnkSupportQuery_Click" runat="server">
-                            <div class="panel panel-bd cardbox">
-                                <div class="panel-body">
-                                    <div class="statistic-box">
-                                        <h2><span class="count-number"><asp:Label ID="Label1" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
-                                        </h2>
-                                    </div>
-                                    <div class="items pull-left">
-                                        <i class="fa fa-users fa-2x"></i>
-                                        <h4>Support Queries</h4>
-                                    </div>
-                                </div>
-                            </div>
-                                </asp:LinkButton>
-                        </div>
+                     
                              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                             <asp:LinkButton ID="lnkTotalPayments" OnClick="lnkTotalPayments_Click" runat="server">
                             <div class="panel panel-bd cardbox">

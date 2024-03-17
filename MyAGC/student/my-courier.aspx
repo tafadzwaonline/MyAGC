@@ -1,0 +1,101 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="my-courier.aspx.cs" Inherits="MyAGC.student.my_courier" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="header-icon">
+                <i class="pe-7s-note2"></i>
+            </div>
+            <div class="header-title">
+
+                <h1>My Courier Services</h1>
+                <small></small>
+
+            </div>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- Form controls -->
+                <div class="col-sm-12">
+                    <div class="panel panel-bd lobidrag">
+
+                        <div class="panel-body">
+                            <form class="col-sm-12" runat="server">
+                                 <div class="col-sm-6 form-group">
+     <label>Name of Parcel</label>
+     <asp:TextBox ID="txtParcelName" runat="server" class="form-control"></asp:TextBox>
+ </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Parcel Origin</label>
+                                    <asp:DropDownList ID="drpOrigin" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Parcel  Destination</label>
+                                    <asp:DropDownList ID="drpDestination" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Sender FullName (<code>Surname Firstname</code>)</label>
+                                    <asp:TextBox ID="txtSenderFullName" runat="server" class="form-control"></asp:TextBox>
+                                </div>
+                                 <div class="col-sm-6 form-group">
+     <label>Sender Mobile</label>
+     <asp:TextBox ID="txtSenderMobile" runat="server" class="form-control"></asp:TextBox>
+ </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Receiver FullName (<code>Surname Firstname</code>)</label>
+                                    <asp:TextBox ID="txtReceiverFullName" runat="server" class="form-control"></asp:TextBox>
+                                </div>
+                                                                <div class="col-sm-6 form-group">
+    <label>Receiver Mobile</label>
+    <asp:TextBox ID="txtRecieverMobile" runat="server" class="form-control"></asp:TextBox>
+</div>
+                               
+
+                                <div class="col-sm-6 form-group">
+                                    <label>Receiver Residental Address</label>
+                                    <asp:TextBox ID="txtReceiverAddress" runat="server" TextMode="MultiLine" class="form-control"></asp:TextBox>
+                                </div>
+                                 <div class="col-sm-6 form-group">
+     <label>Receiver NationalID</label>
+     <asp:TextBox ID="txtReceiverIdentityNumber" runat="server" class="form-control"></asp:TextBox>
+ </div>
+                             
+                                <div class="col-sm-6 form-group">
+                                    <label>Amount</label>
+                                    <asp:TextBox ID="txtAmount" runat="server" class="form-control"></asp:TextBox>
+                                </div>
+                                  <div class="col-sm-6 form-group">
+      <label>MYAGC Sending Officer</label>
+      <asp:TextBox ID="txtSenderOfficer" runat="server" class="form-control"></asp:TextBox>
+  </div>
+                                  <div class="col-sm-6 form-group">
+      <label>MYAGC Receiving Officer</label>
+      <asp:TextBox ID="txtReceivingOfficer" runat="server" class="form-control"></asp:TextBox>
+  </div>
+                                                                <div class="col-sm-6 form-group">
+    <label>Sending Code Number</label>
+    <asp:TextBox ID="txtSendingCode" runat="server" class="form-control"></asp:TextBox>
+</div>
+                                                                <div class="col-sm-6 form-group">
+    <label>Receiving Code Number</label>
+    <asp:TextBox ID="txtReceivingCode" runat="server" class="form-control"></asp:TextBox>
+</div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Parcel Status</label>
+                                    <asp:DropDownList ID="drpStatus" CssClass="form-control dropdown" AutoPostBack="false" runat="server"></asp:DropDownList>
+                                </div>
+                                <div class="col-sm-12 reset-button">
+                                    <asp:Button ID="btnSave" runat="server" Text="Save Details" class="btn btn-success" />
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</asp:Content>
