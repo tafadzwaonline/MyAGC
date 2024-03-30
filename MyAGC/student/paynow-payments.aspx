@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="my-payments.aspx.cs" Inherits="MyAGC.student.my_payments" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="paynow-payments.aspx.cs" Inherits="MyAGC.student.paynow_payments" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>My Application Payments</h1>
+                            <h1>PayNow Online Payments</h1>
                             <small></small>
 
                         </div>
@@ -38,31 +38,36 @@
                    <asp:GridView ID="grdPayments" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPayments_RowCommand"
                        role="grid" aria-describedby="basicExample_info" 
                        OnPageIndexChanging="grdPayments_PageIndexChanging"
-                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                       AutoGenerateColumns="False" DataKeyNames="ReferenceNumber" Width="100%"
                        AllowPaging="True" AllowSorting="True">
                        <Columns>
 
-                         
-                            <asp:BoundField DataField="Amount" HeaderText="Fee">
+                         <asp:BoundField DataField="ReferenceNumber" HeaderText="ReferenceNumber">
+   <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
+</asp:BoundField>
+                            <asp:BoundField DataField="Amount" HeaderText="Amount">
                                <ItemStyle HorizontalAlign="Left" Width="60px" />
                            </asp:BoundField>
+                            <asp:BoundField DataField="Platform" HeaderText="Platform">
+    <ItemStyle HorizontalAlign="Left" Width="60px" />
+</asp:BoundField>
                             <asp:BoundField DataField="DateCreated" HeaderText="DatePaid">
                                <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
                            </asp:BoundField>
-                           <asp:BoundField DataField="ReferenceNumber" HeaderText="ReferenceNumber">
-                              <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
-                           </asp:BoundField>
-                            <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
-                           <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
+                           
+                            <asp:BoundField DataField="Status" HeaderText="Status"></asp:BoundField>
+                           <asp:BoundField DataField="PaymentOption" HeaderText="PaymentOption"></asp:BoundField>
                             
                           
                             <asp:TemplateField HeaderText="View">
                                <ItemTemplate>
-                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                  View Payment
+                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ReferenceNumber")%>'>
+                                                  View Receipt
                                    </asp:LinkButton>
                                </ItemTemplate>
                            </asp:TemplateField>
+
+                            
                            
 
                        </Columns>

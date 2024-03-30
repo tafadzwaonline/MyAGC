@@ -231,13 +231,19 @@
                         </li>
                          
                        <li>
-                        <a href="../admin/all-payments">
+                        <a href="../admin/paynow-payments">
                          <i class="fa fa-dollar"></i><span>PayNow Payments</span>
                            
                      </a>
                  </li>
+                              <li>
+       <a href="../admin/all-payments">
+        <i class="fa fa-dollar"></i><span>Application Payments</span>
+          
+    </a>
+</li>
                                                       <li>
-       <a href="../admin/my-courier">
+       <a href="../admin/view-parcels">
         <i class="fa fa-car"></i><span>Courier Services</span>
           
     </a>
@@ -382,7 +388,7 @@
                                     </div>
                                     <div class="items pull-left">
                                         <i class="fa fa-users fa-2x"></i>
-                                        <h4>Total Payments</h4>
+                                        <h4>Application Payments</h4>
                                     </div>
                                 </div>
                             </div>
@@ -450,8 +456,25 @@
               </div>
           </div>
       </div>
+                                     
           </asp:LinkButton>
   </div>
+                                                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+    <asp:LinkButton ID="lnkOnlinePayments" OnClick="lnkOnlinePayments_Click" runat="server">
+    <div class="panel panel-bd cardbox">
+        <div class="panel-body">
+            <div class="statistic-box">
+                <h2><span class="count-number"><asp:Label ID="lblOnlinePayments" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                </h2>
+            </div>
+            <div class="items pull-left">
+                <i class="fa fa-users fa-2x"></i>
+                <h4>PayNow Payments</h4>
+            </div>
+        </div>
+    </div>
+        </asp:LinkButton>
+</div>
                     </div>
                     </form>
                     

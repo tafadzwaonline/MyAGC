@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.institution
+namespace MyAGC.admin
 {
 
 
-    public partial class total_applications
+    public partial class paynow_payments
     {
 
         /// <summary>
@@ -51,12 +51,12 @@ namespace MyAGC.institution
         protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// grdApplications control.
+        /// grdPayments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdApplications;
+        protected global::System.Web.UI.WebControls.GridView grdPayments;
     }
 }

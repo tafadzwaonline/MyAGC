@@ -44,9 +44,71 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\AssetRegister\ICTRegister\bin\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.CommLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Prompting, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.Prompting.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\NovaFinance\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -65,6 +127,15 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="evohtmltopdf, Version=10.0.0.0, Culture=neutral, PublicKeyToken=e1fcbb86597de299, processorArchitecture=MSIL">
+      <HintPath>..\packages\EvoHtmlToPdf_x64.10.0.0\lib\net40\evohtmltopdf.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
@@ -181,8 +252,12 @@
     <Content Include="admin\manage-withdrawal.aspx" />
     <Content Include="admin\my-courier.aspx" />
     <Content Include="admin\my-profile.aspx" />
+    <Content Include="admin\parcel.aspx" />
+    <Content Include="admin\payment.aspx" />
+    <Content Include="admin\paynow-payments.aspx" />
     <Content Include="admin\personal-info.aspx" />
     <Content Include="admin\pop-uploads.aspx" />
+    <Content Include="admin\receipt.aspx" />
     <Content Include="admin\reporting.aspx" />
     <Content Include="admin\send-communication.aspx" />
     <Content Include="admin\sms-settings.aspx" />
@@ -193,6 +268,7 @@
     <Content Include="admin\view-application.aspx" />
     <Content Include="admin\view-colleges.aspx" />
     <Content Include="admin\view-consultant.aspx" />
+    <Content Include="admin\view-parcels.aspx" />
     <Content Include="admin\view-payment.aspx" />
     <Content Include="admin\view-students.aspx" />
     <Content Include="admin\view-user.aspx" />
@@ -482,17 +558,22 @@
     <Content Include="student\application.aspx" />
     <Content Include="student\apply-college.aspx" />
     <Content Include="student\dashboard.aspx" />
+    <Content Include="student\make-payment.aspx" />
     <Content Include="student\manage-document.aspx" />
     <Content Include="student\my-applications.aspx" />
     <Content Include="student\my-college.aspx" />
     <Content Include="student\my-courier.aspx" />
     <Content Include="student\my-payments.aspx" />
     <Content Include="student\my-profile.aspx" />
+    <Content Include="student\parcel.aspx" />
     <Content Include="student\pay-now.aspx" />
+    <Content Include="student\paynow-payments.aspx" />
     <Content Include="student\personal-information.aspx" />
     <Content Include="student\pop-uploads.aspx" />
     <Content Include="student\programs.aspx" />
+    <Content Include="student\receipt.aspx" />
     <Content Include="student\search-college.aspx" />
+    <Content Include="student\track-parcel.aspx" />
     <Content Include="student\view-application.aspx" />
     <Content Include="student\view-payment.aspx" />
     <Content Include="verify-email.aspx" />
@@ -538,6 +619,12 @@
     <Content Include="AdminMaster.Master" />
     <Content Include="AgentDashboard.Master" />
     <Content Include="AgentMaster.Master" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\rugube-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\rugube-001-site1 - FTP1.pubxml" />
+    <None Include="Properties\PublishProfiles\rugube-001-site1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\rugube-001-site1 - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -651,6 +738,27 @@
     <Compile Include="admin\my-profile.aspx.designer.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\parcel.aspx.cs">
+      <DependentUpon>parcel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\parcel.aspx.designer.cs">
+      <DependentUpon>parcel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\payment.aspx.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\payment.aspx.designer.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\paynow-payments.aspx.cs">
+      <DependentUpon>paynow-payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\paynow-payments.aspx.designer.cs">
+      <DependentUpon>paynow-payments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\personal-info.aspx.cs">
       <DependentUpon>personal-info.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -664,6 +772,13 @@
     </Compile>
     <Compile Include="admin\pop-uploads.aspx.designer.cs">
       <DependentUpon>pop-uploads.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\receipt.aspx.cs">
+      <DependentUpon>receipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\receipt.aspx.designer.cs">
+      <DependentUpon>receipt.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\reporting.aspx.cs">
       <DependentUpon>reporting.aspx</DependentUpon>
@@ -734,6 +849,13 @@
     </Compile>
     <Compile Include="admin\view-consultant.aspx.designer.cs">
       <DependentUpon>view-consultant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\view-parcels.aspx.cs">
+      <DependentUpon>view-parcels.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\view-parcels.aspx.designer.cs">
+      <DependentUpon>view-parcels.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\view-payment.aspx.cs">
       <DependentUpon>view-payment.aspx</DependentUpon>
@@ -1246,6 +1368,13 @@
     <Compile Include="student\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\make-payment.aspx.cs">
+      <DependentUpon>make-payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\make-payment.aspx.designer.cs">
+      <DependentUpon>make-payment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\manage-document.aspx.cs">
       <DependentUpon>manage-document.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1288,12 +1417,26 @@
     <Compile Include="student\my-profile.aspx.designer.cs">
       <DependentUpon>my-profile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\parcel.aspx.cs">
+      <DependentUpon>parcel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\parcel.aspx.designer.cs">
+      <DependentUpon>parcel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\pay-now.aspx.cs">
       <DependentUpon>pay-now.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="student\pay-now.aspx.designer.cs">
       <DependentUpon>pay-now.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\paynow-payments.aspx.cs">
+      <DependentUpon>paynow-payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\paynow-payments.aspx.designer.cs">
+      <DependentUpon>paynow-payments.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\personal-information.aspx.cs">
       <DependentUpon>personal-information.aspx</DependentUpon>
@@ -1316,6 +1459,13 @@
     <Compile Include="student\programs.aspx.designer.cs">
       <DependentUpon>programs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\receipt.aspx.cs">
+      <DependentUpon>receipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\receipt.aspx.designer.cs">
+      <DependentUpon>receipt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\search-college.aspx.cs">
       <DependentUpon>search-college.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1325,6 +1475,13 @@
     </Compile>
     <Compile Include="student\StudentImageHandler.ashx.cs">
       <DependentUpon>StudentImageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="student\track-parcel.aspx.cs">
+      <DependentUpon>track-parcel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\track-parcel.aspx.designer.cs">
+      <DependentUpon>track-parcel.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\view-application.aspx.cs">
       <DependentUpon>view-application.aspx</DependentUpon>

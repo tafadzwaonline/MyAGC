@@ -85,7 +85,32 @@ namespace MyAGC.institution
             grdApplications.PageIndex = e.NewPageIndex;
             this.BindGrid(e.NewPageIndex);
         }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
 
+            if (drpSearchBy.SelectedValue == "1")
+            {
+                WarningAlert("Please select a criteria to search");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtValue.Text))
+            {
+                WarningAlert("Please enter search value");
+                return;
+            }
+
+            DataSet getsearchdata = lp.SearchApplicationByStatus(int.Parse(drpSearchBy.SelectedValue), txtValue.Text, int.Parse(Session["userid"].ToString()),1);
+            if (getsearchdata != null)
+            {
+                grdApplications.DataSource = getsearchdata;
+                grdApplications.DataBind();
+            }
+            else
+            {
+                grdApplications.DataSource = null;
+                grdApplications.DataBind();
+            }
+        }
         private void BindGrid(int page = 0)
         {
             try

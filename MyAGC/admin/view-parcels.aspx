@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstistutionMaster.Master" AutoEventWireup="true" CodeBehind="total-applications.aspx.cs" Inherits="MyAGC.institution.total_applications" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="view-parcels.aspx.cs" Inherits="MyAGC.admin.view_parcels" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
@@ -8,9 +8,9 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>Total Applications</h1>
+                            <h1>View Parcels</h1>
                             <small></small>
-
+                           
                         </div>
                     </section>
                     <!-- Main content -->
@@ -21,20 +21,25 @@
                                 <div class="panel panel-bd lobidrag">
 
         
+                             
                                     <div class="panel-body">
                                         <form class="col-sm-12" runat="server">
-                                             <asp:HiddenField ID="txtid" runat="server" />
-             
                                             <div class="table-responsive">
-                                                                                          <table class="table table-bordered table-hover"  style="width:100%" >
-                                                                                           <tr>
+
+                                            
+ <table class="table table-bordered table-hover"  style="width:100%" >
+                                              <tr>
+                                              <td colspan="4">
+    <asp:Button ID="btnCreate" CssClass="btn btn-warning" OnClick="btnCreate_Click"  runat="server" Text="Create New" />
+</td>
+                                         </tr>
+                                                                                                              <tr>
     <td colspan="4">
          <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
                                             <asp:ListItem Value="1" Text="Search By" Selected="True"></asp:ListItem>
-                                            <asp:ListItem Value="2" Text="FullNames"></asp:ListItem>
-                                            <asp:ListItem Value="3" Text="ID Number"></asp:ListItem>
-                                            <asp:ListItem Value="4" Text="Program Name"></asp:ListItem>
-                                            <asp:ListItem Value="5" Text="applicant ID"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="Sender FullNames"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text="Receiver FullNames"></asp:ListItem>
+                                            <asp:ListItem Value="4" Text="TrackingID"></asp:ListItem>
                                         </asp:DropDownList></td>
 
     <td colspan="4"><asp:TextBox ID="txtValue" placeholder="Search Value" CssClass="form-control" runat="server"></asp:TextBox></td>
@@ -52,36 +57,41 @@
 
                                             <div class="row">
                <div class="col-sm-12">
-                   <asp:GridView ID="grdApplications" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdApplications_RowCommand"
+                   <asp:GridView ID="grdParcel" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdParcel_RowCommand"
                        role="grid" aria-describedby="basicExample_info" 
-                       OnPageIndexChanging="grdApplications_PageIndexChanging"
+                       OnPageIndexChanging="grdParcel_PageIndexChanging"
                        AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
                        AllowPaging="True" AllowSorting="True">
                        <Columns>
+                          <asp:BoundField DataField="TrackingID" HeaderText="TrackingID">
 
-                                                     <asp:BoundField DataField="ID" HeaderText="ApplicationID">
-                               <ItemStyle HorizontalAlign="Left" Width="60px" />
-                           </asp:BoundField>
-                            <asp:BoundField DataField="ApplicantName" HeaderText="ApplicantName">
-                               <ItemStyle HorizontalAlign="Left" Width="60px" />
-                           </asp:BoundField>
-                            <asp:BoundField DataField="Email" HeaderText="Email">
-                               <ItemStyle HorizontalAlign="Left" Width="60px" />
-                           </asp:BoundField>
-                           <asp:BoundField DataField="Status" HeaderText="Status">
-                               <ItemStyle HorizontalAlign="Left" Width="60px" />
-                           </asp:BoundField>
-                            <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
-                           <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
-                            <asp:TemplateField HeaderText="View">
-                               <ItemTemplate>
-                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                  View Application
-                                   </asp:LinkButton>
-                               </ItemTemplate>
-                           </asp:TemplateField>
-                           
+ </asp:BoundField>
+                                                    <asp:BoundField DataField="SenderFullNames" HeaderText="Sender">
 
+</asp:BoundField>
+                            <asp:BoundField DataField="PackageDetails" HeaderText="Parcel">
+                                
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ReceiverFullNames" HeaderText="Receiver">
+                               
+                           </asp:BoundField>
+                           <asp:BoundField DataField="OriginCountry" HeaderText="OriginCountry">
+                               
+                           </asp:BoundField>
+                            <asp:BoundField DataField="DestinationCountry" HeaderText="DestinationCountry">
+     
+ </asp:BoundField>
+                                                      <asp:BoundField DataField="Status" HeaderText="Status">
+    
+</asp:BoundField>
+                          
+                             <asp:TemplateField HeaderText="View">
+     <ItemTemplate>
+         <asp:LinkButton ID="btnView" runat="server" CssClass="btn btn-primary" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
+                        View Parcel
+         </asp:LinkButton>
+     </ItemTemplate>
+ </asp:TemplateField>
                        </Columns>
                    </asp:GridView>
 
@@ -93,8 +103,7 @@
   
 </table>
 </div>
-
-                                              
+                                               
                                          </form>
                                      </div>
                                  </div>
@@ -105,4 +114,3 @@
                  </div>
     <!-- /.content-wrapper -->
 </asp:Content>
-

@@ -27,6 +27,22 @@
              
                                             <div class="table-responsive">
                                                                                           <table class="table table-bordered table-hover"  style="width:100%" >
+                                                                                                                                                                                            <tr>
+    <td colspan="4">
+         <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
+                                            <asp:ListItem Value="1" Text="Search By" Selected="True"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="FullNames"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text="ID Number"></asp:ListItem>
+                                            <asp:ListItem Value="4" Text="Program Name"></asp:ListItem>
+                                            <asp:ListItem Value="5" Text="applicant ID"></asp:ListItem>
+                                        </asp:DropDownList></td>
+
+    <td colspan="4"><asp:TextBox ID="txtValue" placeholder="Search Value" CssClass="form-control" runat="server"></asp:TextBox></td>
+    
+    <td colspan="4">
+        <asp:Button ID="btnSearch" CssClass="btn btn-success" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
+    </td>
+</tr>
                                                                                                <tr>
     <td><code>On mobile,swipe right/left for more info </code></td>
 </tr>

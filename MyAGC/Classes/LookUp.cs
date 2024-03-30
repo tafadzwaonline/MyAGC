@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using MyAGC.Data;
 using MyAGC.student;
 using System;
 using System.Configuration;
@@ -114,9 +115,24 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public void UpdatePaymentStatus(int Reference,int StatusID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("Upd_PaymentStatus", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@Reference", SqlDbType.Int).Value = Reference;
+                sql_cmnd.Parameters.AddWithValue("@StatusID", SqlDbType.Int).Value = StatusID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
         //public DataSet getSearchColleges(int Criteria,string Value)
         //{
-             
+
         //    DataSet ds = null;
 
         //    string str = "sp_SearchCollege";
@@ -161,11 +177,113 @@ namespace MyAGC.Classes
 
 
         }
+        public DataSet getSearchParcel(int Criteria, string Value)
+        {
+            string str = "sp_SearchParcel";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            //db.AddInParameter(cmd, "@RoleID", DbType.Int32, RoleID);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
+        public DataSet getSearchApplication(int Criteria, string Value, int CollegeID)
+        {
+            string str = "sp_SearchApplication";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            db.AddInParameter(cmd, "@UserID", DbType.String, CollegeID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+        public DataSet getSearchOnlinePayment(int Criteria, string Value)
+        {
+            string str = "sp_SearchPayment";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+        public DataSet SearchApplicationByStatus(int Criteria, string Value, int CollegeID,int StatusID)
+        {
+            string str = "sp_SearchApplicationByStatus";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
+            db.AddInParameter(cmd, "@Value", DbType.String, Value);
+            db.AddInParameter(cmd, "@UserID", DbType.String, CollegeID);
+            db.AddInParameter(cmd, "@StatusID", DbType.String, StatusID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
         public string getFees(double Amount)
         {
             try
             {
                 string str = "DECLARE @Number INT = " + Amount + "; SELECT TOP 1 Amount FROM FeesType WHERE @Number >= [From] AND @Number <= [To]ORDER BY[From] ASC";
+                DataSet ds = db.ExecuteDataSet(CommandType.Text, str);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    return ds.Tables[0].Rows[0][0].ToString();
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                mMsgFlg = ex.Message;
+                return "0";
+            }
+        }
+        public string getDetails(int Reference)
+        {
+            try
+            {
+                string str = "Select top 1 UserEmail from OnlinePayments where ReferenceNumber=" + Reference + "";
                 DataSet ds = db.ExecuteDataSet(CommandType.Text, str);
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -201,9 +319,9 @@ namespace MyAGC.Classes
 
 
         }
-        public DataSet SearchApplication(int Criteria, string Value)
+        public DataSet SearchAllApplications(int Criteria, string Value)
         {
-            string str = "sp_SearchApplication";
+            string str = "sp_SearchAllApplication";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             db.AddInParameter(cmd, "@Criteria", DbType.Int32, Criteria);
             db.AddInParameter(cmd, "@Value", DbType.String, Value);
@@ -451,6 +569,55 @@ namespace MyAGC.Classes
                 sqlCon.Close();
             }
         }
+        public void SaveParcelDetails(int OriginID,int DestinationID,int ParcelStatusID,double Weight,double Amount,string PackageDetails
+            ,string SenderFullNames, string SenderMobile,string ReceiverFullNames,string ReceiverMobile,string ReceiverAddress
+            ,string ReceiverNationalID,string SendingOfficer,string ReceivingOfficer,string SendingCodeNumber, string ReceivingCodeNumber,
+            string TrackingID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("ParcelTransportation_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@OriginID", SqlDbType.Int).Value = OriginID;
+                sql_cmnd.Parameters.AddWithValue("@DestinationID", SqlDbType.Int).Value = DestinationID;
+                sql_cmnd.Parameters.AddWithValue("@ParcelStatusID", SqlDbType.NVarChar).Value = ParcelStatusID;
+                sql_cmnd.Parameters.AddWithValue("@Weight", SqlDbType.Float).Value = Weight;
+                sql_cmnd.Parameters.AddWithValue("@Amount", SqlDbType.Float).Value = Amount;
+                sql_cmnd.Parameters.AddWithValue("@PackageDetails", SqlDbType.NVarChar).Value = PackageDetails;
+                sql_cmnd.Parameters.AddWithValue("@SenderFullNames", SqlDbType.NVarChar).Value = SenderFullNames;
+                sql_cmnd.Parameters.AddWithValue("@SenderMobile", SqlDbType.NVarChar).Value = SenderMobile;
+                sql_cmnd.Parameters.AddWithValue("@ReceiverFullNames", SqlDbType.NVarChar).Value = ReceiverFullNames;
+                sql_cmnd.Parameters.AddWithValue("@ReceiverMobile", SqlDbType.NVarChar).Value = ReceiverMobile;
+                sql_cmnd.Parameters.AddWithValue("@ReceiverAddress", SqlDbType.NVarChar).Value = ReceiverAddress;
+                sql_cmnd.Parameters.AddWithValue("@ReceiverNationalID", SqlDbType.NVarChar).Value = ReceiverNationalID;
+                sql_cmnd.Parameters.AddWithValue("@SendingOfficer", SqlDbType.NVarChar).Value = SendingOfficer;
+                sql_cmnd.Parameters.AddWithValue("@ReceivingOfficer", SqlDbType.NVarChar).Value = ReceivingOfficer;
+                sql_cmnd.Parameters.AddWithValue("@SendingCodeNumber", SqlDbType.NVarChar).Value = SendingCodeNumber;
+                sql_cmnd.Parameters.AddWithValue("@ReceivingCodeNumber", SqlDbType.NVarChar).Value = ReceivingCodeNumber;
+                sql_cmnd.Parameters.AddWithValue("@TrackingID", SqlDbType.NVarChar).Value = TrackingID;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+        public void UpdateParcelStatus(int ID,int ParcelStatusID,int Criteria)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("ParcelStatus_Upd", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@ID", SqlDbType.Int).Value = ID;
+                sql_cmnd.Parameters.AddWithValue("@ParcelStatusID", SqlDbType.Int).Value = ParcelStatusID;
+                sql_cmnd.Parameters.AddWithValue("@Criteria", SqlDbType.NVarChar).Value = Criteria;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
         public void SaveEmailList(DateTime DateSent, string EmailAddress, string Subject, string Target, int StatusID, string Message)
         {
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -600,6 +767,31 @@ namespace MyAGC.Classes
                 sql_cmnd.Parameters.AddWithValue("@Currency", SqlDbType.NVarChar).Value = "USD";
                 sql_cmnd.Parameters.AddWithValue("@PollUrl", SqlDbType.NVarChar).Value = PollUrl;
                 sql_cmnd.Parameters.AddWithValue("@PayNowReference", SqlDbType.Int).Value = Paynowrefence;
+                sql_cmnd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        }
+
+        public void SaveOnlinePayment(int UserID, string FirstName, string LastName, string UserEmail, decimal Amount, string PollUrl, int Paynowrefence,int PaymentOptionID, int PaymentStatusID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            SqlConnection sqlCon = null;
+            using (sqlCon = new SqlConnection(constr))
+            {
+                sqlCon.Open();
+                SqlCommand sql_cmnd = new SqlCommand("OnlinePayment_Ins", sqlCon);
+                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                sql_cmnd.Parameters.AddWithValue("@UserID", SqlDbType.Int).Value = UserID;
+                sql_cmnd.Parameters.AddWithValue("@UserEmail", SqlDbType.NVarChar).Value = UserEmail;
+                sql_cmnd.Parameters.AddWithValue("@FirstName", SqlDbType.NVarChar).Value = FirstName;
+                sql_cmnd.Parameters.AddWithValue("@LastName", SqlDbType.NVarChar).Value = LastName;
+                sql_cmnd.Parameters.AddWithValue("@Amount", SqlDbType.Float).Value = Amount;
+                sql_cmnd.Parameters.AddWithValue("@Platform", SqlDbType.NVarChar).Value = "Pay Now";
+                sql_cmnd.Parameters.AddWithValue("@Currency", SqlDbType.NVarChar).Value = "USD";
+                sql_cmnd.Parameters.AddWithValue("@PollUrl", SqlDbType.NVarChar).Value = PollUrl;
+                sql_cmnd.Parameters.AddWithValue("@PayNowReference", SqlDbType.Int).Value = Paynowrefence;
+                sql_cmnd.Parameters.AddWithValue("@PaymentOptionID", SqlDbType.Int).Value = PaymentOptionID;
+                sql_cmnd.Parameters.AddWithValue("@PaymentStatusID", SqlDbType.Int).Value = PaymentStatusID;
                 sql_cmnd.ExecuteNonQuery();
                 sqlCon.Close();
             }
@@ -1142,6 +1334,42 @@ namespace MyAGC.Classes
             string str = "sp_getAllEmailSettings";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
             //db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getParcels()
+        {
+
+            string str = "sp_getAllParcels";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public DataSet getParcelByID(int ID)
+        {
+
+            string str = "sp_getParcelByID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@ID", DbType.Int32, ID);
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -1855,6 +2083,92 @@ namespace MyAGC.Classes
 
             string str = "sp_getCitizens";
             System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getPaymentOptions()
+        {
+
+            string str = "sp_getPaymentOptions";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getPaymentStatus()
+        {
+
+            string str = "sp_getPaymentStatus";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getOnlinePayNowPaymentsByRef(int Reference)
+        {
+
+            string str = "sp_getOnlinePaymentByReference";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@Reference", DbType.Int32, Reference);
+          ;
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getOnlinePayNowPaymentsByUserID(int UserID)
+        {
+
+            string str = "sp_getOnlinePaymentByUserID";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            db.AddInParameter(cmd, "@UserID", DbType.Int32, UserID);
+            ;
+            DataSet ds = db.ExecuteDataSet(cmd);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return ds;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public DataSet getOnlinePayNowPayments()
+        {
+
+            string str = "sp_getOnlinePayNowPayments";
+            System.Data.Common.DbCommand cmd = db.GetStoredProcCommand(str);
+            //db.AddInParameter(cmd, "@Reference", DbType.Int32, Reference);
+            //;
             DataSet ds = db.ExecuteDataSet(cmd);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {

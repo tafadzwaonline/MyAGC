@@ -246,7 +246,18 @@
                            
                      </a>
                  </li>--%>
-                       
+                                                                             <li>
+       <a href="../student/track-parcel">
+        <i class="fa fa-car"></i><span>Courier Services</span>
+          
+    </a>
+</li>
+                                                                                                     <li>
+       <a href="../student/make-payment">
+        <i class="fa fa-money"></i><span>Pay Using Paynow</span>
+          
+    </a>
+</li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i> <span>Decision Management</span>
@@ -352,7 +363,7 @@
                                     </div>
                                     <div class="items pull-left">
                                         <i class="fa fa-users fa-2x"></i>
-                                        <h4>Total Payments</h4>
+                                        <h4>Application Payments</h4>
                                     </div>
                                 </div>
                             </div>
@@ -374,7 +385,22 @@
                             </div>
                                 </asp:LinkButton>
                         </div>
-                      
+                           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+    <asp:LinkButton ID="lnkOnlinePayments" OnClick="lnkOnlinePayments_Click" runat="server">
+    <div class="panel panel-bd cardbox">
+        <div class="panel-body">
+            <div class="statistic-box">
+                <h2><span class="count-number"><asp:Label ID="lblOnlinePayments" class="m-b-0 f-w-700 text-white" runat="server" Text="0"></asp:Label></span>
+                </h2>
+            </div>
+            <div class="items pull-left">
+                <i class="fa fa-users fa-2x"></i>
+                <h4>PayNow Payments</h4>
+            </div>
+        </div>
+    </div>
+        </asp:LinkButton>
+</div>
                     </div>
                     </form>
                     

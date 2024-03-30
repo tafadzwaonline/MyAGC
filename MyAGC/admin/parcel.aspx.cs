@@ -9,34 +9,56 @@ using System.Web.UI.WebControls;
 
 namespace MyAGC.admin
 {
-    public partial class my_courier : System.Web.UI.Page
+    public partial class parcel : System.Web.UI.Page
     {
         readonly LookUp lp = new LookUp("con");
+        QueryStringModule qn = new QueryStringModule();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                DataRow rw = lp.getSystemUserById(int.Parse(Session["userid"].ToString())).Tables[0].Rows[0];
-                txtSenderOfficer.Text = $"{rw["LastName"]} {rw["FirstName"]}";
+                if (Request.QueryString["ID"].ToString() != null)
+                {
+                    txtid.Value = qn.Decrypt(HttpUtility.UrlDecode(Request.QueryString["ID"]));
+                }
+
                 getSettings();
-                GenerateUniqueCode();
+                getParcels();
             }
         }
-
-        private void GenerateUniqueCode()
+        private void getParcels()
         {
-            int Year = DateTime.Now.Year;
-            int Month = DateTime.Now.Month;
-            int Day = DateTime.Now.Day;
-            int hour = DateTime.Now.Hour;
-            int sec = DateTime.Now.Second;
-            int min = DateTime.Now.Minute;
-            int UserID = int.Parse(Session["userid"].ToString());
+            DataSet dataSet = lp.getParcelByID(int.Parse(txtid.Value));
 
-            txtid.Value = $"{Month}{min}{Year}{sec}{Day}{hour}{UserID}";
+            if (dataSet != null)
+            {
+                DataRow dt = dataSet.Tables[0].Rows[0];
+                txtParcelDetails.Text = dt["PackageDetails"].ToString();
+                drpOrigin.SelectedValue = dt["OriginID"].ToString();
+                drpDestination.SelectedValue = dt["DestinationID"].ToString();
+                txtweight.Text = dt["Weight"].ToString();
+                txtAmount.Text = dt["Amount"].ToString();
+                txtSenderFullName.Text = dt["SenderFullNames"].ToString();
+                txtSenderMobile.Text = dt["SenderMobile"].ToString();
+                txtReceiverFullName.Text = dt["ReceiverFullNames"].ToString();
+                txtReceiverAddress.Text = dt["ReceiverAddress"].ToString();
+                txtRecieverMobile.Text = dt["ReceiverMobile"].ToString();
+                txtReceiverIdentityNumber.Text = dt["ReceiverNationalID"].ToString();
+                txtSenderOfficer.Text = dt["SendingOfficer"].ToString();
+                txtReceivingOfficer.Text = dt["ReceivingOfficer"].ToString();
+                txtSendingCode.Text = dt["SendingCodeNumber"].ToString();
+                txtReceivingCode.Text = dt["ReceivingCodeNumber"].ToString();
+                txtTrackingID.Text = dt["TrackingID"].ToString();
+                drpStatus.SelectedValue = dt["ParcelStatusID"].ToString();
+
+
+                if (drpStatus.SelectedValue == "3")
+                {
+                    btnSave.Enabled=false;
+                }
+            }
+           
         }
-
-
         protected void getSettings()
         {
             try
@@ -95,7 +117,7 @@ namespace MyAGC.admin
                 }
 
             }
-            catch (Exception )
+            catch (Exception)
             {
                 WarningAlert("An error occuurred");
             }
@@ -120,81 +142,40 @@ namespace MyAGC.admin
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtParcelDetails.Text))
+            int criteria=0;
+
+            if (drpStatus.SelectedValue == "1")
             {
-                WarningAlert("Please enter parcel details");
-                return;
+                criteria = 1;
             }
-            if (drpOrigin.SelectedValue == "0")
+            if (drpStatus.SelectedValue == "2")
             {
-                WarningAlert("Please select parcel origin");
-                return;
+                criteria = 2;
             }
-            if (drpDestination.SelectedValue == "0")
+            if (drpStatus.SelectedValue == "3")
             {
-                WarningAlert("Please select parcel destination");
-                return;
+                criteria = 3;
             }
-            if (string.IsNullOrEmpty(txtweight.Text))
+            if (drpStatus.SelectedValue == "4")
             {
-                WarningAlert("Please enter weight");
-                return;
+                criteria = 4;
             }
-            if (string.IsNullOrEmpty(txtAmount.Text))
+            if (drpStatus.SelectedValue == "5")
             {
-                WarningAlert("Amount field is required");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtSenderFullName.Text))
-            {
-                WarningAlert("Please enter sender fullnames");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtReceiverFullName.Text))
-            {
-                WarningAlert("Please enter receiver fullnames");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtReceiverAddress.Text))
-            {
-                WarningAlert("Please enter receiver address");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtReceiverIdentityNumber.Text))
-            {
-                WarningAlert("Please enter receiver ID Number");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtSendingCode.Text))
-            {
-                WarningAlert("Please enter sending code number");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtReceivingCode.Text))
-            {
-                WarningAlert("Please enter receiving code number");
-                return;
-            }
-            if (drpStatus.SelectedValue == "0")
-            {
-                WarningAlert("Please select parcel  status");
-                return;
+                criteria = 5;
             }
 
-            SaveDetails();
+            SaveDetails(criteria);
 
         }
 
-        private void SaveDetails()
+        private void SaveDetails(int Criteria)
         {
             try
             {
-                lp.SaveParcelDetails(int.Parse(drpOrigin.SelectedValue), int.Parse(drpDestination.SelectedValue), int.Parse(drpStatus.SelectedValue)
-                    ,double.Parse(txtweight.Text), double.Parse(txtAmount.Text),txtParcelDetails.Text,txtSenderFullName.Text,txtSenderMobile.Text,
-                    txtReceiverFullName.Text,txtRecieverMobile.Text,txtReceiverAddress.Text,txtReceiverIdentityNumber.Text,txtSenderOfficer.Text,txtReceivingOfficer.Text,txtSendingCode.Text,txtReceivingCode.Text,txtid.Value);
+                lp.UpdateParcelStatus(int.Parse(txtid.Value),int.Parse(drpStatus.SelectedValue),Criteria);
 
-                
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Parcel successfully captured');window.location ='../admin/view-parcels';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Parcel status successfully actioned');window.location ='../admin/view-parcels';", true);
             }
             catch (Exception)
             {

@@ -32,6 +32,7 @@ namespace MyAGC
         {
             double POP = 0;
             DataSet TotalPayments = lp.getAllPayments();
+            DataSet TotalPayNowPayments = lp.getOnlinePayNowPayments();
             DataSet TotalWithdrawals = lp.getAllAgentPoints();
             DataSet getcollege = um.GetSystemUserByUserRole(2);
             DataSet getagent = um.GetSystemUserByUserRole(4);
@@ -65,6 +66,16 @@ namespace MyAGC
             if (getcollege != null)
             {
                 lblTotalColleges.Text = getcollege.Tables[0].Rows.Count.ToString();
+            }
+            if (TotalPayNowPayments != null)
+            {
+                double total = 0;
+                foreach (DataRow dt in TotalPayNowPayments.Tables[0].Rows)
+                {
+                    total += double.Parse(dt["Amount"].ToString());
+                }
+
+                lblOnlinePayments.Text = $"${total}";
             }
             if (TotalPop != null)
             {
@@ -152,6 +163,11 @@ namespace MyAGC
         protected void lnkConsultant_Click(object sender, EventArgs e)
         {
             Response.Redirect(string.Format("../admin/view-consultant"));
+        }
+
+        protected void lnkOnlinePayments_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("../admin/paynow-payments"));
         }
     }
 }

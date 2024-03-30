@@ -50,7 +50,7 @@ namespace MyAGC.admin
                 return;
             }
 
-            DataSet getsearchdata = lp.SearchApplication(int.Parse(drpSearchBy.SelectedValue), txtValue.Text);
+            DataSet getsearchdata = lp.SearchAllApplications(int.Parse(drpSearchBy.SelectedValue), txtValue.Text);
             if (getsearchdata != null)
             {
                 grdApplications.DataSource = getsearchdata;

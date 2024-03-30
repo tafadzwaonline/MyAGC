@@ -258,13 +258,19 @@
                         </li>
                          
                        <li>
-                         <a href="../admin/all-payments">
+                         <a href="../admin/paynow-payments">
                          <i class="fa fa-dollar"></i><span>PayNow Payments</span>
                            
                      </a>
                  </li>
+                                                      <li>
+       <a href="../admin/all-payments">
+        <i class="fa fa-dollar"></i><span>Application Payments</span>
+          
+    </a>
+</li>
                               <li>
-       <a href="../admin/my-courier">
+       <a href="../admin/view-parcels">
         <i class="fa fa-car"></i><span>Courier Services</span>
           
     </a>

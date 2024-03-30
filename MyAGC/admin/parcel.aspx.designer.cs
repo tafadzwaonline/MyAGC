@@ -7,236 +7,182 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC
+namespace MyAGC.admin
 {
 
 
-    public partial class AdminDashboard
+    public partial class parcel
     {
 
         /// <summary>
-        /// ClientPic control.
+        /// txtid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ClientPic;
+        protected global::System.Web.UI.WebControls.HiddenField txtid;
 
         /// <summary>
-        /// lblUsername control.
+        /// txtParcelDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsername;
+        protected global::System.Web.UI.WebControls.TextBox txtParcelDetails;
 
         /// <summary>
-        /// lnkTotalAdmin control.
+        /// drpOrigin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalAdmin;
+        protected global::System.Web.UI.WebControls.DropDownList drpOrigin;
 
         /// <summary>
-        /// lblTotalAdmin control.
+        /// drpDestination control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalAdmin;
+        protected global::System.Web.UI.WebControls.DropDownList drpDestination;
 
         /// <summary>
-        /// lnkTotalColleges control.
+        /// txtweight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalColleges;
+        protected global::System.Web.UI.WebControls.TextBox txtweight;
 
         /// <summary>
-        /// lblTotalColleges control.
+        /// txtAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalColleges;
+        protected global::System.Web.UI.WebControls.TextBox txtAmount;
 
         /// <summary>
-        /// lnkTotalStudents control.
+        /// txtSenderFullName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalStudents;
+        protected global::System.Web.UI.WebControls.TextBox txtSenderFullName;
 
         /// <summary>
-        /// lblTotalStudents control.
+        /// txtSenderMobile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalStudents;
+        protected global::System.Web.UI.WebControls.TextBox txtSenderMobile;
 
         /// <summary>
-        /// lnkTotalAgents control.
+        /// txtReceiverFullName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalAgents;
+        protected global::System.Web.UI.WebControls.TextBox txtReceiverFullName;
 
         /// <summary>
-        /// lblTotalAgents control.
+        /// txtRecieverMobile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalAgents;
+        protected global::System.Web.UI.WebControls.TextBox txtRecieverMobile;
 
         /// <summary>
-        /// lnkConsultant control.
+        /// txtReceiverAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkConsultant;
+        protected global::System.Web.UI.WebControls.TextBox txtReceiverAddress;
 
         /// <summary>
-        /// lblConsultant control.
+        /// txtReceiverIdentityNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblConsultant;
+        protected global::System.Web.UI.WebControls.TextBox txtReceiverIdentityNumber;
 
         /// <summary>
-        /// lnkTotalPayments control.
+        /// txtSenderOfficer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalPayments;
+        protected global::System.Web.UI.WebControls.TextBox txtSenderOfficer;
 
         /// <summary>
-        /// lblTotalPayments control.
+        /// txtReceivingOfficer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalPayments;
+        protected global::System.Web.UI.WebControls.TextBox txtReceivingOfficer;
 
         /// <summary>
-        /// lnkPop control.
+        /// txtSendingCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkPop;
+        protected global::System.Web.UI.WebControls.TextBox txtSendingCode;
 
         /// <summary>
-        /// lblPop control.
+        /// txtReceivingCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPop;
+        protected global::System.Web.UI.WebControls.TextBox txtReceivingCode;
 
         /// <summary>
-        /// lnkAgentCommission control.
+        /// drpStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkAgentCommission;
+        protected global::System.Web.UI.WebControls.DropDownList drpStatus;
 
         /// <summary>
-        /// lblAgentCommission control.
+        /// txtTrackingID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAgentCommission;
+        protected global::System.Web.UI.WebControls.TextBox txtTrackingID;
 
         /// <summary>
-        /// lnkAcceptanceLetter control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkAcceptanceLetter;
-
-        /// <summary>
-        /// lblAcceptanceLetter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAcceptanceLetter;
-
-        /// <summary>
-        /// lnkTotalApplications control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTotalApplications;
-
-        /// <summary>
-        /// lblTotalApplications control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalApplications;
-
-        /// <summary>
-        /// lnkOnlinePayments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkOnlinePayments;
-
-        /// <summary>
-        /// lblOnlinePayments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOnlinePayments;
-
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

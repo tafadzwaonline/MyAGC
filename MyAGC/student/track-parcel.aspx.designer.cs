@@ -7,21 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyAGC.institution
+namespace MyAGC.student
 {
 
 
-    public partial class total_applications
+    public partial class track_parcel
     {
-
-        /// <summary>
-        /// txtid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField txtid;
 
         /// <summary>
         /// drpSearchBy control.
@@ -51,12 +42,12 @@ namespace MyAGC.institution
         protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// grdApplications control.
+        /// grdParcel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdApplications;
+        protected global::System.Web.UI.WebControls.GridView grdParcel;
     }
 }

@@ -7,9 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MyAGC.institution
+namespace MyAGC.admin
 {
-    public partial class approve_applications : System.Web.UI.Page
+    public partial class paynow_payments : System.Web.UI.Page
     {
         readonly UsersManagement um = new UsersManagement("con");
         readonly LookUp lp = new LookUp("con");
@@ -17,10 +17,14 @@ namespace MyAGC.institution
         {
             if (!IsPostBack)
             {
-                getApplications();
+
+                getPayments();
 
             }
         }
+
+
+
         protected void DangerAlert(string Err)
         {
             ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>error('" + Err + "')</script>", false);
@@ -37,25 +41,6 @@ namespace MyAGC.institution
             ScriptManager.RegisterStartupScript(this, GetType(), "ToastScript", script, true);
         }
 
-
-
-        private void getApplications()
-        {
-            DataSet dataSet = lp.getApplicationsAwaitingApproval(int.Parse(Session["userid"].ToString()));
-
-            if (dataSet != null)
-            {
-                grdApplication.DataSource = dataSet;
-                grdApplication.DataBind();
-            }
-            else
-            {
-                grdApplication.DataSource = null;
-                grdApplication.DataBind();
-            }
-        }
-
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
 
@@ -70,19 +55,38 @@ namespace MyAGC.institution
                 return;
             }
 
-            DataSet getsearchdata = lp.SearchApplicationByStatus(int.Parse(drpSearchBy.SelectedValue), txtValue.Text, int.Parse(Session["userid"].ToString()), 4);
+            DataSet getsearchdata = lp.getSearchOnlinePayment(int.Parse(drpSearchBy.SelectedValue), txtValue.Text);
             if (getsearchdata != null)
             {
-                grdApplication.DataSource = getsearchdata;
-                grdApplication.DataBind();
+                grdPayments.DataSource = getsearchdata;
+                grdPayments.DataBind();
             }
             else
             {
-                grdApplication.DataSource = null;
-                grdApplication.DataBind();
+                grdPayments.DataSource = null;
+                grdPayments.DataBind();
             }
         }
-        protected void grdApplication_RowCommand(object sender, GridViewCommandEventArgs e)
+
+        private void getPayments()
+        {
+            DataSet dataSet = lp.getOnlinePayNowPayments();
+
+            if (dataSet != null)
+            {
+                grdPayments.DataSource = dataSet;
+                grdPayments.DataBind();
+            }
+            else
+            {
+                grdPayments.DataSource = null;
+                grdPayments.DataBind();
+            }
+        }
+
+
+
+        protected void grdPayments_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
@@ -91,9 +95,21 @@ namespace MyAGC.institution
 
                 if (e.CommandName == "SelectItem")
                 {
+
                     index = Convert.ToInt32(e.CommandArgument);
-                    string EcryptedPeriodID = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
-                    Response.Redirect(string.Format("../institution/view-application?ApplicationID={0}", EcryptedPeriodID), false);
+                    string EcryptedReference = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
+                    string EcryptedEmail = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
+
+
+                    Response.Redirect(string.Format("../admin/receipt?Reference={0}", EcryptedReference), false);
+                }
+                if (e.CommandName == "ViewItem")
+                {
+                    index = Convert.ToInt32(e.CommandArgument);
+                    string EcryptedReference = HttpUtility.UrlEncode(qn.Encrypt(index.ToString()));
+
+
+                    Response.Redirect(string.Format("../admin/payment?Reference={0}", EcryptedReference), false);
                 }
 
             }
@@ -104,9 +120,9 @@ namespace MyAGC.institution
             }
         }
 
-        protected void grdApplication_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void grdPayments_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            grdApplication.PageIndex = e.NewPageIndex;
+            grdPayments.PageIndex = e.NewPageIndex;
             this.BindGrid(e.NewPageIndex);
         }
 
@@ -115,10 +131,10 @@ namespace MyAGC.institution
             try
             {
 
-                DataSet user = lp.getApplicationsAwaitingApproval(int.Parse(Session["userid"].ToString()));
+                DataSet user = lp.getOnlinePayNowPayments();
                 if (user != null)
                 {
-                    int maxPageIndex = grdApplication.PageCount - 1;
+                    int maxPageIndex = grdPayments.PageCount - 1;
                     if (page < 0 || page > maxPageIndex)
                     {
                         if (maxPageIndex >= 0)
@@ -132,14 +148,14 @@ namespace MyAGC.institution
                             page = 0;
                         }
                     }
-                    grdApplication.DataSource = user;
-                    grdApplication.PageIndex = page;
-                    grdApplication.DataBind();
+                    grdPayments.DataSource = user;
+                    grdPayments.PageIndex = page;
+                    grdPayments.DataBind();
                 }
                 else
                 {
-                    grdApplication.DataSource = null;
-                    grdApplication.DataBind();
+                    grdPayments.DataSource = null;
+                    grdPayments.DataBind();
                 }
 
             }

@@ -79,7 +79,32 @@ namespace MyAGC.institution
                 DangerAlert(ex.ToString());
             }
         }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
 
+            if (drpSearchBy.SelectedValue == "1")
+            {
+                WarningAlert("Please select a criteria to search");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtValue.Text))
+            {
+                WarningAlert("Please enter search value");
+                return;
+            }
+
+            DataSet getsearchdata = lp.getSearchApplication(int.Parse(drpSearchBy.SelectedValue), txtValue.Text, int.Parse(Session["userid"].ToString()));
+            if (getsearchdata != null)
+            {
+                grdApplications.DataSource = getsearchdata;
+                grdApplications.DataBind();
+            }
+            else
+            {
+                grdApplications.DataSource = null;
+                grdApplications.DataBind();
+            }
+        }
         protected void grdApplications_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdApplications.PageIndex = e.NewPageIndex;

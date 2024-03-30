@@ -274,6 +274,18 @@
                      </a>
                  </li>
                        --%>
+                                                                                                      <li>
+       <a href="../student/track-parcel">
+        <i class="fa fa-car"></i><span>Courier Services</span>
+          
+    </a>
+</li>
+                                                                                                                              <li>
+       <a href="../student/make-payment">
+        <i class="fa fa-money"></i><span>Pay Using Paynow</span>
+          
+    </a>
+</li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i> <span>Decision Management</span>

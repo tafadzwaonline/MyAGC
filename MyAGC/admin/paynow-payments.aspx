@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="my-payments.aspx.cs" Inherits="MyAGC.student.my_payments" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="paynow-payments.aspx.cs" Inherits="MyAGC.admin.paynow_payments" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
@@ -8,7 +8,7 @@
                         </div>
                         <div class="header-title">
                               
-                            <h1>My Application Payments</h1>
+                            <h1>PayNow Online Payments</h1>
                             <small></small>
 
                         </div>
@@ -25,6 +25,22 @@
                                         <form class="col-sm-12" runat="server">
                                              <asp:HiddenField ID="txtid" runat="server" />
                                              <div class="table-responsive">                                         <table class="table table-bordered table-hover"  style="width:100%" >
+                                                         <tr>
+    <td colspan="4">
+         <asp:DropDownList ID="drpSearchBy" CssClass="form-control dropdown" AutoPostBack="false" runat="server">
+                                            <asp:ListItem Value="1" Text="Search By" Selected="True"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="Reference"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text="FirstName"></asp:ListItem>
+                                             <asp:ListItem Value="4" Text="LastName"></asp:ListItem>
+                                            
+                                        </asp:DropDownList></td>
+
+    <td colspan="4"><asp:TextBox ID="txtValue" placeholder="Search Value" CssClass="form-control" runat="server"></asp:TextBox></td>
+    
+    <td colspan="4">
+        <asp:Button ID="btnSearch" CssClass="btn btn-success" OnClick="btnSearch_Click"  runat="server" Text="Filter Search" />
+    </td>
+</tr>
                                                                                                     <tr>
     <td><code>On mobile,swipe right/left for more info </code></td>
 </tr>
@@ -38,33 +54,41 @@
                    <asp:GridView ID="grdPayments" runat="server" class="table table-bordered dataTable no-footer" OnRowCommand="grdPayments_RowCommand"
                        role="grid" aria-describedby="basicExample_info" 
                        OnPageIndexChanging="grdPayments_PageIndexChanging"
-                       AutoGenerateColumns="False" DataKeyNames="ID" Width="100%"
+                       AutoGenerateColumns="False" DataKeyNames="ReferenceNumber" Width="100%"
                        AllowPaging="True" AllowSorting="True">
                        <Columns>
 
-                         
-                            <asp:BoundField DataField="Amount" HeaderText="Fee">
+                         <asp:BoundField DataField="ReferenceNumber" HeaderText="ReferenceNumber">
+   <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
+</asp:BoundField>
+                            <asp:BoundField DataField="Amount" HeaderText="Amount">
                                <ItemStyle HorizontalAlign="Left" Width="60px" />
                            </asp:BoundField>
                             <asp:BoundField DataField="DateCreated" HeaderText="DatePaid">
                                <%--<ItemStyle HorizontalAlign="Left" Width="70px" />--%>
                            </asp:BoundField>
-                           <asp:BoundField DataField="ReferenceNumber" HeaderText="ReferenceNumber">
-                              <%-- <ItemStyle HorizontalAlign="Left" Width="60px" />--%>
-                           </asp:BoundField>
-                            <asp:BoundField DataField="College" HeaderText="College"></asp:BoundField>
-                           <asp:BoundField DataField="ProgramName" HeaderText="ProgramName"></asp:BoundField>
+                           
+                            <asp:BoundField DataField="Status" HeaderText="Status"></asp:BoundField>
+                           <asp:BoundField DataField="PaymentOption" HeaderText="PaymentOption"></asp:BoundField>
+                           <asp:BoundField DataField="FirstName" HeaderText="FirstName"></asp:BoundField>
+                           <asp:BoundField DataField="LastName" HeaderText="LastName"></asp:BoundField>
                             
                           
                             <asp:TemplateField HeaderText="View">
                                <ItemTemplate>
-                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ID")%>'>
-                                                  View Payment
+                                   <asp:LinkButton ID="btnadd" runat="server" CssClass="btn btn-success" CommandName="SelectItem" CommandArgument='<%#Eval("ReferenceNumber")%>'>
+                                                  View Receipt
                                    </asp:LinkButton>
                                </ItemTemplate>
                            </asp:TemplateField>
                            
-
+                                                       <asp:TemplateField HeaderText="View">
+    <ItemTemplate>
+        <asp:LinkButton ID="btnView" runat="server" CssClass="btn btn-warning" CommandName="ViewItem" CommandArgument='<%#Eval("ReferenceNumber")%>'>
+                       View Payment
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
                        </Columns>
                    </asp:GridView>
 
